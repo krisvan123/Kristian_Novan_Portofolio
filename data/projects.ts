@@ -1,25 +1,28 @@
-export interface ProjectSection {
-  title: string;
-  content: string | string[];
-  isPlaceholder?: boolean;
-}
-
 export interface ProjectDetail {
   slug: string;
   title: string;
   subtitle?: string;
   category: string;
   shortDescription: string;
+  overview: string[];
   technologies: string[];
-  images: string[];
   previewImage: string;
-  hasContinuousGallery?: boolean; // For travel project or special gallery showcase
-  galleryCaption?: string;
-  sections: ProjectSection[];
+  images: string[];
   links?: {
     demo?: string;
     repo?: string;
   };
+}
+
+export interface UpcomingProject {
+  slug: string;
+  title: string;
+  category: string;
+  status: string;
+  description: string;
+  technologies: string[];
+  images: string[];
+  disclaimer?: string;
 }
 
 export const projectsData: ProjectDetail[] = [
@@ -29,50 +32,14 @@ export const projectsData: ProjectDetail[] = [
     category: "AOL — Machine Learning",
     shortDescription:
       "AirSense Dashboard is a machine learning application for estimating PM2.5 concentration based on historical WHO data. Users can enter regional parameters to obtain predictions without relying on a PM2.5 sensor in the field.",
+    overview: [
+      "AirSense Dashboard is a machine learning application for estimating PM2.5 concentration based on historical WHO data. Users can enter regional parameters to obtain predictions without relying on a PM2.5 sensor in the field.",
+      "The application was developed as part of an Academic On-Line (AOL) project to explore practical regression models on environmental data. In many regions, physical air quality monitoring stations are scarce or costly to deploy. By leveraging macro environmental indicators recorded in World Health Organization datasets, the tool provides an accessible estimate of particulate concentration directly through a streamlined interface.",
+      "The project focuses on data preprocessing, feature correlation, and presenting predictive outcomes clearly so users can evaluate local air quality indicators effectively.",
+    ],
     technologies: ["Python", "Machine Learning", "Data Analysis", "WHO Dataset"],
     previewImage: "/images/projects/airsense-01.jpg",
     images: ["/images/projects/airsense-01.jpg"],
-    sections: [
-      {
-        title: "Project Overview",
-        content:
-          "AirSense Dashboard is an intelligent environmental monitoring tool built to estimate air quality metrics—specifically PM2.5 particulate matter—using historical meteorological and spatial indicators from the World Health Organization (WHO) dataset. It provides accessible air quality estimates for communities without physical monitoring stations.",
-      },
-      {
-        title: "Problem & Context",
-        content:
-          "High particulate matter (PM2.5) poses severe long-term cardiovascular and respiratory health risks. However, installing and maintaining specialized PM2.5 sensor arrays across every district is capital-intensive and logistically challenging. There was a critical need for an algorithmic estimation system that leverages available regional and climate parameters.",
-      },
-      {
-        title: "Solution",
-        content:
-          "The dashboard applies supervised machine learning regression models trained on extensive WHO historical environmental indicators. Users can input available regional climatic variables (such as temperature, humidity, geographic factors, and historical baselines) to receive instantaneous, accurate PM2.5 estimates directly in an intuitive dashboard.",
-      },
-      {
-        title: "Key Features",
-        content: [
-          "Sensor-independent PM2.5 concentration estimation based on macro variables",
-          "Interactive regional input form for environmental parameters",
-          "Real-time prediction feedback with visual air quality hazard categorization",
-          "Comparative historical trend visualization",
-        ],
-      },
-      {
-        title: "My Contribution",
-        content: "[Add your contribution here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "Dataset & Modeling",
-        content:
-          "Utilizes historical WHO environmental records. Preprocessing involved handling regional missingness, feature normalization, and evaluating regression model performance across various test splits.",
-      },
-      {
-        title: "Outcome & Learning",
-        content: "[Add project result here]",
-        isPlaceholder: true,
-      },
-    ],
   },
   {
     slug: "nivscan",
@@ -80,41 +47,14 @@ export const projectsData: ProjectDetail[] = [
     category: "AOL — Natural Language Processing",
     shortDescription:
       "NiVScan is an NLP-based application designed to analyze information related to the Nipah virus using natural language processing techniques.",
-    technologies: ["Python", "Natural Language Processing", "Data Analysis", "Text Mining"],
+    overview: [
+      "NiVScan is an NLP-based application designed to analyze information related to the Nipah virus using natural language processing techniques.",
+      "Developed for an AOL coursework assignment, the system processes unstructured biomedical texts and public health reports concerning Nipah virus transmissions and outbreaks. Through natural language processing pipelines, it structures key textual findings to assist researchers and students in reviewing scientific literature more efficiently.",
+      "The project emphasizes practical text preprocessing, lexical analysis, and clean presentation of extracted insights without unnecessary complexity.",
+    ],
+    technologies: ["Python", "NLP", "Text Processing", "Information Retrieval"],
     previewImage: "/images/projects/nivscan-01.jpg",
     images: ["/images/projects/nivscan-01.jpg"],
-    sections: [
-      {
-        title: "Project Overview",
-        content:
-          "NiVScan is a dedicated natural language processing utility designed to extract, synthesize, and categorize biomedical literature and public health reports concerning the Nipah virus (NiV). It streamlines literature discovery for researchers and healthcare communicators.",
-      },
-      {
-        title: "NLP Method",
-        content: "[Add NLP method here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "Dataset",
-        content: "[Add dataset details here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "Model Architecture",
-        content: "[Add model architecture here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "My Contribution",
-        content: "[Add your contribution here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "Results & Evaluation",
-        content: "[Add project results here]",
-        isPlaceholder: true,
-      },
-    ],
   },
   {
     slug: "promod-ai",
@@ -122,304 +62,126 @@ export const projectsData: ProjectDetail[] = [
     subtitle: "Post-Translational Modification (PTM)",
     category: "AOL — Computational Biology",
     shortDescription:
-      "PTM is a chemical modification that occurs to a protein after translation by the ribosome. One of the most common types of PTM is phosphorylation, which involves the addition of a phosphate group to specific amino acid residues such as Serine, Threonine, or Tyrosine. Phosphorylation functions as a biological switch that regulates cellular signaling and is involved in various diseases, including cancer and Alzheimer's disease.",
-    technologies: ["Python", "Computational Biology", "Machine Learning", "Bioinformatics", "Protein Modeling"],
+      "ProMod AI explores Post-Translational Modification (PTM), a chemical modification that occurs to proteins after translation. One important example is phosphorylation, which involves adding a phosphate group to specific amino acid residues such as Serine, Threonine, or Tyrosine.",
+    overview: [
+      "ProMod AI explores Post-Translational Modification (PTM), a chemical modification that occurs to proteins after translation. One important example is phosphorylation, which involves adding a phosphate group to specific amino acid residues such as Serine, Threonine, or Tyrosine. Phosphorylation plays an important role in cellular signaling and is associated with diseases including cancer and Alzheimer's disease.",
+      "Created for an AOL Computational Biology study, ProMod AI investigates computational methods for recognizing modification patterns along amino acid sequences. Because experimental wet-lab identification of phosphorylation sites can be resource-intensive, computational biology models offer an important complementary method for screening protein candidates.",
+      "The project combines bioinformatics concepts with machine learning sequence classification, presenting predictions with scientific clarity.",
+    ],
+    technologies: ["Python", "Computational Biology", "Machine Learning", "Bioinformatics"],
     previewImage: "/images/projects/promod-01.jpg",
     images: ["/images/projects/promod-01.jpg", "/images/projects/promod-02.jpg"],
-    sections: [
-      {
-        title: "Scientific Context & Biological Background",
-        content:
-          "Post-Translational Modification (PTM) represents one of the most critical mechanisms expanding the functional diversity of the proteome. After protein biosynthesis via ribosomes, chemical groups are enzymatically conjugated onto amino acid chains. Among these, phosphorylation (attaching phosphate groups to Serine, Threonine, or Tyrosine residues) serves as a fundamental regulatory switch in cellular communication, enzymatic activation, and disease pathogenesis like oncogenesis and neurodegeneration.",
-      },
-      {
-        title: "Problem Statement",
-        content:
-          "High-throughput wet-lab identification of phosphorylation sites via mass spectrometry is expensive, labor-intensive, and often misses transient modifications. Developing computational intelligence models to accurately predict potential phosphorylation sites from primary amino acid sequences is crucial for accelerating therapeutic drug target discovery.",
-      },
-      {
-        title: "PTM Prediction Approach",
-        content: "[Add PTM prediction approach here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "Algorithm / Model Details",
-        content: "[Add algorithm / model details here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "Dataset",
-        content: "[Add dataset details here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "Input Specification",
-        content: "[Add input specification here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "Output Specification",
-        content: "[Add output specification here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "My Contribution",
-        content: "[Add your contribution here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "Results & Biological Findings",
-        content: "[Add project results here]",
-        isPlaceholder: true,
-      },
-    ],
   },
   {
     slug: "finance-app",
     title: "Financial / Savings Application",
     category: "AOL — Software Engineering",
     shortDescription:
-      "A financial-related application focused on savings and financial management, designed to help users track personal budgets, set savings goals, and manage transactions effectively.",
-    technologies: ["Software Engineering", "Financial Systems", "Database Design", "Full-Stack Development"],
+      "A financial application focused on saving and personal financial management, designed to streamline budgeting and money tracking.",
+    overview: [
+      "A financial application focused on saving and personal financial management.",
+      "Built as a practical software engineering project, the application emphasizes clean software architecture, reliable state handling, and a clear user interface for tracking everyday financial goals and expense categories. More detailed functionality and expanded modules will continue to be added as development evolves.",
+    ],
+    technologies: ["Software Engineering", "Full-Stack Development", "System Design"],
     previewImage: "/images/projects/finance-01.jpg",
     images: ["/images/projects/finance-01.jpg"],
-    sections: [
-      {
-        title: "Project Overview",
-        content: "[Add project overview details here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "Main Features",
-        content: "[Add main features here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "User Problem",
-        content: "[Add user problem here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "Solution",
-        content: "[Add solution here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "My Contribution",
-        content: "[Add your contribution here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "Technologies",
-        content: "[Add technologies here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "Results",
-        content: "[Add project results here]",
-        isPlaceholder: true,
-      },
-    ],
   },
   {
     slug: "platgizi",
     title: "PlatGizi",
-    subtitle: "Smart Menu Planning System for a Healthy Lifestyle & Balanced Nutrition",
+    subtitle: "Smart Menu Planning System",
     category: "Assignment — Machine Learning",
     shortDescription:
-      "PlatGizi is a smart menu planning system designed to support a healthy lifestyle and balanced nutrition using a machine learning-based approach.",
-    technologies: ["Python", "Machine Learning", "Recommendation Systems", "Nutrition Analytics"],
+      "PlatGizi is a smart menu planning system designed to support a healthy lifestyle and balanced nutrition through a machine learning-based approach.",
+    overview: [
+      "PlatGizi is a smart menu planning system designed to support a healthy lifestyle and balanced nutrition through a machine learning-based approach.",
+      "Developed for an academic coursework assignment, PlatGizi addresses the challenge of planning nutritionally balanced daily meals. By analyzing nutritional values, caloric constraints, and user preferences, the system algorithmically recommends meal plans that align with balanced diet standards.",
+      "The system focuses on structured nutrient balancing and accessible user recommendations for everyday dietary health.",
+    ],
+    technologies: ["Python", "Machine Learning", "Recommendation Algorithms", "Nutrition Data"],
     previewImage: "/images/projects/platgizi-01.jpg",
     images: ["/images/projects/platgizi-01.jpg"],
-    sections: [
-      {
-        title: "Project Overview",
-        content:
-          "PlatGizi addresses daily nutritional imbalance by providing an automated, personalized meal planning platform. The system generates balanced daily meal combinations tailored to individual demographic and caloric needs.",
-      },
-      {
-        title: "Dataset",
-        content: "[Add dataset details here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "Machine Learning Method",
-        content: "[Add machine learning method here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "Input Parameters",
-        content: "[Add input parameters here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "Prediction / Recommendation Logic",
-        content: "[Add recommendation logic here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "My Contribution",
-        content: "[Add your contribution here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "Results",
-        content: "[Add project results here]",
-        isPlaceholder: true,
-      },
-    ],
   },
   {
     slug: "ecorouter-ai",
     title: "EcoRouter AI",
-    subtitle: "Every stop lightens the load — EcoRouter sequences deliveries around it to burn the least fuel getting there.",
+    subtitle: "CompFest AI Competition",
     category: "CompFest AI Competition",
     shortDescription:
       "Every stop lightens the load — EcoRouter sequences deliveries around it to burn the least fuel getting there.",
-    technologies: ["Python", "Optimization Algorithms", "Artificial Intelligence", "Green Logistics", "Heuristic Search"],
+    overview: [
+      "Every stop lightens the load — EcoRouter sequences deliveries around it to burn the least fuel getting there.",
+      "Developed as a competitive entry for the CompFest AI Competition, EcoRouter AI models vehicle routing optimization under dynamic load constraints. Instead of treating transit segments as having static weight, the algorithm factors in vehicle mass reduction after each delivery stop to identify route sequences that minimize overall fuel consumption.",
+      "The project provided valuable experience in algorithmic optimization, logistical heuristic modeling, and competitive team problem solving.",
+    ],
+    technologies: ["Python", "Optimization Algorithms", "Heuristic Search", "Green Logistics"],
     previewImage: "/images/projects/ecorouter-01.jpg",
     images: ["/images/projects/ecorouter-01.jpg"],
-    sections: [
-      {
-        title: "Competition Context",
-        content:
-          "Built for the CompFest AI Competition. The challenge focused on algorithmic innovation for sustainable supply-chain transport, tackling complex vehicle routing variants with dynamic load constraints.",
-      },
-      {
-        title: "Core Philosophy",
-        content:
-          "“Every stop lightens the load — EcoRouter sequences deliveries around it to burn the least fuel getting there.” Instead of assuming constant vehicle mass across transit segments, EcoRouter models gravitational load depletion, gradient elevations, and traffic density.",
-      },
-      {
-        title: "Problem Statement",
-        content: "[Add problem statement here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "Approach",
-        content: "[Add approach details here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "Algorithm",
-        content: "[Add algorithm description here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "My Contribution",
-        content: "[Add your contribution here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "Competition Outcome",
-        content: "[Add outcome here]",
-        isPlaceholder: true,
-      },
-    ],
   },
   {
     slug: "skinical",
     title: "Skinical",
     category: "AOL — Computer Vision",
     shortDescription:
-      "Skinical is a web-based skin lesion classification system developed using two approaches: Classical Machine Learning and Hybrid Deep Learning + Classical Machine Learning. The system aims to support early detection by classifying whether a skin lesion is Benign or Malignant.",
-    technologies: ["Computer Vision", "Classical Machine Learning", "Deep Learning", "Feature Extraction", "Web Deployment"],
+      "Skinical is a web-based skin lesion classification system developed using two approaches: Classical Machine Learning and Hybrid Deep Learning + Classical Machine Learning. The system is designed to classify whether a skin lesion is Benign or Malignant.",
+    overview: [
+      "Skinical is a web-based skin lesion classification system developed using two approaches: Classical Machine Learning and Hybrid Deep Learning + Classical Machine Learning. The system is designed to classify whether a skin lesion is Benign or Malignant.",
+      "Created as an AOL Computer Vision project, the study compares the diagnostic performance of classical computer vision feature descriptors against a hybrid pipeline that combines deep neural representations with classical classifiers. The objective was to evaluate both accuracy and computational efficiency in non-invasive lesion screening support.",
+      "The application bundles the classification pipeline into a web interface for clear image upload and result inspection.",
+    ],
+    technologies: ["Computer Vision", "Deep Learning", "Classical Machine Learning", "Web Interface"],
     previewImage: "/images/projects/skinical-01.jpg",
     images: ["/images/projects/skinical-01.jpg"],
-    sections: [
-      {
-        title: "Project Overview",
-        content:
-          "Skinical is a diagnostic decision-support system built to classify dermoscopic images of skin lesions into Benign or Malignant categories. The study rigorously compared classical computer vision pipelines against hybrid neural-feature models to optimize early detection sensitivity.",
-      },
-      {
-        title: "Problem",
-        content:
-          "Melanoma and malignant skin conditions require rapid, non-invasive early detection. Dermatological access is uneven, creating a need for automated screening tools that can deliver dependable classification while remaining computationally efficient.",
-      },
-      {
-        title: "Classical ML Approach",
-        content: "[Add classical ML approach details here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "Hybrid Deep Learning Approach",
-        content: "[Add hybrid deep learning approach details here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "Dataset",
-        content: "[Add dataset details here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "My Contribution",
-        content: "[Add your contribution here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "Results",
-        content: "[Add results here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "What I Learned",
-        content: "[Add learning outcomes here]",
-        isPlaceholder: true,
-      },
-    ],
   },
   {
     slug: "travel-app",
-    title: "Travel / Journey Planning Application",
+    title: "Travel Application",
+    subtitle: "Figma Prototype & HCI Study",
     category: "AOL — Human and Computer Interaction",
     shortDescription:
-      "A travel and journey-related digital experience designed using Figma and HCI principles, prioritizing clear visual hierarchy, intuitive journey flows, and minimal cognitive load.",
-    technologies: ["Figma", "HCI Principles", "Interaction Design", "User Journey Mapping", "Prototyping"],
+      "A travel-oriented application designed through user interface and human-computer interaction principles, with the prototype created using Figma.",
+    overview: [
+      "A travel-oriented application designed through user interface and human-computer interaction principles, with the prototype created using Figma.",
+      "Undertaken as an AOL Human-Computer Interaction coursework project, this work examined how travelers organize complex itineraries, discover destinations, and navigate multi-leg journeys. By applying core HCI principles—such as cognitive load minimization, clear visual hierarchy, consistent feedback, and intuitive journey flows—the prototype simplifies travel scheduling into a calm, coherent mobile experience.",
+      "The final high-fidelity Figma prototype illustrates the primary user flow, visual design system, and key interactive components.",
+    ],
+    technologies: ["Figma", "HCI Principles", "UI/UX Design", "Wireframing", "Prototyping"],
     previewImage: "/images/projects/travel-01.jpg",
     images: [
       "/images/projects/travel-01.jpg",
       "/images/projects/travel-02.jpg",
       "/images/projects/travel-03.jpg",
     ],
-    hasContinuousGallery: true,
-    galleryCaption: "Interactive application screenshots showcasing the travel itinerary planning flow and UI systems.",
-    sections: [
-      {
-        title: "HCI Purpose & Design Concept",
-        content:
-          "Travel planning often overwhelms users with fragmented booking tabs, cluttered schedules, and unclear geographic routing. This project applied Human-Computer Interaction (HCI) methodologies to craft a cohesive, stress-free journey planning experience centered around mental model alignment, progressive disclosure, and contextual feedback.",
-      },
-      {
-        title: "User Problem",
-        content: "[Add user problem here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "User Flow",
-        content: "[Add user flow details here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "HCI Principles Applied",
-        content: "[Add HCI principles applied here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "Design Process",
-        content: "[Add design process steps here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "My Contribution",
-        content: "[Add your contribution here]",
-        isPlaceholder: true,
-      },
-      {
-        title: "Final Result & Prototype Validation",
-        content: "[Add final results here]",
-        isPlaceholder: true,
-      },
+  },
+];
+
+export const upcomingProjectsData: UpcomingProject[] = [
+  {
+    slug: "trobos",
+    title: "Trobos",
+    category: "Mobility & Transit Concept",
+    status: "Prototype / In Development",
+    description:
+      "Trobos is a mobility concept designed for situations where traffic congestion prevents a driver from reaching a destination efficiently. The concept allows a motorbike rider to pick up the passenger while the passenger's car remains handled separately and is delivered to the destination.",
+    technologies: ["Product Concept", "Figma Prototype", "Logistics Flow", "Mobile UI"],
+    images: [
+      "/images/projects/upcoming/trobos-01.jpg",
+      "/images/projects/upcoming/trobos-02.jpg",
+    ],
+  },
+  {
+    slug: "mindcare",
+    title: "MindCare",
+    category: "AI Guidance Concept",
+    status: "Concept / Prototype",
+    description:
+      "MindCare is an AI-powered application designed to provide initial guidance and practical next steps when users are feeling emotionally unwell. The concept focuses on making supportive guidance easier to access through an AI-based conversational experience.",
+    disclaimer:
+      "Prototype concept only. MindCare is designed for supportive initial guidance and does not provide medical diagnosis or replace professional mental healthcare.",
+    technologies: ["Conversational AI", "UI/UX Concept", "Natural Language Guidance"],
+    images: [
+      "/images/projects/upcoming/mindcare-01.jpg",
+      "/images/projects/upcoming/mindcare-02.jpg",
     ],
   },
 ];

@@ -1,16 +1,27 @@
 export interface PersonalData {
   name: string;
+  education: string;
+  classYear: string;
   role: string;
   heroBio: string;
+  focusAreas: string[];
   aboutBio: {
-    paragraphs: string[];
-    passions: string[];
+    lead: string;
+    body: string[];
+    capabilities: string[];
   };
   metrics: {
     label: string;
     value: string;
     description: string;
   }[];
+  achievement: {
+    title: string;
+    badge: string;
+    description: string;
+    certificateImage: string;
+    event: string;
+  };
   contact: {
     email: string;
     instagramHandle: string;
@@ -24,40 +35,59 @@ export interface PersonalData {
 
 export const personalData: PersonalData = {
   name: "Kristian Novan",
-  role: "Computer Science Student | Developer | Public Speaker | Project Enthusiast",
+  education: "BINUS University",
+  classYear: "B2028",
+  role: "Computer Science Student — BINUS University — Class of B2028",
   heroBio:
-    "I am a Computer Science student passionate about technology, software development, artificial intelligence, and building meaningful digital experiences through projects and collaboration.",
+    "Computer Science student at BINUS University (B2028) working across software development, machine learning, and human-computer interaction, with active experience in campus leadership and stage moderation.",
+  focusAreas: [
+    "Software Development",
+    "Machine Learning",
+    "Artificial Intelligence",
+    "Computer Vision",
+    "Natural Language Processing",
+    "Human-Computer Interaction",
+  ],
   aboutBio: {
-    paragraphs: [
-      "I am a Computer Science student with a strong interest in software development, artificial intelligence, machine learning, computer vision, natural language processing, and human-computer interaction.",
-      "Throughout my academic journey, I have participated in campus committees, mentoring activities, event organizing, public speaking, and collaborative projects. These experiences have helped me develop both technical and interpersonal skills.",
+    lead:
+      "Kristian Novan is a Computer Science student at BINUS University, class of B2028, with experience across software development, machine learning, natural language processing, computer vision, computational biology, and human-computer interaction.",
+    body: [
+      "Alongside coursework and technical projects, his academic journey has included active roles in campus committees, event organization, Master of Ceremony moderation, peer mentoring, and team-based development. These experiences have shaped both practical technical discipline and interpersonal communication.",
+      "Whether developing algorithmic pipelines, designing interfaces with HCI principles, or coordinating committee workflows on stage, the priority is always building functional work, taking responsibility, and collaborating effectively.",
     ],
-    passions: [
-      "Building applications",
-      "Working on AI-related projects",
-      "Collaborating with teams",
-      "Public speaking",
-      "Learning new technologies",
-      "Solving problems independently",
+    capabilities: [
+      "Building practical software & AI models",
+      "Event organization & committee leadership",
+      "Public speaking & stage moderation",
+      "Independent problem solving & debugging",
+      "Cross-functional team collaboration",
+      "Mentoring & knowledge sharing",
     ],
   },
   metrics: [
     {
-      label: "Projects",
+      label: "Projects Completed",
       value: "8+",
-      description: "Academic & competitive builds",
+      description: "Academic coursework & competitive builds",
     },
     {
-      label: "Campus Activities",
-      value: "Multiple Experiences",
-      description: "Committees, mentoring & MC",
+      label: "Campus Involvement",
+      value: "Active",
+      description: "Committees, mentoring & MC moderation",
     },
     {
-      label: "Core Focus",
-      value: "Technology + Collaboration",
-      description: "Engineering & communication",
+      label: "Academic Focus",
+      value: "CS • B2028",
+      description: "Software engineering & applied AI",
     },
   ],
+  achievement: {
+    title: "ICORIS 2026 — Paper Author",
+    badge: "International Conference Publication",
+    event: "ICORIS 2026",
+    description: "Successfully completed ICORIS 2026 as a paper author.",
+    certificateImage: "/images/certificates/icoris-2026-author.jpg",
+  },
   contact: {
     email: "kristiannovan17@gmail.com",
     instagramHandle: "@krisxvan",

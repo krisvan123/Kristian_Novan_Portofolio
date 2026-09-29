@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import { personalData } from "@/data/personal";
 import { ArrowUp, Github, Instagram, Linkedin, Mail } from "lucide-react";
+import CrayonSunflower from "./CrayonSunflower";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -11,15 +11,15 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-surface-border bg-canvas py-12">
+    <footer className="border-t border-surface-border bg-canvas pt-12 pb-16">
       <div className="max-w-6xl mx-auto px-6 md:px-8">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-8 border-b border-surface-border/60">
           <div className="space-y-1">
             <h3 className="text-base font-semibold text-charcoal">
               {personalData.name}
             </h3>
-            <p className="text-xs text-charcoal-soft">
-              Computer Science Student • Developer &amp; Public Speaker
+            <p className="text-xs text-charcoal-soft font-mono">
+              Computer Science Student — BINUS University — {personalData.classYear}
             </p>
           </div>
 
@@ -28,6 +28,7 @@ export default function Footer() {
               href={`mailto:${personalData.contact.email}`}
               className="p-2 rounded-lg hover:text-accent hover:bg-canvas-subtle transition-colors"
               aria-label="Send Email"
+              title="Email"
             >
               <Mail className="w-4 h-4" />
             </a>
@@ -37,6 +38,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="p-2 rounded-lg hover:text-accent hover:bg-canvas-subtle transition-colors"
               aria-label="Instagram Profile"
+              title="Instagram"
             >
               <Instagram className="w-4 h-4" />
             </a>
@@ -46,6 +48,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="p-2 rounded-lg hover:text-accent hover:bg-canvas-subtle transition-colors"
               aria-label="LinkedIn Profile"
+              title="LinkedIn"
             >
               <Linkedin className="w-4 h-4" />
             </a>
@@ -56,6 +59,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg hover:text-accent hover:bg-canvas-subtle transition-colors"
                 aria-label="GitHub Profile"
+                title="GitHub"
               >
                 <Github className="w-4 h-4" />
               </a>
@@ -68,11 +72,16 @@ export default function Footer() {
           <button
             type="button"
             onClick={scrollToTop}
-            className="inline-flex items-center gap-1.5 hover:text-charcoal transition-colors group"
+            className="inline-flex items-center gap-1.5 hover:text-charcoal transition-colors group cursor-pointer"
           >
             <span>Back to top</span>
             <ArrowUp className="w-3.5 h-3.5 group-hover:-translate-y-0.5 transition-transform" />
           </button>
+        </div>
+
+        {/* The single interactive hand-drawn crayon sunflower easter egg */}
+        <div className="pt-8 flex justify-center">
+          <CrayonSunflower />
         </div>
       </div>
     </footer>

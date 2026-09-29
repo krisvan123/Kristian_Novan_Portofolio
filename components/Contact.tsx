@@ -22,7 +22,7 @@ export default function Contact() {
 
           <div className="relative max-w-2xl space-y-6">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-light border border-accent-border/60 text-accent text-xs font-medium">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-light border border-accent-border/60 text-accent text-xs font-semibold">
               <MessageSquare className="w-3.5 h-3.5" />
               <span>Get In Touch</span>
             </div>
@@ -50,6 +50,7 @@ export default function Contact() {
                     onClick={handleCopyEmail}
                     className="text-xs text-charcoal-soft hover:text-accent flex items-center gap-1 transition-colors"
                     title="Copy email to clipboard"
+                    aria-label="Copy email address"
                   >
                     {copied ? (
                       <Check className="w-3.5 h-3.5 text-accent" />
@@ -59,7 +60,7 @@ export default function Contact() {
                   </button>
                 </div>
                 <div>
-                  <span className="text-[11px] uppercase tracking-wider text-charcoal-soft font-semibold block">
+                  <span className="text-[11px] uppercase tracking-wider text-charcoal-soft font-semibold block font-mono">
                     Email
                   </span>
                   <a
@@ -85,7 +86,7 @@ export default function Contact() {
                   <ArrowUpRight className="w-3.5 h-3.5 text-charcoal-soft group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
                 <div>
-                  <span className="text-[11px] uppercase tracking-wider text-charcoal-soft font-semibold block">
+                  <span className="text-[11px] uppercase tracking-wider text-charcoal-soft font-semibold block font-mono">
                     Instagram
                   </span>
                   <span className="text-xs font-semibold text-charcoal group-hover:text-accent truncate block mt-0.5">
@@ -108,7 +109,7 @@ export default function Contact() {
                   <ArrowUpRight className="w-3.5 h-3.5 text-charcoal-soft group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
                 <div>
-                  <span className="text-[11px] uppercase tracking-wider text-charcoal-soft font-semibold block">
+                  <span className="text-[11px] uppercase tracking-wider text-charcoal-soft font-semibold block font-mono">
                     LinkedIn
                   </span>
                   <span className="text-xs font-semibold text-charcoal group-hover:text-accent truncate block mt-0.5">
@@ -118,18 +119,26 @@ export default function Contact() {
               </a>
             </div>
 
-            {/* Large Primary Action Button */}
-            <div className="pt-4 flex flex-wrap items-center gap-4">
+            {/* CTAs: "Let's Talk" & "Contact Me" */}
+            <div className="pt-4 flex flex-wrap items-center gap-3.5">
               <a
                 href={`mailto:${personalData.contact.email}`}
-                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-charcoal text-white text-sm font-medium hover:bg-accent transition-colors duration-200 shadow-sm"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-charcoal text-white text-sm font-semibold hover:bg-accent transition-colors duration-200 shadow-sm"
               >
                 <Mail className="w-4 h-4" />
-                <span>Contact Me</span>
+                <span>Let&apos;s Talk</span>
               </a>
 
-              <span className="text-xs text-charcoal-soft">
-                Replies typically within 24–48 hours
+              <a
+                href={`mailto:${personalData.contact.email}`}
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white border border-surface-border text-charcoal text-sm font-semibold hover:border-accent hover:text-accent transition-colors duration-200 shadow-2xs"
+              >
+                <span>Contact Me</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+
+              <span className="text-xs text-charcoal-soft font-mono ml-1">
+                Direct via email
               </span>
             </div>
           </div>

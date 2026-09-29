@@ -3,15 +3,7 @@ export interface ActivityCategory {
   title: string;
   badge: string;
   description: string;
-  images: {
-    src: string;
-    alt: string;
-    caption: string;
-  }[];
-  additionalInfo?: {
-    label: string;
-    value: string;
-  }[];
+  imagePaths: string[];
 }
 
 export interface AdditionalExperience {
@@ -26,97 +18,33 @@ export const activitiesData: ActivityCategory[] = [
   {
     id: "campus-committee",
     title: "Campus Committee & Event Organization",
-    badge: "Organization & Leadership",
+    badge: "Organization & Operations",
     description:
-      "Participated in various campus activities, including the WALUBI committee during Waisak 2025, mentoring activities organized by HIMTI, company visit committees, and other university events.",
-    images: [
-      {
-        src: "/images/activities/walubi-01.jpg",
-        alt: "WALUBI committee event documentation 1",
-        caption: "WALUBI Committee — Waisak 2025",
-      },
-      {
-        src: "/images/activities/walubi-02.jpg",
-        alt: "WALUBI committee event documentation 2",
-        caption: "Ceremonial Coordination & Logistics",
-      },
-      {
-        src: "/images/activities/walubi-03.jpg",
-        alt: "HIMTI mentoring activity",
-        caption: "HIMTI Mentoring Session",
-      },
-      {
-        src: "/images/activities/walubi-04.jpg",
-        alt: "Campus committee coordination",
-        caption: "Division Operations & Briefing",
-      },
-      {
-        src: "/images/activities/walubi-05.jpg",
-        alt: "Company visit committee event",
-        caption: "Company Visit Coordination",
-      },
-      {
-        src: "/images/activities/walubi-06.jpg",
-        alt: "Campus event committee group documentation",
-        caption: "Committee Synergy & Planning",
-      },
-      {
-        src: "/images/activities/walubi-07.jpg",
-        alt: "University event execution",
-        caption: "On-site Event Execution",
-      },
-      {
-        src: "/images/activities/walubi-08.jpg",
-        alt: "University activity wrap-up",
-        caption: "Evaluation & Team Appreciation",
-      },
-    ],
-    additionalInfo: [
-      { label: "Key Involvements", value: "WALUBI Waisak 2025, HIMTI Mentoring, Company Visits" },
-      { label: "Core Competencies", value: "Logistics, Team Coordination, Schedule Management" },
+      "Active participant across major university and community initiatives, including the WALUBI committee during Waisak 2025, peer mentoring sessions organized by HIMTI, corporate company visit committees, and institutional event logistics.",
+    imagePaths: [
+      "/images/activities/walubi-01.jpg",
+      "/images/activities/walubi-02.jpg",
+      "/images/activities/walubi-03.jpg",
+      "/images/activities/walubi-04.jpg",
+      "/images/activities/walubi-05.jpg",
+      "/images/activities/walubi-06.jpg",
+      "/images/activities/walubi-07.jpg",
+      "/images/activities/walubi-08.jpg",
     ],
   },
   {
     id: "master-of-ceremony",
     title: "Master of Ceremony",
-    badge: "Public Speaking & Moderation",
+    badge: "Public Speaking & Engagement",
     description:
-      "Took part as a Master of Ceremony in campus events and committee activities, developing confidence, communication, audience engagement, and public speaking skills.",
-    images: [
-      {
-        src: "/images/activities/mc-01.jpg",
-        alt: "Master of Ceremony opening address",
-        caption: "Opening Speech & Stage Hosting",
-      },
-      {
-        src: "/images/activities/mc-02.jpg",
-        alt: "Audience engagement during campus event",
-        caption: "Audience Interaction & Energy",
-      },
-      {
-        src: "/images/activities/mc-03.jpg",
-        alt: "Formal event hosting",
-        caption: "Formal Protocol Moderation",
-      },
-      {
-        src: "/images/activities/mc-04.jpg",
-        alt: "Panel session introduction",
-        caption: "Guest Speaker Introduction",
-      },
-      {
-        src: "/images/activities/mc-05.jpg",
-        alt: "Stage coordination and live cueing",
-        caption: "Live Stage Coordination",
-      },
-      {
-        src: "/images/activities/mc-06.jpg",
-        alt: "Closing ceremony session",
-        caption: "Closing Remarks & Session Wrap-up",
-      },
-    ],
-    additionalInfo: [
-      { label: "Focus Areas", value: "Stage Presence, Dynamic Moderation, Audience Engagement" },
-      { label: "Key Strength", value: "Adaptability to Live Cues and Formal Flow" },
+      "Participated as a Master of Ceremony in campus events and committee activities, developing experience in public speaking, audience engagement, communication, and event coordination.",
+    imagePaths: [
+      "/images/activities/mc-01.jpg",
+      "/images/activities/mc-02.jpg",
+      "/images/activities/mc-03.jpg",
+      "/images/activities/mc-04.jpg",
+      "/images/activities/mc-05.jpg",
+      "/images/activities/mc-06.jpg",
     ],
   },
 ];
@@ -125,25 +53,25 @@ export const additionalExperiences: AdditionalExperience[] = [
   {
     role: "HIMTI Mentor & Peer Guide",
     organization: "HIMTI (Himpunan Mahasiswa Teknik Informatika)",
-    period: "Ongoing / Academic Journey",
+    period: "Academic Journey",
     description:
-      "Assisted junior students in understanding foundational programming concepts, laboratory assignments, and university transition.",
-    tags: ["Mentoring", "Academic Support", "Peer Guidance"],
+      "Guided junior students through fundamental programming coursework, lab assignments, and student life adjustment.",
+    tags: ["Mentorship", "Programming Fundamentals", "Academic Support"],
   },
   {
     role: "Company Visit Liaison & Committee",
-    organization: "University Industry Engagement",
+    organization: "BINUS University Industry Relations",
     period: "Campus Event Term",
     description:
-      "Coordinated logistical arrangements, participant flow, and company host communication during university tech company visits.",
-    tags: ["External Relations", "Event Management", "Liaison"],
+      "Assisted coordination for tech corporate site visits, managing schedule agendas, participant arrivals, and host communications.",
+    tags: ["Industry Relations", "Event Management", "Liaison"],
   },
   {
     role: "Collaborative Project Contributor",
-    organization: "Academic & Competition Teams",
-    period: "Semester 1 - Present",
+    organization: "Academic Coursework & Hackathon Teams",
+    period: "B2028 Academic Cohort",
     description:
-      "Actively led and contributed to group coursework, hackathons, and AI competition pipelines with multidisciplinary team members.",
-    tags: ["Team Leadership", "Software Pipelines", "Communication"],
+      "Collaborated in multidisciplinary teams delivering end-to-end coursework projects, research papers, and competition pipelines.",
+    tags: ["Team Collaboration", "Agile Project Work", "Problem Solving"],
   },
 ];

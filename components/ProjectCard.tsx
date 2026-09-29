@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { ProjectDetail } from "@/data/projects";
 import SafeImage from "./SafeImage";
 
@@ -27,7 +27,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             alt={`${project.title} preview`}
             fallbackTitle={project.title}
             fallbackSubtitle="Project Preview Placeholder"
-            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover/img:scale-105"
+            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover/img:scale-104"
             aspectRatioClass="aspect-[16/10]"
           />
           <div className="absolute inset-0 bg-charcoal/5 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 pointer-events-none" />
@@ -80,14 +80,17 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           )}
         </div>
 
-        {/* Action Link */}
+        {/* Action Link with animated arrow */}
         <Link
           href={`/projects/${project.slug}`}
           className="inline-flex items-center justify-between w-full text-xs font-semibold text-charcoal group-hover:text-accent pt-1 transition-colors duration-200"
         >
           <span>About Project</span>
-          <div className="w-6 h-6 rounded-full bg-canvas-subtle group-hover:bg-accent group-hover:text-white flex items-center justify-center transition-colors duration-200">
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" />
+          <div className="flex items-center gap-1">
+            <span className="text-[11px] text-charcoal-soft group-hover:text-accent transition-colors">
+              Explore
+            </span>
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
           </div>
         </Link>
       </div>

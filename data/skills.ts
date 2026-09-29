@@ -1,7 +1,7 @@
 export interface SkillItem {
   name: string;
   category: "technical" | "soft";
-  description?: string;
+  context: string;
 }
 
 export interface SkillCategory {
@@ -12,29 +12,28 @@ export interface SkillCategory {
 
 export const skillsData: SkillCategory[] = [
   {
-    title: "Programming Languages & Tools",
-    subtitle: "Core technologies and design environments utilized in coursework, projects, and development.",
+    title: "Programming & Tools",
+    subtitle: "Core programming languages, database systems, and design software used in coursework and builds.",
     items: [
-      { name: "C", category: "technical", description: "Low-level foundations, memory concepts, algorithms" },
-      { name: "Python", category: "technical", description: "Machine learning, data processing, backend scripting" },
-      { name: "JavaScript", category: "technical", description: "Web interactivity, modern front-end engineering" },
-      { name: "Java", category: "technical", description: "Object-oriented design, systems architecture" },
-      { name: "SQL", category: "technical", description: "Relational queries, database structuring" },
-      { name: "HTML", category: "technical", description: "Semantic web structure, accessibility essentials" },
-      { name: "Figma", category: "technical", description: "UI/UX wireframing, high-fidelity interactive prototyping" },
+      { name: "C", category: "technical", context: "Foundations, memory concepts & low-level algorithms" },
+      { name: "Python", category: "technical", context: "Machine learning, data processing & scripting" },
+      { name: "JavaScript", category: "technical", context: "Modern web interfaces & frontend interactivity" },
+      { name: "Java", category: "technical", context: "Object-oriented programming & systems structure" },
+      { name: "SQL", category: "technical", context: "Relational schema design & database queries" },
+      { name: "HTML", category: "technical", context: "Semantic web structure & responsive layout" },
+      { name: "Figma", category: "technical", context: "User interface design, wireframes & prototyping" },
     ],
   },
   {
     title: "Soft Skills",
-    subtitle: "Interpersonal attributes refined through leadership roles, campus organizations, and public speaking.",
+    subtitle: "Interpersonal disciplines developed through campus leadership, committee coordination, and stage moderation.",
     items: [
-      { name: "Public Speaking", category: "soft", description: "Event moderation, stage presence, engaging delivery" },
-      { name: "Teamwork", category: "soft", description: "Cross-functional synergy and goal alignment" },
-      { name: "Leadership", category: "soft", description: "Guiding teams, initiating actions, coordinating events" },
-      { name: "Independent Problem Solving", category: "soft", description: "Resourcefulness, critical debugging, research" },
-      { name: "Communication", category: "soft", description: "Clear articulative technical and interpersonal dialogue" },
-      { name: "Collaboration", category: "soft", description: "Empathy, active listening, constructive feedback" },
-      { name: "Adaptability", category: "soft", description: "Quick adjustment to new environments and challenges" },
+      { name: "Public Speaking", category: "soft", context: "Stage moderation, event hosting & audience engagement" },
+      { name: "Teamwork", category: "soft", context: "Cross-functional collaboration in coursework & committees" },
+      { name: "Leadership", category: "soft", context: "Initiative taking, organizing workflows & team guidance" },
+      { name: "Independent Problem Solving", category: "soft", context: "Research-driven debugging & autonomous execution" },
+      { name: "Communication", category: "soft", context: "Clear articulation of technical ideas and project goals" },
+      { name: "Collaboration", category: "soft", context: "Constructive feedback, active listening & team alignment" },
     ],
   },
 ];
