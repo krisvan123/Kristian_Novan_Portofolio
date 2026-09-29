@@ -17,43 +17,41 @@ export default function Marquee({
   pauseOnHover = true,
   className = "",
 }: MarqueeProps) {
-  // Speed mapping for duration
-  const speedClass =
-    speed === "slow"
-      ? "duration-[60s]"
-      : speed === "fast"
-      ? "duration-[25s]"
-      : "duration-[40s]";
+  // Duration for true seamless continuous loop
+  const duration =
+    speed === "slow" ? "52s" : speed === "fast" ? "26s" : "38s";
 
   const animationClass =
-    direction === "left"
-      ? "animate-marquee-left"
-      : "animate-marquee-right";
+    direction === "left" ? "animate-seamless-left" : "animate-seamless-right";
 
   return (
     <div
-      className={`group relative flex overflow-hidden select-none ${className}`}
+      className={`group relative flex overflow-hidden select-none w-full ${className}`}
       style={{
         maskImage:
-          "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+          "linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%)",
         WebkitMaskImage:
-          "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+          "linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%)",
       }}
     >
       <div
-        className={`flex min-w-full shrink-0 items-center justify-around gap-6 ${animationClass} ${speedClass} ${
-          pauseOnHover ? "group-hover:[animation-play-state:paused]" : ""
+        className={`flex w-max shrink-0 will-change-transform ${animationClass} ${
+          pauseOnHover ? "hover:[animation-play-state:paused]" : ""
         } motion-reduce:[animation-play-state:paused]`}
+        style={
+          {
+            "--marquee-duration": duration,
+          } as React.CSSProperties
+        }
       >
-        {children}
-      </div>
-      <div
-        aria-hidden="true"
-        className={`flex min-w-full shrink-0 items-center justify-around gap-6 ${animationClass} ${speedClass} ${
-          pauseOnHover ? "group-hover:[animation-play-state:paused]" : ""
-        } motion-reduce:[animation-play-state:paused]`}
-      >
-        {children}
+        {/* Track A */}
+        <div className="flex shrink-0 items-center gap-5 pr-5">
+          {children}
+        </div>
+        {/* Track B (Exact duplicate for seamless continuous ribbon loop) */}
+        <div aria-hidden="true" className="flex shrink-0 items-center gap-5 pr-5">
+          {children}
+        </div>
       </div>
     </div>
   );

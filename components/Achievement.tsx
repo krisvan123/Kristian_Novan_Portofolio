@@ -9,9 +9,9 @@ export default function Achievement() {
   const { achievement } = personalData;
 
   return (
-    <section id="achievements" className="py-16 md:py-20 border-t border-surface-border/60">
+    <section id="achievements" className="py-12 md:py-16 border-t border-surface-border/60">
       <div className="max-w-6xl mx-auto px-6 md:px-8">
-        <div className="bg-white rounded-3xl border border-surface-border p-6 sm:p-10 lg:p-12 shadow-2xs relative overflow-hidden group hover:border-accent-border transition-all duration-300">
+        <div className="bg-white rounded-3xl border border-surface-border p-5 sm:p-8 lg:p-10 shadow-2xs relative overflow-hidden group hover:border-accent-border transition-all duration-300">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left: Achievement Info */}
             <div className="lg:col-span-6 space-y-4">

@@ -4,18 +4,21 @@ import React, { useState } from "react";
 
 export default function CrayonSunflower() {
   const [isHappy, setIsHappy] = useState(false);
-  const [message, setMessage] = useState<string | null>(null);
+  const [showMessage, setShowMessage] = useState(false);
 
   const handleClick = () => {
+    if (isHappy) return;
     setIsHappy(true);
-    const messages = ["You found me! 🌻", "Nice to see you! ✨", "Have a wonderful day! ☀️"];
-    const randomMsg = messages[Math.floor(Math.random() * messages.length)];
-    setMessage(randomMsg);
+    setShowMessage(true);
 
+    // Celebration duration: ~1.4 seconds then return smoothly to idle
     setTimeout(() => {
       setIsHappy(false);
-      setMessage(null);
-    }, 3200);
+    }, 1400);
+
+    setTimeout(() => {
+      setShowMessage(false);
+    }, 2800);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -26,153 +29,156 @@ export default function CrayonSunflower() {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center my-6 select-none">
-      {/* Speech Bubble */}
-      {message && (
-        <div className="absolute -top-12 z-20 px-3.5 py-1.5 rounded-full bg-white border border-amber-300 text-charcoal text-xs font-medium shadow-md animate-fade-in-up flex items-center gap-1.5 whitespace-nowrap">
-          <span>{message}</span>
-          <span className="w-2 h-2 absolute -bottom-1 left-1/2 -translate-x-1/2 bg-white border-r border-b border-amber-300 rotate-45" />
+    <div className="relative flex flex-col items-center justify-center select-none py-2">
+      {/* Hand-drawn style speech bubble */}
+      {showMessage && (
+        <div className="absolute -top-11 z-20 px-3 py-1 rounded-full bg-white border border-amber-300/80 text-charcoal text-[11px] font-mono shadow-xs animate-fade-in-up flex items-center gap-1.5 whitespace-nowrap">
+          <span>you found me! 🌻</span>
+          <span className="w-1.5 h-1.5 absolute -bottom-1 left-1/2 -translate-x-1/2 bg-white border-r border-b border-amber-300 rotate-45" />
         </div>
       )}
 
-      {/* Sunflower Button Container */}
+      {/* Interactive Sunflower Button */}
       <button
         type="button"
         onClick={handleClick}
         onKeyDown={handleKeyDown}
         tabIndex={0}
-        aria-label="Interactive hand-drawn crayon sunflower easter egg"
-        title="Click the sunflower!"
-        className={`group relative outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full p-2 transition-transform duration-300 ${
-          isHappy ? "-translate-y-3 scale-110" : "hover:scale-105 active:scale-95"
-        }`}
+        aria-label="Handmade crayon sunflower illustration (click for small interaction)"
+        title="Tap the sunflower!"
+        className="group relative outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full p-1.5 cursor-pointer"
       >
-        <svg
-          width="84"
-          height="100"
-          viewBox="0 0 84 100"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className={`transition-all duration-300 ${
-            isHappy ? "animate-bounce" : "animate-float-gentle"
+        <div
+          className={`transition-transform duration-300 ${
+            isHappy ? "animate-crayon-happy" : "animate-crayon-sway group-hover:scale-105"
           }`}
-          style={{
-            filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.06))",
-          }}
         >
-          {/* Crayon Stem (rough textured curve) */}
-          <path
-            d="M42 58 C 41 72, 44 86, 42 98"
-            stroke="#4A7A46"
-            strokeWidth="4.5"
-            strokeLinecap="round"
-            strokeDasharray="60"
-            strokeDashoffset="0"
-          />
+          <svg
+            width="72"
+            height="86"
+            viewBox="0 0 72 86"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="overflow-visible"
+          >
+            {/* Hand-drawn crayon stem (deliberately wavy, organic curve) */}
+            <path
+              d="M36 48 C 35 58, 38 68, 36 84"
+              stroke="#537F4B"
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeDasharray="40"
+              strokeDashoffset="0"
+            />
+            {/* Secondary crayon stroke to give handmade texture */}
+            <path
+              d="M37 50 C 35.5 60, 37.5 70, 36.5 83"
+              stroke="#3D6437"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
 
-          {/* Left Leaf */}
-          <path
-            d="M41 76 C 28 72, 22 80, 26 86 C 32 88, 38 84, 42 79"
-            fill="#5E9659"
-            stroke="#3C6438"
-            strokeWidth="2.5"
-            strokeLinejoin="round"
-            className={`origin-[41px_76px] transition-transform duration-300 ${
-              isHappy ? "-rotate-12" : "group-hover:-rotate-6"
-            }`}
-          />
-
-          {/* Right Leaf */}
-          <path
-            d="M43 82 C 55 78, 62 84, 58 90 C 52 92, 46 88, 43 84"
-            fill="#5E9659"
-            stroke="#3C6438"
-            strokeWidth="2.5"
-            strokeLinejoin="round"
-            className={`origin-[43px_82px] transition-transform duration-300 ${
-              isHappy ? "rotate-12" : "group-hover:rotate-6"
-            }`}
-          />
-
-          {/* Crayon Petals - 12 hand-drawn warm yellow petals */}
-          <g className={`origin-[42px_36px] transition-transform duration-500 ${isHappy ? "rotate-45" : ""}`}>
-            {/* Petal 0 */}
-            <path d="M42 4 C 38 12, 38 20, 42 22 C 46 20, 46 12, 42 4 Z" fill="#F4B728" stroke="#D99714" strokeWidth="1.8" />
-            {/* Petal 30 */}
-            <path d="M58 8 C 51 14, 48 22, 51 25 C 55 24, 61 18, 58 8 Z" fill="#F9C338" stroke="#D99714" strokeWidth="1.8" />
-            {/* Petal 60 */}
-            <path d="M70 19 C 62 21, 56 27, 57 31 C 61 32, 69 28, 70 19 Z" fill="#F4B728" stroke="#D99714" strokeWidth="1.8" />
-            {/* Petal 90 */}
-            <path d="M74 36 C 66 33, 58 34, 56 38 C 58 42, 66 43, 74 36 Z" fill="#F9C338" stroke="#D99714" strokeWidth="1.8" />
-            {/* Petal 120 */}
-            <path d="M68 53 C 62 46, 55 45, 52 48 C 53 53, 59 58, 68 53 Z" fill="#F4B728" stroke="#D99714" strokeWidth="1.8" />
-            {/* Petal 150 */}
-            <path d="M54 64 C 52 56, 46 51, 43 53 C 42 58, 47 66, 54 64 Z" fill="#F9C338" stroke="#D99714" strokeWidth="1.8" />
-            {/* Petal 180 */}
-            <path d="M42 68 C 45 60, 45 52, 42 50 C 39 52, 39 60, 42 68 Z" fill="#F4B728" stroke="#D99714" strokeWidth="1.8" />
-            {/* Petal 210 */}
-            <path d="M26 64 C 33 58, 36 50, 33 47 C 29 48, 23 54, 26 64 Z" fill="#F9C338" stroke="#D99714" strokeWidth="1.8" />
-            {/* Petal 240 */}
-            <path d="M14 53 C 22 51, 28 45, 27 41 C 23 40, 15 44, 14 53 Z" fill="#F4B728" stroke="#D99714" strokeWidth="1.8" />
-            {/* Petal 270 */}
-            <path d="M10 36 C 18 39, 26 38, 28 34 C 26 30, 18 29, 10 36 Z" fill="#F9C338" stroke="#D99714" strokeWidth="1.8" />
-            {/* Petal 300 */}
-            <path d="M16 19 C 22 26, 29 27, 32 24 C 31 19, 25 14, 16 19 Z" fill="#F4B728" stroke="#D99714" strokeWidth="1.8" />
-            {/* Petal 330 */}
-            <path d="M30 8 C 32 16, 38 21, 41 19 C 42 14, 37 6, 30 8 Z" fill="#F9C338" stroke="#D99714" strokeWidth="1.8" />
-          </g>
-
-          {/* Center Circle (Crayon Brown Disk) */}
-          <circle
-            cx="42"
-            cy="36"
-            r="16"
-            fill="#75471F"
-            stroke="#533113"
-            strokeWidth="2.5"
-          />
-
-          {/* Seeds / Texture Dots */}
-          <circle cx="37" cy="31" r="1.2" fill="#533113" />
-          <circle cx="47" cy="32" r="1.2" fill="#533113" />
-          <circle cx="42" cy="42" r="1.2" fill="#533113" />
-          <circle cx="36" cy="40" r="1.2" fill="#533113" />
-          <circle cx="48" cy="39" r="1.2" fill="#533113" />
-
-          {/* Sunflower Face (Happy Expression vs Idle Smile) */}
-          {isHappy ? (
-            /* Joyful Smiling Eyes + Happy Open Mouth + Pink Blush */
-            <g className="animate-pulse">
-              {/* Happy Arched Eyes ^^ */}
-              <path d="M34 32 C 34 30, 38 30, 38 32" stroke="#FAF9F5" strokeWidth="2" strokeLinecap="round" />
-              <path d="M46 32 C 46 30, 50 30, 50 32" stroke="#FAF9F5" strokeWidth="2" strokeLinecap="round" />
-              {/* Rosy Cheeks */}
-              <circle cx="33" cy="37" r="2.2" fill="#FF8A80" opacity="0.8" />
-              <circle cx="51" cy="37" r="2.2" fill="#FF8A80" opacity="0.8" />
-              {/* Happy Open Smile */}
-              <path d="M37 36 C 39 42, 45 42, 47 36 Z" fill="#FAF9F5" stroke="#FAF9F5" strokeWidth="1.2" />
-            </g>
-          ) : (
-            /* Gentle Idle Friendly Face */
-            <g>
-              {/* Gentle Cute Eyes */}
-              <circle cx="36" cy="33" r="1.8" fill="#FAF9F5" />
-              <circle cx="48" cy="33" r="1.8" fill="#FAF9F5" />
-              {/* Gentle Smile */}
+            {/* Left Leaf (imperfect, hand-sketched) */}
+            <g className={`origin-[35px_64px] transition-transform duration-300 ${isHappy ? "-rotate-12" : "group-hover:-rotate-6"}`}>
               <path
-                d="M38 38 C 40 41, 44 41, 46 38"
-                stroke="#FAF9F5"
-                strokeWidth="1.8"
-                strokeLinecap="round"
+                d="M35 64 C 24 59, 18 66, 21 73 C 27 75, 32 71, 35 66 Z"
+                fill="#6A9A5E"
+                stroke="#3D6437"
+                strokeWidth="2"
+                strokeLinejoin="round"
               />
+              {/* Leaf vein line */}
+              <path d="M26 68 C 29 67, 32 66, 34 65" stroke="#3D6437" strokeWidth="1" strokeLinecap="round" />
             </g>
-          )}
-        </svg>
+
+            {/* Right Leaf (imperfect, slightly asymmetrical) */}
+            <g className={`origin-[37px_70px] transition-transform duration-300 ${isHappy ? "rotate-12" : "group-hover:rotate-6"}`}>
+              <path
+                d="M37 70 C 47 66, 53 72, 50 78 C 44 80, 39 76, 37 72 Z"
+                fill="#6A9A5E"
+                stroke="#3D6437"
+                strokeWidth="2"
+                strokeLinejoin="round"
+              />
+              {/* Leaf vein line */}
+              <path d="M40 72 C 43 73, 46 75, 48 76" stroke="#3D6437" strokeWidth="1" strokeLinecap="round" />
+            </g>
+
+            {/* Hand-drawn Crayon Petals (deliberately uneven, handmade strokes) */}
+            <g className={`origin-[36px_30px] transition-transform duration-500 ${isHappy ? "scale-105" : ""}`}>
+              {/* Petal Top */}
+              <path d="M36 6 C 32 13, 33 20, 36 21 C 39 20, 40 13, 36 6 Z" fill="#F7C438" stroke="#D39213" strokeWidth="1.8" />
+              {/* Petal Top-Right 1 */}
+              <path d="M48 9 C 42 15, 41 21, 44 23 C 47 22, 51 17, 48 9 Z" fill="#F1B526" stroke="#D39213" strokeWidth="1.8" />
+              {/* Petal Top-Right 2 */}
+              <path d="M57 18 C 50 20, 46 25, 48 28 C 51 29, 57 25, 57 18 Z" fill="#F7C438" stroke="#D39213" strokeWidth="1.8" />
+              {/* Petal Right */}
+              <path d="M60 31 C 53 29, 47 31, 46 34 C 48 37, 55 37, 60 31 Z" fill="#F1B526" stroke="#D39213" strokeWidth="1.8" />
+              {/* Petal Bottom-Right 1 */}
+              <path d="M55 43 C 50 37, 44 38, 43 41 C 44 44, 49 48, 55 43 Z" fill="#F7C438" stroke="#D39213" strokeWidth="1.8" />
+              {/* Petal Bottom-Right 2 */}
+              <path d="M45 52 C 43 45, 39 43, 37 45 C 37 49, 41 54, 45 52 Z" fill="#F1B526" stroke="#D39213" strokeWidth="1.8" />
+              {/* Petal Bottom */}
+              <path d="M35 55 C 37 48, 36 42, 34 41 C 32 43, 31 49, 35 55 Z" fill="#F7C438" stroke="#D39213" strokeWidth="1.8" />
+              {/* Petal Bottom-Left 1 */}
+              <path d="M23 51 C 28 46, 29 40, 27 38 C 24 39, 20 44, 23 51 Z" fill="#F1B526" stroke="#D39213" strokeWidth="1.8" />
+              {/* Petal Bottom-Left 2 */}
+              <path d="M14 42 C 21 39, 24 35, 23 32 C 20 32, 14 36, 14 42 Z" fill="#F7C438" stroke="#D39213" strokeWidth="1.8" />
+              {/* Petal Left */}
+              <path d="M11 29 C 18 31, 23 29, 24 26 C 22 23, 16 23, 11 29 Z" fill="#F1B526" stroke="#D39213" strokeWidth="1.8" />
+              {/* Petal Top-Left 1 */}
+              <path d="M16 16 C 22 21, 27 21, 29 18 C 28 15, 22 12, 16 16 Z" fill="#F7C438" stroke="#D39213" strokeWidth="1.8" />
+              {/* Petal Top-Left 2 */}
+              <path d="M26 8 C 29 15, 33 18, 35 16 C 35 13, 30 7, 26 8 Z" fill="#F1B526" stroke="#D39213" strokeWidth="1.8" />
+            </g>
+
+            {/* Hand-drawn Center Disk (warm, wobbly chocolate brown) */}
+            <circle
+              cx="35.5"
+              cy="30.5"
+              r="13"
+              fill="#7A4822"
+              stroke="#533116"
+              strokeWidth="2.2"
+            />
+            {/* Subtle crayon texture sketch marks */}
+            <circle cx="31" cy="26" r="0.9" fill="#533116" />
+            <circle cx="40" cy="27" r="0.9" fill="#533116" />
+            <circle cx="35" cy="35" r="0.9" fill="#533116" />
+
+            {/* Tiny Friendly Face */}
+            {isHappy ? (
+              /* Joyful arched smiling face ^^ */
+              <g className="transition-all duration-300">
+                {/* Cheerful arched eyes */}
+                <path d="M29 27 C 29 25, 32 25, 32 27" stroke="#FAF8F2" strokeWidth="1.8" strokeLinecap="round" />
+                <path d="M38 27 C 38 25, 41 25, 41 27" stroke="#FAF8F2" strokeWidth="1.8" strokeLinecap="round" />
+                {/* Tiny pink blush cheeks */}
+                <circle cx="28" cy="31" r="1.8" fill="#FF8D7E" opacity="0.85" />
+                <circle cx="42" cy="31" r="1.8" fill="#FF8D7E" opacity="0.85" />
+                {/* Happy open smile */}
+                <path d="M31.5 31 C 33 35.5, 37 35.5, 38.5 31" fill="#FAF8F2" stroke="#FAF8F2" strokeWidth="1.2" strokeLinecap="round" />
+              </g>
+            ) : (
+              /* Gentle, quiet, friendly idle smile */
+              <g>
+                <circle cx="30.5" cy="28" r="1.4" fill="#FAF8F2" />
+                <circle cx="39.5" cy="28" r="1.4" fill="#FAF8F2" />
+                <path
+                  d="M32 32.5 C 33.5 34.5, 36.5 34.5, 38 32.5"
+                  stroke="#FAF8F2"
+                  strokeWidth="1.4"
+                  strokeLinecap="round"
+                />
+              </g>
+            )}
+          </svg>
+        </div>
       </button>
 
-      {/* Subtle Caption */}
-      <span className="text-[10px] text-charcoal-soft/60 tracking-wider font-mono">
-        tap the sunflower 🌻
+      {/* Subtle hint */}
+      <span className="text-[10px] text-charcoal-soft/50 font-mono tracking-wide mt-0.5">
+        handmade with care 🌻
       </span>
     </div>
   );

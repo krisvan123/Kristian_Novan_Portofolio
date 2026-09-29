@@ -3,8 +3,8 @@ export interface PersonalData {
   education: string;
   classYear: string;
   role: string;
+  focus: string;
   heroBio: string;
-  focusAreas: string[];
   aboutBio: {
     lead: string;
     body: string[];
@@ -37,53 +37,46 @@ export const personalData: PersonalData = {
   name: "Kristian Novan",
   education: "BINUS University",
   classYear: "B2028",
-  role: "Computer Science Student — BINUS University — Class of B2028",
+  role: "Computer Science Student — BINUS University — B2028",
+  focus: "Machine Learning + UI/UX",
   heroBio:
-    "Computer Science student at BINUS University (B2028) working across software development, machine learning, and human-computer interaction, with active experience in campus leadership and stage moderation.",
-  focusAreas: [
-    "Software Development",
-    "Machine Learning",
-    "Artificial Intelligence",
-    "Computer Vision",
-    "Natural Language Processing",
-    "Human-Computer Interaction",
-  ],
+    "I'm a Computer Science student at BINUS University (B2028), exploring Machine Learning and UI/UX through academic projects, team builds, and hands-on experiments. I enjoy building applications that are not only technically sound, but also clear and comfortable for people to use.",
   aboutBio: {
     lead:
-      "Kristian Novan is a Computer Science student at BINUS University, class of B2028, with experience across software development, machine learning, natural language processing, computer vision, computational biology, and human-computer interaction.",
+      "I'm Kristian Novan, a Computer Science student at BINUS University (B2028), currently exploring Machine Learning and UI/UX through academic projects, team-based work, and hands-on experiments. I enjoy building things that are not only technically useful, but also clear and comfortable for people to use.",
     body: [
-      "Alongside coursework and technical projects, his academic journey has included active roles in campus committees, event organization, Master of Ceremony moderation, peer mentoring, and team-based development. These experiences have shaped both practical technical discipline and interpersonal communication.",
-      "Whether developing algorithmic pipelines, designing interfaces with HCI principles, or coordinating committee workflows on stage, the priority is always building functional work, taking responsibility, and collaborating effectively.",
+      "Alongside software development, my academic journey has included active experience through campus events, peer mentoring, public speaking as a Master of Ceremony, and collaborative projects. These experiences have helped me develop a balanced perspective—combining technical discipline with clear communication and team responsibility.",
+      "Whether analyzing models, crafting interface flows, or coordinating committee operations, I focus on delivering thoughtful, dependable work and collaborating constructively with teams.",
     ],
     capabilities: [
-      "Building practical software & AI models",
-      "Event organization & committee leadership",
-      "Public speaking & stage moderation",
-      "Independent problem solving & debugging",
-      "Cross-functional team collaboration",
-      "Mentoring & knowledge sharing",
+      "Machine Learning & Data Exploration",
+      "UI/UX Design & Prototyping",
+      "Software Development & Systems",
+      "Public Speaking & Stage Moderation",
+      "Campus Committee Leadership",
+      "Independent Problem Solving",
     ],
   },
   metrics: [
     {
+      label: "Academic Cohort",
+      value: "BINUS B2028",
+      description: "Computer Science Department",
+    },
+    {
+      label: "Current Focus",
+      value: "ML + UI/UX",
+      description: "Applied models & user interfaces",
+    },
+    {
       label: "Projects Completed",
-      value: "8+",
-      description: "Academic coursework & competitive builds",
-    },
-    {
-      label: "Campus Involvement",
-      value: "Active",
-      description: "Committees, mentoring & MC moderation",
-    },
-    {
-      label: "Academic Focus",
-      value: "CS • B2028",
-      description: "Software engineering & applied AI",
+      value: "8+ Builds",
+      description: "Coursework & competitive pipelines",
     },
   ],
   achievement: {
     title: "ICORIS 2026 — Paper Author",
-    badge: "International Conference Publication",
+    badge: "International Conference",
     event: "ICORIS 2026",
     description: "Successfully completed ICORIS 2026 as a paper author.",
     certificateImage: "/images/certificates/icoris-2026-author.jpg",

@@ -14,9 +14,9 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-28 border-t border-surface-border/60">
+    <section id="contact" className="py-12 md:py-16 border-t border-surface-border/60">
       <div className="max-w-6xl mx-auto px-6 md:px-8">
-        <div className="bg-white rounded-3xl border border-surface-border p-8 sm:p-12 lg:p-16 shadow-xs relative overflow-hidden">
+        <div className="bg-white rounded-3xl border border-surface-border p-6 sm:p-10 lg:p-12 shadow-xs relative overflow-hidden">
           {/* Subtle background decoration */}
           <div className="absolute top-0 right-0 w-80 h-80 bg-accent-light/40 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
 

@@ -39,10 +39,10 @@ export default function Skills() {
   const [techCategory, softCategory] = skillsData;
 
   return (
-    <section id="skills" className="py-20 md:py-28 border-t border-surface-border/60">
+    <section id="skills" className="py-12 md:py-16 border-t border-surface-border/60">
       <div className="max-w-6xl mx-auto px-6 md:px-8">
         {/* Section Header */}
-        <div className="flex flex-col items-start space-y-2 mb-12">
+        <div className="flex flex-col items-start space-y-1.5 mb-8 md:mb-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-canvas-subtle border border-surface-border text-charcoal-soft text-xs font-semibold">
             <Sparkles className="w-3.5 h-3.5 text-accent" />
             <span>Tools &amp; Strengths</span>

@@ -162,7 +162,7 @@ export const upcomingProjectsData: UpcomingProject[] = [
     category: "Mobility & Transit Concept",
     status: "Prototype / In Development",
     description:
-      "Trobos is a mobility concept designed for situations where traffic congestion prevents a driver from reaching a destination efficiently. The concept allows a motorbike rider to pick up the passenger while the passenger's car remains handled separately and is delivered to the destination.",
+      "Trobos is a mobility concept for dealing with traffic congestion. The idea is to let a motorbike rider pick up the passenger while the passenger's car is handled separately and delivered to the intended destination.",
     technologies: ["Product Concept", "Figma Prototype", "Logistics Flow", "Mobile UI"],
     images: [
       "/images/projects/upcoming/trobos-01.jpg",
@@ -173,11 +173,11 @@ export const upcomingProjectsData: UpcomingProject[] = [
     slug: "mindcare",
     title: "MindCare",
     category: "AI Guidance Concept",
-    status: "Concept / Prototype",
+    status: "Upcoming Project / Prototype",
     description:
-      "MindCare is an AI-powered application designed to provide initial guidance and practical next steps when users are feeling emotionally unwell. The concept focuses on making supportive guidance easier to access through an AI-based conversational experience.",
+      "MindCare is an AI-based concept designed to provide initial guidance and practical next steps when someone is not feeling emotionally well. The goal is to make supportive guidance easier to access through a conversational experience.",
     disclaimer:
-      "Prototype concept only. MindCare is designed for supportive initial guidance and does not provide medical diagnosis or replace professional mental healthcare.",
+      "Prototype concept only. MindCare is designed for supportive initial guidance and does not provide medical diagnosis or replace professional healthcare.",
     technologies: ["Conversational AI", "UI/UX Concept", "Natural Language Guidance"],
     images: [
       "/images/projects/upcoming/mindcare-01.jpg",

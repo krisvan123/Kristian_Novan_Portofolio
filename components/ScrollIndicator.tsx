@@ -9,10 +9,10 @@ export default function ScrollIndicator() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      if (scrollY < 50) {
+      if (scrollY < 30) {
         setOpacity(1);
-      } else if (scrollY < 200) {
-        setOpacity(Math.max(0, 1 - (scrollY - 50) / 150));
+      } else if (scrollY < 160) {
+        setOpacity(Math.max(0, 1 - (scrollY - 30) / 130));
       } else {
         setOpacity(0);
       }
@@ -32,16 +32,35 @@ export default function ScrollIndicator() {
       <Link
         href="#about"
         className="group flex flex-col items-center gap-2 text-charcoal-soft hover:text-accent transition-colors"
-        aria-label="Scroll to explore About section"
+        aria-label="Scroll down to explore About section"
       >
-        <span className="text-[11px] font-medium tracking-widest uppercase transition-colors group-hover:text-accent">
+        <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-charcoal-soft/80 group-hover:text-accent transition-colors">
           Scroll to explore
         </span>
 
-        {/* Animated Mouse Icon */}
-        <div className="w-5 h-8 rounded-full border-2 border-charcoal/30 group-hover:border-accent p-1 flex justify-center transition-colors shadow-2xs">
-          <span className="w-1 h-2 rounded-full bg-accent animate-bounce" />
+        {/* Elegant Minimalist Vertical Track with Sliding Dot */}
+        <div className="relative w-px h-8 bg-charcoal/20 group-hover:bg-accent/40 transition-colors overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-3 bg-accent animate-pulse" style={{ animation: "scrollDot 1.8s ease-in-out infinite" }} />
         </div>
+
+        <style jsx>{`
+          @keyframes scrollDot {
+            0% {
+              transform: translateY(-100%);
+              opacity: 0;
+            }
+            30% {
+              opacity: 1;
+            }
+            80% {
+              opacity: 1;
+            }
+            100% {
+              transform: translateY(250%);
+              opacity: 0;
+            }
+          }
+        `}</style>
       </Link>
     </div>
   );
