@@ -31,16 +31,19 @@ export default function ScrollIndicator() {
     >
       <Link
         href="#about"
-        className="group flex flex-col items-center gap-2 text-charcoal-soft hover:text-accent transition-colors"
+        className="group flex flex-col items-center gap-2 text-charcoal-soft dark:text-charcoal-soft-dark hover:text-accent dark:hover:text-accent-dark transition-colors"
         aria-label="Scroll down to explore About section"
       >
-        <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-charcoal-soft/80 group-hover:text-accent transition-colors">
+        <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-charcoal-soft/80 dark:text-charcoal-soft-dark/80 group-hover:text-accent dark:group-hover:text-accent-dark transition-colors">
           Scroll to explore
         </span>
 
         {/* Elegant Minimalist Vertical Track with Sliding Dot */}
-        <div className="relative w-px h-8 bg-charcoal/20 group-hover:bg-accent/40 transition-colors overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-3 bg-accent animate-pulse" style={{ animation: "scrollDot 1.8s ease-in-out infinite" }} />
+        <div className="relative w-px h-8 bg-charcoal/20 dark:bg-white/20 group-hover:bg-accent/40 dark:group-hover:bg-accent-dark/40 transition-colors overflow-hidden">
+          <div
+            className="absolute top-0 left-0 w-full h-3 bg-accent dark:bg-accent-dark animate-pulse"
+            style={{ animation: "scrollDot 1.8s ease-in-out infinite" }}
+          />
         </div>
 
         <style jsx>{`

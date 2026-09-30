@@ -2,86 +2,54 @@
 
 A minimal, elegant, modern, and interactive portfolio website built with **Next.js (App Router)**, **TypeScript**, and **Tailwind CSS**, designed for high-performance deployment on **Vercel**.
 
-Designed specifically for **Kristian Novan**, a Computer Science student at **BINUS University (Class of B2028)** actively involved in applied AI & software development, campus leadership, event organization, and stage moderation.
+Designed specifically for **Kristian Novan**, an undergraduate student at **BINUS University's School of Computer Science (SOCS)**, Class of **B2028**, specializing in **Intelligent Systems (AI)**.
 
 ---
 
-## 🌟 Key Features & Upgrades
+## 🌟 Key Features & Updates
 
-- **Alive & Interactive Experience**:
-  - **Profile Parallax Tilt**: The hero portrait responds dynamically with a subtle 3D tilt and depth parallax when hovered, resetting smoothly on mouse exit.
-  - **Animated Scroll Indicator**: Directly below the hero section, an animated mouse scroll indicator guides visitors to explore, fading away naturally upon scrolling.
-  - **Non-Intrusive Custom Cursor**: Smooth follower circle on desktop that magnetically reacts to interactive links and buttons without hiding the native browser cursor (disabled automatically on touch/mobile devices).
-  - **Interactive Crayon Sunflower**: A hand-drawn, crayon-style sunflower easter egg at the footer that sways gently, bounces happily when clicked, changes its expression to a joyful smile, and pops up a friendly message.
-  - **Interactive Skills**: Skill cards elevate with micro-interactions and icon scaling on hover.
-  - **Active Scroll-Spy Navigation**: Header highlights the active section in real-time as the user scrolls.
+- **Academic Overview**:
+  - **School**: School of Computer Science (SOCS)
+  - **University**: BINUS University
+  - **Cohort**: B2028
+  - **Specialization**: Intelligent Systems (AI)
+  - Featured prominently in the desktop header quick-view pill, mobile drawer, hero badges, and about section.
 
-- **Human, Natural & Student-Centered Writing**:
-  - Completely devoid of generic AI buzzwords.
-  - Articulates real student experiences across software engineering, applied AI, campus committee operations, and public speaking with clarity and confidence.
+- **Theme Engine (Light & Dark Mode)**:
+  - Persistent Light / Dark mode toggle in the navigation header with `localStorage` and system preference detection.
+  - Subtle twinkling starfield backdrop in dark mode.
+  - **Day / Night Hand-drawn Mascot**: Interactive **Crayon Sunflower** in light mode and **Crayon Moon** in dark mode (both with playful bounce animations and speech bubbles).
 
-- **Comprehensive Showcase & Visual Hierarchy**:
-  1. **Hero**: Kristian Novan introduction, BINUS B2028 identity, core focus areas, interactive profile frame, and animated mouse scroll indicator.
-  2. **About**: Background narrative, core competencies grid, and key overview metrics.
-  3. **Achievement (ICORIS 2026)**: Prominent author certificate presentation for completing ICORIS 2026 as a paper author.
-  4. **Activities**:
-     - **Campus Committee & Event Organization**: Continuous infinite horizontal marquee with 8 curated photos (WALUBI Waisak 2025, HIMTI mentoring, company visits). **Pure image showcase with no captions underneath**.
-     - **Master of Ceremony**: Continuous infinite horizontal marquee with 6 stage moderation photos. **Pure image showcase with no captions underneath**.
-     - **Additional Experiences**: Structured records for peer mentoring, liaison duties, and collaborative projects.
-  5. **Selected Projects**:
-     - 8 complete project case studies with dynamic routes (`/projects/[slug]`).
-     - Refactored detail pages focused cleanly on a rich, comprehensive **Project Overview** narrative followed by a continuous moving visual gallery (**no text underneath images**).
-  6. **Upcoming Projects**:
-     - Clearly designated in-development prototypes:
-       - **Trobos**: Urban mobility concept solving route congestion via motorcycle pickup & separate vehicle delivery.
-       - **MindCare**: Conversational AI guidance concept for initial emotional support.
-  7. **Skills & Capabilities**:
-     - *Programming & Tools*: C, Python, JavaScript, Java, SQL, HTML, Figma.
-     - *Soft Skills*: Public Speaking, Teamwork, Leadership, Independent Problem Solving, Communication, Collaboration.
-  8. **Contact & Footer**:
-     - "Let's Talk" and "Contact Me" direct email triggers (`kristiannovan17@gmail.com`), clipboard copy utility, social links, and the interactive crayon sunflower.
+- **Verified Certifications & Credentials with Lightbox Modal**:
+  - Full-featured credential gallery with interactive full-screen Lightbox modal (keyboard ESC/arrow navigation, backdrop dismissal):
+    1. **ICORIS 2026 — Paper Author** (IEEE International Conference)
+    2. **Azure AI Fundamentals** (Microsoft)
+    3. **WALUBI 2025 — Volunteer** (DPD WALUBI Jawa Tengah)
+    4. **HIMTI Mentor — Staff of Mentor Division** (HIMTI BINUS)
+    5. **UI/UX Competition — I/O FESTIVAL 2026** (BEM FTI UNTAR)
+    6. **Azure AI Fundamentals Training** (Microsoft & GreatNusa)
 
----
+- **High-Speed Seamless Infinite Marquee**:
+  - Hardware-accelerated infinite ribbon marquee across Activities, Project Visual Showcases, and Upcoming Prototypes.
+  - Tuned movement speed (~50–85 px/s desktop, ~30–55 px/s mobile) for a fluid, lively feel.
+  - Pure visual showcase without captions underneath moving images.
+  - Smooth hover-to-pause that resumes directly from the current position.
 
-## 📁 Image Directory Structure
-
-All portfolio images are centralized in `/public/images/`:
-
-```
-public/
-└── images/
-    ├── profile/
-    │   └── profile.jpg                 # Hero portrait (3:4 aspect ratio)
-    ├── certificates/
-    │   └── icoris-2026-author.jpg      # ICORIS 2026 Author Certificate
-    ├── activities/
-    │   ├── walubi-01.jpg ... walubi-08.jpg   # 8 Campus Committee photos
-    │   └── mc-01.jpg ... mc-06.jpg           # 6 Master of Ceremony photos
-    ├── projects/
-    │   ├── airsense-01.jpg
-    │   ├── nivscan-01.jpg
-    │   ├── promod-01.jpg, promod-02.jpg
-    │   ├── finance-01.jpg
-    │   ├── platgizi-01.jpg
-    │   ├── ecorouter-01.jpg
-    │   ├── skinical-01.jpg
-    │   └── travel-01.jpg, travel-02.jpg, travel-03.jpg
-    └── projects/upcoming/
-        ├── trobos-01.jpg, trobos-02.jpg      # Trobos concept screenshots
-        └── mindcare-01.jpg, mindcare-02.jpg  # MindCare concept screenshots
-```
-
-> **Safe Image System**: All image components implement `SafeImage.tsx` which provides clean, editorial fallback placeholders if any file is missing, ensuring the website never breaks.
+- **Case Studies & Project Showcase**:
+  - 8 completed projects, including **FinPro** (`/projects/finpro`), AirSense Dashboard, EcoRouter, NivScan, PlatGizi, ProMod AI, Skinical, and Travel Planner.
+  - Upcoming prototypes: **Trobos** and **MindCare**.
+  - All project images strictly ordered numerically by suffix (`01`, `02`, `03`...), with suffix `01` serving as the primary card preview.
 
 ---
 
-## 🛠️ Centralized Content Configuration
+## 📁 Image Directories
 
-Content can be updated without modifying component logic:
-- `data/personal.ts`: Identity, B2028 cohort, bio, focus areas, ICORIS 2026 certificate data, and social URLs.
-- `data/projects.ts`: Project overviews, tech tags, and upcoming project details.
-- `data/activities.ts`: Committee descriptions and photo paths.
-- `data/skills.ts`: Programming tools, contextual descriptions, and soft skills.
+All images are preserved as provided:
+- `/public/images/certificates/`
+- `/public/images/projects/`
+- `/public/images/projects/upcoming/`
+- `/public/images/activities/`
+- `/public/images/profile/`
 
 ---
 
@@ -97,7 +65,3 @@ npm run dev
 # Test production build
 npm run build
 ```
-
----
-
-© 2026 Kristian Novan. All rights reserved.

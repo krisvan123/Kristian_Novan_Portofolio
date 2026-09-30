@@ -12,6 +12,12 @@ html {
   color-scheme: light;
 }
 
+html.dark {
+  --background: #121214;
+  --foreground: #F4F4F6;
+  color-scheme: dark;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
@@ -31,19 +37,36 @@ body {
   background: #F4F3EE;
 }
 
+.dark ::-webkit-scrollbar-track {
+  background: #18181C;
+}
+
 ::-webkit-scrollbar-thumb {
   background: #D5D1C3;
   border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #2E2E38;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #B8B3A2;
 }
 
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #444452;
+}
+
 /* Selection color with sage accent */
 ::selection {
   background-color: #C2D9CD;
   color: #18181A;
+}
+
+.dark ::selection {
+  background-color: #234737;
+  color: #F4F4F6;
 }
 
 /* 100% Seamless Infinite Marquee Keyframes (GPU Hardware Accelerated) */

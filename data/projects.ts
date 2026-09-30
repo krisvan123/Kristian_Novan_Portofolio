@@ -21,6 +21,7 @@ export interface UpcomingProject {
   status: string;
   description: string;
   technologies: string[];
+  previewImage: string;
   images: string[];
   disclaimer?: string;
 }
@@ -39,7 +40,12 @@ export const projectsData: ProjectDetail[] = [
     ],
     technologies: ["Python", "Machine Learning", "Data Analysis", "WHO Dataset"],
     previewImage: "/images/projects/airsense-01.jpg",
-    images: ["/images/projects/airsense-01.jpg"],
+    images: [
+      "/images/projects/airsense-01.jpg",
+      "/images/projects/airsense-02.jpg",
+      "/images/projects/airsense-03.jpg",
+      "/images/projects/airsense-04.jpg",
+    ],
   },
   {
     slug: "nivscan",
@@ -54,7 +60,11 @@ export const projectsData: ProjectDetail[] = [
     ],
     technologies: ["Python", "NLP", "Text Processing", "Information Retrieval"],
     previewImage: "/images/projects/nivscan-01.jpg",
-    images: ["/images/projects/nivscan-01.jpg"],
+    images: [
+      "/images/projects/nivscan-01.jpg",
+      "/images/projects/nivscan-02.jpg",
+      "/images/projects/nivscan-03.jpg",
+    ],
   },
   {
     slug: "promod-ai",
@@ -70,21 +80,31 @@ export const projectsData: ProjectDetail[] = [
     ],
     technologies: ["Python", "Computational Biology", "Machine Learning", "Bioinformatics"],
     previewImage: "/images/projects/promod-01.jpg",
-    images: ["/images/projects/promod-01.jpg", "/images/projects/promod-02.jpg"],
+    images: [
+      "/images/projects/promod-01.jpg",
+      "/images/projects/promod-02.jpg",
+      "/images/projects/promod-03.jpg",
+    ],
   },
   {
-    slug: "finance-app",
-    title: "Financial / Savings Application",
+    slug: "finpro",
+    title: "FinPro",
+    subtitle: "Financial & Savings Management",
     category: "AOL — Software Engineering",
     shortDescription:
-      "A financial application focused on saving and personal financial management, designed to streamline budgeting and money tracking.",
+      "FinPro is a financial application focused on personal savings management, budget allocation, and transaction tracking.",
     overview: [
-      "A financial application focused on saving and personal financial management.",
-      "Built as a practical software engineering project, the application emphasizes clean software architecture, reliable state handling, and a clear user interface for tracking everyday financial goals and expense categories. More detailed functionality and expanded modules will continue to be added as development evolves.",
+      "FinPro is a financial application focused on saving and personal financial management.",
+      "Built as a practical software engineering project, FinPro emphasizes modular software architecture, dependable data persistence, and a user-friendly interface for setting savings targets and tracking recurring cashflow.",
+      "The application explores clean software engineering design patterns, separation of concerns, and an intuitive user experience for day-to-day money management.",
     ],
-    technologies: ["Software Engineering", "Full-Stack Development", "System Design"],
+    technologies: ["Software Engineering", "Full-Stack Development", "System Design", "UI/UX"],
     previewImage: "/images/projects/finance-01.jpg",
-    images: ["/images/projects/finance-01.jpg"],
+    images: [
+      "/images/projects/finance-01.jpg",
+      "/images/projects/finance-02.jpg",
+      "/images/projects/finance-03.jpg",
+    ],
   },
   {
     slug: "platgizi",
@@ -100,7 +120,12 @@ export const projectsData: ProjectDetail[] = [
     ],
     technologies: ["Python", "Machine Learning", "Recommendation Algorithms", "Nutrition Data"],
     previewImage: "/images/projects/platgizi-01.jpg",
-    images: ["/images/projects/platgizi-01.jpg"],
+    images: [
+      "/images/projects/platgizi-01.jpg",
+      "/images/projects/platgizi-02.jpg",
+      "/images/projects/platgizi-03.jpg",
+      "/images/projects/platgizi-04.jpg",
+    ],
   },
   {
     slug: "ecorouter-ai",
@@ -116,7 +141,12 @@ export const projectsData: ProjectDetail[] = [
     ],
     technologies: ["Python", "Optimization Algorithms", "Heuristic Search", "Green Logistics"],
     previewImage: "/images/projects/ecorouter-01.jpg",
-    images: ["/images/projects/ecorouter-01.jpg"],
+    images: [
+      "/images/projects/ecorouter-01.jpg",
+      "/images/projects/ecorouter-02.jpg",
+      "/images/projects/ecorouter-03.jpg",
+      "/images/projects/ecorouter-04.jpg",
+    ],
   },
   {
     slug: "skinical",
@@ -131,7 +161,11 @@ export const projectsData: ProjectDetail[] = [
     ],
     technologies: ["Computer Vision", "Deep Learning", "Classical Machine Learning", "Web Interface"],
     previewImage: "/images/projects/skinical-01.jpg",
-    images: ["/images/projects/skinical-01.jpg"],
+    images: [
+      "/images/projects/skinical-01.jpg",
+      "/images/projects/skinical-02.jpg",
+      "/images/projects/skinical-03.jpg",
+    ],
   },
   {
     slug: "travel-app",
@@ -151,6 +185,7 @@ export const projectsData: ProjectDetail[] = [
       "/images/projects/travel-01.jpg",
       "/images/projects/travel-02.jpg",
       "/images/projects/travel-03.jpg",
+      "/images/projects/travel-04.jpg",
     ],
   },
 ];
@@ -160,13 +195,16 @@ export const upcomingProjectsData: UpcomingProject[] = [
     slug: "trobos",
     title: "Trobos",
     category: "Mobility & Transit Concept",
-    status: "Prototype / In Development",
+    status: "Upcoming Project / Prototype",
     description:
       "Trobos is a mobility concept for dealing with traffic congestion. The idea is to let a motorbike rider pick up the passenger while the passenger's car is handled separately and delivered to the intended destination.",
     technologies: ["Product Concept", "Figma Prototype", "Logistics Flow", "Mobile UI"],
+    previewImage: "/images/projects/upcoming/trobos-01.jpg",
     images: [
       "/images/projects/upcoming/trobos-01.jpg",
       "/images/projects/upcoming/trobos-02.jpg",
+      "/images/projects/upcoming/trobos-03.jpg",
+      "/images/projects/upcoming/trobos-04.jpg",
     ],
   },
   {
@@ -179,9 +217,11 @@ export const upcomingProjectsData: UpcomingProject[] = [
     disclaimer:
       "Prototype concept only. MindCare is designed for supportive initial guidance and does not provide medical diagnosis or replace professional healthcare.",
     technologies: ["Conversational AI", "UI/UX Concept", "Natural Language Guidance"],
+    previewImage: "/images/projects/upcoming/mindcare-01.jpg",
     images: [
       "/images/projects/upcoming/mindcare-01.jpg",
       "/images/projects/upcoming/mindcare-02.jpg",
+      "/images/projects/upcoming/mindcare-03.jpg",
     ],
   },
 ];

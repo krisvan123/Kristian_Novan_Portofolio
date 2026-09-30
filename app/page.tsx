@@ -4,20 +4,20 @@ import Activities from "@/components/Activities";
 import ProjectGrid from "@/components/ProjectGrid";
 import UpcomingProjects from "@/components/UpcomingProjects";
 import Skills from "@/components/Skills";
-import Achievement from "@/components/Achievement";
+import Certificates from "@/components/Certificates";
 import Contact from "@/components/Contact";
-import CrayonSunflower from "@/components/CrayonSunflower";
+import DayNightMascot from "@/components/DayNightMascot";
 
 export default function Home() {
   return (
     <div className="flex flex-col">
-      {/* 1. Hero with B2028 identity, ML+UI/UX focus, interactive photo, and scroll cue */}
+      {/* 1. Hero with B2028 identity, School of Computer Science (SOCS), Intelligent Systems (AI), interactive photo, and scroll cue */}
       <Hero />
 
-      {/* 2. About: natural human student profile */}
+      {/* 2. About: authentic academic background and direction */}
       <About />
 
-      {/* 3. Activities: WALUBI (8 photos) & MC (6 photos) seamless image marquees */}
+      {/* 3. Activities: WALUBI & MC seamless image marquees */}
       <Activities />
 
       {/* 4. Projects: Selected case studies */}
@@ -26,19 +26,17 @@ export default function Home() {
       {/* 5. Upcoming Projects: Trobos & MindCare prototypes */}
       <UpcomingProjects />
 
-      {/* 6. Skills: Programming & Tools and Soft Skills */}
+      {/* 6. Skills: Programming & Tools and Interpersonal Strengths */}
       <Skills />
 
-      {/* 7. ICORIS 2026 Paper Author Certificate */}
-      <Achievement />
+      {/* 7. Certificates: 6 verified credentials with full-screen Lightbox */}
+      <Certificates />
 
       {/* 8. Contact: Let's Connect */}
       <Contact />
 
-      {/* 9. Handmade Crayon Sunflower Easter Egg (sits between Contact and Footer) */}
-      <div className="w-full flex justify-center py-4 sm:py-6 bg-canvas">
-        <CrayonSunflower />
-      </div>
+      {/* 9. Day/Night Mascot: Crayon Sunflower in Light Mode / Crayon Moon in Dark Mode */}
+      <DayNightMascot />
     </div>
   );
 }
