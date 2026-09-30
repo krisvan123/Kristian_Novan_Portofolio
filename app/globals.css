@@ -94,6 +94,9 @@ body {
 }
 
 /* View Transitions API (Circular Theme Reveal Animation) */
+::view-transition-image-pair(root) {
+  isolation: isolate;
+}
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
@@ -104,12 +107,6 @@ body {
 }
 ::view-transition-new(root) {
   z-index: 9999;
-}
-.dark::view-transition-old(root) {
-  z-index: 9999;
-}
-.dark::view-transition-new(root) {
-  z-index: 1;
 }
 
 /* Fallback Smooth Theme Transition */

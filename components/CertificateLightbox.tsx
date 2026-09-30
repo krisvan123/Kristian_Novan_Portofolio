@@ -18,6 +18,14 @@ export default function CertificateLightbox({
   onClose,
   onSelect,
 }: CertificateLightboxProps) {
+  const [imgSrc, setImgSrc] = React.useState(certificate?.image || "");
+
+  React.useEffect(() => {
+    if (certificate?.image) {
+      setImgSrc(certificate.image);
+    }
+  }, [certificate]);
+
   const currentIndex = certificate
     ? certificates.findIndex((c) => c.id === certificate.id)
     : -1;
@@ -97,12 +105,19 @@ export default function CertificateLightbox({
         <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] max-h-[70vh] bg-black/50 flex items-center justify-center p-2 sm:p-4 overflow-hidden">
           <div className="relative w-full h-full">
             <Image
-              src={certificate.image}
+              src={imgSrc || certificate.image}
               alt={certificate.title}
               fill
               className="object-contain"
               sizes="(max-width: 768px) 100vw, 850px"
               priority
+              onError={() => {
+                if (imgSrc.includes("icoris-2026")) {
+                  setImgSrc("/images/certificates/Icoris-2026-author.jpg");
+                } else if (imgSrc.includes("Icoris-2026")) {
+                  setImgSrc("/images/certificates/icoris-2026-author.jpg");
+                }
+              }}
             />
           </div>
 

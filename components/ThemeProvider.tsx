@@ -77,7 +77,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
               ],
             },
             {
-              duration: 650,
+              duration: 520,
               easing: "cubic-bezier(0.16, 1, 0.3, 1)",
               pseudoElement: "::view-transition-new(root)",
             }
@@ -89,7 +89,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         applyTheme();
         setTimeout(() => {
           document.documentElement.classList.remove("theme-transitioning");
-        }, 650);
+        }, 520);
       }
     },
     [theme]

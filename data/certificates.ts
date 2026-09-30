@@ -15,7 +15,7 @@ export const certificatesData: CertificateItem[] = [
     category: "IEEE International Conference",
     issuer: "IEEE Indonesia Section & UTB",
     description: "Successfully completed ICORIS 2026 as a research paper author, presenting peer-reviewed academic findings.",
-    image: "/images/certificates/Icoris-2026-author.jpg",
+    image: "/images/certificates/icoris-2026-author.jpg",
     highlight: true,
   },
   {
