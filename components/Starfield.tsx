@@ -1,83 +1,129 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React, { useEffect, useRef } from "react";
 import { useTheme } from "./ThemeProvider";
 
 interface Star {
-  id: number;
   x: number;
   y: number;
-  size: number;
-  duration: number;
-  delay: number;
-  opacity: number;
+  vx: number;
+  vy: number;
+  radius: number;
+  baseAlpha: number;
+  twinkleSpeed: number;
+  twinklePhase: number;
 }
 
 export default function Starfield() {
   const { theme, isMounted } = useTheme();
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-  // Generate a small, deterministic set of 36 sparse stars
-  const stars: Star[] = useMemo(() => {
-    const list: Star[] = [];
-    const seed = [
-      { x: 12, y: 15, s: 1.2, d: 4.2, l: 0.2, o: 0.6 },
-      { x: 28, y: 8, s: 1.8, d: 5.5, l: 1.5, o: 0.8 },
-      { x: 45, y: 22, s: 1.0, d: 3.8, l: 0.8, o: 0.5 },
-      { x: 62, y: 12, s: 1.5, d: 6.0, l: 2.1, o: 0.7 },
-      { x: 78, y: 28, s: 2.0, d: 4.8, l: 1.0, o: 0.85 },
-      { x: 89, y: 18, s: 1.1, d: 5.2, l: 2.7, o: 0.6 },
-      { x: 95, y: 35, s: 1.4, d: 4.0, l: 0.5, o: 0.75 },
-      { x: 8, y: 45, s: 1.6, d: 6.5, l: 3.0, o: 0.65 },
-      { x: 22, y: 55, s: 1.0, d: 4.5, l: 1.2, o: 0.55 },
-      { x: 38, y: 68, s: 1.7, d: 5.8, l: 2.0, o: 0.8 },
-      { x: 55, y: 48, s: 1.2, d: 3.5, l: 0.7, o: 0.6 },
-      { x: 72, y: 62, s: 1.8, d: 6.2, l: 1.8, o: 0.75 },
-      { x: 84, y: 75, s: 1.3, d: 4.9, l: 2.4, o: 0.7 },
-      { x: 16, y: 82, s: 1.5, d: 5.1, l: 1.1, o: 0.65 },
-      { x: 32, y: 92, s: 1.2, d: 4.3, l: 2.8, o: 0.6 },
-      { x: 68, y: 88, s: 1.6, d: 5.7, l: 0.9, o: 0.75 },
-      { x: 88, y: 94, s: 1.1, d: 4.1, l: 1.6, o: 0.5 },
-      { x: 50, y: 80, s: 1.9, d: 6.0, l: 3.2, o: 0.85 },
-    ];
+  useEffect(() => {
+    if (!isMounted || theme !== "dark") return;
 
-    seed.forEach((s, idx) => {
-      list.push({
-        id: idx,
-        x: s.x,
-        y: s.y,
-        size: s.s,
-        duration: s.d,
-        delay: s.l,
-        opacity: s.o,
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let animationFrameId: number;
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    // Generate ~65 organic drifting stars with depth & varying speeds
+    const starCount = Math.min(75, Math.max(40, Math.floor(width / 22)));
+    const stars: Star[] = [];
+
+    for (let i = 0; i < starCount; i++) {
+      // 3 subtle depth tiers:
+      // Tier 1 (distant): tiny, slow drift
+      // Tier 2 (mid): medium
+      // Tier 3 (close): slightly larger, brighter, faster drift
+      const depth = Math.random();
+      const radius = depth > 0.85 ? 1.8 + Math.random() * 0.6 : depth > 0.5 ? 1.1 + Math.random() * 0.4 : 0.7 + Math.random() * 0.3;
+      const speedMultiplier = prefersReducedMotion ? 0 : 0.08 + depth * 0.16;
+
+      stars.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() * 0.4 - 0.2) * speedMultiplier,
+        vy: (0.15 + Math.random() * 0.35) * speedMultiplier,
+        radius,
+        baseAlpha: 0.25 + depth * 0.55,
+        twinkleSpeed: 0.015 + Math.random() * 0.03,
+        twinklePhase: Math.random() * Math.PI * 2,
       });
-    });
+    }
 
-    return list;
-  }, []);
+    const handleResize = () => {
+      if (!canvas) return;
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    const render = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      for (let i = 0; i < stars.length; i++) {
+        const star = stars[i];
+
+        // Move star (organic slow drift)
+        star.x += star.vx;
+        star.y += star.vy;
+
+        // Wrap around viewport edges smoothly
+        if (star.x < -10) star.x = width + 10;
+        if (star.x > width + 10) star.x = -10;
+        if (star.y < -10) star.y = height + 10;
+        if (star.y > height + 10) star.y = -10;
+
+        // Gentle twinkle calculation
+        star.twinklePhase += star.twinkleSpeed;
+        const twinkle = Math.sin(star.twinklePhase);
+        const currentAlpha = Math.max(
+          0.12,
+          Math.min(0.95, star.baseAlpha + twinkle * 0.28)
+        );
+
+        // Draw star with soft ambient glow on larger stars
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(240, 240, 245, ${currentAlpha})`;
+        ctx.fill();
+
+        if (star.radius > 1.4 && currentAlpha > 0.5) {
+          ctx.beginPath();
+          ctx.arc(star.x, star.y, star.radius * 2.2, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(200, 220, 255, ${currentAlpha * 0.18})`;
+          ctx.fill();
+        }
+      }
+
+      animationFrameId = requestAnimationFrame(render);
+    };
+
+    render();
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [isMounted, theme]);
 
   if (!isMounted || theme !== "dark") return null;
 
   return (
-    <div
+    <canvas
+      ref={canvasRef}
       aria-hidden="true"
-      className="fixed inset-0 pointer-events-none z-0 overflow-hidden motion-reduce:hidden"
-    >
-      {stars.map((star) => (
-        <div
-          key={star.id}
-          className="absolute rounded-full bg-white animate-twinkle"
-          style={{
-            left: `${star.x}%`,
-            top: `${star.y}%`,
-            width: `${star.size}px`,
-            height: `${star.size}px`,
-            opacity: star.opacity,
-            animationDuration: `${star.duration}s`,
-            animationDelay: `${star.delay}s`,
-            boxShadow: `0 0 ${star.size * 2}px rgba(255, 255, 255, 0.6)`,
-          }}
-        />
-      ))}
-    </div>
+      className="fixed inset-0 pointer-events-none z-0 overflow-hidden transition-opacity duration-700 opacity-100"
+    />
   );
 }

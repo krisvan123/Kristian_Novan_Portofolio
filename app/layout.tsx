@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Space_Grotesk, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -7,25 +7,36 @@ import CustomCursor from "@/components/CustomCursor";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Starfield from "@/components/Starfield";
 
-const inter = Inter({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-heading",
+  display: "swap",
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
   display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kristian-novan-portfolio.vercel.app"),
-  title: "Kristian Novan — School of Computer Science (SOCS) | Intelligent Systems (AI)",
+  title: "Kristian Novan — Computer Science Student | BINUS University",
   description:
-    "Personal portfolio of Kristian Novan, School of Computer Science (SOCS) student at BINUS University (B2028), specializing in Intelligent Systems (AI), showcasing Machine Learning, UI/UX, research papers, and campus activities.",
+    "Portfolio of Kristian Novan, Computer Science student at BINUS University (B2028), specializing in Intelligent Systems (AI) with a focus on Machine Learning and UI/UX design.",
   keywords: [
     "Kristian Novan",
-    "School of Computer Science",
-    "SOCS",
+    "Computer Science",
     "BINUS University",
+    "School of Computer Science",
     "Intelligent Systems",
     "Machine Learning",
-    "Artificial Intelligence",
     "UI/UX Design",
     "B2028",
     "ICORIS 2026",
@@ -34,9 +45,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Kristian Novan" }],
   creator: "Kristian Novan",
   openGraph: {
-    title: "Kristian Novan — School of Computer Science (SOCS) | Intelligent Systems (AI)",
+    title: "Kristian Novan — Computer Science Student | BINUS University",
     description:
-      "Personal portfolio of Kristian Novan, School of Computer Science (SOCS) student at BINUS University (B2028), specializing in Intelligent Systems (AI).",
+      "Personal portfolio of Kristian Novan, Computer Science student at BINUS University (B2028), specializing in Intelligent Systems (AI).",
     url: "https://kristiannovan.vercel.app",
     siteName: "Kristian Novan Portfolio",
     locale: "en_US",
@@ -44,9 +55,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kristian Novan — School of Computer Science (SOCS) | Intelligent Systems (AI)",
+    title: "Kristian Novan — Computer Science Student | BINUS University",
     description:
-      "Personal portfolio of Kristian Novan, School of Computer Science (SOCS) student at BINUS University (B2028), specializing in Intelligent Systems (AI).",
+      "Personal portfolio of Kristian Novan, Computer Science student at BINUS University (B2028), specializing in Intelligent Systems (AI).",
   },
   icons: {
     icon: "/favicon.ico",
@@ -55,8 +66,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#FAF9F5" },
-    { media: "(prefers-color-scheme: dark)", color: "#121214" },
+    { media: "(prefers-color-scheme: light)", color: "#FAF8F5" },
+    { media: "(prefers-color-scheme: dark)", color: "#111113" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -68,8 +79,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} scroll-smooth`}>
-      <body className="min-h-screen bg-canvas dark:bg-canvas-dark text-charcoal dark:text-charcoal-dark font-sans antialiased flex flex-col selection:bg-accent-light selection:text-accent dark:selection:bg-accent-dark-light dark:selection:text-accent-dark transition-colors duration-300 relative">
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${spaceGrotesk.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} scroll-smooth font-sans`}
+    >
+      <body className="min-h-screen bg-canvas text-charcoal font-sans antialiased flex flex-col selection:bg-accent-light selection:text-accent dark:selection:bg-accent-soft dark:selection:text-accent-dark transition-colors duration-300 relative">
         <ThemeProvider>
           <Starfield />
           <CustomCursor />

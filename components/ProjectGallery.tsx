@@ -18,18 +18,18 @@ export default function ProjectGallery({
   if (!images || images.length === 0) return null;
 
   return (
-    <div className="w-full overflow-hidden rounded-2xl bg-white dark:bg-canvas-card-dark p-3 sm:p-4 border border-surface-border dark:border-surface-border-dark shadow-2xs">
+    <div className="w-full overflow-hidden rounded-2xl bg-white dark:bg-canvas-card-dark p-3.5 sm:p-5 border border-surface-border shadow-2xs">
       <InfiniteMarquee
         direction={direction}
         speed="normal"
         durationSeconds={20}
         pauseOnHover={true}
-        gapClass="gap-3 sm:gap-4 pr-3 sm:pr-4"
+        gapClass="gap-3.5 sm:gap-5 pr-3.5 sm:pr-5"
       >
         {images.map((imgSrc, idx) => (
           <div
             key={`${imgSrc}-${idx}`}
-            className="w-[280px] sm:w-[460px] md:w-[520px] shrink-0 aspect-[16/10] overflow-hidden rounded-xl border border-surface-border/80 dark:border-surface-border-dark bg-canvas-subtle dark:bg-canvas-subtle-dark shadow-2xs group hover:border-accent-border/90 dark:hover:border-accent-dark hover:scale-[1.01] transition-all duration-300"
+            className="w-[280px] sm:w-[460px] md:w-[520px] shrink-0 aspect-[16/10] overflow-hidden rounded-xl border border-surface-border/80 bg-canvas-subtle shadow-2xs group hover:border-accent-border hover:scale-[1.01] transition-all duration-300"
           >
             <SafeImage
               src={imgSrc}

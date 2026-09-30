@@ -1,8 +1,10 @@
 export interface AcademicOverview {
   school: string;
+  program: string;
   university: string;
   cohort: string;
   specialization: string;
+  studyPeriod: string;
 }
 
 export interface PersonalData {
@@ -36,45 +38,52 @@ export const personalData: PersonalData = {
   name: "Kristian Novan",
   academic: {
     school: "School of Computer Science (SOCS)",
+    program: "Computer Science",
     university: "BINUS University",
     cohort: "B2028",
     specialization: "Intelligent Systems (AI)",
+    studyPeriod: "Semesters 4–5",
   },
-  role: "BINUS University • School of Computer Science (SOCS) • B2028",
-  focus: "Machine Learning + UI/UX",
+  role: "Computer Science Student",
+  focus: "Machine Learning · UI/UX",
   heroBio:
-    "Student at BINUS University's School of Computer Science (SOCS), Class of B2028, currently taking the Intelligent Systems (AI) specialization. Exploring Machine Learning and UI/UX through hands-on projects, team collaborations, and applied experiments.",
+    "I'm Kristian Novan, a Computer Science student at BINUS University. At this stage of my studies, I'm focusing on Machine Learning and UI/UX, while continuing to learn through academic projects, team collaborations, and campus activities. I enjoy working between the technical and visual sides of a project — building something that works, but also making it clear and comfortable to use.",
   aboutBio: {
     lead:
-      "I'm Kristian Novan, an undergraduate student at BINUS University's School of Computer Science (SOCS), Class of B2028, specializing in Intelligent Systems (AI). My primary focus areas are Machine Learning and UI/UX design.",
+      "I'm an undergraduate student at BINUS University's School of Computer Science (SOCS), Class of B2028, pursuing Computer Science with a specialization in Intelligent Systems (AI) taken during Semesters 4–5.",
     body: [
-      "I enjoy building applications that combine algorithmic intelligence with interfaces that feel clear and comfortable for people to use. My academic work spans machine learning exploration, natural language processing, computer vision, and user-centered design prototypes.",
-      "Alongside software development, my university experience has included active roles in campus committees, peer mentoring with HIMTI, public speaking as a Master of Ceremony, and collaborative project teams. These experiences have shaped both my technical problem solving and interpersonal communication.",
+      "My academic work centers on applied machine learning, computer vision, natural language processing, and human-computer interaction. I'm fascinated by the intersection of computational algorithms and thoughtful interface design — creating tools that not only solve real problems under the hood, but also feel natural, reliable, and respectful of the user.",
+      "Beyond technical coursework, my university journey has been shaped by active roles in student organizations: mentoring peers with HIMTI, volunteering in humanitarian initiatives like WALUBI Waisak 2025, coordinating company excursions, and moderating formal stages as a Master of Ceremony. These diverse experiences have strengthened my team leadership, cross-disciplinary communication, and ability to deliver under pressure.",
     ],
     capabilities: [
       "Machine Learning & Intelligent Systems (AI)",
-      "UI/UX Design & Prototyping",
-      "Software Engineering & Web Systems",
+      "UI/UX Design & Interactive Prototyping",
+      "Full-Stack Web & Software Engineering",
       "Public Speaking & Master of Ceremony",
-      "Campus Committee Operations",
-      "Independent Problem Solving",
+      "Campus Leadership & Committee Operations",
+      "Analytical & Independent Problem Solving",
     ],
   },
   metrics: [
     {
-      label: "School & Specialization",
-      value: "SOCS • AI",
-      description: "Intelligent Systems (AI) Specialization",
+      label: "Program",
+      value: "Computer Science",
+      description: "School of Computer Science (SOCS)",
     },
     {
-      label: "Cohort & University",
-      value: "BINUS B2028",
-      description: "BINUS University Undergraduate",
+      label: "Specialization",
+      value: "Intelligent Systems (AI)",
+      description: "Specialization taken during Semesters 4–5",
+    },
+    {
+      label: "Institution & Cohort",
+      value: "BINUS University · B2028",
+      description: "Class of B2028 undergraduate",
     },
     {
       label: "Current Focus",
-      value: "ML + UI/UX",
-      description: "Applied machine learning & interface design",
+      value: "Machine Learning · UI/UX",
+      description: "Applied AI models & human-centered design",
     },
   ],
   contact: {

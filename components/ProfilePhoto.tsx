@@ -42,7 +42,7 @@ export default function ProfilePhoto() {
       className="relative w-full max-w-[340px] sm:max-w-[380px] select-none perspective-[1000px]"
     >
       {/* Ambient soft glow */}
-      <div className="absolute -inset-2 rounded-3xl bg-accent-light/50 dark:bg-accent-dark-light/30 blur-xl -z-10 pointer-events-none transition-opacity duration-500" />
+      <div className="absolute -inset-2 rounded-3xl bg-accent-light/50 dark:bg-accent-soft/30 blur-xl -z-10 pointer-events-none transition-opacity duration-500" />
 
       {/* Tiltable Container */}
       <div
@@ -52,10 +52,10 @@ export default function ProfilePhoto() {
             : "rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",
           transition: isHovered ? "transform 0.1s ease-out" : "transform 0.5s ease-out",
         }}
-        className="relative bg-white dark:bg-canvas-card-dark p-3.5 rounded-2xl border border-surface-border dark:border-surface-border-dark shadow-sm will-change-transform"
+        className="relative bg-white dark:bg-canvas-card-dark p-3.5 rounded-2xl border border-surface-border shadow-sm will-change-transform"
       >
         {/* Inner Image Container with subtle parallax */}
-        <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-canvas-subtle dark:bg-canvas-subtle-dark border border-surface-border/50 dark:border-surface-border-dark">
+        <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-canvas-subtle border border-surface-border/50">
           <div
             style={{
               transform: isHovered
@@ -79,14 +79,14 @@ export default function ProfilePhoto() {
         {/* Minimal metadata strip */}
         <div className="mt-3 px-1.5 flex items-center justify-between">
           <div className="flex flex-col">
-            <span className="text-xs font-semibold text-charcoal dark:text-charcoal-dark">
+            <span className="text-xs font-display font-semibold text-charcoal">
               {personalData.name}
             </span>
-            <span className="text-[11px] text-charcoal-soft dark:text-charcoal-soft-dark font-mono">
+            <span className="text-[11px] text-charcoal-soft font-mono">
               {personalData.academic.university} • {personalData.academic.cohort}
             </span>
           </div>
-          <div className="px-2 py-0.5 rounded-md bg-canvas-subtle dark:bg-canvas-subtle-dark border border-surface-border dark:border-surface-border-dark text-[10px] font-mono font-medium text-accent dark:text-accent-dark">
+          <div className="px-2 py-0.5 rounded-md bg-canvas-subtle border border-surface-border text-[10px] font-mono font-medium text-accent dark:text-accent-dark">
             SOCS • AI
           </div>
         </div>
