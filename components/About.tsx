@@ -1,7 +1,6 @@
-"use client";
-
 import React from "react";
 import { personalData } from "@/data/personal";
+import ScrollReveal from "./ScrollReveal";
 import {
   Code2,
   Users2,
@@ -25,7 +24,7 @@ export default function About() {
     <section id="about" className="py-14 md:py-20 border-t border-surface-border">
       <div className="max-w-content mx-auto px-6 md:px-10 lg:px-12">
         {/* Section Header */}
-        <div className="flex flex-col items-start space-y-2 mb-10 md:mb-12">
+        <ScrollReveal className="flex flex-col items-start space-y-2 mb-10 md:mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-canvas-subtle border border-surface-border text-charcoal-soft font-mono text-[11px]">
             <span>Background &amp; Direction</span>
           </div>
@@ -35,12 +34,12 @@ export default function About() {
           <p className="text-sm sm:text-base text-charcoal-soft max-w-2xl font-sans">
             Undergraduate student at BINUS University exploring the balance between machine intelligence and clear, comfortable user experience.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Content Grid: 12-Column Responsive Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           {/* Left Column: Narrative paragraphs & Core Strengths */}
-          <div className="lg:col-span-7 space-y-6">
+          <ScrollReveal delay={120} className="lg:col-span-7 space-y-6">
             <div className="space-y-4 text-charcoal-muted leading-relaxed text-base sm:text-lg font-sans">
               <p className="text-lg sm:text-xl text-charcoal font-medium leading-relaxed font-display">
                 {personalData.aboutBio.lead}
@@ -74,10 +73,10 @@ export default function About() {
                 })}
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Right Column: Clean Editorial Academic Overview Card */}
-          <div className="lg:col-span-5 flex flex-col space-y-4">
+          <ScrollReveal delay={200} className="lg:col-span-5 flex flex-col space-y-4">
             <div className="bg-white dark:bg-canvas-card-dark p-6 sm:p-8 rounded-2xl border border-surface-border shadow-2xs space-y-6">
               <div className="flex items-center justify-between pb-3 border-b border-surface-border">
                 <span className="text-xs font-mono font-semibold uppercase tracking-wider text-charcoal-soft">
@@ -159,7 +158,7 @@ export default function About() {
                 </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

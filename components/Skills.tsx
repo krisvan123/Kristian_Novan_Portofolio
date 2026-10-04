@@ -1,7 +1,6 @@
-"use client";
-
 import React from "react";
 import { skillsData } from "@/data/skills";
+import ScrollReveal from "./ScrollReveal";
 import {
   Code,
   Terminal,
@@ -42,7 +41,7 @@ export default function Skills() {
     <section id="skills" className="py-14 md:py-20 border-t border-surface-border">
       <div className="max-w-content mx-auto px-6 md:px-10 lg:px-12">
         {/* Section Header */}
-        <div className="flex flex-col items-start space-y-2 mb-10 md:mb-12">
+        <ScrollReveal className="flex flex-col items-start space-y-2 mb-10 md:mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-canvas-subtle border border-surface-border text-charcoal-soft font-mono text-[11px]">
             <Sparkles className="w-3.5 h-3.5 text-accent dark:text-accent-dark" />
             <span>Tools &amp; Strengths</span>
@@ -53,12 +52,12 @@ export default function Skills() {
           <p className="text-sm sm:text-base text-charcoal-soft max-w-2xl font-sans">
             Technical languages and tools applied across academic coursework, paired with interpersonal strengths refined in campus leadership.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Categories Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
           {/* Category 1: Programming & Tools */}
-          <div className="bg-white dark:bg-canvas-card-dark p-6 sm:p-8 rounded-2xl border border-surface-border shadow-2xs space-y-6 flex flex-col justify-between">
+          <ScrollReveal delay={100} className="bg-white dark:bg-canvas-card-dark p-6 sm:p-8 rounded-2xl border border-surface-border shadow-2xs space-y-6 flex flex-col justify-between">
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <h3 className="text-xl sm:text-2xl font-display font-semibold text-charcoal tracking-tight">
@@ -100,10 +99,10 @@ export default function Skills() {
             <div className="pt-3 border-t border-surface-border/60 text-[11px] text-charcoal-soft font-mono">
               Coursework implementations • Lab projects • Academic builds
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Category 2: Soft Skills */}
-          <div className="bg-white dark:bg-canvas-card-dark p-6 sm:p-8 rounded-2xl border border-surface-border shadow-2xs space-y-6 flex flex-col justify-between">
+          <ScrollReveal delay={160} className="bg-white dark:bg-canvas-card-dark p-6 sm:p-8 rounded-2xl border border-surface-border shadow-2xs space-y-6 flex flex-col justify-between">
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <h3 className="text-xl sm:text-2xl font-display font-semibold text-charcoal tracking-tight">
@@ -145,7 +144,7 @@ export default function Skills() {
             <div className="pt-3 border-t border-surface-border/60 text-[11px] text-charcoal-soft font-mono">
               Stage moderation • Committee teamwork • Student mentorship
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

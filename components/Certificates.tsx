@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Award, Maximize2, Sparkles, CheckCircle2 } from "lucide-react";
 import { certificatesData, CertificateItem } from "@/data/certificates";
 import CertificateLightbox from "./CertificateLightbox";
+import ScrollReveal from "./ScrollReveal";
 
 export default function Certificates() {
   const [selectedCert, setSelectedCert] = useState<CertificateItem | null>(null);
@@ -13,7 +14,7 @@ export default function Certificates() {
     <section id="certificates" className="py-14 md:py-20 border-t border-surface-border">
       <div className="max-w-content mx-auto px-6 md:px-10 lg:px-12">
         {/* Section Header */}
-        <div className="flex flex-col items-start space-y-2 mb-10 md:mb-12">
+        <ScrollReveal className="flex flex-col items-start space-y-2 mb-10 md:mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-light dark:bg-accent-soft text-accent dark:text-accent-dark text-[11px] font-mono font-medium border border-accent-border/60">
             <Award className="w-3.5 h-3.5" />
             <span>Verified Credentials</span>
@@ -24,10 +25,10 @@ export default function Certificates() {
           <p className="text-sm sm:text-base text-charcoal-soft max-w-2xl font-sans">
             Peer-reviewed research publication, technical cloud AI credentials, national design competition, and campus mentorship service.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* 5 Unique Certificate Cards Grid (Responsive: 1 col on mobile, 2 on tablet, 3 on desktop) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <ScrollReveal delay={120} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {certificatesData.map((cert) => (
             <CertificateCard
               key={cert.id}
@@ -35,7 +36,7 @@ export default function Certificates() {
               onSelect={() => setSelectedCert(cert)}
             />
           ))}
-        </div>
+        </ScrollReveal>
       </div>
 
       {/* Lightbox Modal */}

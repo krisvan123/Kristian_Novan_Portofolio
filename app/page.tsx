@@ -6,6 +6,7 @@ import UpcomingProjects from "@/components/UpcomingProjects";
 import Skills from "@/components/Skills";
 import Certificates from "@/components/Certificates";
 import Contact from "@/components/Contact";
+import QuoteBook from "@/components/QuoteBook";
 import DayNightMascot from "@/components/DayNightMascot";
 
 export default function Home() {
@@ -35,7 +36,10 @@ export default function Home() {
       {/* 8. Contact: Let's Connect */}
       <Contact />
 
-      {/* 9. Day/Night Mascot: Crayon Sunflower in Light Mode / Crayon Moon in Dark Mode */}
+      {/* 9. Interactive Physical Book: My Favorite Quotes */}
+      <QuoteBook />
+
+      {/* 10. Day/Night Mascot: Crayon Sunflower in Light Mode / Crayon Moon in Dark Mode */}
       <DayNightMascot />
     </div>
   );

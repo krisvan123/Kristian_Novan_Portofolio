@@ -1,9 +1,8 @@
-"use client";
-
 import React from "react";
 import { upcomingProjectsData } from "@/data/projects";
 import SafeImage from "./SafeImage";
 import InfiniteMarquee from "./InfiniteMarquee";
+import ScrollReveal from "./ScrollReveal";
 import { AlertCircle, Clock } from "lucide-react";
 
 export default function UpcomingProjects() {
@@ -11,7 +10,7 @@ export default function UpcomingProjects() {
     <section id="upcoming" className="py-14 md:py-20 border-t border-surface-border">
       <div className="max-w-content mx-auto px-6 md:px-10 lg:px-12">
         {/* Header */}
-        <div className="flex flex-col items-start space-y-2 mb-10 md:mb-12">
+        <ScrollReveal className="flex flex-col items-start space-y-2 mb-10 md:mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-700 dark:text-amber-400 font-mono text-[11px] font-medium">
             <Clock className="w-3.5 h-3.5" />
             <span>Upcoming Concepts</span>
@@ -22,10 +21,10 @@ export default function UpcomingProjects() {
           <p className="text-sm sm:text-base text-charcoal-soft max-w-2xl font-sans">
             Early-stage design prototypes and concept iterations currently in active exploration.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <ScrollReveal delay={120} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {upcomingProjectsData.map((project, idx) => (
             <div
               key={project.slug}
@@ -98,7 +97,7 @@ export default function UpcomingProjects() {
               </div>
             </div>
           ))}
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

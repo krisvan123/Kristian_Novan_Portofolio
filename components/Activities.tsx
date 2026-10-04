@@ -1,9 +1,8 @@
-"use client";
-
 import React from "react";
 import { activitiesData, additionalExperiences } from "@/data/activities";
 import InfiniteMarquee from "./InfiniteMarquee";
 import SafeImage from "./SafeImage";
+import ScrollReveal from "./ScrollReveal";
 import { Building, Award, Sparkles } from "lucide-react";
 
 export default function Activities() {
@@ -13,7 +12,7 @@ export default function Activities() {
     <section id="activities" className="py-14 md:py-20 border-t border-surface-border overflow-hidden">
       <div className="max-w-content mx-auto px-6 md:px-10 lg:px-12 mb-10 md:mb-12">
         {/* Section Header */}
-        <div className="flex flex-col items-start space-y-2">
+        <ScrollReveal className="flex flex-col items-start space-y-2">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-canvas-subtle border border-surface-border text-charcoal-soft font-mono text-[11px]">
             <span>Leadership &amp; Campus Life</span>
           </div>
@@ -23,14 +22,14 @@ export default function Activities() {
           <p className="text-sm sm:text-base text-charcoal-soft max-w-2xl font-sans">
             Active committee organization, corporate visits, peer mentoring, and event stage moderation.
           </p>
-        </div>
+        </ScrollReveal>
       </div>
 
       <div className="space-y-12 md:space-y-14">
         {/* Activity 1: Campus Committee & Event Organization */}
         <div className="space-y-4">
           <div className="max-w-content mx-auto px-6 md:px-10 lg:px-12">
-            <div className="bg-white dark:bg-canvas-card-dark p-6 sm:p-8 rounded-2xl border border-surface-border shadow-2xs">
+            <ScrollReveal delay={100} className="bg-white dark:bg-canvas-card-dark p-6 sm:p-8 rounded-2xl border border-surface-border shadow-2xs">
               <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent-light dark:bg-accent-soft text-accent dark:text-accent-dark text-xs font-semibold border border-accent-border/60">
                   <Award className="w-3.5 h-3.5" />
@@ -46,7 +45,7 @@ export default function Activities() {
               <p className="text-sm sm:text-base text-charcoal-muted mt-2 max-w-3xl leading-relaxed font-sans">
                 {walubiActivity.description}
               </p>
-            </div>
+            </ScrollReveal>
           </div>
 
           {/* Activity 1: True Seamless Continuous Image Marquee (NO text underneath) */}
@@ -74,7 +73,7 @@ export default function Activities() {
         {/* Activity 2: Master of Ceremony */}
         <div className="space-y-4">
           <div className="max-w-content mx-auto px-6 md:px-10 lg:px-12">
-            <div className="bg-white dark:bg-canvas-card-dark p-6 sm:p-8 rounded-2xl border border-surface-border shadow-2xs">
+            <ScrollReveal delay={120} className="bg-white dark:bg-canvas-card-dark p-6 sm:p-8 rounded-2xl border border-surface-border shadow-2xs">
               <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent-light dark:bg-accent-soft text-accent dark:text-accent-dark text-xs font-semibold border border-accent-border/60">
                   <Sparkles className="w-3.5 h-3.5" />
@@ -90,7 +89,7 @@ export default function Activities() {
               <p className="text-sm sm:text-base text-charcoal-muted mt-2 max-w-3xl leading-relaxed font-sans">
                 {mcActivity.description}
               </p>
-            </div>
+            </ScrollReveal>
           </div>
 
           {/* Activity 2: True Seamless Continuous Image Marquee (NO text underneath) */}
@@ -117,7 +116,7 @@ export default function Activities() {
 
         {/* Activity 3: Additional Campus Experiences */}
         <div className="max-w-content mx-auto px-6 md:px-10 lg:px-12">
-          <div className="bg-canvas-subtle p-6 sm:p-8 rounded-2xl border border-surface-border space-y-5">
+          <ScrollReveal delay={140} className="bg-canvas-subtle p-6 sm:p-8 rounded-2xl border border-surface-border space-y-5">
             <div className="flex flex-col space-y-1">
               <span className="text-xs font-mono font-semibold text-accent dark:text-accent-dark uppercase tracking-wider">
                 Campus Engagement
@@ -164,7 +163,7 @@ export default function Activities() {
                 </div>
               ))}
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

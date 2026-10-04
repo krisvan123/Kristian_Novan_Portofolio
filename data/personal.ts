@@ -91,7 +91,7 @@ export const personalData: PersonalData = {
     instagramHandle: "@krisxvan",
     instagramUrl: "https://www.instagram.com/krisxvan",
     linkedInName: "Kristian Novan",
-    linkedInUrl: "https://www.linkedin.com/in/kristian-novan",
+    linkedInUrl: "https://www.linkedin.com/in/kristian-n-195031328",
     githubUrl: "https://github.com/krisvan123",
   },
   profileImage: "/images/profile.jpg",

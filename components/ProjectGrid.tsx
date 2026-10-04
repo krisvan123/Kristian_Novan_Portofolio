@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { projectsData } from "@/data/projects";
 import ProjectCard from "./ProjectCard";
+import ScrollReveal from "./ScrollReveal";
 import { FolderGit2 } from "lucide-react";
 
 export default function ProjectGrid() {
@@ -31,7 +32,7 @@ export default function ProjectGrid() {
     <section id="projects" className="py-14 md:py-20 border-t border-surface-border">
       <div className="max-w-content mx-auto px-6 md:px-10 lg:px-12">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 md:mb-12">
+        <ScrollReveal className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 md:mb-12">
           <div className="flex flex-col items-start space-y-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-canvas-subtle border border-surface-border text-charcoal-soft font-mono text-[11px]">
               <FolderGit2 className="w-3.5 h-3.5 text-accent dark:text-accent-dark" />
@@ -62,14 +63,14 @@ export default function ProjectGrid() {
               </button>
             ))}
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Project Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <ScrollReveal delay={120} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((project, index) => (
             <ProjectCard key={project.slug} project={project} index={index} />
           ))}
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

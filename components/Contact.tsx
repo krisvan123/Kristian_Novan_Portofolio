@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { personalData } from "@/data/personal";
+import ScrollReveal from "./ScrollReveal";
 import { Mail, Instagram, Linkedin, Copy, Check, ArrowUpRight, MessageSquare } from "lucide-react";
 
 export default function Contact() {
@@ -16,7 +17,7 @@ export default function Contact() {
   return (
     <section id="contact" className="py-14 md:py-20 border-t border-surface-border">
       <div className="max-w-content mx-auto px-6 md:px-10 lg:px-12">
-        <div className="bg-white dark:bg-canvas-card-dark rounded-3xl border border-surface-border p-7 sm:p-10 lg:p-12 shadow-xs relative overflow-hidden">
+        <ScrollReveal className="bg-white dark:bg-canvas-card-dark rounded-3xl border border-surface-border p-7 sm:p-10 lg:p-12 shadow-xs relative overflow-hidden">
           {/* Subtle background decoration */}
           <div className="absolute top-0 right-0 w-80 h-80 bg-accent/5 dark:bg-accent/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
 
@@ -142,7 +143,7 @@ export default function Contact() {
               </span>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );
