@@ -19,6 +19,15 @@ export const certificatesData: CertificateItem[] = [
     highlight: true,
   },
   {
+    id: "compfest-aic-2026",
+    title: "CompFest AIC 2026 — Top 41",
+    category: "AI Competition",
+    issuer: "CompFest (Universitas Indonesia)",
+    description: "Participated in the CompFest AI Competition (AIC) and achieved Top 41.",
+    image: "/images/certificates/comfest.jpg",
+    highlight: true,
+  },
+  {
     id: "azure-ai-fundamentals",
     title: "Azure AI Fundamentals",
     category: "Cloud & AI Certification",

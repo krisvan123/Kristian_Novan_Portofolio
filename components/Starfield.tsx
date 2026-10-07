@@ -40,22 +40,23 @@ export default function Starfield() {
     const stars: Star[] = [];
 
     for (let i = 0; i < starCount; i++) {
-      // 3 subtle depth tiers:
-      // Tier 1 (distant): tiny, slow drift
-      // Tier 2 (mid): medium
-      // Tier 3 (close): slightly larger, brighter, faster drift
+      // 3 organic depth tiers:
+      // Tier 1 (distant): small, gentle drift
+      // Tier 2 (mid): balanced
+      // Tier 3 (close): slightly larger, brighter, faster noticeable drift
       const depth = Math.random();
-      const radius = depth > 0.85 ? 1.8 + Math.random() * 0.6 : depth > 0.5 ? 1.1 + Math.random() * 0.4 : 0.7 + Math.random() * 0.3;
-      const speedMultiplier = prefersReducedMotion ? 0 : 0.08 + depth * 0.16;
+      const radius = depth > 0.85 ? 1.8 + Math.random() * 0.6 : depth > 0.5 ? 1.2 + Math.random() * 0.4 : 0.8 + Math.random() * 0.3;
+      // Visibly moving speed: ~0.35 to 0.85 px/frame
+      const speedMultiplier = prefersReducedMotion ? 0 : 0.55 + depth * 0.75;
 
       stars.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() * 0.4 - 0.2) * speedMultiplier,
-        vy: (0.15 + Math.random() * 0.35) * speedMultiplier,
+        vx: (Math.random() * 0.5 - 0.25) * speedMultiplier * 0.6,
+        vy: (0.35 + Math.random() * 0.45) * speedMultiplier,
         radius,
-        baseAlpha: 0.25 + depth * 0.55,
-        twinkleSpeed: 0.015 + Math.random() * 0.03,
+        baseAlpha: 0.3 + depth * 0.5,
+        twinkleSpeed: 0.025 + Math.random() * 0.045,
         twinklePhase: Math.random() * Math.PI * 2,
       });
     }

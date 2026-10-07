@@ -47,12 +47,12 @@ export const personalData: PersonalData = {
   role: "Computer Science Student",
   focus: "Machine Learning · UI/UX",
   heroBio:
-    "I'm Kristian Novan, a Computer Science student at BINUS University. At this stage of my studies, I'm focusing on Machine Learning and UI/UX, while continuing to learn through academic projects, team collaborations, and campus activities. I enjoy working between the technical and visual sides of a project — building something that works, but also making it clear and comfortable to use.",
+    "I'm Kristian Novan, a Computer Science student at BINUS University. During my fourth and fifth semesters, I've been taking the Intelligent Systems (AI) specialization while exploring Machine Learning and UI/UX through academic projects and hands-on work. I enjoy building things from both sides of the process — figuring out how something should work and thinking about how people should experience it.",
   aboutBio: {
     lead:
       "I'm an undergraduate student at BINUS University's School of Computer Science (SOCS), Class of B2028, pursuing Computer Science with a specialization in Intelligent Systems (AI) taken during Semesters 4–5.",
     body: [
-      "My academic work centers on applied machine learning, computer vision, natural language processing, and human-computer interaction. I'm fascinated by the intersection of computational algorithms and thoughtful interface design — creating tools that not only solve real problems under the hood, but also feel natural, reliable, and respectful of the user.",
+      "My academic work centers on applied machine learning, computer vision, natural language processing, and human-computer interaction. I enjoy building things from both sides of the process — figuring out how something should work under the hood and thinking about how people should experience it on the surface.",
       "Beyond technical coursework, my university journey has been shaped by active roles in student organizations: mentoring peers with HIMTI, volunteering in humanitarian initiatives like WALUBI Waisak 2025, coordinating company excursions, and moderating formal stages as a Master of Ceremony. These diverse experiences have strengthened my team leadership, cross-disciplinary communication, and ability to deliver under pressure.",
     ],
     capabilities: [
@@ -91,7 +91,8 @@ export const personalData: PersonalData = {
     instagramHandle: "@krisxvan",
     instagramUrl: "https://www.instagram.com/krisxvan",
     linkedInName: "Kristian Novan",
-    linkedInUrl: "https://www.linkedin.com/in/kristian-n-195031328",
+    linkedInUrl:
+      "https://www.linkedin.com/in/kristian-n-195031328?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     githubUrl: "https://github.com/krisvan123",
   },
   profileImage: "/images/profile.jpg",

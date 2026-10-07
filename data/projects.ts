@@ -89,7 +89,7 @@ export const projectsData: ProjectDetail[] = [
   {
     slug: "finpro",
     title: "FinPro",
-    subtitle: "Financial & Savings Management",
+    subtitle: "AOL — Software Engineering",
     category: "AOL — Software Engineering",
     shortDescription:
       "FinPro is a financial application focused on personal savings management, budget allocation, and transaction tracking.",
@@ -194,11 +194,11 @@ export const upcomingProjectsData: UpcomingProject[] = [
   {
     slug: "trobos",
     title: "Trobos",
-    category: "Mobility & Transit Concept",
-    status: "Upcoming Project / Prototype",
+    category: "Next.js Prototype",
+    status: "Upcoming / Prototype",
     description:
-      "Trobos is a mobility concept for dealing with traffic congestion. The idea is to let a motorbike rider pick up the passenger while the passenger's car is handled separately and delivered to the intended destination.",
-    technologies: ["Product Concept", "Figma Prototype", "Logistics Flow", "Mobile UI"],
+      "Trobos is a Next.js prototype exploring a mobility solution for urban traffic congestion. The idea is to let a motorbike rider pick up the passenger while the passenger's car is handled separately and delivered to the intended destination.",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Product Prototype"],
     previewImage: "/images/projects/upcoming/trobos-01.jpg",
     images: [
       "/images/projects/upcoming/trobos-01.jpg",

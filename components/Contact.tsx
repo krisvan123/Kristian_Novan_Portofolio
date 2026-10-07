@@ -3,15 +3,23 @@
 import React, { useState } from "react";
 import { personalData } from "@/data/personal";
 import ScrollReveal from "./ScrollReveal";
-import { Mail, Instagram, Linkedin, Copy, Check, ArrowUpRight, MessageSquare } from "lucide-react";
+import { Mail, Instagram, Linkedin, Copy, Check, ArrowUpRight, MessageSquare, Send } from "lucide-react";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
+  const [activeAction, setActiveAction] = useState<"talk" | "contact" | null>(null);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(personalData.contact.email);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleButtonClick = (action: "talk" | "contact") => {
+    setActiveAction(action);
+    setTimeout(() => {
+      setActiveAction(null);
+    }, 450);
   };
 
   return (
@@ -120,22 +128,42 @@ export default function Contact() {
               </a>
             </div>
 
-            {/* CTAs: "Let's Talk" & "Contact Me" */}
+            {/* CTAs with responsive micro-interactions: "Let's Talk" & "Contact Me" */}
             <div className="pt-4 flex flex-wrap items-center gap-3.5">
               <a
                 href={`mailto:${personalData.contact.email}`}
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-charcoal dark:bg-[#F3F2EE] text-white dark:text-[#111113] text-sm font-semibold hover:bg-accent dark:hover:bg-accent-hover hover:text-white transition-all duration-200 shadow-sm hover:-translate-y-0.5"
+                onClick={() => handleButtonClick("talk")}
+                className={`inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-charcoal dark:bg-[#F3F2EE] text-white dark:text-[#111113] text-sm font-semibold hover:bg-accent dark:hover:bg-accent-hover hover:text-white transition-all duration-200 shadow-sm active:scale-95 ${
+                  activeAction === "talk"
+                    ? "scale-95 bg-accent text-white"
+                    : "hover:-translate-y-0.5"
+                }`}
               >
-                <Mail className="w-4 h-4" />
-                <span className="font-display">Let&apos;s Talk</span>
+                {activeAction === "talk" ? (
+                  <Send className="w-4 h-4 animate-bounce text-white" />
+                ) : (
+                  <Mail className="w-4 h-4" />
+                )}
+                <span className="font-display">
+                  {activeAction === "talk" ? "Opening Client..." : "Let's Talk"}
+                </span>
               </a>
 
               <a
                 href={`mailto:${personalData.contact.email}`}
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white dark:bg-canvas-card-dark border border-surface-border text-charcoal text-sm font-semibold hover:border-accent hover:text-accent transition-all duration-200 shadow-2xs hover:-translate-y-0.5"
+                onClick={() => handleButtonClick("contact")}
+                className={`inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white dark:bg-canvas-card-dark border border-surface-border text-charcoal text-sm font-semibold hover:border-accent hover:text-accent transition-all duration-200 shadow-2xs active:scale-95 ${
+                  activeAction === "contact"
+                    ? "scale-95 border-accent text-accent bg-accent-light dark:bg-accent-soft"
+                    : "hover:-translate-y-0.5"
+                }`}
               >
-                <span className="font-display">Contact Me</span>
-                <ArrowUpRight className="w-4 h-4" />
+                {activeAction === "contact" ? (
+                  <Check className="w-4 h-4 stroke-[2.2] text-accent animate-bounce" />
+                ) : (
+                  <span className="font-display">Contact Me</span>
+                )}
+                {activeAction !== "contact" && <ArrowUpRight className="w-4 h-4" />}
               </a>
 
               <span className="text-xs text-charcoal-soft font-mono ml-1">

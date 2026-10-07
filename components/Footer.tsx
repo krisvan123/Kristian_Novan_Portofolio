@@ -17,19 +17,24 @@ export default function Footer() {
             <h3 className="text-base sm:text-lg font-display font-semibold text-charcoal">
               {personalData.name}
             </h3>
+            <p className="text-xs sm:text-sm text-charcoal-muted font-sans font-medium">
+              Computer Science Student
+            </p>
             <p className="text-xs text-charcoal-soft font-mono">
-              {personalData.academic.school} • {personalData.academic.program} • {personalData.academic.university} ({personalData.academic.cohort})
+              BINUS University · B2028
             </p>
           </div>
 
-          <div className="flex items-center gap-2.5 text-charcoal-soft">
+          <div className="flex items-center gap-3 text-charcoal-soft">
             <a
-              href={`mailto:${personalData.contact.email}`}
+              href={personalData.contact.linkedInUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-2 rounded-lg hover:text-accent hover:bg-canvas-subtle transition-colors"
-              aria-label="Send Email"
-              title="Email"
+              aria-label="LinkedIn Profile"
+              title="LinkedIn"
             >
-              <Mail className="w-4 h-4" />
+              <Linkedin className="w-4 h-4" />
             </a>
             <a
               href={personalData.contact.instagramUrl}
@@ -42,27 +47,13 @@ export default function Footer() {
               <Instagram className="w-4 h-4" />
             </a>
             <a
-              href={personalData.contact.linkedInUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={`mailto:${personalData.contact.email}`}
               className="p-2 rounded-lg hover:text-accent hover:bg-canvas-subtle transition-colors"
-              aria-label="LinkedIn Profile"
-              title="LinkedIn"
+              aria-label="Send Email"
+              title="Email"
             >
-              <Linkedin className="w-4 h-4" />
+              <Mail className="w-4 h-4" />
             </a>
-            {personalData.contact.githubUrl && (
-              <a
-                href={personalData.contact.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-lg hover:text-accent hover:bg-canvas-subtle transition-colors"
-                aria-label="GitHub Profile"
-                title="GitHub"
-              >
-                <Github className="w-4 h-4" />
-              </a>
-            )}
           </div>
         </div>
 

@@ -1,13 +1,22 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { Mail, FolderGit2, ArrowRight } from "lucide-react";
+import { Mail, FolderGit2, ArrowRight, Check } from "lucide-react";
 import { personalData } from "@/data/personal";
 import ProfilePhoto from "./ProfilePhoto";
 import ScrollIndicator from "./ScrollIndicator";
 
 export default function Hero() {
+  const [isContacting, setIsContacting] = useState(false);
+
+  const handleContactClick = () => {
+    setIsContacting(true);
+    setTimeout(() => {
+      setIsContacting(false);
+    }, 450);
+  };
+
   return (
     <section
       id="home"
@@ -24,25 +33,27 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Left Column: Clear Typographic Hierarchy */}
           <div className="lg:col-span-7 flex flex-col items-start space-y-6">
-            {/* 1. Small restrained eyebrow label */}
+            {/* 1. Academic Affiliation Eyebrow */}
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-canvas-subtle border border-surface-border text-charcoal-soft font-mono text-[11px] tracking-wide">
               <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
               <span>
-                {personalData.academic.program} • {personalData.academic.university} • {personalData.academic.cohort}
+                {personalData.academic.university} · {personalData.academic.cohort} • {personalData.academic.school}
               </span>
             </div>
 
-            {/* 2. Confident Name & Academic Direction */}
-            <div className="space-y-2">
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-semibold tracking-tight text-charcoal leading-[1.08]">
+            {/* 2. Primary Academic Identity & Direction */}
+            <div className="space-y-2.5">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-semibold tracking-tight text-charcoal leading-[1.06]">
                 Kristian Novan
               </h1>
-              <p className="text-lg sm:text-xl md:text-2xl font-display font-medium text-charcoal-muted tracking-tight">
-                Computer Science Student
-                <span className="text-charcoal-soft font-normal text-base sm:text-lg block mt-1">
-                  Specializing in {personalData.academic.specialization} ({personalData.academic.studyPeriod})
-                </span>
-              </p>
+              <div className="space-y-1">
+                <p className="text-xl sm:text-2xl md:text-3xl font-display font-semibold text-charcoal-muted tracking-tight">
+                  Computer Science Student
+                </p>
+                <p className="text-sm sm:text-base font-mono text-accent dark:text-accent-dark font-medium">
+                  Specialization: {personalData.academic.specialization} · {personalData.academic.studyPeriod}
+                </p>
+              </div>
             </div>
 
             {/* 3. Natural Human Introduction */}
@@ -50,19 +61,13 @@ export default function Hero() {
               {personalData.heroBio}
             </p>
 
-            {/* 4. Current Core Focus Areas (Subtle metadata pills) */}
-            <div className="flex flex-wrap items-center gap-2 text-xs">
-              <span className="px-3 py-1 rounded-md bg-canvas-subtle border border-surface-border text-charcoal font-medium">
-                Machine Learning
+            {/* 4. Current Core Focus (Clean, uncluttered) */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-canvas-subtle border border-surface-border text-xs">
+              <span className="font-mono text-charcoal-soft uppercase text-[10px] tracking-wider">
+                Current Focus:
               </span>
-              <span className="px-3 py-1 rounded-md bg-canvas-subtle border border-surface-border text-charcoal font-medium">
-                UI/UX Prototyping
-              </span>
-              <span className="px-3 py-1 rounded-md bg-canvas-subtle border border-surface-border text-charcoal font-medium">
-                Public Speaking &amp; MC
-              </span>
-              <span className="px-3 py-1 rounded-md bg-canvas-subtle border border-surface-border text-charcoal font-medium">
-                Campus Leadership
+              <span className="font-semibold text-charcoal font-display">
+                Machine Learning · UI/UX
               </span>
             </div>
 
@@ -79,10 +84,19 @@ export default function Hero() {
 
               <a
                 href={`mailto:${personalData.contact.email}`}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white dark:bg-canvas-card-dark border border-surface-border text-charcoal dark:text-charcoal-dark text-sm font-semibold hover:border-accent hover:text-accent transition-all duration-200 shadow-2xs hover:-translate-y-0.5 w-full sm:w-auto"
+                onClick={handleContactClick}
+                className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white dark:bg-canvas-card-dark border border-surface-border text-charcoal dark:text-charcoal-dark text-sm font-semibold hover:border-accent hover:text-accent transition-all duration-200 shadow-2xs w-full sm:w-auto active:scale-95 ${
+                  isContacting
+                    ? "scale-95 border-accent text-accent bg-accent-light dark:bg-accent-soft"
+                    : "hover:-translate-y-0.5"
+                }`}
               >
-                <Mail className="w-4 h-4 stroke-[1.9]" />
-                <span>Contact Me</span>
+                {isContacting ? (
+                  <Check className="w-4 h-4 stroke-[2.2] text-accent animate-bounce" />
+                ) : (
+                  <Mail className="w-4 h-4 stroke-[1.9]" />
+                )}
+                <span>{isContacting ? "Opening Email..." : "Contact Me"}</span>
               </a>
             </div>
           </div>

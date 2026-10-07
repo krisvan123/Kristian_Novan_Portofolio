@@ -59,9 +59,9 @@ export default function UpcomingProjects() {
                 {/* Pure Visual Continuous Showcase (Images ordered 01, 02, 03... NO text underneath) */}
                 <div className="pt-2 w-full overflow-hidden rounded-xl">
                   <InfiniteMarquee
-                    direction={idx % 2 === 0 ? "left" : "right"}
-                    speed="normal"
-                    durationSeconds={18}
+                    direction="right"
+                    speed="fast"
+                    durationSeconds={16}
                     pauseOnHover={true}
                     gapClass="gap-3 pr-3"
                   >

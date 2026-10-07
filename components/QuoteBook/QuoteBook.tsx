@@ -525,7 +525,7 @@ export default function QuoteBook() {
               className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-surface-border bg-white dark:bg-canvas-card-dark text-charcoal hover:text-accent hover:border-accent-border disabled:opacity-30 disabled:pointer-events-none transition-all shadow-2xs cursor-pointer active:scale-95"
             >
               <ChevronLeft className="w-3.5 h-3.5" />
-              <span>← Previous</span>
+              <span>Previous</span>
             </button>
 
             {/* Subtle Page Indicator */}
@@ -548,7 +548,7 @@ export default function QuoteBook() {
               aria-label="Turn to next page"
               className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-surface-border bg-white dark:bg-canvas-card-dark text-charcoal hover:text-accent hover:border-accent-border disabled:opacity-30 disabled:pointer-events-none transition-all shadow-2xs cursor-pointer active:scale-95"
             >
-              <span>Next →</span>
+              <span>Next</span>
               <ChevronRight className="w-3.5 h-3.5" />
             </button>
           </div>

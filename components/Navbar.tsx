@@ -15,8 +15,9 @@ const NAV_ITEMS = [
   { label: "Upcoming", href: "/#upcoming" },
   { label: "Skills", href: "/#skills" },
   { label: "Certificates", href: "/#certificates" },
-  { label: "Contact", href: "/#contact" },
   { label: "Quotes", href: "/#quotes" },
+  { label: "Contact", href: "/#contact" },
+  { label: "Play", href: "/play" },
 ];
 
 export default function Navbar() {
@@ -40,8 +41,8 @@ export default function Navbar() {
         "upcoming",
         "skills",
         "certificates",
-        "contact",
         "quotes",
+        "contact",
       ];
       const scrollPosition = window.scrollY + 180;
 
