@@ -435,8 +435,8 @@ export default function MemoryJourneyGame() {
           </>
         )}
 
-        {/* 4x4 Grid of Cards */}
-        <div className="grid grid-cols-4 gap-2 sm:gap-3 w-full max-w-lg aspect-square mt-10 sm:mt-12">
+        {/* 4x4 Grid of Cards (Auto-sized to fit comfortably on phones, tablets, and laptops) */}
+        <div className="grid grid-cols-4 gap-1.5 sm:gap-2.5 md:gap-3 w-full max-w-sm sm:max-w-md md:max-w-lg my-auto pt-16 sm:pt-14 pb-2">
           {cards.map((card) => {
             const isRevealed = card.isFlipped || card.isMatched;
 
@@ -444,8 +444,8 @@ export default function MemoryJourneyGame() {
               <div
                 key={card.id}
                 onClick={() => handleCardClick(card)}
-                className={`relative w-full h-full rounded-2xl cursor-pointer transition-all duration-300 transform perspective-1000 ${
-                  card.isMatched ? "opacity-75 scale-95" : "hover:scale-102"
+                className={`relative w-full aspect-[4/5] sm:aspect-square rounded-xl sm:rounded-2xl cursor-pointer transition-all duration-300 transform perspective-1000 ${
+                  card.isMatched ? "opacity-75 scale-95" : "hover:scale-102 active:scale-95"
                 }`}
               >
                 {/* 3D Flip Card Container */}

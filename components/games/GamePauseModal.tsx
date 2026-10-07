@@ -25,8 +25,8 @@ export default function GamePauseModal({
   if (!isOpen) return null;
 
   return (
-    <div className="absolute inset-0 z-40 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md select-none animate-in fade-in duration-200">
-      <div className="relative w-full max-w-sm flex flex-col items-center bg-[#181920] border-2 border-white/15 rounded-3xl p-6 text-center space-y-4 shadow-2xl">
+    <div className="absolute inset-0 z-40 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md select-none animate-in fade-in duration-200 overflow-y-auto">
+      <div className="relative w-full max-w-sm my-auto flex flex-col items-center bg-[#181920] border-2 border-white/15 rounded-3xl p-6 text-center space-y-4 shadow-2xl">
         <h2 className="text-2xl font-display font-black text-white tracking-wider">
           GAME PAUSED
         </h2>

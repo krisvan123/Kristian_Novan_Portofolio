@@ -19,7 +19,7 @@ export const metadata = {
 
 export default function PortfolioQuestPage() {
   return (
-    <div className="min-h-screen pt-28 pb-16 md:pt-36 md:pb-24 px-4 sm:px-6 md:px-10">
+    <div className="min-h-screen pt-20 pb-10 sm:pt-24 sm:pb-12 md:pt-28 md:pb-14 px-3 sm:px-6 md:px-8">
       <PortfolioQuestGame />
     </div>
   );

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, BookOpen } from "lucide-react";
+import { ChevronLeft, ChevronRight, BookOpen, Sparkles } from "lucide-react";
 import { quotesData, QuoteItem } from "@/data/quotes";
 import CrayonIllustration from "./CrayonIllustration";
 import ScrollReveal from "../ScrollReveal";
@@ -14,17 +14,17 @@ export default function QuoteBook() {
   const totalSpreads = quotesData.length + 1; // 10 spreads total
   const [currentSpread, setCurrentSpread] = useState(0);
 
-  // Drag interaction state
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragProgress, setDragProgress] = useState(0); // 0 to 1
-  const [dragDirection, setDragDirection] = useState<"next" | "prev" | null>(null);
+  // Transition & interaction states
   const [isAnimating, setIsAnimating] = useState(false);
+  const [turnDirection, setTurnDirection] = useState<"next" | "prev" | null>(null);
   const [isOpen, setIsOpen] = useState(false);
 
+  // Touch / pointer swipe tracking
+  const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const pointerStartPos = useRef<{ x: number; y: number } | null>(null);
 
-  // Viewport trigger for natural book opening animation
+  // Viewport trigger for natural book appearance
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
@@ -43,72 +43,33 @@ export default function QuoteBook() {
     return () => observer.disconnect();
   }, []);
 
-  // Programmatic turn forward (e.g. Next button or ArrowRight)
+  // Programmatic turn forward
   const turnNext = useCallback(() => {
     if (isAnimating || currentSpread >= totalSpreads - 1) return;
     setIsAnimating(true);
-    setDragDirection("next");
+    setTurnDirection("next");
 
-    const startTime = performance.now();
-    const duration = 680;
-
-    const animate = (time: number) => {
-      const elapsed = time - startTime;
-      const progress = Math.min(1, elapsed / duration);
-      // Soft spring-like paper easing with slight momentum carry
-      const eased =
-        progress < 0.5
-          ? 4 * progress * progress * progress
-          : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-
-      setDragProgress(eased);
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      } else {
-        setCurrentSpread((prev) => Math.min(prev + 1, totalSpreads - 1));
-        setDragDirection(null);
-        setDragProgress(0);
-        setIsAnimating(false);
-      }
-    };
-
-    requestAnimationFrame(animate);
+    setTimeout(() => {
+      setCurrentSpread((prev) => Math.min(prev + 1, totalSpreads - 1));
+      setIsAnimating(false);
+      setTurnDirection(null);
+    }, 400);
   }, [currentSpread, isAnimating, totalSpreads]);
 
-  // Programmatic turn backward (e.g. Prev button or ArrowLeft)
+  // Programmatic turn backward
   const turnPrev = useCallback(() => {
     if (isAnimating || currentSpread <= 0) return;
     setIsAnimating(true);
-    setDragDirection("prev");
+    setTurnDirection("prev");
 
-    const startTime = performance.now();
-    const duration = 680;
-
-    const animate = (time: number) => {
-      const elapsed = time - startTime;
-      const progress = Math.min(1, elapsed / duration);
-      const eased =
-        progress < 0.5
-          ? 4 * progress * progress * progress
-          : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-
-      setDragProgress(eased);
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      } else {
-        setCurrentSpread((prev) => Math.max(prev - 1, 0));
-        setDragDirection(null);
-        setDragProgress(0);
-        setIsAnimating(false);
-      }
-    };
-
-    requestAnimationFrame(animate);
+    setTimeout(() => {
+      setCurrentSpread((prev) => Math.max(prev - 1, 0));
+      setIsAnimating(false);
+      setTurnDirection(null);
+    }, 400);
   }, [currentSpread, isAnimating]);
 
-  // Keyboard navigation
+  // Keyboard navigation (ArrowLeft & ArrowRight)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       const target = e.target as HTMLElement;
@@ -131,139 +92,35 @@ export default function QuoteBook() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [turnNext, turnPrev]);
 
-  // Pointer Down (Desktop Mouse Drag or Mobile Touch Drag)
-  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+  // Touch swipe handling
+  const handleTouchStart = (e: React.TouchEvent) => {
     if (isAnimating) return;
-    const rect = containerRef.current?.getBoundingClientRect();
-    if (!rect) return;
-
-    const clientX = e.clientX;
-    const clientY = e.clientY;
-    const relativeX = clientX - rect.left;
-    const isRightHalf = relativeX >= rect.width / 2;
-
-    if (isRightHalf) {
-      if (currentSpread >= totalSpreads - 1) return;
-      setDragDirection("next");
-    } else {
-      if (currentSpread <= 0) return;
-      setDragDirection("prev");
-    }
-
-    pointerStartPos.current = { x: clientX, y: clientY };
-    setIsDragging(true);
-    setDragProgress(0);
-
-    try {
-      e.currentTarget.setPointerCapture(e.pointerId);
-    } catch {}
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
   };
 
-  // Pointer Move (Flexible paper tracking)
-  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (!isDragging || !pointerStartPos.current || !dragDirection) return;
-    const rect = containerRef.current?.getBoundingClientRect();
-    if (!rect) return;
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || touchStartY.current === null || isAnimating) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+    const deltaY = e.changedTouches[0].clientY - touchStartY.current;
 
-    const pageWidth = rect.width / 2;
-    const deltaX = e.clientX - pointerStartPos.current.x;
-
-    if (dragDirection === "next") {
-      // Pulling right page to left
-      const pull = -deltaX;
-      const progress = Math.min(1, Math.max(0, pull / pageWidth));
-      setDragProgress(progress);
-    } else if (dragDirection === "prev") {
-      // Pulling left page to right
-      const pull = deltaX;
-      const progress = Math.min(1, Math.max(0, pull / pageWidth));
-      setDragProgress(progress);
-    }
-  };
-
-  // Pointer Up (Physics release: spring-back vs momentum completion)
-  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (!isDragging || !dragDirection) return;
-    setIsDragging(false);
-    pointerStartPos.current = null;
-
-    try {
-      e.currentTarget.releasePointerCapture(e.pointerId);
-    } catch {}
-
-    // Flexible threshold: 34% drag required to turn
-    const threshold = 0.34;
-    const shouldComplete = dragProgress >= threshold;
-
-    setIsAnimating(true);
-    const startP = dragProgress;
-    const targetP = shouldComplete ? 1 : 0;
-    const startTime = performance.now();
-    const duration = shouldComplete ? 420 : 300;
-
-    const finishAnimation = (time: number) => {
-      const elapsed = time - startTime;
-      const t = Math.min(1, elapsed / duration);
-      // Soft spring-back physics
-      const eased =
-        shouldComplete
-          ? 1 - Math.pow(1 - t, 3) // easeOutCubic
-          : 1 - Math.pow(1 - t, 4); // soft gentle return
-
-      const currentP = startP + (targetP - startP) * eased;
-      setDragProgress(currentP);
-
-      if (t < 1) {
-        requestAnimationFrame(finishAnimation);
+    // Verify predominantly horizontal swipe (>40px)
+    if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
+      if (deltaX < 0) {
+        turnNext(); // Swipe left -> Next
       } else {
-        if (shouldComplete) {
-          if (dragDirection === "next") {
-            setCurrentSpread((prev) => Math.min(prev + 1, totalSpreads - 1));
-          } else if (dragDirection === "prev") {
-            setCurrentSpread((prev) => Math.max(prev - 1, 0));
-          }
-        }
-        setDragDirection(null);
-        setDragProgress(0);
-        setIsAnimating(false);
+        turnPrev(); // Swipe right -> Prev
       }
-    };
+    }
 
-    requestAnimationFrame(finishAnimation);
+    touchStartX.current = null;
+    touchStartY.current = null;
   };
 
-  // Spread Content Helpers
+  // Content for current spread
   const activeQuoteIndex = currentSpread > 0 ? currentSpread - 1 : null;
   const currentQuote: QuoteItem | null =
     activeQuoteIndex !== null ? quotesData[activeQuoteIndex] : null;
-
-  const nextSpread = currentSpread + 1;
-  const nextQuote: QuoteItem | null =
-    nextSpread > 0 && nextSpread < totalSpreads
-      ? quotesData[nextSpread - 1]
-      : null;
-
-  const prevSpread = currentSpread - 1;
-  const prevQuote: QuoteItem | null =
-    prevSpread > 0 && prevSpread < totalSpreads
-      ? quotesData[prevSpread - 1]
-      : null;
-
-  // Realistic Paper Curvature & Physics calculations
-  // Angle: from 0deg to -180deg (forward) or 0deg to 180deg (backward)
-  const forwardAngle = -(dragProgress * 180);
-  const backwardAngle = dragProgress * 180;
-
-  // Paper flexibility / subtle curvature parameters
-  // At midpoint (~0.5), paper arches most dramatically
-  const curveArc = Math.sin(dragProgress * Math.PI);
-  const paperSkewY = curveArc * 3.5; // slight cylindrical curl skew in degrees
-  const paperScaleX = 1 - curveArc * 0.04; // slight paper compression along bend
-
-  // Dynamic shadows responding to elevation & turn angle
-  const underPageShadowOpacity = curveArc * 0.42;
-  const pageFoldShadowOpacity = curveArc * 0.35;
-  const pageHighlightOpacity = curveArc * 0.28;
 
   return (
     <section
@@ -275,7 +132,7 @@ export default function QuoteBook() {
         <ScrollReveal className="flex flex-col items-center text-center space-y-2 mb-10 md:mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-accent-light dark:bg-accent-soft text-accent dark:text-accent-dark text-[11px] font-mono font-medium border border-accent-border/60">
             <BookOpen className="w-3.5 h-3.5" />
-            <span>Physical Illustrated Book</span>
+            <span>Illustrated Codex</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-semibold tracking-tight text-charcoal">
@@ -287,90 +144,84 @@ export default function QuoteBook() {
           </p>
 
           <span className="text-[11px] font-mono text-charcoal-soft/80 pt-1 flex items-center gap-1.5">
-            <span>Click or drag page edges to turn</span>
+            <span>Swipe or click page controls to turn</span>
             <span className="text-accent dark:text-accent-dark">↷</span>
           </span>
         </ScrollReveal>
 
-        {/* PHYSICAL BOOK STAGE */}
+        {/* PHYSICAL BOOK CONTAINER */}
         <div className="flex flex-col items-center w-full">
-          {/* Ambient Surface Shadow underneath the book */}
           <div className="relative w-full max-w-5xl flex justify-center">
+            {/* Ambient Surface Shadow */}
             <div className="absolute -bottom-6 w-[92%] h-12 bg-black/35 dark:bg-black/60 blur-2xl rounded-full pointer-events-none" />
 
             <div
               ref={containerRef}
-              onPointerDown={handlePointerDown}
-              onPointerMove={handlePointerMove}
-              onPointerUp={handlePointerUp}
-              onPointerCancel={handlePointerUp}
-              style={{
-                touchAction: "pan-y",
-                perspective: "2000px",
-              }}
-              className={`w-full rounded-3xl p-3 sm:p-4 bg-[#211f1b] dark:bg-[#121110] border border-[#3A3631] dark:border-white/10 shadow-2xl relative cursor-grab active:cursor-grabbing transition-all duration-700 ${
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+              className={`w-full rounded-3xl p-2.5 sm:p-4 bg-[#211f1b] dark:bg-[#121110] border border-[#3A3631] dark:border-white/10 shadow-2xl relative transition-all duration-700 ${
                 isOpen ? "opacity-100 scale-100" : "opacity-0 scale-95"
               }`}
             >
-              {/* Stacked Pages Illusion along the left and right outer book edges */}
+              {/* Stacked Edge Lines for physical book depth */}
               <div
                 aria-hidden="true"
-                className="absolute left-1.5 top-5 bottom-5 w-2 flex flex-col justify-between pointer-events-none opacity-40"
+                className="absolute left-1.5 top-6 bottom-6 w-2 flex flex-col justify-between pointer-events-none opacity-40 hidden sm:flex"
               >
                 <div className="w-full h-full border-l-2 border-dashed border-[#e6dfd1] dark:border-white/20" />
               </div>
               <div
                 aria-hidden="true"
-                className="absolute right-1.5 top-5 bottom-5 w-2 flex flex-col justify-between pointer-events-none opacity-40"
+                className="absolute right-1.5 top-6 bottom-6 w-2 flex flex-col justify-between pointer-events-none opacity-40 hidden sm:flex"
               >
                 <div className="w-full h-full border-r-2 border-dashed border-[#e6dfd1] dark:border-white/20" />
               </div>
 
-              {/* Main Open Book Spread Container */}
-              <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] min-h-[480px] sm:min-h-[520px] rounded-2xl bg-[#FAF7EE] dark:bg-[#1f1d1a] text-charcoal dark:text-[#F3F2EE] border border-amber-900/15 dark:border-white/10 overflow-hidden shadow-inner preserve-3d">
-                {/* Subtle paper grain texture pattern overlay */}
+              {/* =========================================================================
+                  DESKTOP & LAPTOP TWO-PAGE SPREAD (md and above)
+                  ========================================================================= */}
+              <div className="hidden md:block relative w-full aspect-[16/10] lg:aspect-[16/9] min-h-[500px] rounded-2xl bg-[#FAF7EE] dark:bg-[#1f1d1a] text-charcoal dark:text-[#F3F2EE] border border-amber-900/15 dark:border-white/10 overflow-hidden shadow-inner">
+                {/* Paper grain texture */}
                 <div
                   aria-hidden="true"
-                  className="absolute inset-0 bg-[radial-gradient(#d6cdbe_1px,transparent_1px)] [background-size:16px_16px] opacity-15 pointer-events-none"
+                  className="absolute inset-0 bg-[radial-gradient(#d6cdbe_1px,transparent_1px)] [background-size:16px_16px] opacity-15 pointer-events-none z-10"
                 />
 
-                {/* ================= LAYER 1: BASE PAGES (UNDERNEATH) ================= */}
-                <div className="absolute inset-0 grid grid-cols-2">
-                  {/* Underneath Left Page */}
-                  <div className="h-full border-r border-amber-900/10 dark:border-white/5 bg-gradient-to-br from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-6 sm:p-8 md:p-10 flex flex-col justify-between overflow-hidden relative">
-                    {dragDirection === "prev" ? (
-                      prevSpread === 0 ? (
-                        <PhotoLeftPage />
-                      ) : prevQuote ? (
-                        <CrayonLeftPage quote={prevQuote} />
-                      ) : null
-                    ) : currentSpread === 0 ? (
+                {/* Central Spine Shadow & Stitching */}
+                <div
+                  aria-hidden="true"
+                  className="absolute left-1/2 top-0 bottom-0 w-12 -translate-x-1/2 z-30 pointer-events-none"
+                  style={{
+                    background:
+                      "linear-gradient(to right, rgba(0,0,0,0.01) 0%, rgba(0,0,0,0.18) 48%, rgba(0,0,0,0.28) 50%, rgba(0,0,0,0.18) 52%, rgba(0,0,0,0.01) 100%)",
+                  }}
+                >
+                  <div className="absolute left-1/2 top-3 bottom-3 w-[1px] -translate-x-1/2 border-l border-dashed border-amber-950/25 dark:border-amber-100/15" />
+                </div>
+
+                {/* Main Spread Grid with Smooth Content Transition */}
+                <div
+                  className={`w-full h-full grid grid-cols-2 transition-all duration-300 ease-out ${
+                    isAnimating
+                      ? turnDirection === "next"
+                        ? "opacity-60 -translate-x-2"
+                        : "opacity-60 translate-x-2"
+                      : "opacity-100 translate-x-0"
+                  }`}
+                >
+                  {/* LEFT PAGE */}
+                  <div className="h-full border-r border-amber-900/10 dark:border-white/5 bg-gradient-to-br from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-8 lg:p-10 flex flex-col justify-between overflow-hidden relative">
+                    {currentSpread === 0 ? (
                       <PhotoLeftPage />
                     ) : currentQuote ? (
                       <CrayonLeftPage quote={currentQuote} />
                     ) : null}
-
-                    {/* Dynamic shadow cast on Left Page when turning back */}
-                    {dragDirection === "prev" && (
-                      <div
-                        style={{ opacity: underPageShadowOpacity }}
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-black/20 to-black/50 pointer-events-none transition-opacity duration-75"
-                      />
-                    )}
                   </div>
 
-                  {/* Underneath Right Page */}
-                  <div className="h-full bg-gradient-to-bl from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-6 sm:p-8 md:p-10 flex flex-col justify-between overflow-hidden relative">
-                    {dragDirection === "next" ? (
-                      nextQuote ? (
-                        <QuoteRightPage
-                          quote={nextQuote}
-                          spreadIndex={nextSpread}
-                          totalSpreads={totalSpreads}
-                        />
-                      ) : null
-                    ) : currentSpread === 0 ? (
-                      <TitleRightPage />
+                  {/* RIGHT PAGE */}
+                  <div className="h-full bg-gradient-to-bl from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-8 lg:p-10 flex flex-col justify-between overflow-hidden relative">
+                    {currentSpread === 0 ? (
+                      <TitleRightPage onStart={turnNext} />
                     ) : currentQuote ? (
                       <QuoteRightPage
                         quote={currentQuote}
@@ -378,188 +229,157 @@ export default function QuoteBook() {
                         totalSpreads={totalSpreads}
                       />
                     ) : null}
-
-                    {/* Dynamic shadow cast on Right Page when turning forward */}
-                    {dragDirection === "next" && (
-                      <div
-                        style={{ opacity: underPageShadowOpacity }}
-                        className="absolute inset-0 bg-gradient-to-l from-transparent via-black/20 to-black/50 pointer-events-none transition-opacity duration-75"
-                      />
-                    )}
                   </div>
                 </div>
 
-                {/* ================= LAYER 2: TURNING LEAF (FLEXIBLE PAPER SIMULATION) ================= */}
-                {dragDirection === "next" && (
-                  <div
-                    style={{
-                      position: "absolute",
-                      left: "50%",
-                      top: 0,
-                      bottom: 0,
-                      width: "50%",
-                      transformOrigin: "left center",
-                      transform: `rotateY(${forwardAngle}deg) skewY(${paperSkewY}deg) scaleX(${paperScaleX})`,
-                      transformStyle: "preserve-3d",
-                      zIndex: 35,
-                      filter: `drop-shadow(-8px 12px 16px rgba(0,0,0,${pageFoldShadowOpacity}))`,
-                    }}
-                    className="pointer-events-none"
+                {/* Clickable Page Corner Zones for Quick Desktop Turning */}
+                {currentSpread > 0 && (
+                  <button
+                    type="button"
+                    onClick={turnPrev}
+                    aria-label="Previous spread"
+                    className="absolute left-0 inset-y-0 w-16 hover:bg-black/5 dark:hover:bg-white/5 transition-colors z-20 cursor-w-resize group flex items-center justify-start pl-2"
+                    title="Click left page to turn back"
                   >
-                    {/* FRONT FACE (Turning Right Page) */}
-                    <div
-                      style={{
-                        backfaceVisibility: "hidden",
-                        WebkitBackfaceVisibility: "hidden",
-                      }}
-                      className="absolute inset-0 bg-gradient-to-bl from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-6 sm:p-8 md:p-10 flex flex-col justify-between border-l border-amber-900/10 dark:border-white/5 border-r border-[#dfd7c9] dark:border-[#38342e] overflow-hidden"
-                    >
-                      {currentSpread === 0 ? (
-                        <TitleRightPage />
-                      ) : currentQuote ? (
-                        <QuoteRightPage
-                          quote={currentQuote}
-                          spreadIndex={currentSpread}
-                          totalSpreads={totalSpreads}
-                        />
-                      ) : null}
-
-                      {/* Physical Paper Highlight Ridge */}
-                      <div
-                        style={{ opacity: pageHighlightOpacity }}
-                        className="absolute inset-0 bg-gradient-to-r from-white/40 via-white/10 to-transparent pointer-events-none"
-                      />
-
-                      {/* Physical Paper Darkening Ridge */}
-                      <div
-                        style={{ opacity: pageFoldShadowOpacity }}
-                        className="absolute inset-0 bg-gradient-to-l from-black/25 via-transparent to-transparent pointer-events-none"
-                      />
-                    </div>
-
-                    {/* BACK FACE (Turning Left Page of Next Spread) */}
-                    <div
-                      style={{
-                        transform: "rotateY(180deg)",
-                        backfaceVisibility: "hidden",
-                        WebkitBackfaceVisibility: "hidden",
-                      }}
-                      className="absolute inset-0 bg-gradient-to-br from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-6 sm:p-8 md:p-10 flex flex-col justify-between border-r border-amber-900/10 dark:border-white/5 border-l border-[#dfd7c9] dark:border-[#38342e] overflow-hidden"
-                    >
-                      {nextQuote ? <CrayonLeftPage quote={nextQuote} /> : null}
-
-                      {/* Paper highlight on landing side */}
-                      <div
-                        style={{ opacity: pageHighlightOpacity }}
-                        className="absolute inset-0 bg-gradient-to-l from-white/35 via-transparent to-transparent pointer-events-none"
-                      />
-                    </div>
-                  </div>
+                    <ChevronLeft className="w-5 h-5 text-charcoal-muted group-hover:text-charcoal transition-transform group-hover:-translate-x-1" />
+                  </button>
                 )}
 
-                {/* Turning Leaf for PREVIOUS spread */}
-                {dragDirection === "prev" && (
-                  <div
-                    style={{
-                      position: "absolute",
-                      left: 0,
-                      top: 0,
-                      bottom: 0,
-                      width: "50%",
-                      transformOrigin: "right center",
-                      transform: `rotateY(${backwardAngle}deg) skewY(${-paperSkewY}deg) scaleX(${paperScaleX})`,
-                      transformStyle: "preserve-3d",
-                      zIndex: 35,
-                      filter: `drop-shadow(8px 12px 16px rgba(0,0,0,${pageFoldShadowOpacity}))`,
-                    }}
-                    className="pointer-events-none"
+                {currentSpread < totalSpreads - 1 && (
+                  <button
+                    type="button"
+                    onClick={turnNext}
+                    aria-label="Next spread"
+                    className="absolute right-0 inset-y-0 w-16 hover:bg-black/5 dark:hover:bg-white/5 transition-colors z-20 cursor-e-resize group flex items-center justify-end pr-2"
+                    title="Click right page to turn forward"
                   >
-                    {/* FRONT FACE (Left page of current spread) */}
-                    <div
-                      style={{
-                        backfaceVisibility: "hidden",
-                        WebkitBackfaceVisibility: "hidden",
-                      }}
-                      className="absolute inset-0 bg-gradient-to-br from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-6 sm:p-8 md:p-10 flex flex-col justify-between border-r border-amber-900/10 dark:border-white/5 border-l border-[#dfd7c9] dark:border-[#38342e] overflow-hidden"
-                    >
-                      {currentSpread === 0 ? (
-                        <PhotoLeftPage />
-                      ) : currentQuote ? (
-                        <CrayonLeftPage quote={currentQuote} />
-                      ) : null}
-
-                      <div
-                        style={{ opacity: pageHighlightOpacity }}
-                        className="absolute inset-0 bg-gradient-to-l from-white/40 via-white/10 to-transparent pointer-events-none"
-                      />
-                    </div>
-
-                    {/* BACK FACE (Right page of previous spread) */}
-                    <div
-                      style={{
-                        transform: "rotateY(180deg)",
-                        backfaceVisibility: "hidden",
-                        WebkitBackfaceVisibility: "hidden",
-                      }}
-                      className="absolute inset-0 bg-gradient-to-bl from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-6 sm:p-8 md:p-10 flex flex-col justify-between border-l border-amber-900/10 dark:border-white/5 border-r border-[#dfd7c9] dark:border-[#38342e] overflow-hidden"
-                    >
-                      {prevSpread === 0 ? (
-                        <TitleRightPage />
-                      ) : prevQuote ? (
-                        <QuoteRightPage
-                          quote={prevQuote}
-                          spreadIndex={prevSpread}
-                          totalSpreads={totalSpreads}
-                        />
-                      ) : null}
-
-                      <div
-                        style={{ opacity: pageHighlightOpacity }}
-                        className="absolute inset-0 bg-gradient-to-r from-white/35 via-transparent to-transparent pointer-events-none"
-                      />
-                    </div>
-                  </div>
+                    <ChevronRight className="w-5 h-5 text-charcoal-muted group-hover:text-charcoal transition-transform group-hover:translate-x-1" />
+                  </button>
                 )}
+              </div>
 
-                {/* ================= LAYER 3: CENTRAL SPINE CREASE & STITCHING ================= */}
+              {/* =========================================================================
+                  MOBILE & TABLET FOLIO CARD (< md, phones & tablets)
+                  Solves all cramping, bleed-through, and small-screen unreadability!
+                  ========================================================================= */}
+              <div className="block md:hidden relative w-full min-h-[460px] sm:min-h-[500px] rounded-2xl bg-[#FAF7EE] dark:bg-[#1f1d1a] text-charcoal dark:text-[#F3F2EE] border border-amber-900/15 dark:border-white/10 p-5 sm:p-6 overflow-hidden shadow-inner">
+                {/* Paper grain */}
                 <div
                   aria-hidden="true"
-                  className="absolute left-1/2 top-0 bottom-0 w-12 -translate-x-1/2 z-40 pointer-events-none"
-                  style={{
-                    background:
-                      "linear-gradient(to right, rgba(0,0,0,0.01) 0%, rgba(0,0,0,0.18) 48%, rgba(0,0,0,0.28) 50%, rgba(0,0,0,0.18) 52%, rgba(0,0,0,0.01) 100%)",
-                  }}
+                  className="absolute inset-0 bg-[radial-gradient(#d6cdbe_1px,transparent_1px)] [background-size:14px_14px] opacity-15 pointer-events-none"
+                />
+
+                <div
+                  className={`w-full h-full flex flex-col justify-between transition-all duration-300 ease-out ${
+                    isAnimating
+                      ? turnDirection === "next"
+                        ? "opacity-50 -translate-x-3"
+                        : "opacity-50 translate-x-3"
+                      : "opacity-100 translate-x-0"
+                  }`}
                 >
-                  {/* Subtle Book Spine Stitching */}
-                  <div className="absolute left-1/2 top-3 bottom-3 w-[1px] -translate-x-1/2 border-l border-dashed border-amber-950/25 dark:border-amber-100/15" />
+                  {currentSpread === 0 ? (
+                    /* SPREAD 0 on Mobile: Photo + Title Introduction */
+                    <div className="flex flex-col items-center justify-center text-center space-y-4 py-2">
+                      <div className="relative w-44 aspect-[4/5] rounded-xl overflow-hidden border-2 border-white dark:border-[#2b2824] shadow-md bg-stone-100 dark:bg-stone-900">
+                        <Image
+                          src="/images/profile/ppp.jpg"
+                          alt="Kristian Novan portrait"
+                          fill
+                          className="object-cover object-top filter contrast-[1.02]"
+                          sizes="176px"
+                          priority
+                        />
+                      </div>
+
+                      <div className="space-y-1">
+                        <h3
+                          style={{ fontFamily: "var(--font-quote), Georgia, serif" }}
+                          className="text-2xl font-semibold tracking-tight text-charcoal"
+                        >
+                          My Favorite Quotes
+                        </h3>
+                        <p className="text-xs text-charcoal-muted max-w-xs font-sans leading-relaxed">
+                          A few thoughts I keep coming back to.
+                        </p>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={turnNext}
+                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-accent text-white font-mono text-xs font-bold shadow-md cursor-pointer active:scale-95 transition-transform"
+                      >
+                        <span>Open Quotes</span>
+                        <ChevronRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  ) : currentQuote ? (
+                    /* SPREADS 1-9 on Mobile: Illustration (Top) + Quote (Bottom) */
+                    <div className="flex flex-col justify-between h-full space-y-4">
+                      {/* Top indicator */}
+                      <div className="flex items-center justify-between text-[11px] font-mono text-charcoal-soft/70 border-b border-amber-900/10 dark:border-white/10 pb-2">
+                        <span className="text-accent font-semibold">{currentQuote.theme}</span>
+                        <span>
+                          p. {String(currentSpread).padStart(2, "0")} / {String(totalSpreads - 1).padStart(2, "0")}
+                        </span>
+                      </div>
+
+                      {/* Center Crayon Illustration */}
+                      <div className="flex items-center justify-center py-2">
+                        <CrayonIllustration type={currentQuote.illustration} className="w-40 h-40 sm:w-48 sm:h-48" />
+                      </div>
+
+                      {/* Bottom Quote & Author */}
+                      <div className="text-center space-y-2 py-2">
+                        <blockquote
+                          style={{ fontFamily: "var(--font-quote), Georgia, serif" }}
+                          className="text-lg sm:text-xl italic text-charcoal leading-snug font-normal"
+                        >
+                          &ldquo;{currentQuote.quote}&rdquo;
+                        </blockquote>
+                        {currentQuote.author && (
+                          <div className="text-[11px] font-mono uppercase tracking-wider text-accent dark:text-accent-dark font-medium pt-1">
+                            — {currentQuote.author}
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Mobile Swipe Hint */}
+                      <div className="flex items-center justify-center gap-1 text-[10px] font-mono text-charcoal-soft/50 pt-1">
+                        <span>← Swipe or use buttons below →</span>
+                      </div>
+                    </div>
+                  ) : null}
                 </div>
               </div>
             </div>
           </div>
 
           {/* SECONDARY NAVIGATION CONTROLS */}
-          <div className="mt-6 w-full max-w-5xl flex items-center justify-between px-2 sm:px-4 text-xs font-mono text-charcoal-soft">
+          <div className="mt-5 w-full max-w-5xl flex items-center justify-between px-2 sm:px-4 text-xs font-mono text-charcoal-soft">
             <button
               type="button"
               onClick={turnPrev}
               disabled={currentSpread === 0 || isAnimating}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-surface-border bg-white dark:bg-canvas-card-dark disabled:opacity-40 hover:text-charcoal transition-colors cursor-pointer disabled:cursor-not-allowed"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-surface-border bg-white dark:bg-canvas-card-dark disabled:opacity-40 hover:text-charcoal shadow-2xs hover:border-accent-border transition-colors cursor-pointer disabled:cursor-not-allowed"
             >
               <ChevronLeft className="w-3.5 h-3.5" />
-              <span>Previous Page</span>
+              <span>Previous</span>
             </button>
 
-            <span className="text-[11px] font-mono">
-              Spread {currentSpread + 1} of {totalSpreads}
-            </span>
+            <div className="flex items-center gap-2">
+              <span className="text-[11px] font-mono">
+                {currentSpread === 0 ? "Cover / Intro" : `Quote ${currentSpread} of ${totalSpreads - 1}`}
+              </span>
+            </div>
 
             <button
               type="button"
               onClick={turnNext}
               disabled={currentSpread === totalSpreads - 1 || isAnimating}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-surface-border bg-white dark:bg-canvas-card-dark disabled:opacity-40 hover:text-charcoal transition-colors cursor-pointer disabled:cursor-not-allowed"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-surface-border bg-white dark:bg-canvas-card-dark disabled:opacity-40 hover:text-charcoal shadow-2xs hover:border-accent-border transition-colors cursor-pointer disabled:cursor-not-allowed"
             >
-              <span>Next Page</span>
+              <span>Next</span>
               <ChevronRight className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -570,26 +390,26 @@ export default function QuoteBook() {
 }
 
 /* =========================================================================
-   FIRST SPREAD:
-   - Left Page: ONLY photo `/images/profile/ppp.jpg`
+   FIRST SPREAD (DESKTOP):
+   - Left Page: ONLY portrait photo `/images/profile/ppp.jpg`
    - Right Page: "My Favorite Quotes" title & introductory line
    ========================================================================= */
 
 function PhotoLeftPage() {
   return (
     <div className="w-full h-full flex flex-col items-center justify-center p-2 sm:p-4">
-      <div className="relative w-full max-w-[210px] sm:max-w-[260px] aspect-[4/5] rounded-xl overflow-hidden border-2 border-white dark:border-[#2b2824] shadow-md bg-stone-100 dark:bg-stone-900">
+      <div className="relative w-full max-w-[210px] lg:max-w-[250px] aspect-[4/5] rounded-xl overflow-hidden border-2 border-white dark:border-[#2b2824] shadow-md bg-stone-100 dark:bg-stone-900">
         <Image
           src="/images/profile/ppp.jpg"
           alt="Kristian Novan portrait"
           fill
           className="object-cover object-top filter contrast-[1.02]"
-          sizes="(max-width: 640px) 210px, 260px"
+          sizes="(max-width: 1024px) 210px, 250px"
           priority
         />
       </div>
 
-      <div className="pt-2.5 text-center">
+      <div className="pt-3 text-center">
         <span className="text-xs font-mono font-medium text-charcoal tracking-wide block">
           Kristian Novan
         </span>
@@ -601,13 +421,13 @@ function PhotoLeftPage() {
   );
 }
 
-function TitleRightPage() {
+function TitleRightPage({ onStart }: { onStart: () => void }) {
   return (
     <div className="w-full h-full flex flex-col items-center justify-center text-center p-4 sm:p-8 space-y-4">
       <div className="space-y-3 max-w-sm">
         <h3
           style={{ fontFamily: "var(--font-quote), Georgia, serif" }}
-          className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-charcoal leading-tight"
+          className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-charcoal leading-tight"
         >
           My Favorite Quotes
         </h3>
@@ -617,10 +437,14 @@ function TitleRightPage() {
         </p>
 
         <div className="pt-6">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-500/10 dark:bg-amber-400/10 text-amber-800 dark:text-amber-300 border border-amber-500/20 text-xs font-mono">
-            <span>Drag right page to begin</span>
+          <button
+            type="button"
+            onClick={onStart}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent hover:bg-accent-hover text-white font-mono text-xs font-bold shadow-md cursor-pointer transition-all active:scale-95"
+          >
+            <span>Begin Reading</span>
             <span>→</span>
-          </span>
+          </button>
         </div>
       </div>
     </div>
@@ -628,7 +452,7 @@ function TitleRightPage() {
 }
 
 /* =========================================================================
-   ALL SUBSEQUENT SPREADS:
+   ALL SUBSEQUENT SPREADS (DESKTOP):
    - Left Page: ONLY the childlike crayon illustration
    - Right Page: ONLY quote text + author attribution + subtle page number
    ========================================================================= */
@@ -664,7 +488,7 @@ function QuoteRightPage({
         <blockquote className="space-y-3">
           <p
             style={{ fontFamily: "var(--font-quote), Georgia, serif" }}
-            className="text-xl sm:text-2xl md:text-3xl lg:text-[32px] italic text-charcoal leading-[1.35] tracking-tight font-normal"
+            className="text-xl sm:text-2xl lg:text-3xl italic text-charcoal leading-[1.38] tracking-tight font-normal"
           >
             &ldquo;{quote.quote}&rdquo;
           </p>

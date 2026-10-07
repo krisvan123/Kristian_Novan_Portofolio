@@ -664,16 +664,9 @@ export default function PortfolioQuestGame() {
     ctx.restore();
   };
 
-  // Mobile virtual movement
-  const handleMobileMove = (direction: "up" | "down" | "left" | "right") => {
-    const p = playerRef.current;
-    p.facing = direction;
-    p.isMoving = true;
-    p.walkFrame += 1;
-    if (direction === "up") p.y -= 14;
-    if (direction === "down") p.y += 14;
-    if (direction === "left") p.x -= 14;
-    if (direction === "right") p.x += 14;
+  // Mobile & Touch virtual movement
+  const handleTouchKey = (key: string, isDown: boolean) => {
+    keysPressed.current[key] = isDown;
   };
 
   return (
@@ -743,36 +736,84 @@ export default function PortfolioQuestGame() {
             </button>
           </div>
 
-          {/* On-Screen Mobile D-Pad */}
-          <div className="md:hidden absolute bottom-4 right-4 z-20 flex flex-col items-center gap-1.5 pointer-events-auto">
-            <button
-              type="button"
-              onClick={() => handleMobileMove("up")}
-              className="w-12 h-12 rounded-xl bg-white/20 active:bg-white/40 flex items-center justify-center text-white backdrop-blur-md"
-            >
-              <ArrowUp className="w-5 h-5" />
-            </button>
-            <div className="flex items-center gap-2">
+          {/* Dual-Thumb On-Screen Controls (Visible on mobile, tablets & touch devices) */}
+          <div className="absolute inset-x-0 bottom-3 px-3 sm:px-4 z-20 flex justify-between items-end pointer-events-none select-none">
+            {/* Left Thumb: 4-Way D-Pad */}
+            <div className="flex flex-col items-center gap-1.5 pointer-events-auto">
               <button
                 type="button"
-                onClick={() => handleMobileMove("left")}
-                className="w-12 h-12 rounded-xl bg-white/20 active:bg-white/40 flex items-center justify-center text-white backdrop-blur-md"
+                aria-label="Walk Up"
+                style={{ touchAction: "none" }}
+                onPointerDown={(e) => {
+                  e.preventDefault();
+                  handleTouchKey("ArrowUp", true);
+                }}
+                onPointerUp={() => handleTouchKey("ArrowUp", false)}
+                onPointerLeave={() => handleTouchKey("ArrowUp", false)}
+                onPointerCancel={() => handleTouchKey("ArrowUp", false)}
+                className="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl bg-black/60 active:bg-accent/80 border border-white/20 active:border-accent text-white flex items-center justify-center backdrop-blur-md shadow-lg transition-transform active:scale-95 cursor-pointer"
               >
-                <ArrowLeft className="w-5 h-5" />
+                <ArrowUp className="w-5 h-5" />
               </button>
+              <div className="flex items-center gap-1.5">
+                <button
+                  type="button"
+                  aria-label="Walk Left"
+                  style={{ touchAction: "none" }}
+                  onPointerDown={(e) => {
+                    e.preventDefault();
+                    handleTouchKey("ArrowLeft", true);
+                  }}
+                  onPointerUp={() => handleTouchKey("ArrowLeft", false)}
+                  onPointerLeave={() => handleTouchKey("ArrowLeft", false)}
+                  onPointerCancel={() => handleTouchKey("ArrowLeft", false)}
+                  className="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl bg-black/60 active:bg-accent/80 border border-white/20 active:border-accent text-white flex items-center justify-center backdrop-blur-md shadow-lg transition-transform active:scale-95 cursor-pointer"
+                >
+                  <ArrowLeft className="w-5 h-5" />
+                </button>
+                <button
+                  type="button"
+                  aria-label="Walk Down"
+                  style={{ touchAction: "none" }}
+                  onPointerDown={(e) => {
+                    e.preventDefault();
+                    handleTouchKey("ArrowDown", true);
+                  }}
+                  onPointerUp={() => handleTouchKey("ArrowDown", false)}
+                  onPointerLeave={() => handleTouchKey("ArrowDown", false)}
+                  onPointerCancel={() => handleTouchKey("ArrowDown", false)}
+                  className="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl bg-black/60 active:bg-accent/80 border border-white/20 active:border-accent text-white flex items-center justify-center backdrop-blur-md shadow-lg transition-transform active:scale-95 cursor-pointer"
+                >
+                  <ArrowDown className="w-5 h-5" />
+                </button>
+                <button
+                  type="button"
+                  aria-label="Walk Right"
+                  style={{ touchAction: "none" }}
+                  onPointerDown={(e) => {
+                    e.preventDefault();
+                    handleTouchKey("ArrowRight", true);
+                  }}
+                  onPointerUp={() => handleTouchKey("ArrowRight", false)}
+                  onPointerLeave={() => handleTouchKey("ArrowRight", false)}
+                  onPointerCancel={() => handleTouchKey("ArrowRight", false)}
+                  className="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl bg-black/60 active:bg-accent/80 border border-white/20 active:border-accent text-white flex items-center justify-center backdrop-blur-md shadow-lg transition-transform active:scale-95 cursor-pointer"
+                >
+                  <ArrowRight className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Right Thumb: Interact / Inspect Action Button */}
+            <div className="pointer-events-auto">
               <button
                 type="button"
-                onClick={() => handleMobileMove("down")}
-                className="w-12 h-12 rounded-xl bg-white/20 active:bg-white/40 flex items-center justify-center text-white backdrop-blur-md"
+                onClick={checkNearbyInteractions}
+                className="px-4 py-3 rounded-2xl bg-gradient-to-r from-accent to-emerald-600 hover:from-accent-hover hover:to-emerald-500 active:scale-95 text-white font-mono font-bold text-xs flex items-center gap-2 backdrop-blur-md shadow-xl border border-white/20 cursor-pointer transition-all"
+                title="Interact or inspect nearby item (E)"
               >
-                <ArrowDown className="w-5 h-5" />
-              </button>
-              <button
-                type="button"
-                onClick={() => handleMobileMove("right")}
-                className="w-12 h-12 rounded-xl bg-white/20 active:bg-white/40 flex items-center justify-center text-white backdrop-blur-md"
-              >
-                <ArrowRight className="w-5 h-5" />
+                <span className="text-base">💬</span>
+                <span>INTERACT [E]</span>
               </button>
             </div>
           </div>
@@ -781,8 +822,8 @@ export default function PortfolioQuestGame() {
 
       {/* Pavilion Interactive Inspection Modal */}
       {activePavilionModal && (
-        <div className="absolute inset-0 z-40 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md select-none animate-in fade-in duration-200">
-          <div className="relative w-full max-w-md bg-[#181920] border-2 border-white/15 rounded-3xl p-6 text-white space-y-4 shadow-2xl">
+        <div className="absolute inset-0 z-40 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md select-none animate-in fade-in duration-200 overflow-y-auto">
+          <div className="relative w-full max-w-md my-auto bg-[#181920] border-2 border-white/15 rounded-3xl p-5 sm:p-6 text-white space-y-4 shadow-2xl max-h-[88vh] overflow-y-auto">
             <div className="flex items-start justify-between">
               <div>
                 <span
@@ -822,7 +863,7 @@ export default function PortfolioQuestGame() {
             <button
               type="button"
               onClick={() => setActivePavilionModal(null)}
-              className="w-full py-2.5 rounded-xl bg-accent hover:bg-accent-hover text-white font-mono font-bold text-xs"
+              className="w-full py-2.5 rounded-xl bg-accent hover:bg-accent-hover text-white font-mono font-bold text-xs cursor-pointer"
             >
               Continue Exploring
             </button>
@@ -832,8 +873,8 @@ export default function PortfolioQuestGame() {
 
       {/* NPC Dialogue Modal */}
       {activeNPCModal && (
-        <div className="absolute inset-0 z-40 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md select-none animate-in fade-in duration-200">
-          <div className="relative w-full max-w-sm bg-[#181920] border-2 border-white/15 rounded-3xl p-5 text-white space-y-4 shadow-2xl">
+        <div className="absolute inset-0 z-40 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md select-none animate-in fade-in duration-200 overflow-y-auto">
+          <div className="relative w-full max-w-sm my-auto bg-[#181920] border-2 border-white/15 rounded-3xl p-5 text-white space-y-4 shadow-2xl max-h-[88vh] overflow-y-auto">
             <div className="flex items-center gap-3">
               <div className="text-3xl p-2 rounded-2xl bg-white/10">{activeNPCModal.emoji}</div>
               <div>
@@ -849,7 +890,7 @@ export default function PortfolioQuestGame() {
             <button
               type="button"
               onClick={() => setActiveNPCModal(null)}
-              className="w-full py-2 rounded-xl bg-accent hover:bg-accent-hover text-white font-mono font-bold text-xs"
+              className="w-full py-2 rounded-xl bg-accent hover:bg-accent-hover text-white font-mono font-bold text-xs cursor-pointer"
             >
               Wave & Goodbye
             </button>

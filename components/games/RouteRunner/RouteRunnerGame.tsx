@@ -722,46 +722,79 @@ export default function RouteRunnerGame() {
           <button
             type="button"
             onClick={() => setShowUpgradeModal(true)}
-            className="absolute bottom-4 left-4 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/10 text-white font-mono text-xs cursor-pointer"
+            className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-black/70 hover:bg-black/90 backdrop-blur-md border border-white/10 text-white font-mono text-[11px] cursor-pointer shadow-md"
           >
             <Wrench className="w-3.5 h-3.5 text-accent" />
             <span>Tuning Shop</span>
           </button>
 
-          {/* On-Screen Mobile Controls */}
-          <div className="md:hidden absolute bottom-4 right-4 z-20 flex flex-col items-center gap-1.5 pointer-events-auto">
-            <button
-              type="button"
-              onPointerDown={() => handleTouchControl("ArrowUp", true)}
-              onPointerUp={() => handleTouchControl("ArrowUp", false)}
-              className="w-12 h-12 rounded-xl bg-white/20 active:bg-white/40 flex items-center justify-center text-white backdrop-blur-md"
-            >
-              <ArrowUp className="w-5 h-5" />
-            </button>
-            <div className="flex items-center gap-2">
+          {/* Dual-Thumb On-Screen Touch Controls (Visible on mobile, tablets & touch devices) */}
+          <div className="absolute inset-x-0 bottom-3 px-3 sm:px-4 z-20 flex justify-between items-end pointer-events-none select-none">
+            {/* Left Thumb: Steering */}
+            <div className="flex items-center gap-2 pointer-events-auto">
               <button
                 type="button"
-                onPointerDown={() => handleTouchControl("ArrowLeft", true)}
+                aria-label="Steer Left"
+                style={{ touchAction: "none" }}
+                onPointerDown={(e) => {
+                  e.preventDefault();
+                  handleTouchControl("ArrowLeft", true);
+                }}
                 onPointerUp={() => handleTouchControl("ArrowLeft", false)}
-                className="w-12 h-12 rounded-xl bg-white/20 active:bg-white/40 flex items-center justify-center text-white backdrop-blur-md"
+                onPointerLeave={() => handleTouchControl("ArrowLeft", false)}
+                onPointerCancel={() => handleTouchControl("ArrowLeft", false)}
+                className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-black/60 active:bg-accent/80 border border-white/20 active:border-accent text-white flex items-center justify-center backdrop-blur-md shadow-lg transition-transform active:scale-95 cursor-pointer"
               >
-                <ArrowLeft className="w-5 h-5" />
+                <ArrowLeft className="w-6 h-6" />
               </button>
               <button
                 type="button"
-                onPointerDown={() => handleTouchControl("ArrowDown", true)}
-                onPointerUp={() => handleTouchControl("ArrowDown", false)}
-                className="w-12 h-12 rounded-xl bg-white/20 active:bg-white/40 flex items-center justify-center text-white backdrop-blur-md"
-              >
-                <ArrowDown className="w-5 h-5" />
-              </button>
-              <button
-                type="button"
-                onPointerDown={() => handleTouchControl("ArrowRight", true)}
+                aria-label="Steer Right"
+                style={{ touchAction: "none" }}
+                onPointerDown={(e) => {
+                  e.preventDefault();
+                  handleTouchControl("ArrowRight", true);
+                }}
                 onPointerUp={() => handleTouchControl("ArrowRight", false)}
-                className="w-12 h-12 rounded-xl bg-white/20 active:bg-white/40 flex items-center justify-center text-white backdrop-blur-md"
+                onPointerLeave={() => handleTouchControl("ArrowRight", false)}
+                onPointerCancel={() => handleTouchControl("ArrowRight", false)}
+                className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-black/60 active:bg-accent/80 border border-white/20 active:border-accent text-white flex items-center justify-center backdrop-blur-md shadow-lg transition-transform active:scale-95 cursor-pointer"
               >
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Right Thumb: Drive & Reverse */}
+            <div className="flex flex-col items-center gap-2 pointer-events-auto">
+              <button
+                type="button"
+                aria-label="Accelerate Forward"
+                style={{ touchAction: "none" }}
+                onPointerDown={(e) => {
+                  e.preventDefault();
+                  handleTouchControl("ArrowUp", true);
+                }}
+                onPointerUp={() => handleTouchControl("ArrowUp", false)}
+                onPointerLeave={() => handleTouchControl("ArrowUp", false)}
+                onPointerCancel={() => handleTouchControl("ArrowUp", false)}
+                className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-emerald-600/70 active:bg-emerald-500 border border-emerald-400/50 text-white flex items-center justify-center backdrop-blur-md shadow-lg transition-transform active:scale-95 cursor-pointer"
+              >
+                <ArrowUp className="w-6 h-6" />
+              </button>
+              <button
+                type="button"
+                aria-label="Reverse or Brake"
+                style={{ touchAction: "none" }}
+                onPointerDown={(e) => {
+                  e.preventDefault();
+                  handleTouchControl("ArrowDown", true);
+                }}
+                onPointerUp={() => handleTouchControl("ArrowDown", false)}
+                onPointerLeave={() => handleTouchControl("ArrowDown", false)}
+                onPointerCancel={() => handleTouchControl("ArrowDown", false)}
+                className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-rose-600/70 active:bg-rose-500 border border-rose-400/50 text-white flex items-center justify-center backdrop-blur-md shadow-lg transition-transform active:scale-95 cursor-pointer"
+              >
+                <ArrowDown className="w-6 h-6" />
               </button>
             </div>
           </div>

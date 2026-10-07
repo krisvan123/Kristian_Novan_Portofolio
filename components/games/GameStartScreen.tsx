@@ -29,12 +29,12 @@ export default function GameStartScreen({
   badge = "Interactive Mini-Game",
 }: GameStartScreenProps) {
   return (
-    <div className="absolute inset-0 z-30 flex items-center justify-center p-4 sm:p-6 bg-gradient-to-b from-[#0c0d12]/95 via-[#12131a]/95 to-[#0b0c10]/95 backdrop-blur-md select-none">
+    <div className="absolute inset-0 z-30 flex items-center justify-center p-3 sm:p-6 bg-gradient-to-b from-[#0c0d12]/95 via-[#12131a]/95 to-[#0b0c10]/95 backdrop-blur-md select-none overflow-y-auto">
       {/* Background ambient grid/glow */}
       <div className="absolute inset-0 bg-[radial-gradient(#2D5A43_1px,transparent_1px)] [background-size:24px_24px] opacity-20 pointer-events-none" />
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-48 bg-accent/15 blur-3xl rounded-full pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-xl flex flex-col items-center text-center space-y-5 animate-in fade-in zoom-in-95 duration-300">
+      <div className="relative z-10 w-full max-w-xl my-auto flex flex-col items-center text-center space-y-3.5 sm:space-y-5 animate-in fade-in zoom-in-95 duration-300 py-3 sm:py-4">
         {/* Badge & Best Score */}
         <div className="flex items-center gap-2">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent/20 border border-accent/40 text-accent-light text-[11px] font-mono font-medium">

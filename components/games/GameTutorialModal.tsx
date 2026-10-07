@@ -58,8 +58,8 @@ export default function GameTutorialModal({
   };
 
   return (
-    <div className="absolute inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/85 backdrop-blur-md select-none animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg bg-[#161722] border-2 border-white/15 rounded-3xl p-5 sm:p-6 text-white space-y-4 shadow-2xl overflow-hidden max-h-[92vh] flex flex-col justify-between">
+    <div className="absolute inset-0 z-50 flex items-center justify-center p-2.5 sm:p-5 bg-black/85 backdrop-blur-md select-none animate-in fade-in duration-200 overflow-y-auto">
+      <div className="relative w-full max-w-lg bg-[#161722] border-2 border-white/15 rounded-3xl p-4 sm:p-6 text-white space-y-3.5 sm:space-y-4 shadow-2xl overflow-y-auto max-h-[92vh] flex flex-col justify-between my-auto">
         {/* Top Header */}
         <div className="flex items-start justify-between gap-3">
           <div>

@@ -117,10 +117,13 @@ export default function CatchDataGame() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const handlePointerMove = (e: MouseEvent | TouchEvent) => {
+    const handlePointerAction = (e: MouseEvent | TouchEvent) => {
       const rect = canvas.getBoundingClientRect();
-      const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
-      const clientY = "touches" in e ? e.touches[0].clientY : e.clientY;
+      const isTouch = "touches" in e;
+      if (isTouch && e.touches.length === 0) return;
+
+      const clientX = isTouch ? e.touches[0].clientX : (e as MouseEvent).clientX;
+      const clientY = isTouch ? e.touches[0].clientY : (e as MouseEvent).clientY;
 
       const scaleX = canvas.width / rect.width;
       const scaleY = canvas.height / rect.height;
@@ -129,12 +132,14 @@ export default function CatchDataGame() {
       reticleRef.current.y = (clientY - rect.top) * scaleY;
     };
 
-    window.addEventListener("mousemove", handlePointerMove);
-    window.addEventListener("touchmove", handlePointerMove, { passive: true });
+    window.addEventListener("mousemove", handlePointerAction);
+    window.addEventListener("touchstart", handlePointerAction, { passive: true });
+    window.addEventListener("touchmove", handlePointerAction, { passive: true });
 
     return () => {
-      window.removeEventListener("mousemove", handlePointerMove);
-      window.removeEventListener("touchmove", handlePointerMove);
+      window.removeEventListener("mousemove", handlePointerAction);
+      window.removeEventListener("touchstart", handlePointerAction);
+      window.removeEventListener("touchmove", handlePointerAction);
     };
   }, []);
 
@@ -679,6 +684,7 @@ export default function CatchDataGame() {
         ref={canvasRef}
         width={800}
         height={500}
+        style={{ touchAction: "none" }}
         className="w-full h-full object-cover cursor-crosshair select-none"
       />
 

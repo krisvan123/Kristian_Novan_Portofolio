@@ -43,8 +43,8 @@ export default function GameResultModal({
   if (!isOpen) return null;
 
   return (
-    <div className="absolute inset-0 z-40 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md select-none animate-in fade-in duration-300">
-      <div className="relative w-full max-w-md flex flex-col items-center bg-[#181920] border-2 border-white/15 rounded-3xl p-6 text-center space-y-4 shadow-2xl">
+    <div className="absolute inset-0 z-40 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md select-none animate-in fade-in duration-300 overflow-y-auto">
+      <div className="relative w-full max-w-md my-auto flex flex-col items-center bg-[#181920] border-2 border-white/15 rounded-3xl p-5 sm:p-6 text-center space-y-4 shadow-2xl">
         {/* Victory/Defeat Icon Banner */}
         <div className="flex flex-col items-center gap-2">
           {isVictory ? (

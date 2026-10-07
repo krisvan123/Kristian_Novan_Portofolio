@@ -305,7 +305,7 @@ export default function MindCareGame() {
       onTogglePause={() => setGameState((s) => (s === "playing" ? "paused" : s === "paused" ? "playing" : s))}
     >
       {/* Living Room Interactive Canvas / Stage */}
-      <div className="relative w-full h-full flex flex-col justify-between p-4 sm:p-6 select-none overflow-hidden bg-[#161720]">
+      <div className="relative w-full h-full flex flex-col justify-between p-3 sm:p-5 select-none overflow-y-auto sm:overflow-hidden bg-[#161720]">
         {/* Active HUD */}
         {gameState === "playing" && (
           <>
@@ -323,7 +323,7 @@ export default function MindCareGame() {
 
             {/* Contextual In-Game Hint */}
             <div className="absolute top-16 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
-              <div className="px-3.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/10 text-white font-mono text-[11px] shadow-lg flex items-center gap-1.5 whitespace-nowrap">
+              <div className="px-3.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/10 text-white font-mono text-[10px] sm:text-[11px] shadow-lg flex items-center gap-1.5 whitespace-nowrap">
                 <span>💡</span>
                 {actionsTaken === 0 ? (
                   <span>Click any room object (Window, Tea, Plant, Laptop) to make your first choice!</span>
@@ -341,14 +341,14 @@ export default function MindCareGame() {
 
         {/* Dynamic Metric Bars (Top) */}
         {gameState === "playing" && (
-          <div className="w-full max-w-xl mx-auto grid grid-cols-3 gap-2 pt-14 z-10 font-mono text-[11px]">
+          <div className="w-full max-w-xl mx-auto grid grid-cols-3 gap-1.5 sm:gap-2 pt-16 sm:pt-14 z-10 font-mono text-[10px] sm:text-[11px]">
             {/* Energy */}
-            <div className="bg-black/60 backdrop-blur-md border border-white/10 rounded-xl p-2 flex flex-col gap-1 text-white">
+            <div className="bg-black/60 backdrop-blur-md border border-white/10 rounded-xl p-1.5 sm:p-2 flex flex-col gap-1 text-white">
               <div className="flex justify-between items-center text-amber-300">
                 <span>Energy</span>
                 <span className="font-bold">{energy}%</span>
               </div>
-              <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+              <div className="w-full h-1 sm:h-1.5 bg-white/10 rounded-full overflow-hidden">
                 <div
                   className="h-full bg-amber-400 rounded-full transition-all duration-300"
                   style={{ width: `${energy}%` }}
@@ -357,12 +357,12 @@ export default function MindCareGame() {
             </div>
 
             {/* Clarity */}
-            <div className="bg-black/60 backdrop-blur-md border border-white/10 rounded-xl p-2 flex flex-col gap-1 text-white">
+            <div className="bg-black/60 backdrop-blur-md border border-white/10 rounded-xl p-1.5 sm:p-2 flex flex-col gap-1 text-white">
               <div className="flex justify-between items-center text-sky-300">
                 <span>Clarity</span>
                 <span className="font-bold">{clarity}%</span>
               </div>
-              <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+              <div className="w-full h-1 sm:h-1.5 bg-white/10 rounded-full overflow-hidden">
                 <div
                   className="h-full bg-sky-400 rounded-full transition-all duration-300"
                   style={{ width: `${clarity}%` }}
@@ -371,12 +371,12 @@ export default function MindCareGame() {
             </div>
 
             {/* Flow */}
-            <div className="bg-black/60 backdrop-blur-md border border-white/10 rounded-xl p-2 flex flex-col gap-1 text-white">
+            <div className="bg-black/60 backdrop-blur-md border border-white/10 rounded-xl p-1.5 sm:p-2 flex flex-col gap-1 text-white">
               <div className="flex justify-between items-center text-indigo-300">
                 <span>Flow</span>
                 <span className="font-bold">{flow}%</span>
               </div>
-              <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+              <div className="w-full h-1 sm:h-1.5 bg-white/10 rounded-full overflow-hidden">
                 <div
                   className="h-full bg-indigo-400 rounded-full transition-all duration-300"
                   style={{ width: `${flow}%` }}
@@ -387,25 +387,25 @@ export default function MindCareGame() {
         )}
 
         {/* Center Room Visual Scene */}
-        <div className="relative flex-1 w-full max-w-2xl mx-auto flex items-center justify-center my-2">
+        <div className="relative flex-1 w-full max-w-2xl mx-auto flex items-center justify-center my-1 sm:my-2 min-h-[140px]">
           {/* Arched Window Showing Dynamic Sky */}
           <div
             onClick={handleInteractWindow}
-            className={`relative w-48 sm:w-60 h-44 sm:h-52 rounded-t-full border-4 border-[#333748] bg-gradient-to-b ${skyGradients[timeStage]} overflow-hidden shadow-2xl cursor-pointer hover:border-accent transition-colors group`}
+            className={`relative w-40 sm:w-56 h-36 sm:h-48 rounded-t-full border-4 border-[#333748] bg-gradient-to-b ${skyGradients[timeStage]} overflow-hidden shadow-2xl cursor-pointer hover:border-accent transition-colors group`}
             title="Click to gaze out window and breathe"
           >
             {/* Drifting Clouds or Twinkling Stars */}
             {timeStage < 2 ? (
-              <div className="absolute top-6 left-4 flex gap-4 text-white/70 animate-pulse">
-                <Cloud className="w-8 h-8" />
-                <Cloud className="w-6 h-6 ml-6" />
+              <div className="absolute top-4 sm:top-6 left-3 sm:left-4 flex gap-3 sm:gap-4 text-white/70 animate-pulse">
+                <Cloud className="w-6 h-6 sm:w-8 sm:h-8" />
+                <Cloud className="w-5 h-5 sm:w-6 sm:h-6 ml-4" />
               </div>
             ) : (
               <div className="absolute inset-0 p-3 flex flex-wrap gap-4 text-amber-200/80 animate-pulse">
                 <Sparkles className="w-3 h-3 top-2 left-6 absolute" />
-                <Sparkles className="w-4 h-4 top-10 right-8 absolute" />
-                <Sparkles className="w-3.5 h-3.5 top-18 left-12 absolute" />
-                <Moon className="w-6 h-6 text-amber-200 absolute top-4 right-5" />
+                <Sparkles className="w-4 h-4 top-8 right-8 absolute" />
+                <Sparkles className="w-3 h-3 top-14 left-10 absolute" />
+                <Moon className="w-5 h-5 sm:w-6 sm:h-6 text-amber-200 absolute top-3 right-4" />
               </div>
             )}
             {/* Window Pane Grid */}
@@ -413,7 +413,7 @@ export default function MindCareGame() {
             <div className="absolute inset-y-0 left-1/2 w-1 bg-[#333748]" />
 
             {/* Window label pill */}
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 text-[10px] font-mono text-white/90 group-hover:bg-accent/80 transition-colors flex items-center gap-1 shadow-sm whitespace-nowrap">
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 text-[9px] sm:text-[10px] font-mono text-white/90 group-hover:bg-accent/80 transition-colors flex items-center gap-1 shadow-sm whitespace-nowrap">
               <span>🪟</span>
               <span>Gaze &amp; Breathe</span>
             </div>
@@ -422,26 +422,26 @@ export default function MindCareGame() {
           {/* Plant next to window */}
           <div
             onClick={handleInteractPlant}
-            className="absolute -right-2 sm:right-10 bottom-6 flex flex-col items-center cursor-pointer hover:scale-105 transition-transform group"
+            className="absolute -right-1 sm:right-10 bottom-3 sm:bottom-6 flex flex-col items-center cursor-pointer hover:scale-105 transition-transform group"
             title="Click to water the plant"
           >
-            <div className="text-3xl sm:text-4xl animate-bounce">
+            <div className="text-2xl sm:text-4xl animate-bounce">
               {isPlantBlooming ? "🌸" : "🪴"}
             </div>
-            <span className="text-[10px] font-mono text-emerald-300 group-hover:underline mt-0.5 bg-black/60 px-2 py-0.5 rounded-full border border-emerald-500/30 shadow-sm flex items-center gap-1">
+            <span className="text-[9px] sm:text-[10px] font-mono text-emerald-300 group-hover:underline mt-0.5 bg-black/60 px-1.5 sm:px-2 py-0.5 rounded-full border border-emerald-500/30 shadow-sm flex items-center gap-1">
               <span>💧</span>
-              <span>{isPlantBlooming ? "Blooming Plant!" : "Monstera"}</span>
+              <span>{isPlantBlooming ? "Blooming!" : "Monstera"}</span>
             </span>
           </div>
 
           {/* Steaming Mug on Desk */}
           <div
             onClick={handleInteractTea}
-            className="absolute -left-2 sm:left-10 bottom-8 flex flex-col items-center cursor-pointer hover:scale-110 transition-transform group"
+            className="absolute -left-1 sm:left-10 bottom-4 sm:bottom-8 flex flex-col items-center cursor-pointer hover:scale-110 transition-transform group"
             title="Click to sip hot tea"
           >
             <div className="text-2xl sm:text-3xl">☕</div>
-            <span className="text-[10px] font-mono text-amber-300 group-hover:underline mt-0.5 bg-black/60 px-2 py-0.5 rounded-full border border-amber-500/30 shadow-sm flex items-center gap-1">
+            <span className="text-[9px] sm:text-[10px] font-mono text-amber-300 group-hover:underline mt-0.5 bg-black/60 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-500/30 shadow-sm flex items-center gap-1">
               <span>☕</span>
               <span>Warm Tea</span>
             </span>
@@ -450,17 +450,17 @@ export default function MindCareGame() {
 
         {/* Narrative Dialogue Box (Bottom) */}
         {gameState === "playing" && (
-          <div className="w-full max-w-xl mx-auto bg-black/75 backdrop-blur-md border border-white/15 rounded-2xl p-3.5 sm:p-4 text-white space-y-3 z-10 shadow-xl">
-            <p className="text-xs sm:text-sm font-sans leading-relaxed text-white/90 italic">
+          <div className="w-full max-w-xl mx-auto bg-black/80 backdrop-blur-md border border-white/15 rounded-2xl p-2.5 sm:p-4 text-white space-y-2 sm:space-y-3 z-10 shadow-xl">
+            <p className="text-[11px] sm:text-xs md:text-sm font-sans leading-relaxed text-white/90 italic line-clamp-2 sm:line-clamp-none">
               "{activeStoryText}"
             </p>
 
             {/* Quick Interactive Object Buttons */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1 font-mono text-xs">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2 pt-0.5 font-mono text-[11px] sm:text-xs">
               <button
                 type="button"
                 onClick={handleInteractWindow}
-                className="py-1.5 px-2 rounded-xl bg-white/10 hover:bg-white/20 text-sky-300 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                className="py-1.5 px-2 rounded-xl bg-white/10 hover:bg-white/20 active:bg-white/30 text-sky-300 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
               >
                 <Sun className="w-3.5 h-3.5" />
                 <span>Breathe</span>
@@ -468,7 +468,7 @@ export default function MindCareGame() {
               <button
                 type="button"
                 onClick={handleInteractLaptop}
-                className="py-1.5 px-2 rounded-xl bg-white/10 hover:bg-white/20 text-indigo-300 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                className="py-1.5 px-2 rounded-xl bg-white/10 hover:bg-white/20 active:bg-white/30 text-indigo-300 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
               >
                 <Laptop className="w-3.5 h-3.5" />
                 <span>Code Sprint</span>
@@ -476,7 +476,7 @@ export default function MindCareGame() {
               <button
                 type="button"
                 onClick={handleInteractBookshelf}
-                className="py-1.5 px-2 rounded-xl bg-white/10 hover:bg-white/20 text-purple-300 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                className="py-1.5 px-2 rounded-xl bg-white/10 hover:bg-white/20 active:bg-white/30 text-purple-300 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
               >
                 <BookOpen className="w-3.5 h-3.5" />
                 <span>Read Book</span>
@@ -484,7 +484,7 @@ export default function MindCareGame() {
               <button
                 type="button"
                 onClick={handleInteractPhone}
-                className="py-1.5 px-2 rounded-xl bg-white/10 hover:bg-white/20 text-emerald-300 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                className="py-1.5 px-2 rounded-xl bg-white/10 hover:bg-white/20 active:bg-white/30 text-emerald-300 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
               >
                 <Smartphone className="w-3.5 h-3.5" />
                 <span>Silence Phone</span>

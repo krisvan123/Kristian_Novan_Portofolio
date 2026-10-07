@@ -103,7 +103,7 @@ export default function GameShell({
       </header>
 
       {/* Main Game Stage Viewport */}
-      <main className="relative w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] max-h-[82vh] rounded-3xl bg-[#111113] border-2 border-surface-border shadow-xl overflow-hidden focus:outline-none">
+      <main className="relative w-full h-[520px] sm:h-[560px] md:h-[600px] lg:h-[630px] max-h-[78vh] rounded-3xl bg-[#111113] border-2 border-surface-border shadow-xl overflow-hidden focus:outline-none flex flex-col items-center justify-center">
         {children}
       </main>
     </div>
