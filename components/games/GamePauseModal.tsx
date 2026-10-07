@@ -11,6 +11,7 @@ interface GamePauseModalProps {
   onRestart: () => void;
   isMuted: boolean;
   onToggleMute: () => void;
+  onOpenTutorial?: () => void;
 }
 
 export default function GamePauseModal({
@@ -19,20 +20,21 @@ export default function GamePauseModal({
   onRestart,
   isMuted,
   onToggleMute,
+  onOpenTutorial,
 }: GamePauseModalProps) {
   if (!isOpen) return null;
 
   return (
     <div className="absolute inset-0 z-40 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md select-none animate-in fade-in duration-200">
-      <div className="relative w-full max-w-sm flex flex-col items-center bg-[#181920] border-2 border-white/15 rounded-3xl p-6 text-center space-y-5 shadow-2xl">
+      <div className="relative w-full max-w-sm flex flex-col items-center bg-[#181920] border-2 border-white/15 rounded-3xl p-6 text-center space-y-4 shadow-2xl">
         <h2 className="text-2xl font-display font-black text-white tracking-wider">
           GAME PAUSED
         </h2>
         <p className="text-xs font-mono text-white/60">
-          Take a breath, adjust settings, or jump right back in.
+          Take a breath, adjust settings, or review controls.
         </p>
 
-        <div className="w-full flex flex-col gap-2.5 pt-2">
+        <div className="w-full flex flex-col gap-2 pt-1">
           {/* Resume */}
           <button
             type="button"
@@ -42,6 +44,17 @@ export default function GamePauseModal({
             <Play className="w-4 h-4 fill-white" />
             <span>RESUME (ESC)</span>
           </button>
+
+          {/* How to Play / Tutorial */}
+          {onOpenTutorial && (
+            <button
+              type="button"
+              onClick={onOpenTutorial}
+              className="w-full py-2.5 px-4 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/30 text-amber-300 font-mono text-xs font-bold flex items-center justify-center gap-2 transition-colors cursor-pointer"
+            >
+              <span>? HOW TO PLAY / TUTORIAL</span>
+            </button>
+          )}
 
           {/* Restart */}
           <button

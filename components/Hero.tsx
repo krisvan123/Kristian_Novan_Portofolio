@@ -51,7 +51,7 @@ export default function Hero() {
                   Computer Science Student
                 </p>
                 <p className="text-sm sm:text-base font-mono text-accent dark:text-accent-dark font-medium">
-                  Specialization: {personalData.academic.specialization} · {personalData.academic.studyPeriod}
+                  BINUS University · B2028 · Intelligent Systems (AI) Specialization · Semesters 4–5
                 </p>
               </div>
             </div>

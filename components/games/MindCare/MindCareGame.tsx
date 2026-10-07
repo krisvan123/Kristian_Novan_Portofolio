@@ -6,9 +6,21 @@ import GameHUD from "@/components/games/GameHUD";
 import GameStartScreen from "@/components/games/GameStartScreen";
 import GamePauseModal from "@/components/games/GamePauseModal";
 import GameResultModal from "@/components/games/GameResultModal";
+import GameTutorialModal, { TutorialConfig } from "@/components/games/GameTutorialModal";
 import { sounds } from "@/components/Play/SoundEffects";
 import { gameStorage } from "@/lib/gameStorage";
 import { Coffee, Trees, Laptop, BookOpen, Smartphone, Sun, Moon, Cloud, Heart, Sparkles, CheckCircle2 } from "lucide-react";
+
+const MINDCARE_TUTORIAL: TutorialConfig = {
+  gameId: "mindcare",
+  gameTitle: "MindCare Choice",
+  objective: "Balance your Energy, Clarity, and Flow across 6 mindful choices.",
+  controlText: "Click or tap objects in the room (Window, Tea, Plant, Laptop, Bookshelf, Phone).",
+  doText: "Tend to living things, take calming breaths at the window, and protect your focus.",
+  avoidText: "Don't sprint on the laptop when your energy is low—rest first!",
+  winText: "Complete 6 intentional choices to reach 1 of 4 unique story endings.",
+  demoType: "mindcare",
+};
 
 interface NarrativeEnding {
   id: string;
@@ -57,6 +69,7 @@ const ENDINGS: Record<string, NarrativeEnding> = {
 export default function MindCareGame() {
   // Game States
   const [gameState, setGameState] = useState<"start" | "playing" | "paused" | "gameover" | "victory">("start");
+  const [showTutorial, setShowTutorial] = useState(false);
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [isNewRecord, setIsNewRecord] = useState(false);
@@ -85,6 +98,13 @@ export default function MindCareGame() {
   useEffect(() => {
     setBestScore(gameStorage.getBestScore("mindcare"));
     setIsMuted(sounds.isMuted);
+
+    if (typeof window !== "undefined") {
+      const tutDone = localStorage.getItem("kn_tut_mindcare");
+      if (!tutDone) {
+        setShowTutorial(true);
+      }
+    }
   }, []);
 
   // Popup helper
@@ -288,16 +308,35 @@ export default function MindCareGame() {
       <div className="relative w-full h-full flex flex-col justify-between p-4 sm:p-6 select-none overflow-hidden bg-[#161720]">
         {/* Active HUD */}
         {gameState === "playing" && (
-          <GameHUD
-            score={Math.floor(energy * 10 + clarity * 12 + flow * 15)}
-            objective={`Nurture your workspace (${actionsTaken}/6 turns)`}
-            secondaryMetric={{
-              label: "Turn",
-              value: `${actionsTaken}/6`,
-              icon: <Heart className="w-3.5 h-3.5 text-rose-400" />,
-            }}
-            feedbackPopups={feedbackPopups}
-          />
+          <>
+            <GameHUD
+              score={Math.floor(energy * 10 + clarity * 12 + flow * 15)}
+              objective={`Nurture your workspace (${actionsTaken}/6 turns)`}
+              secondaryMetric={{
+                label: "Turn",
+                value: `${actionsTaken}/6`,
+                icon: <Heart className="w-3.5 h-3.5 text-rose-400" />,
+              }}
+              feedbackPopups={feedbackPopups}
+              onOpenTutorial={() => setShowTutorial(true)}
+            />
+
+            {/* Contextual In-Game Hint */}
+            <div className="absolute top-16 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
+              <div className="px-3.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/10 text-white font-mono text-[11px] shadow-lg flex items-center gap-1.5 whitespace-nowrap">
+                <span>💡</span>
+                {actionsTaken === 0 ? (
+                  <span>Click any room object (Window, Tea, Plant, Laptop) to make your first choice!</span>
+                ) : energy < 25 ? (
+                  <span className="text-amber-400 font-bold">Energy is low! Sip tea ☕ or breathe at the window 🪟 to recharge</span>
+                ) : plantWaterCount === 2 ? (
+                  <span className="text-emerald-400 font-bold">The monstera is ready to bloom! Tend it once more 🌸</span>
+                ) : (
+                  <span>Balance Energy, Clarity, and Flow to reach a peaceful story ending ({6 - actionsTaken} turns left)</span>
+                )}
+              </div>
+            </div>
+          </>
         )}
 
         {/* Dynamic Metric Bars (Top) */}
@@ -372,6 +411,12 @@ export default function MindCareGame() {
             {/* Window Pane Grid */}
             <div className="absolute inset-x-0 top-1/2 h-1 bg-[#333748]" />
             <div className="absolute inset-y-0 left-1/2 w-1 bg-[#333748]" />
+
+            {/* Window label pill */}
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 text-[10px] font-mono text-white/90 group-hover:bg-accent/80 transition-colors flex items-center gap-1 shadow-sm whitespace-nowrap">
+              <span>🪟</span>
+              <span>Gaze &amp; Breathe</span>
+            </div>
           </div>
 
           {/* Plant next to window */}
@@ -383,8 +428,9 @@ export default function MindCareGame() {
             <div className="text-3xl sm:text-4xl animate-bounce">
               {isPlantBlooming ? "🌸" : "🪴"}
             </div>
-            <span className="text-[10px] font-mono text-emerald-400 group-hover:underline mt-0.5">
-              {isPlantBlooming ? "Blooming Plant!" : "Monstera"}
+            <span className="text-[10px] font-mono text-emerald-300 group-hover:underline mt-0.5 bg-black/60 px-2 py-0.5 rounded-full border border-emerald-500/30 shadow-sm flex items-center gap-1">
+              <span>💧</span>
+              <span>{isPlantBlooming ? "Blooming Plant!" : "Monstera"}</span>
             </span>
           </div>
 
@@ -395,8 +441,9 @@ export default function MindCareGame() {
             title="Click to sip hot tea"
           >
             <div className="text-2xl sm:text-3xl">☕</div>
-            <span className="text-[10px] font-mono text-amber-400 group-hover:underline mt-0.5">
-              Warm Tea
+            <span className="text-[10px] font-mono text-amber-300 group-hover:underline mt-0.5 bg-black/60 px-2 py-0.5 rounded-full border border-amber-500/30 shadow-sm flex items-center gap-1">
+              <span>☕</span>
+              <span>Warm Tea</span>
             </span>
           </div>
         </div>
@@ -480,6 +527,21 @@ export default function MindCareGame() {
           const next = sounds.toggleMute();
           setIsMuted(next);
         }}
+        onOpenTutorial={() => setShowTutorial(true)}
+      />
+
+      {/* Interactive Onboarding Tutorial Modal */}
+      <GameTutorialModal
+        isOpen={showTutorial}
+        config={MINDCARE_TUTORIAL}
+        onComplete={() => {
+          setShowTutorial(false);
+          if (typeof window !== "undefined") {
+            localStorage.setItem("kn_tut_mindcare", "true");
+          }
+          if (gameState === "start") startGame();
+        }}
+        onClose={() => setShowTutorial(false)}
       />
 
       {/* Victory / Ending Modal */}

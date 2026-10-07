@@ -117,40 +117,56 @@ export default function PlayPage() {
             slug="route-runner"
             title="Route Runner"
             badge="Top-Down Logistics"
-            description="Control an agile delivery van through an animated metropolitan grid. Dodge traffic jams, time the cycling traffic lights, refuel at depots, and drop 3 parcels before fuel or time runs out."
-            tagline="Dynamic traffic • Refuel depots • Rooftop easter egg"
+            description="Choose roads, avoid traffic, and deliver every package before you run out of fuel."
+            tagline="Dynamic Traffic · Refuel Depots · Rooftop Easter Egg"
             isFeatured={true}
             preview={
               <div className="relative w-full h-full flex flex-col items-center justify-center select-none p-4">
-                <svg viewBox="0 0 320 180" className="w-full h-full">
+                <svg viewBox="0 0 320 180" className="w-full h-full max-h-52 drop-shadow-md">
                   {/* City blocks */}
-                  <rect x="20" y="20" width="120" height="60" rx="6" fill="#202430" stroke="#33394a" strokeWidth="2" />
-                  <rect x="180" y="20" width="120" height="60" rx="6" fill="#202430" stroke="#33394a" strokeWidth="2" />
-                  <rect x="20" y="100" width="120" height="60" rx="6" fill="#202430" stroke="#33394a" strokeWidth="2" />
-                  <rect x="180" y="100" width="120" height="60" rx="6" fill="#202430" stroke="#33394a" strokeWidth="2" />
+                  <rect x="20" y="20" width="120" height="60" rx="8" fill="#1e2230" stroke="#33394a" strokeWidth="2" />
+                  <rect x="180" y="20" width="120" height="60" rx="8" fill="#1e2230" stroke="#33394a" strokeWidth="2" />
+                  <rect x="20" y="100" width="120" height="60" rx="8" fill="#1e2230" stroke="#33394a" strokeWidth="2" />
+                  <rect x="180" y="100" width="120" height="60" rx="8" fill="#1e2230" stroke="#33394a" strokeWidth="2" />
 
-                  {/* Roads */}
+                  {/* Block decor */}
+                  <text x="80" y="55" fill="#64748b" fontSize="10" fontFamily="monospace" textAnchor="middle">DEPOT A</text>
+                  <text x="240" y="55" fill="#64748b" fontSize="10" fontFamily="monospace" textAnchor="middle">AI LAB</text>
+                  <text x="80" y="135" fill="#64748b" fontSize="10" fontFamily="monospace" textAnchor="middle">DEPOT B</text>
+                  <text x="240" y="135" fill="#64748b" fontSize="10" fontFamily="monospace" textAnchor="middle">CLIENT HUB</text>
+
+                  {/* Asphalt road lines */}
                   <line x1="0" y1="90" x2="320" y2="90" stroke="#FBBF24" strokeWidth="2" strokeDasharray="6 6" />
                   <line x1="160" y1="0" x2="160" y2="180" stroke="#FBBF24" strokeWidth="2" strokeDasharray="6 6" />
 
-                  {/* Traffic Light */}
-                  <circle cx="160" cy="90" r="10" fill="#111827" />
+                  {/* Intersection Signal */}
+                  <circle cx="160" cy="90" r="11" fill="#0f172a" stroke="#334155" strokeWidth="1.5" />
                   <circle cx="160" cy="90" r="5" fill="#10B981" className="animate-pulse" />
 
-                  {/* Delivery target */}
-                  <circle cx="240" cy="50" r="12" fill="#3B82F6" opacity="0.3" className="animate-ping" />
-                  <circle cx="240" cy="50" r="8" fill="#3B82F6" />
+                  {/* Delivery pin target */}
+                  <circle cx="255" cy="90" r="14" fill="#3B82F6" opacity="0.25" className="animate-ping" />
+                  <circle cx="255" cy="90" r="7" fill="#3B82F6" />
+                  <text x="255" y="93" fill="#ffffff" fontSize="8" fontWeight="bold" textAnchor="middle">📦</text>
 
-                  {/* Moving Van */}
-                  <g className="animate-bounce" transform="translate(90, 85)">
-                    <rect x="-14" y="-8" width="28" height="16" rx="3" fill="#2563EB" stroke="#60A5FA" strokeWidth="1.5" />
-                    <circle cx="-7" cy="8" r="3" fill="#1E293B" />
-                    <circle cx="7" cy="8" r="3" fill="#1E293B" />
+                  {/* Fuel Depot marker */}
+                  <circle cx="65" cy="90" r="8" fill="#10B981" opacity="0.3" />
+                  <text x="65" y="93" fill="#10B981" fontSize="9" fontWeight="bold" textAnchor="middle">⛽</text>
+
+                  {/* Player Delivery Van with headlight beam */}
+                  <g className="animate-bounce" transform="translate(120, 85)">
+                    {/* Headlight beam */}
+                    <polygon points="14,-4 40,-12 40,12 14,4" fill="#FBBF24" opacity="0.25" />
+                    <rect x="-14" y="-8" width="28" height="16" rx="4" fill="#2563EB" stroke="#60A5FA" strokeWidth="1.5" />
+                    <rect x="5" y="-6" width="6" height="12" rx="1.5" fill="#93C5FD" />
+                    <circle cx="-7" cy="8" r="3" fill="#0f172a" stroke="#475569" strokeWidth="1" />
+                    <circle cx="7" cy="8" r="3" fill="#0f172a" stroke="#475569" strokeWidth="1" />
+                    <text x="-3" y="4" fill="#ffffff" fontSize="7" fontWeight="bold" fontFamily="monospace">KN</text>
                   </g>
                 </svg>
-                <span className="text-[10px] font-mono text-charcoal-soft mt-1">
-                  Click to start simulation
-                </span>
+                <div className="flex items-center gap-2 mt-2 px-3 py-1 rounded-full bg-black/40 backdrop-blur-xs border border-white/10 text-[10px] font-mono text-charcoal-muted">
+                  <span>🚗</span>
+                  <span>Navigate roads, grab fuel &amp; drop parcels</span>
+                </div>
               </div>
             }
           />
@@ -173,21 +189,41 @@ export default function PlayPage() {
               slug="catch-the-data"
               title="Catch the Data"
               badge="ML Stream Arcade"
-              description="High-velocity laser scanner arcade. Chain target captures into x5 combos, grab power-up capsules, dodge noise spikes, and defeat the Wave 5 Boss Anomaly."
-              tagline="5 waves • Boss battle • Smiling golden data"
+              description="Move your scanner and collect the right data while avoiding noise."
+              tagline="Data Classification · Wave 5 Boss · x5 Combos"
               preview={
-                <div className="relative w-full h-full flex items-center justify-center">
-                  <div className="relative w-44 h-28 rounded-xl bg-[#0e1017] border border-emerald-500/30 flex items-center justify-center overflow-hidden">
-                    <div className="absolute inset-0 bg-[radial-gradient(#10B981_1px,transparent_1px)] [background-size:12px_12px] opacity-20" />
-                    {/* Pulsing reticle */}
-                    <div className="w-12 h-12 rounded-full border-2 border-emerald-400 flex items-center justify-center animate-spin">
+                <div className="relative w-full h-full flex flex-col items-center justify-center">
+                  <div className="relative w-full h-36 rounded-xl bg-[#0c0e14] border border-emerald-500/30 flex items-center justify-center overflow-hidden">
+                    <div className="absolute inset-0 bg-[radial-gradient(#10B981_1px,transparent_1px)] [background-size:14px_14px] opacity-15" />
+                    
+                    {/* Scanner Reticle */}
+                    <div className="w-14 h-14 rounded-full border-2 border-emerald-400/80 flex items-center justify-center animate-pulse">
+                      <div className="w-8 h-8 rounded-full border border-dashed border-emerald-300 animate-spin" />
                       <div className="w-2 h-2 rounded-full bg-emerald-400" />
                     </div>
-                    {/* Floating data dots */}
-                    <div className="absolute top-3 left-4 w-3.5 h-3.5 rounded-full bg-emerald-400 shadow-md animate-bounce" />
-                    <div className="absolute bottom-3 right-6 w-3 h-3 rounded-full bg-amber-400 shadow-md animate-pulse" />
-                    <div className="absolute top-4 right-5 w-3 h-3 rotate-45 bg-rose-500 shadow-md" />
+
+                    {/* Floating Packets */}
+                    <div className="absolute top-4 left-6 flex items-center gap-1 bg-emerald-500/20 px-2 py-0.5 rounded-full border border-emerald-400/40 animate-bounce">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                      <span className="text-[10px] font-mono text-emerald-300 font-bold">+100</span>
+                    </div>
+
+                    <div className="absolute bottom-4 right-8 flex items-center gap-1 bg-amber-500/20 px-2 py-0.5 rounded-full border border-amber-400/40 animate-pulse">
+                      <span className="text-xs">★</span>
+                      <span className="text-[10px] font-mono text-amber-300 font-bold">x3 COMBO</span>
+                    </div>
+
+                    <div className="absolute top-5 right-6 w-4 h-4 rotate-45 bg-rose-500/80 border border-rose-300 shadow-sm flex items-center justify-center">
+                      <span className="text-[8px] text-white">✕</span>
+                    </div>
+
+                    <div className="absolute bottom-5 left-8 w-4 h-4 rounded-full bg-cyan-400/80 border border-cyan-200 animate-pulse flex items-center justify-center">
+                      <span className="text-[8px] text-white">⚡</span>
+                    </div>
                   </div>
+                  <span className="text-[10px] font-mono text-charcoal-soft mt-1.5">
+                    🎯 Guide reticle over emerald packets · Dodge red spikes
+                  </span>
                 </div>
               }
             />
@@ -197,21 +233,43 @@ export default function PlayPage() {
               slug="portfolio-quest"
               title="Portfolio Quest"
               badge="2D RPG Adventure"
-              description="Walk across an illustrated campus world. Discover 5 milestone pavilions, speak with wandering NPCs, switch day/night lighting, and seek the hidden sunflower garden."
-              tagline="Follow camera • NPCs • Hidden garden secret"
+              description="Explore a tiny world and discover the hidden pieces of Kristian's portfolio."
+              tagline="Top-Down RPG · 5 Pavilions · Day/Night Cycle"
               preview={
-                <div className="relative w-full h-full flex items-center justify-center">
-                  <div className="relative w-44 h-28 rounded-xl bg-[#1d3329] border border-white/10 flex items-center justify-center overflow-hidden">
-                    {/* Cross walkways */}
-                    <div className="absolute inset-y-0 w-8 bg-[#c2bcad]" />
-                    <div className="absolute inset-x-0 h-8 bg-[#c2bcad]" />
-                    {/* Center fountain */}
-                    <div className="w-8 h-8 rounded-full bg-sky-400 border-2 border-white/60 z-10" />
-                    {/* Avatar */}
-                    <div className="absolute bottom-4 right-8 w-5 h-7 rounded-md bg-blue-600 border border-white flex flex-col items-center justify-start p-0.5 z-10 animate-pulse">
-                      <div className="w-2.5 h-2.5 rounded-full bg-amber-200" />
+                <div className="relative w-full h-full flex flex-col items-center justify-center">
+                  <div className="relative w-full h-36 rounded-xl bg-[#14231b] border border-white/10 flex items-center justify-center overflow-hidden">
+                    {/* Walkways */}
+                    <div className="absolute inset-y-0 w-12 bg-[#c0b7a4]/80" />
+                    <div className="absolute inset-x-0 h-10 bg-[#c0b7a4]/80" />
+
+                    {/* Central Water Fountain */}
+                    <div className="relative w-10 h-10 rounded-full bg-sky-500 border-2 border-white/80 z-10 flex items-center justify-center shadow-md">
+                      <div className="w-5 h-5 rounded-full bg-sky-200 animate-ping opacity-60" />
+                      <span className="absolute text-xs">⛲</span>
+                    </div>
+
+                    {/* Milestone Pavilions */}
+                    <div className="absolute top-2 left-3 bg-[#1e293b] border border-blue-400/60 px-2 py-0.5 rounded-md text-[9px] font-mono text-blue-300 z-10 shadow-sm flex items-center gap-1">
+                      <span>🤖</span>
+                      <span>AI Lab</span>
+                    </div>
+
+                    <div className="absolute top-2 right-3 bg-[#1e293b] border border-amber-400/60 px-2 py-0.5 rounded-md text-[9px] font-mono text-amber-300 z-10 shadow-sm flex items-center gap-1">
+                      <span>🏆</span>
+                      <span>CompFest</span>
+                    </div>
+
+                    {/* Walking Avatar */}
+                    <div className="absolute bottom-3 right-10 flex flex-col items-center z-10 animate-pulse">
+                      <div className="w-5 h-7 rounded-md bg-blue-600 border border-white flex flex-col items-center justify-start p-0.5 shadow-md">
+                        <div className="w-2.5 h-2.5 rounded-full bg-amber-200" />
+                      </div>
+                      <span className="text-[8px] font-mono text-white bg-black/60 px-1 rounded-sm mt-0.5">KN</span>
                     </div>
                   </div>
+                  <span className="text-[10px] font-mono text-charcoal-soft mt-1.5">
+                    🧭 Walk with WASD/Arrows · Talk to NPCs · Find secret garden
+                  </span>
                 </div>
               }
             />
@@ -221,30 +279,36 @@ export default function PlayPage() {
               slug="memory"
               title="Memory of My Journey"
               badge="Tactile Card Quest"
-              description="Match 8 milestones across Kristian's engineering journey with 3D wax-seal flips. Chain rapid matches for combo points, trigger Time Freezes, and survive Memory Fog."
-              tagline="3D card flip • Time freeze • 3 progressive levels"
+              description="Flip, match, and beat the clock."
+              tagline="Wax-Seal Flips · Freeze Time · 3 Progressive Levels"
               preview={
-                <div className="relative w-full h-full flex items-center justify-center">
-                  <div className="grid grid-cols-3 gap-2 w-36">
-                    <div className="h-10 rounded-lg bg-emerald-600/30 border border-emerald-500 flex items-center justify-center text-xs">
-                      🌱
-                    </div>
-                    <div className="h-10 rounded-lg bg-[#252836] border border-white/10 flex items-center justify-center text-[10px] font-mono text-accent">
-                      KN
-                    </div>
-                    <div className="h-10 rounded-lg bg-blue-600/30 border border-blue-500 flex items-center justify-center text-xs">
-                      📜
-                    </div>
-                    <div className="h-10 rounded-lg bg-[#252836] border border-white/10 flex items-center justify-center text-[10px] font-mono text-accent">
-                      KN
-                    </div>
-                    <div className="h-10 rounded-lg bg-amber-600/30 border border-amber-500 flex items-center justify-center text-xs">
-                      🏆
-                    </div>
-                    <div className="h-10 rounded-lg bg-[#252836] border border-white/10 flex items-center justify-center text-[10px] font-mono text-accent">
-                      KN
+                <div className="relative w-full h-full flex flex-col items-center justify-center">
+                  <div className="w-full h-36 rounded-xl bg-[#11131a] border border-white/10 flex items-center justify-center p-2 overflow-hidden">
+                    <div className="grid grid-cols-4 gap-2 w-full max-w-[240px]">
+                      {/* Card 1 - Face Up */}
+                      <div className="h-12 rounded-lg bg-[#1e2230] border-2 border-emerald-500 flex flex-col items-center justify-center p-1 shadow-sm">
+                        <span className="text-sm">🌱</span>
+                        <span className="text-[7px] font-mono text-emerald-400 leading-none">ECO</span>
+                      </div>
+                      {/* Card 2 - Face Up Match */}
+                      <div className="h-12 rounded-lg bg-[#1e2230] border-2 border-emerald-500 flex flex-col items-center justify-center p-1 shadow-sm animate-pulse">
+                        <span className="text-sm">🌱</span>
+                        <span className="text-[7px] font-mono text-emerald-400 leading-none">ECO</span>
+                      </div>
+                      {/* Card 3 - Face Down Crest */}
+                      <div className="h-12 rounded-lg bg-gradient-to-br from-[#272b3b] to-[#171924] border border-white/10 flex flex-col items-center justify-center shadow-xs">
+                        <span className="text-[9px] font-mono font-bold text-accent">KN</span>
+                      </div>
+                      {/* Card 4 - Special Freeze */}
+                      <div className="h-12 rounded-lg bg-[#1e2230] border-2 border-cyan-400 flex flex-col items-center justify-center p-1 shadow-sm">
+                        <span className="text-sm">⏱️</span>
+                        <span className="text-[7px] font-mono text-cyan-300 leading-none">FREEZE</span>
+                      </div>
                     </div>
                   </div>
+                  <span className="text-[10px] font-mono text-charcoal-soft mt-1.5">
+                    🃏 Flip cards · Chain fast pairs (&lt;4.5s) for combo bonuses
+                  </span>
                 </div>
               }
             />
@@ -254,20 +318,34 @@ export default function PlayPage() {
               slug="mindcare"
               title="MindCare Choice"
               badge="Cozy Room Simulation"
-              description="A living interactive workspace room. Balance Mental Energy, Emotional Clarity, and Creative Flow across dynamic sky cycles, water the plant to bloom, and reach 4 endings."
-              tagline="Day/sunset/night sky • Plant bloom • 4 endings"
+              description="Explore a small story where your choices change what happens next."
+              tagline="Atmospheric Room · Blooming Plant · 4 Narrative Endings"
               preview={
-                <div className="relative w-full h-full flex items-center justify-center">
-                  <div className="relative w-44 h-28 rounded-xl bg-[#181924] border border-white/10 flex items-center justify-center overflow-hidden">
-                    {/* Window with sunset */}
-                    <div className="w-20 h-16 rounded-t-full bg-gradient-to-b from-rose-400 via-amber-300 to-sky-400 border-2 border-white/20 flex items-center justify-center">
-                      <div className="text-base animate-pulse">☀️</div>
+                <div className="relative w-full h-full flex flex-col items-center justify-center">
+                  <div className="relative w-full h-36 rounded-xl bg-[#14151f] border border-white/10 flex items-center justify-center overflow-hidden">
+                    {/* Window with shifting sky */}
+                    <div className="w-24 h-20 rounded-t-full bg-gradient-to-b from-rose-400 via-amber-300 to-sky-400 border-2 border-white/20 flex flex-col items-center justify-center shadow-md relative overflow-hidden group">
+                      <div className="text-sm animate-pulse">☀️</div>
+                      <div className="absolute inset-x-0 top-1/2 h-0.5 bg-white/30" />
+                      <div className="absolute inset-y-0 left-1/2 w-0.5 bg-white/30" />
+                      <span className="absolute bottom-0.5 text-[8px] font-mono text-black/70 bg-white/60 px-1 rounded-xs">🪟 Gaze</span>
                     </div>
-                    {/* Plant */}
-                    <div className="absolute bottom-2 right-4 text-xl">🪴</div>
-                    {/* Tea cup */}
-                    <div className="absolute bottom-2 left-4 text-base">☕</div>
+
+                    {/* Steaming Mug */}
+                    <div className="absolute bottom-3 left-6 flex flex-col items-center">
+                      <div className="text-lg animate-bounce">☕</div>
+                      <span className="text-[8px] font-mono text-amber-300 bg-black/60 px-1 rounded-xs">Sip Tea</span>
+                    </div>
+
+                    {/* Blooming Monstera Plant */}
+                    <div className="absolute bottom-3 right-6 flex flex-col items-center">
+                      <div className="text-xl animate-pulse">🌸</div>
+                      <span className="text-[8px] font-mono text-emerald-300 bg-black/60 px-1 rounded-xs">Plant</span>
+                    </div>
                   </div>
+                  <span className="text-[10px] font-mono text-charcoal-soft mt-1.5">
+                    ☕ Balance Energy, Clarity &amp; Flow across 6 meaningful choices
+                  </span>
                 </div>
               }
             />

@@ -6,9 +6,21 @@ import GameHUD from "@/components/games/GameHUD";
 import GameStartScreen from "@/components/games/GameStartScreen";
 import GamePauseModal from "@/components/games/GamePauseModal";
 import GameResultModal from "@/components/games/GameResultModal";
+import GameTutorialModal, { TutorialConfig } from "@/components/games/GameTutorialModal";
 import { sounds } from "@/components/Play/SoundEffects";
 import { gameStorage } from "@/lib/gameStorage";
 import { ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Sun, Moon, Sparkles, MessageCircle, BookOpen, CheckCircle2, X } from "lucide-react";
+
+const PORTFOLIO_QUEST_TUTORIAL: TutorialConfig = {
+  gameId: "portfolio-quest",
+  gameTitle: "Portfolio Quest",
+  objective: "Visit all 5 milestone pavilions and collect 5 stars.",
+  controlText: "WASD / Arrow Keys or on-screen directional buttons to move.",
+  doText: "Walk up to pavilions & residents, then press [E] or tap 'Talk / Inspect'.",
+  avoidText: "Don't miss the secret northern grove where the golden sunflower blooms!",
+  winText: "Inspect all 5 pavilions (Projects, AI, Garden, Design, Arch) to complete the quest.",
+  demoType: "quest",
+};
 
 interface Pavilion {
   id: string;
@@ -49,6 +61,7 @@ export default function PortfolioQuestGame() {
 
   // Game States
   const [gameState, setGameState] = useState<"start" | "playing" | "paused" | "gameover" | "victory">("start");
+  const [showTutorial, setShowTutorial] = useState(false);
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [isNewRecord, setIsNewRecord] = useState(false);
@@ -203,6 +216,13 @@ export default function PortfolioQuestGame() {
   useEffect(() => {
     setBestScore(gameStorage.getBestScore("portfolio-quest"));
     setIsMuted(sounds.isMuted);
+
+    if (typeof window !== "undefined") {
+      const tutDone = localStorage.getItem("kn_tut_portfolio-quest");
+      if (!tutDone) {
+        setShowTutorial(true);
+      }
+    }
   }, []);
 
   // Popup feedback helper
@@ -678,14 +698,29 @@ export default function PortfolioQuestGame() {
         <>
           <GameHUD
             score={score}
-            objective={`Explore pavilions (${visitedCount}/5) · Stars (${starsCollectedCount}/5)`}
+            objective={`FIND & INSPECT 5 PAVILIONS (${visitedCount}/5) · Stars (${starsCollectedCount}/5)`}
             secondaryMetric={{
               label: "Pavilions",
               value: `${visitedCount}/5`,
               icon: <BookOpen className="w-3.5 h-3.5 text-accent" />,
             }}
             feedbackPopups={feedbackPopups}
+            onOpenTutorial={() => setShowTutorial(true)}
           />
+
+          {/* Contextual In-Game Hint */}
+          <div className="absolute top-16 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
+            <div className="px-3.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/10 text-white font-mono text-[11px] shadow-lg flex items-center gap-1.5">
+              <span>💡</span>
+              {visitedCount === 0 ? (
+                <span>Walk up to any building or NPC and press [E] or tap 'Talk / Inspect'!</span>
+              ) : visitedCount < 5 ? (
+                <span>Follow stone promenades to remaining pavilions or explore the northern grove!</span>
+              ) : (
+                <span className="text-emerald-400 font-bold">All 5 Pavilions Explored! Master Explorer award unlocked!</span>
+              )}
+            </div>
+          </div>
 
           {/* Action Bar Bottom Left: Inspect & Day/Night */}
           <div className="absolute bottom-4 left-4 z-20 flex items-center gap-2 pointer-events-auto">
@@ -855,6 +890,18 @@ export default function PortfolioQuestGame() {
           const next = sounds.toggleMute();
           setIsMuted(next);
         }}
+        onOpenTutorial={() => setShowTutorial(true)}
+      />
+
+      {/* Interactive Onboarding Tutorial Modal */}
+      <GameTutorialModal
+        isOpen={showTutorial}
+        config={PORTFOLIO_QUEST_TUTORIAL}
+        onComplete={() => {
+          setShowTutorial(false);
+          if (gameState === "start") startGame();
+        }}
+        onClose={() => setShowTutorial(false)}
       />
 
       {/* Victory Modal */}

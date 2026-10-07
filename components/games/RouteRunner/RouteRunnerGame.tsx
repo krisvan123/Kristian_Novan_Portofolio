@@ -6,9 +6,21 @@ import GameHUD from "@/components/games/GameHUD";
 import GameStartScreen from "@/components/games/GameStartScreen";
 import GamePauseModal from "@/components/games/GamePauseModal";
 import GameResultModal from "@/components/games/GameResultModal";
+import GameTutorialModal, { TutorialConfig } from "@/components/games/GameTutorialModal";
 import { sounds } from "@/components/Play/SoundEffects";
 import { gameStorage } from "@/lib/gameStorage";
 import { ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Fuel, Wrench, Sparkles, Navigation } from "lucide-react";
+
+const ROUTE_RUNNER_TUTORIAL: TutorialConfig = {
+  gameId: "route-runner",
+  gameTitle: "Route Runner",
+  objective: "Deliver all 3 packages before fuel or time runs out.",
+  controlText: "WASD / Arrow Keys or virtual D-Pad to drive & steer.",
+  doText: "Drive along asphalt roads to deliver to stops #1, #2, and #3 in sequence.",
+  avoidText: "Avoid hitting civilian traffic (-4 fuel) and running out of gas.",
+  winText: "Safely deliver all 3 packages to hospital, campus & tech hub.",
+  demoType: "route",
+};
 
 interface DeliveryStop {
   id: number;
@@ -45,6 +57,7 @@ export default function RouteRunnerGame() {
 
   // Game States
   const [gameState, setGameState] = useState<"start" | "playing" | "paused" | "gameover" | "victory">("start");
+  const [showTutorial, setShowTutorial] = useState(false);
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [isNewRecord, setIsNewRecord] = useState(false);
@@ -113,6 +126,13 @@ export default function RouteRunnerGame() {
     setBestScore(gameStorage.getBestScore("route-runner"));
     setUpgrades(gameStorage.getRouteRunnerUpgrades());
     setIsMuted(sounds.isMuted);
+
+    if (typeof window !== "undefined") {
+      const tutDone = localStorage.getItem("kn_tut_route-runner");
+      if (!tutDone) {
+        setShowTutorial(true);
+      }
+    }
   }, []);
 
   // Popup feedback helper
@@ -672,11 +692,31 @@ export default function RouteRunnerGame() {
         <>
           <GameHUD
             score={score}
-            objective={`Deliver cargo to ${stopsRef.current[currentStopIndex]?.name || "Destination"}`}
+            objective={`Deliver package #${currentStopIndex + 1}/3 to ${stopsRef.current[currentStopIndex]?.name || "Destination"}`}
             fuel={fuel}
             timeRemaining={timeRemaining}
             feedbackPopups={feedbackPopups}
+            secondaryMetric={{
+              label: "Deliveries",
+              value: `${currentStopIndex}/3`,
+              icon: <Navigation className="w-3.5 h-3.5 text-accent" />,
+            }}
+            onOpenTutorial={() => setShowTutorial(true)}
           />
+
+          {/* In-Game Contextual Hint */}
+          <div className="absolute top-16 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
+            <div className="px-3.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/10 text-white font-mono text-[11px] shadow-lg flex items-center gap-1.5">
+              <span>💡</span>
+              {fuel < 30 ? (
+                <span className="text-amber-400 font-bold">LOW FUEL! Pull into ⛽ REFUEL station at bottom center</span>
+              ) : playerRef.current.speed === 0 ? (
+                <span>Press W / Up Arrow or tap D-Pad to drive forward!</span>
+              ) : (
+                <span>Follow road toward glowing {stopsRef.current[currentStopIndex]?.name} beacon</span>
+              )}
+            </div>
+          </div>
 
           {/* Quick Upgrade Drawer Button */}
           <button
@@ -816,6 +856,18 @@ export default function RouteRunnerGame() {
           const next = sounds.toggleMute();
           setIsMuted(next);
         }}
+        onOpenTutorial={() => setShowTutorial(true)}
+      />
+
+      {/* Interactive Onboarding Tutorial Modal */}
+      <GameTutorialModal
+        isOpen={showTutorial}
+        config={ROUTE_RUNNER_TUTORIAL}
+        onComplete={() => {
+          setShowTutorial(false);
+          if (gameState === "start") startGame();
+        }}
+        onClose={() => setShowTutorial(false)}
       />
 
       {/* Victory / Game Over Modal */}

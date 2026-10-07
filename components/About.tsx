@@ -1,162 +1,213 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
+import Image from "next/image";
 import { personalData } from "@/data/personal";
 import ScrollReveal from "./ScrollReveal";
 import {
-  Code2,
+  Music,
+  Drama,
   Users2,
-  Mic2,
-  Cpu,
+  Sparkles,
   Compass,
+  Lightbulb,
+  ArrowRight,
+  Mail,
   GraduationCap,
 } from "lucide-react";
 
-const CAPABILITY_ICONS = [
-  Cpu,
-  Compass,
-  Code2,
-  Mic2,
-  Users2,
-  GraduationCap,
+const CREATIVE_INTERESTS = [
+  { label: "Music", description: "Melody, harmonies, & instruments", icon: Music, emoji: "🎵" },
+  { label: "Theater", description: "Dramatic arts, expression & stagecraft", icon: Drama, emoji: "🎭" },
+  { label: "Choir", description: "Vocal ensemble & choral performance", icon: Users2, emoji: "🎶" },
+  { label: "Modeling", description: "Visual aesthetics, poise & fashion", icon: Sparkles, emoji: "✨" },
+  { label: "Exploring New Things", description: "Stepping beyond familiar comfort zones", icon: Compass, emoji: "🧭" },
+  { label: "Learning New Things", description: "Curiosity-driven self-discovery", icon: Lightbulb, emoji: "💡" },
+];
+
+const COLLAGE_PHOTOS = [
+  {
+    src: "/images/profile/p1.jpg",
+    alt: "Kristian Novan personal photo 1",
+    caption: "Stage & Presence",
+    aspect: "aspect-[4/5]",
+    className: "rotate-[-1.5deg] hover:rotate-0 hover:z-10",
+  },
+  {
+    src: "/images/profile/p2.jpg",
+    alt: "Kristian Novan personal photo 2",
+    caption: "Creative Expressions",
+    aspect: "aspect-[1/1]",
+    className: "rotate-[1.5deg] hover:rotate-0 hover:z-10 mt-4 md:mt-6",
+  },
+  {
+    src: "/images/profile/p3.jpg",
+    alt: "Kristian Novan personal photo 3",
+    caption: "Moments & Exploration",
+    aspect: "aspect-[1/1]",
+    className: "rotate-[1deg] hover:rotate-0 hover:z-10 -mt-2",
+  },
+  {
+    src: "/images/profile/p4.jpg",
+    alt: "Kristian Novan personal photo 4",
+    caption: "Curiosity in Motion",
+    aspect: "aspect-[4/5]",
+    className: "rotate-[-2deg] hover:rotate-0 hover:z-10 mt-3",
+  },
 ];
 
 export default function About() {
+  const [isPressingCta, setIsPressingCta] = useState(false);
+
+  const handleCtaClick = () => {
+    setIsPressingCta(true);
+    setTimeout(() => {
+      setIsPressingCta(false);
+    }, 300);
+  };
+
   return (
-    <section id="about" className="py-14 md:py-20 border-t border-surface-border">
-      <div className="max-w-content mx-auto px-6 md:px-10 lg:px-12">
+    <section id="about" className="py-16 md:py-24 border-t border-surface-border">
+      <div className="max-w-content mx-auto px-6 md:px-10 lg:px-12 space-y-14 md:space-y-18">
         {/* Section Header */}
-        <ScrollReveal className="flex flex-col items-start space-y-2 mb-10 md:mb-12">
+        <ScrollReveal className="flex flex-col items-start space-y-2.5 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-canvas-subtle border border-surface-border text-charcoal-soft font-mono text-[11px]">
-            <span>Background &amp; Direction</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+            <span>Personal Profile &amp; Story</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-semibold tracking-tight text-charcoal">
             About Me
           </h2>
-          <p className="text-sm sm:text-base text-charcoal-soft max-w-2xl font-sans">
-            Undergraduate student at BINUS University exploring the balance between machine intelligence and clear, comfortable user experience.
+          <p className="text-sm sm:text-base text-charcoal-muted font-sans leading-relaxed">
+            A Computer Science student combining technical discipline in Machine Learning and UI/UX with active creative pursuits in performing arts and hands-on discovery.
           </p>
         </ScrollReveal>
 
-        {/* Content Grid: 12-Column Responsive Layout */}
+        {/* Narrative & Editorial Collage Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          {/* Left Column: Narrative paragraphs & Core Strengths */}
-          <ScrollReveal delay={120} className="lg:col-span-7 space-y-6">
-            <div className="space-y-4 text-charcoal-muted leading-relaxed text-base sm:text-lg font-sans">
+          {/* Left Column: Natural Personal Narrative & Beyond CS */}
+          <ScrollReveal delay={100} className="lg:col-span-7 space-y-8">
+            {/* Main Narrative Paragraphs */}
+            <div className="space-y-5 text-charcoal-muted leading-relaxed text-base sm:text-lg font-sans">
               <p className="text-lg sm:text-xl text-charcoal font-medium leading-relaxed font-display">
-                {personalData.aboutBio.lead}
+                I&apos;m a Computer Science student at BINUS University, currently exploring Machine Learning and UI/UX while building projects and learning through hands-on experiences.
               </p>
-              {personalData.aboutBio.body.map((p, index) => (
-                <p key={index}>{p}</p>
-              ))}
+              <p>
+                Outside of technology, I also enjoy music, theater, choir, and modeling. I like trying things that are unfamiliar to me and learning something new along the way. For me, exploring different interests is part of how I stay curious and keep growing.
+              </p>
+              <p>
+                Whether I&apos;m training a machine learning model, crafting an interface in Figma, or stepping onto a stage, I find joy in connecting technical thinking with creative expression. I enjoy building things from both sides of the process — making systems dependable under the hood while ensuring they feel natural, clear, and human on the surface.
+              </p>
             </div>
 
-            {/* Core Capabilities */}
-            <div className="pt-3">
-              <h3 className="text-xs font-mono font-semibold tracking-wider text-charcoal-soft uppercase mb-3.5">
-                Current Experience &amp; Involvements
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {personalData.aboutBio.capabilities.map((item, index) => {
-                  const Icon = CAPABILITY_ICONS[index % CAPABILITY_ICONS.length];
-                  return (
-                    <div
-                      key={item}
-                      className="flex items-center gap-3 p-3.5 rounded-xl bg-white dark:bg-canvas-card-dark border border-surface-border shadow-2xs hover:border-accent-border transition-all duration-200 group"
-                    >
-                      <div className="w-8 h-8 rounded-lg bg-accent-light dark:bg-accent-soft text-accent dark:text-accent-dark flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-200">
-                        <Icon className="w-4 h-4 stroke-[1.8]" />
-                      </div>
-                      <span className="text-xs sm:text-sm font-medium text-charcoal">
-                        {item}
+            {/* BEYOND COMPUTER SCIENCE — Subtle Editorial Interest Area */}
+            <div className="pt-2 space-y-3.5">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-mono font-semibold tracking-wider text-charcoal-soft uppercase">
+                  Beyond Computer Science
+                </span>
+                <div className="flex-1 h-[1px] bg-surface-border" />
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                {CREATIVE_INTERESTS.map((item) => (
+                  <div
+                    key={item.label}
+                    className="p-3 rounded-xl bg-white/70 dark:bg-canvas-card-dark/70 border border-surface-border/80 hover:border-accent/40 shadow-2xs hover:shadow-xs transition-all duration-200 group"
+                  >
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-sm">{item.emoji}</span>
+                      <span className="text-xs font-display font-semibold text-charcoal group-hover:text-accent transition-colors">
+                        {item.label}
                       </span>
                     </div>
-                  );
-                })}
+                    <span className="text-[10px] font-mono text-charcoal-soft block line-clamp-1">
+                      {item.description}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* PERSONAL COLLABORATION CTA */}
+            <div className="p-6 sm:p-7 rounded-2xl bg-canvas-subtle border border-surface-border space-y-4">
+              <div className="space-y-1.5">
+                <p className="text-sm sm:text-base font-display font-semibold text-charcoal">
+                  I&apos;m always open to meeting people, working on interesting ideas, and building something meaningful together.
+                </p>
+                <p className="text-xs sm:text-sm text-charcoal-muted font-sans">
+                  Interested in collaborating on software, AI/ML, UI/UX, or creative technical projects? I&apos;d be happy to hear from you.
+                </p>
+              </div>
+
+              <div className="pt-1">
+                <a
+                  href={`mailto:${personalData.contact.email}`}
+                  onClick={handleCtaClick}
+                  className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-charcoal dark:bg-[#F3F2EE] text-white dark:text-[#111113] text-xs sm:text-sm font-semibold font-display shadow-xs hover:bg-accent dark:hover:bg-accent-hover hover:text-white transition-all duration-200 cursor-pointer group ${
+                    isPressingCta ? "scale-95" : "hover:-translate-y-0.5"
+                  }`}
+                >
+                  <Mail className="w-4 h-4" />
+                  <span>Let&apos;s Work Together</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </a>
               </div>
             </div>
           </ScrollReveal>
 
-          {/* Right Column: Clean Editorial Academic Overview Card */}
-          <ScrollReveal delay={200} className="lg:col-span-5 flex flex-col space-y-4">
-            <div className="bg-white dark:bg-canvas-card-dark p-6 sm:p-8 rounded-2xl border border-surface-border shadow-2xs space-y-6">
-              <div className="flex items-center justify-between pb-3 border-b border-surface-border">
-                <span className="text-xs font-mono font-semibold uppercase tracking-wider text-charcoal-soft">
-                  Academic Overview
-                </span>
-                <span className="text-[11px] font-mono text-accent dark:text-accent-dark font-medium px-2.5 py-0.5 rounded-full bg-accent-light dark:bg-accent-soft border border-accent-border/60">
-                  {personalData.academic.cohort}
-                </span>
-              </div>
+          {/* Right Column: Curated Personal Photos Collage */}
+          <ScrollReveal delay={200} className="lg:col-span-5 flex flex-col space-y-6">
+            <div className="space-y-2">
+              <span className="text-xs font-mono font-semibold tracking-wider text-charcoal-soft uppercase block">
+                Moments &amp; Creative Life
+              </span>
+              <p className="text-xs text-charcoal-soft font-sans">
+                A visual snapshot across university life, stage events, and personal creative pursuits.
+              </p>
+            </div>
 
-              {/* Clean Editorial Layout — No unnecessary boxes, pure typography & hierarchy */}
-              <div className="space-y-4 text-sm divide-y divide-surface-border/60">
-                <div className="pt-1">
-                  <span className="text-[11px] font-mono text-charcoal-soft uppercase tracking-wider block mb-0.5">
-                    School
-                  </span>
-                  <span className="font-display font-semibold text-charcoal text-base">
-                    {personalData.academic.school}
-                  </span>
-                </div>
-
-                <div className="pt-3.5">
-                  <span className="text-[11px] font-mono text-charcoal-soft uppercase tracking-wider block mb-0.5">
-                    Program
-                  </span>
-                  <span className="font-display font-semibold text-charcoal text-base">
-                    {personalData.academic.program}
-                  </span>
-                </div>
-
-                <div className="pt-3.5">
-                  <span className="text-[11px] font-mono text-charcoal-soft uppercase tracking-wider block mb-0.5">
-                    University
-                  </span>
-                  <span className="font-display font-semibold text-charcoal text-base">
-                    {personalData.academic.university}
-                  </span>
-                </div>
-
-                <div className="pt-3.5 grid grid-cols-2 gap-4">
-                  <div>
-                    <span className="text-[11px] font-mono text-charcoal-soft uppercase tracking-wider block mb-0.5">
-                      Cohort
-                    </span>
-                    <span className="font-display font-semibold text-charcoal text-base">
-                      {personalData.academic.cohort}
-                    </span>
-                  </div>
-                  <div>
-                    <span className="text-[11px] font-mono text-charcoal-soft uppercase tracking-wider block mb-0.5">
-                      Study Period
-                    </span>
-                    <span className="font-display font-medium text-charcoal-muted text-sm">
-                      {personalData.academic.studyPeriod}
+            {/* Asymmetrical 2x2 Collage with subtle interactive tilt & hover */}
+            <div className="grid grid-cols-2 gap-3.5 sm:gap-4 p-2 sm:p-3 rounded-3xl bg-white/40 dark:bg-canvas-card-dark/40 border border-surface-border shadow-2xs">
+              {COLLAGE_PHOTOS.map((photo, i) => (
+                <div
+                  key={photo.src}
+                  className={`group relative rounded-2xl overflow-hidden border-2 border-white dark:border-[#222126] shadow-xs hover:shadow-md transition-all duration-300 ${photo.aspect} ${photo.className}`}
+                >
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    sizes="(max-width: 640px) 160px, 240px"
+                    className="object-cover object-top transition-transform duration-500 group-hover:scale-103"
+                    priority={i < 2}
+                  />
+                  {/* Subtle hover gradient and caption */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-2.5">
+                    <span className="text-[10px] font-mono font-medium text-white tracking-wider">
+                      {photo.caption}
                     </span>
                   </div>
                 </div>
+              ))}
+            </div>
 
-                <div className="pt-3.5">
-                  <span className="text-[11px] font-mono text-charcoal-soft uppercase tracking-wider block mb-0.5">
-                    Specialization
+            {/* Academic Summary Badge */}
+            <div className="p-4 rounded-xl bg-white dark:bg-canvas-card-dark border border-surface-border text-xs flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <GraduationCap className="w-4 h-4 text-accent" />
+                <div>
+                  <span className="font-display font-semibold text-charcoal block">
+                    BINUS University · B2028
                   </span>
-                  <span className="font-display font-semibold text-accent dark:text-accent-dark text-base">
-                    {personalData.academic.specialization}
-                  </span>
-                  <span className="text-xs text-charcoal-soft block mt-0.5">
-                    Focused study taken during {personalData.academic.studyPeriod}
+                  <span className="text-[10px] font-mono text-charcoal-soft">
+                    Intelligent Systems (AI) Specialization · Semesters 4–5
                   </span>
                 </div>
               </div>
-
-              {/* Design & Engineering Philosophy Note */}
-              <div className="pt-4 border-t border-surface-border">
-                <div className="p-4 rounded-xl bg-canvas-subtle border border-surface-border text-xs text-charcoal-muted leading-relaxed">
-                  <span className="font-display font-semibold text-charcoal block mb-1">
-                    Design &amp; Engineering Philosophy
-                  </span>
-                  Balancing computational intelligence with thoughtful human interaction. Technology should be dependable under the hood, but feel intuitive, clear, and calm on the surface.
-                </div>
-              </div>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-accent-light dark:bg-accent-soft text-accent dark:text-accent-dark">
+                SOCS
+              </span>
             </div>
           </ScrollReveal>
         </div>

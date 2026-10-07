@@ -47,21 +47,21 @@ export const personalData: PersonalData = {
   role: "Computer Science Student",
   focus: "Machine Learning · UI/UX",
   heroBio:
-    "I'm Kristian Novan, a Computer Science student at BINUS University. During my fourth and fifth semesters, I've been taking the Intelligent Systems (AI) specialization while exploring Machine Learning and UI/UX through academic projects and hands-on work. I enjoy building things from both sides of the process — figuring out how something should work and thinking about how people should experience it.",
+    "I'm Kristian Novan, a Computer Science student at BINUS University, currently exploring Machine Learning and UI/UX through projects, collaboration, and new experiences. I enjoy learning how things work, trying things I've never done before, and finding the balance between building something technically solid and making it meaningful for the people who use it.",
   aboutBio: {
     lead:
-      "I'm an undergraduate student at BINUS University's School of Computer Science (SOCS), Class of B2028, pursuing Computer Science with a specialization in Intelligent Systems (AI) taken during Semesters 4–5.",
+      "I'm a Computer Science student at BINUS University, currently exploring Machine Learning and UI/UX while building projects and learning through hands-on experiences.",
     body: [
-      "My academic work centers on applied machine learning, computer vision, natural language processing, and human-computer interaction. I enjoy building things from both sides of the process — figuring out how something should work under the hood and thinking about how people should experience it on the surface.",
-      "Beyond technical coursework, my university journey has been shaped by active roles in student organizations: mentoring peers with HIMTI, volunteering in humanitarian initiatives like WALUBI Waisak 2025, coordinating company excursions, and moderating formal stages as a Master of Ceremony. These diverse experiences have strengthened my team leadership, cross-disciplinary communication, and ability to deliver under pressure.",
+      "Outside of technology, I also enjoy music, theater, choir, and modeling. I like trying things that are unfamiliar to me and learning something new along the way. For me, exploring different interests is part of how I stay curious and keep growing.",
+      "Whether I'm training a machine learning model, crafting an interface in Figma, or stepping onto a stage, I find joy in connecting technical thinking with creative expression. I enjoy building things from both sides of the process — making systems dependable under the hood while ensuring they feel natural, clear, and human on the surface.",
     ],
     capabilities: [
       "Machine Learning & Intelligent Systems (AI)",
-      "UI/UX Design & Interactive Prototyping",
+      "UI/UX Design & Human-Centered Craft",
+      "Creative Arts: Music, Theater & Choir",
       "Full-Stack Web & Software Engineering",
       "Public Speaking & Master of Ceremony",
-      "Campus Leadership & Committee Operations",
-      "Analytical & Independent Problem Solving",
+      "Curious & Hands-on Exploration",
     ],
   },
   metrics: [

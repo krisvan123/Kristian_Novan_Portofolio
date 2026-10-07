@@ -22,37 +22,37 @@ export default function Home() {
         <Hero />
       </SectionTransition>
 
-      {/* 2. About: authentic academic background and direction */}
-      <SectionTransition id="about">
-        <About />
-      </SectionTransition>
-
-      {/* 3. Activities: WALUBI & MC seamless image marquees */}
+      {/* 2. Activities: WALUBI & MC seamless image marquees */}
       <SectionTransition id="activities">
         <Activities />
       </SectionTransition>
 
-      {/* 4. Projects: Selected case studies */}
+      {/* 3. Projects: Selected case studies */}
       <SectionTransition id="projects">
         <ProjectGrid />
       </SectionTransition>
 
-      {/* 5. Upcoming Projects: Trobos (Next.js prototype) & MindCare */}
+      {/* 4. Upcoming Projects: Trobos (Next.js prototype) & MindCare */}
       <SectionTransition id="upcoming">
         <UpcomingProjects />
       </SectionTransition>
 
-      {/* 6. Skills: Hard Skills (4 categories) & Soft Skills (12 interpersonal disciplines) */}
+      {/* 5. Skills: Hard Skills (4 categories) & Soft Skills (12 interpersonal disciplines) */}
       <SectionTransition id="skills">
         <Skills />
       </SectionTransition>
 
-      {/* 7. Certificates: 6 verified credentials with full-screen Lightbox */}
+      {/* 6. Certificates: 6 verified credentials with full-screen Lightbox */}
       <SectionTransition id="certificates">
         <Certificates />
       </SectionTransition>
 
-      {/* 8. Interactive Physical Book: My Favorite Quotes (comes BEFORE Contact) */}
+      {/* 7. About Me / Personal Side: Connecting technical curiosity with creative arts & 4 photos */}
+      <SectionTransition id="about">
+        <About />
+      </SectionTransition>
+
+      {/* 8. Interactive Physical Book: My Favorite Quotes (Real paper physics) */}
       <SectionTransition id="quotes">
         <QuoteBook />
       </SectionTransition>

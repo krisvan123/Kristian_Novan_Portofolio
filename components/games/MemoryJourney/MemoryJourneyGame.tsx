@@ -6,9 +6,21 @@ import GameHUD from "@/components/games/GameHUD";
 import GameStartScreen from "@/components/games/GameStartScreen";
 import GamePauseModal from "@/components/games/GamePauseModal";
 import GameResultModal from "@/components/games/GameResultModal";
+import GameTutorialModal, { TutorialConfig } from "@/components/games/GameTutorialModal";
 import { sounds } from "@/components/Play/SoundEffects";
 import { gameStorage } from "@/lib/gameStorage";
 import { Eye, Clock, Zap, Sparkles, HelpCircle, Layers } from "lucide-react";
+
+const MEMORY_TUTORIAL: TutorialConfig = {
+  gameId: "memory",
+  gameTitle: "Memory of My Journey",
+  objective: "Match all 8 pairs before time runs out.",
+  controlText: "Click or tap any card to flip it face up.",
+  doText: "Find pairs of matching milestones. Rapid consecutive matches (<4.5s) activate combos!",
+  avoidText: "Mismatches reset your combo multiplier. Watch out for sudden Memory Fog!",
+  winText: "Clear all 8 milestone pairs across 3 levels to win.",
+  demoType: "memory",
+};
 
 interface MilestoneCard {
   id: number;
@@ -87,6 +99,7 @@ const MILESTONES = [
 export default function MemoryJourneyGame() {
   // Game States
   const [gameState, setGameState] = useState<"start" | "playing" | "paused" | "gameover" | "victory">("start");
+  const [showTutorial, setShowTutorial] = useState(false);
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [isNewRecord, setIsNewRecord] = useState(false);
@@ -111,6 +124,13 @@ export default function MemoryJourneyGame() {
   useEffect(() => {
     setBestScore(gameStorage.getBestScore("memory"));
     setIsMuted(sounds.isMuted);
+
+    if (typeof window !== "undefined") {
+      const tutDone = localStorage.getItem("kn_tut_memory");
+      if (!tutDone) {
+        setShowTutorial(true);
+      }
+    }
   }, []);
 
   // Popup feedback helper
@@ -382,20 +402,37 @@ export default function MemoryJourneyGame() {
 
         {/* Active HUD */}
         {gameState === "playing" && (
-          <GameHUD
-            score={score}
-            combo={combo}
-            level={level}
-            maxLevel={3}
-            timeRemaining={timeRemaining}
-            objective={`Match milestone pairs (${matchedPairs}/8)`}
-            secondaryMetric={{
-              label: "Moves",
-              value: moves,
-              icon: <Layers className="w-3.5 h-3.5 text-accent" />,
-            }}
-            feedbackPopups={feedbackPopups}
-          />
+          <>
+            <GameHUD
+              score={score}
+              combo={combo}
+              level={level}
+              maxLevel={3}
+              timeRemaining={timeRemaining}
+              objective={`Match milestone pairs (${matchedPairs}/8)`}
+              secondaryMetric={{
+                label: "Moves",
+                value: moves,
+                icon: <Layers className="w-3.5 h-3.5 text-accent" />,
+              }}
+              feedbackPopups={feedbackPopups}
+              onOpenTutorial={() => setShowTutorial(true)}
+            />
+
+            {/* Contextual In-Game Hint */}
+            <div className="absolute top-16 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
+              <div className="px-3.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/10 text-white font-mono text-[11px] shadow-lg flex items-center gap-1.5 whitespace-nowrap">
+                <span>💡</span>
+                {matchedPairs === 0 ? (
+                  <span>Click any card to reveal its milestone icon and name</span>
+                ) : flippedIds.length === 1 ? (
+                  <span>Now find the identical matching card before it flips back!</span>
+                ) : (
+                  <span>Chain rapid pairs under 4.5s to multiply combo bonus!</span>
+                )}
+              </div>
+            </div>
+          </>
         )}
 
         {/* 4x4 Grid of Cards */}
@@ -488,6 +525,21 @@ export default function MemoryJourneyGame() {
           const next = sounds.toggleMute();
           setIsMuted(next);
         }}
+        onOpenTutorial={() => setShowTutorial(true)}
+      />
+
+      {/* Interactive Onboarding Tutorial Modal */}
+      <GameTutorialModal
+        isOpen={showTutorial}
+        config={MEMORY_TUTORIAL}
+        onComplete={() => {
+          setShowTutorial(false);
+          if (typeof window !== "undefined") {
+            localStorage.setItem("kn_tut_memory", "true");
+          }
+          if (gameState === "start") startGame();
+        }}
+        onClose={() => setShowTutorial(false)}
       />
 
       {/* Victory / Game Over Modal */}

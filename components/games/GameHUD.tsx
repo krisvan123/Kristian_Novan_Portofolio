@@ -18,6 +18,7 @@ export interface GameHUDProps {
     icon?: React.ReactNode;
   };
   feedbackPopups?: Array<{ id: string; text: string; color?: string; x?: number; y?: number }>;
+  onOpenTutorial?: () => void;
 }
 
 export default function GameHUD({
@@ -31,6 +32,7 @@ export default function GameHUD({
   fuel,
   secondaryMetric,
   feedbackPopups = [],
+  onOpenTutorial,
 }: GameHUDProps) {
   const formatTime = (secs?: number) => {
     if (secs === undefined) return "--:--";
@@ -74,9 +76,19 @@ export default function GameHUD({
 
         {/* Center: Objective Pill */}
         {objective && (
-          <div className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-white/90 text-xs font-mono max-w-sm truncate shadow-md">
-            <Zap className="w-3.5 h-3.5 text-accent" />
-            <span className="truncate">{objective}</span>
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-white/90 text-xs font-mono max-w-xs sm:max-w-md truncate shadow-md pointer-events-auto">
+            <Zap className="w-3.5 h-3.5 text-accent shrink-0" />
+            <span className="truncate font-semibold">{objective}</span>
+            {onOpenTutorial && (
+              <button
+                type="button"
+                onClick={onOpenTutorial}
+                className="ml-1 px-1.5 py-0.5 rounded-md bg-white/15 hover:bg-accent text-[10px] font-bold text-white transition-colors cursor-pointer"
+                title="View How to Play Tutorial"
+              >
+                ? Guide
+              </button>
+            )}
           </div>
         )}
 

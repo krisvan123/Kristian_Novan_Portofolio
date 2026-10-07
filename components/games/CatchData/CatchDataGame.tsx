@@ -6,8 +6,20 @@ import GameHUD from "@/components/games/GameHUD";
 import GameStartScreen from "@/components/games/GameStartScreen";
 import GamePauseModal from "@/components/games/GamePauseModal";
 import GameResultModal from "@/components/games/GameResultModal";
+import GameTutorialModal, { TutorialConfig } from "@/components/games/GameTutorialModal";
 import { sounds } from "@/components/Play/SoundEffects";
 import { gameStorage } from "@/lib/gameStorage";
+
+const CATCH_DATA_TUTORIAL: TutorialConfig = {
+  gameId: "catch-the-data",
+  gameTitle: "Catch the Data",
+  objective: "Collect green target packets. Avoid red spiked noise.",
+  controlText: "Move cursor or drag finger to aim the laser scanner reticle.",
+  doText: "Catch emerald target packets to build x1 to x5 combo multipliers.",
+  avoidText: "Avoid red spiked noise (-1 shield) and purple glitch squares.",
+  winText: "Complete 5 waves and defeat the giant Boss Anomaly Core.",
+  demoType: "catch",
+};
 
 interface Packet {
   id: number;
@@ -40,6 +52,7 @@ export default function CatchDataGame() {
 
   // Game States
   const [gameState, setGameState] = useState<"start" | "playing" | "paused" | "gameover" | "victory">("start");
+  const [showTutorial, setShowTutorial] = useState(false);
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [isNewRecord, setIsNewRecord] = useState(false);
@@ -81,6 +94,13 @@ export default function CatchDataGame() {
   useEffect(() => {
     setBestScore(gameStorage.getBestScore("catch-the-data"));
     setIsMuted(sounds.isMuted);
+
+    if (typeof window !== "undefined") {
+      const tutDone = localStorage.getItem("kn_tut_catch-the-data");
+      if (!tutDone) {
+        setShowTutorial(true);
+      }
+    }
   }, []);
 
   // Popup feedback helper
@@ -664,15 +684,32 @@ export default function CatchDataGame() {
 
       {/* Active In-Game HUD */}
       {gameState === "playing" && (
-        <GameHUD
-          score={score}
-          combo={combo}
-          level={wave}
-          maxLevel={5}
-          health={(shields / 3) * 100}
-          objective={wave === 5 ? "DEFEAT THE BOSS DATA ANOMALY!" : `Capture green target packets & reach Wave 5`}
-          feedbackPopups={feedbackPopups}
-        />
+        <>
+          <GameHUD
+            score={score}
+            combo={combo}
+            level={wave}
+            maxLevel={5}
+            health={(shields / 3) * 100}
+            objective={wave === 5 ? "DEFEAT THE BOSS DATA ANOMALY!" : "TARGET: GREEN DATA · Avoid Red Noise"}
+            feedbackPopups={feedbackPopups}
+            onOpenTutorial={() => setShowTutorial(true)}
+          />
+
+          {/* Contextual In-Game Hint */}
+          <div className="absolute top-16 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
+            <div className="px-3.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/10 text-white font-mono text-[11px] shadow-lg flex items-center gap-1.5">
+              <span>💡</span>
+              {wave === 5 ? (
+                <span className="text-red-400 font-bold">BOSS CORE ACTIVE! Capture power packets &amp; dodge laser barrage</span>
+              ) : shields < 2 ? (
+                <span className="text-amber-400 font-bold">SHIELD LOW! Dodge red spikes &amp; grab 🛡️ shield capsules</span>
+              ) : (
+                <span>Guide reticle over GREEN targets! Avoid red spiked anomalies</span>
+              )}
+            </div>
+          </div>
+        </>
       )}
 
       {/* Start Screen */}
@@ -708,6 +745,18 @@ export default function CatchDataGame() {
           const next = sounds.toggleMute();
           setIsMuted(next);
         }}
+        onOpenTutorial={() => setShowTutorial(true)}
+      />
+
+      {/* Interactive Onboarding Tutorial Modal */}
+      <GameTutorialModal
+        isOpen={showTutorial}
+        config={CATCH_DATA_TUTORIAL}
+        onComplete={() => {
+          setShowTutorial(false);
+          if (gameState === "start") startGame();
+        }}
+        onClose={() => setShowTutorial(false)}
       />
 
       {/* Victory / Game Over Modal */}
