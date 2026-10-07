@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, Trophy } from "lucide-react";
+import { gameStorage, ALL_ACHIEVEMENTS } from "@/lib/gameStorage";
 
 interface GameCardProps {
   slug: string;
@@ -23,6 +24,19 @@ export default function GameCard({
   isFeatured = false,
   preview,
 }: GameCardProps) {
+  const [bestScore, setBestScore] = useState<number>(0);
+  const [unlockedCount, setUnlockedCount] = useState<number>(0);
+
+  useEffect(() => {
+    const score = gameStorage.getBestScore(slug);
+    setBestScore(score);
+
+    const unlocked = gameStorage.getUnlockedAchievements();
+    const gameAchievements = ALL_ACHIEVEMENTS.filter((a) => a.gameId === slug);
+    const count = gameAchievements.filter((a) => unlocked.includes(a.id)).length;
+    setUnlockedCount(count);
+  }, [slug]);
+
   if (isFeatured) {
     return (
       <Link
@@ -32,9 +46,24 @@ export default function GameCard({
         {/* Left Content */}
         <div className="p-6 sm:p-8 lg:p-10 flex-1 flex flex-col justify-between space-y-6">
           <div className="space-y-3">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent-light dark:bg-accent-soft text-accent dark:text-accent-dark text-[11px] font-mono font-medium border border-accent-border/60">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>{badge}</span>
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent-light dark:bg-accent-soft text-accent dark:text-accent-dark text-[11px] font-mono font-medium border border-accent-border/60">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>{badge}</span>
+              </span>
+
+              {bestScore > 0 && (
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-700 dark:text-amber-400 text-[11px] font-mono">
+                  <Trophy className="w-3 h-3" />
+                  <span>High: {bestScore.toLocaleString()}</span>
+                </span>
+              )}
+
+              {unlockedCount > 0 && (
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-canvas-subtle border border-surface-border text-charcoal-muted text-[10px] font-mono">
+                  <span>🏆 {unlockedCount}/3 Trophies</span>
+                </span>
+              )}
             </div>
 
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-semibold tracking-tight text-charcoal group-hover:text-accent transition-colors">
@@ -52,14 +81,14 @@ export default function GameCard({
 
           <div className="pt-2">
             <div className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-charcoal dark:bg-[#F3F2EE] text-white dark:text-[#111113] text-sm font-semibold font-display shadow-xs group-hover:bg-accent dark:group-hover:bg-accent-hover group-hover:text-white transition-all duration-200">
-              <span>Play {title}</span>
+              <span>Launch {title}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </div>
         </div>
 
         {/* Right Animated Interactive Preview */}
-        <div className="w-full lg:w-1/2 min-h-[220px] sm:min-h-[280px] bg-[#FAF8F2] dark:bg-[#141416] border-t lg:border-t-0 lg:border-l border-surface-border p-4 sm:p-6 flex items-center justify-center overflow-hidden">
+        <div className="w-full lg:w-1/2 min-h-[240px] sm:min-h-[300px] bg-[#FAF8F2] dark:bg-[#141416] border-t lg:border-t-0 lg:border-l border-surface-border p-4 sm:p-6 flex items-center justify-center overflow-hidden">
           {preview}
         </div>
       </Link>
@@ -81,6 +110,12 @@ export default function GameCard({
           <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-canvas-subtle border border-surface-border text-charcoal-muted">
             {badge}
           </span>
+          {bestScore > 0 && (
+            <span className="inline-flex items-center gap-1 font-mono text-[10px] text-amber-600 dark:text-amber-400">
+              <Trophy className="w-3 h-3" />
+              <span>{bestScore.toLocaleString()}</span>
+            </span>
+          )}
         </div>
 
         <h3 className="text-lg sm:text-xl font-display font-semibold text-charcoal group-hover:text-accent transition-colors tracking-tight">
