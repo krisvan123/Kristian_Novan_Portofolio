@@ -300,7 +300,7 @@ export default function QuoteBook() {
 
             <div
               ref={containerRef}
-              className={`w-full rounded-3xl p-2.5 sm:p-4 bg-[#211f1b] dark:bg-[#121110] border border-[#3A3631] dark:border-white/10 shadow-2xl relative transition-all duration-700 ${
+              className={`w-full rounded-3xl p-2.5 sm:p-4 bg-[#18150F] border border-[#2E2920] shadow-2xl relative transition-all duration-700 ${
                 isOpen ? "opacity-100 scale-100" : "opacity-0 scale-95"
               }`}
             >
@@ -309,13 +309,13 @@ export default function QuoteBook() {
                 aria-hidden="true"
                 className="absolute left-1.5 top-6 bottom-6 w-2 flex flex-col justify-between pointer-events-none opacity-40 hidden sm:flex"
               >
-                <div className="w-full h-full border-l-2 border-dashed border-[#e6dfd1] dark:border-white/20" />
+                <div className="w-full h-full border-l-2 border-dashed border-white/15" />
               </div>
               <div
                 aria-hidden="true"
                 className="absolute right-1.5 top-6 bottom-6 w-2 flex flex-col justify-between pointer-events-none opacity-40 hidden sm:flex"
               >
-                <div className="w-full h-full border-r-2 border-dashed border-[#e6dfd1] dark:border-white/20" />
+                <div className="w-full h-full border-r-2 border-dashed border-white/15" />
               </div>
 
               {/* =========================================================================
@@ -329,9 +329,10 @@ export default function QuoteBook() {
                 onPointerMove={handlePointerMove}
                 onPointerUp={handlePointerUp}
                 onPointerCancel={handlePointerUp}
-                className={`hidden md:block relative w-full aspect-[16/10] lg:aspect-[16/9] min-h-[500px] rounded-2xl bg-[#FAF7EE] dark:bg-[#1f1d1a] text-charcoal dark:text-[#F3F2EE] border border-amber-900/15 dark:border-white/10 shadow-inner select-none ${
+                className={`hidden md:block relative w-full aspect-[16/10] lg:aspect-[16/9] min-h-[500px] rounded-2xl bg-[#1E1B14] text-[#F3F2EE] border border-white/8 shadow-inner select-none ${
                   isDragging ? "cursor-grabbing" : "cursor-grab"
                 }`}
+
               >
                 {/* Paper grain texture */}
                 <div
@@ -354,7 +355,7 @@ export default function QuoteBook() {
                 {/* SPREAD BASE LAYER */}
                 <div className="w-full h-full grid grid-cols-2 relative z-0">
                   {/* LEFT BASE PAGE */}
-                  <div className="h-full border-r border-amber-900/10 dark:border-white/5 bg-gradient-to-br from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-8 lg:p-10 flex flex-col justify-between overflow-hidden relative rounded-l-2xl">
+                  <div className="h-full border-r border-amber-900/10 dark:border-white/5 bg-gradient-to-br from-[#201D16] via-[#1E1B14] to-[#1A1713] p-8 lg:p-10 flex flex-col justify-between overflow-hidden relative rounded-l-2xl">
                     {/* If dragging prev, show previous spread left underneath */}
                     {dragDirection === "prev" && dragProgress > 0 ? (
                       prevSpreadIndex === 0 ? (
@@ -371,7 +372,7 @@ export default function QuoteBook() {
                   </div>
 
                   {/* RIGHT BASE PAGE */}
-                  <div className="h-full bg-gradient-to-bl from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-8 lg:p-10 flex flex-col justify-between overflow-hidden relative rounded-r-2xl">
+                  <div className="h-full bg-gradient-to-bl from-[#201D16] via-[#1E1B14] to-[#1A1713] p-8 lg:p-10 flex flex-col justify-between overflow-hidden relative rounded-r-2xl">
                     {/* If dragging next, reveal next spread right page underneath */}
                     {dragDirection === "next" && dragProgress > 0 && nextQuote ? (
                       <QuoteRightPage
@@ -410,7 +411,7 @@ export default function QuoteBook() {
                   >
                      {/* FRONT FACE of turning leaf (Current spread right page) */}
                     <div
-                      className="absolute inset-0 bg-gradient-to-bl from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-8 lg:p-10 flex flex-col justify-between border-l border-amber-900/10 dark:border-white/5 shadow-md overflow-hidden"
+                      className="absolute inset-0 bg-gradient-to-bl from-[#201D16] via-[#1E1B14] to-[#1A1713] p-8 lg:p-10 flex flex-col justify-between border-l border-amber-900/10 dark:border-white/5 shadow-md overflow-hidden"
                       style={{
                         opacity: dragProgress <= 0.5 ? 1 : 0,
                         visibility: dragProgress <= 0.5 ? "visible" : "hidden",
@@ -429,7 +430,7 @@ export default function QuoteBook() {
 
                     {/* BACK FACE of turning leaf (Next spread left illustration page) */}
                     <div
-                      className="absolute inset-0 bg-gradient-to-br from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-8 lg:p-10 flex flex-col justify-between border-r border-amber-900/10 dark:border-white/5 shadow-md overflow-hidden"
+                      className="absolute inset-0 bg-gradient-to-br from-[#201D16] via-[#1E1B14] to-[#1A1713] p-8 lg:p-10 flex flex-col justify-between border-r border-amber-900/10 dark:border-white/5 shadow-md overflow-hidden"
                       style={{
                         transform: "rotateY(180deg)",
                         opacity: dragProgress > 0.5 ? 1 : 0,
@@ -463,7 +464,7 @@ export default function QuoteBook() {
                   >
                     {/* FRONT FACE of prev leaf (Current spread left page) */}
                     <div
-                      className="absolute inset-0 bg-gradient-to-br from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-8 lg:p-10 flex flex-col justify-between border-r border-amber-900/10 dark:border-white/5 shadow-md overflow-hidden"
+                      className="absolute inset-0 bg-gradient-to-br from-[#201D16] via-[#1E1B14] to-[#1A1713] p-8 lg:p-10 flex flex-col justify-between border-r border-amber-900/10 dark:border-white/5 shadow-md overflow-hidden"
                       style={{
                         opacity: dragProgress <= 0.5 ? 1 : 0,
                         visibility: dragProgress <= 0.5 ? "visible" : "hidden",
@@ -478,7 +479,7 @@ export default function QuoteBook() {
 
                     {/* BACK FACE of prev leaf (Previous spread right page) */}
                     <div
-                      className="absolute inset-0 bg-gradient-to-bl from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-8 lg:p-10 flex flex-col justify-between border-l border-amber-900/10 dark:border-white/5 shadow-md overflow-hidden"
+                      className="absolute inset-0 bg-gradient-to-bl from-[#201D16] via-[#1E1B14] to-[#1A1713] p-8 lg:p-10 flex flex-col justify-between border-l border-amber-900/10 dark:border-white/5 shadow-md overflow-hidden"
                       style={{
                         transform: "rotateY(180deg)",
                         opacity: dragProgress > 0.5 ? 1 : 0,
@@ -534,7 +535,7 @@ export default function QuoteBook() {
                 onPointerMove={handlePointerMove}
                 onPointerUp={handlePointerUp}
                 onPointerCancel={handlePointerUp}
-                className={`block md:hidden relative w-full min-h-[460px] sm:min-h-[500px] rounded-2xl bg-[#FAF7EE] dark:bg-[#1f1d1a] text-charcoal dark:text-[#F3F2EE] border border-amber-900/15 dark:border-white/10 p-5 sm:p-6 shadow-inner select-none overflow-hidden ${
+                className={`block md:hidden relative w-full min-h-[460px] sm:min-h-[500px] rounded-2xl bg-[#1E1B14] text-[#F3F2EE] border border-white/8 p-5 sm:p-6 shadow-inner select-none overflow-hidden ${
                   isDragging ? "cursor-grabbing" : "cursor-grab"
                 }`}
               >
@@ -676,7 +677,7 @@ export default function QuoteBook() {
 function PhotoLeftPage() {
   return (
     <div className="w-full h-full flex flex-col items-center justify-center p-2 sm:p-4">
-      <div className="relative w-full max-w-[210px] lg:max-w-[250px] aspect-[4/5] rounded-xl overflow-hidden border-2 border-white dark:border-[#2b2824] shadow-md bg-stone-100 dark:bg-stone-900">
+      <div className="relative w-full max-w-[210px] lg:max-w-[250px] aspect-[4/5] rounded-xl overflow-hidden border-2 border-white/10 shadow-md">
         <Image
           src="/images/profile/ppp.jpg"
           alt="Kristian Novan portrait"
@@ -685,15 +686,6 @@ function PhotoLeftPage() {
           sizes="(max-width: 1024px) 210px, 250px"
           priority
         />
-      </div>
-
-      <div className="pt-3 text-center">
-        <span className="text-xs font-mono font-medium text-charcoal tracking-wide block">
-          Kristian Novan
-        </span>
-        <span className="text-[10px] font-mono text-charcoal-soft">
-          BINUS University · B2028
-        </span>
       </div>
     </div>
   );

@@ -213,33 +213,10 @@ export default function About() {
                       }`}
                       priority={i < 2}
                     />
-                    {/* Always-visible slim label for collapsed slices */}
+                    {/* Dim inactive slices */}
                     {!isActive && (
-                      <div className="absolute inset-0 flex items-end justify-center pb-4">
-                        <span
-                          className="font-mono text-[9px] font-bold text-white/80 tracking-widest uppercase"
-                          style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
-                        >
-                          {photo.caption}
-                        </span>
-                      </div>
+                      <div className="absolute inset-0 bg-black/30" />
                     )}
-                    {/* Expanded caption overlay */}
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-300 flex flex-col justify-end p-4 ${
-                        isActive ? "opacity-100" : "opacity-0"
-                      }`}
-                    >
-                      <span className="text-[10px] font-mono text-white/60 uppercase tracking-widest mb-0.5">
-                        {String(i + 1).padStart(2, "0")} / {COLLAGE_PHOTOS.length}
-                      </span>
-                      <span className="text-base font-display font-bold text-white leading-tight">
-                        {photo.caption}
-                      </span>
-                      <span className="text-[11px] font-sans text-white/70 mt-0.5">
-                        {photo.subtitle}
-                      </span>
-                    </div>
                   </div>
                 );
               })}
@@ -255,18 +232,6 @@ export default function About() {
                 className="object-cover object-center"
                 priority
               />
-              {/* Caption overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent flex flex-col justify-end p-4">
-                <span className="text-[10px] font-mono text-white/60 uppercase tracking-widest mb-0.5">
-                  {String(mobilePhoto + 1).padStart(2, "0")} / {COLLAGE_PHOTOS.length}
-                </span>
-                <span className="text-base font-display font-bold text-white leading-tight">
-                  {COLLAGE_PHOTOS[mobilePhoto].caption}
-                </span>
-                <span className="text-[11px] font-sans text-white/70 mt-0.5">
-                  {COLLAGE_PHOTOS[mobilePhoto].subtitle}
-                </span>
-              </div>
               {/* Prev / Next */}
               <button
                 type="button"
