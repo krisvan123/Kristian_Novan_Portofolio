@@ -4,7 +4,6 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
-import { ThemeProvider } from "@/components/ThemeProvider";
 import Starfield from "@/components/Starfield";
 
 const spaceGrotesk = Space_Grotesk({
@@ -82,10 +81,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#FAFAF8" },
-    { media: "(prefers-color-scheme: dark)", color: "#111115" },
-  ],
+  themeColor: "#0B0C10",
   width: "device-width",
   initialScale: 1,
 };
@@ -98,17 +94,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      suppressHydrationWarning
-      className={`${spaceGrotesk.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} ${cormorantGaramond.variable} scroll-smooth font-sans`}
+      className={`dark ${spaceGrotesk.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} ${cormorantGaramond.variable} scroll-smooth font-sans`}
     >
-      <body className="min-h-screen bg-canvas text-charcoal font-sans antialiased flex flex-col selection:bg-accent-light selection:text-accent dark:selection:bg-accent-soft dark:selection:text-accent-dark transition-colors duration-300 relative">
-        <ThemeProvider>
-          <Starfield />
-          <CustomCursor />
-          <Navbar />
-          <main className="flex-1 relative z-10">{children}</main>
-          <Footer />
-        </ThemeProvider>
+      <body className="min-h-screen bg-canvas text-charcoal font-sans antialiased flex flex-col selection:bg-accent-soft selection:text-accent-dark relative">
+        <Starfield />
+        <CustomCursor />
+        <Navbar />
+        <main className="flex-1 relative z-10">{children}</main>
+        <Footer />
       </body>
     </html>
   );

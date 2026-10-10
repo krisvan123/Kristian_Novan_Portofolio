@@ -15,6 +15,8 @@ import {
   Mail,
   GraduationCap,
   FileDown,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 const CREATIVE_INTERESTS = [
@@ -29,36 +31,34 @@ const CREATIVE_INTERESTS = [
 const COLLAGE_PHOTOS = [
   {
     src: "/images/profile/p1.jpg",
-    alt: "Kristian Novan personal photo 1",
-    caption: "Stage & Presence",
-    aspect: "aspect-[4/5]",
-    className: "rotate-[-1.5deg] hover:rotate-0 hover:z-10",
+    alt: "Kristian on stage",
+    caption: "The Stage",
+    subtitle: "Where performance meets presence",
   },
   {
     src: "/images/profile/p2.jpg",
-    alt: "Kristian Novan personal photo 2",
-    caption: "Creative Expressions",
-    aspect: "aspect-[1/1]",
-    className: "rotate-[1.5deg] hover:rotate-0 hover:z-10 mt-4 md:mt-6",
+    alt: "Kristian — creative expression",
+    caption: "The Performer",
+    subtitle: "Choir, theater & creative arts",
   },
   {
     src: "/images/profile/p3.jpg",
-    alt: "Kristian Novan personal photo 3",
-    caption: "Moments & Exploration",
-    aspect: "aspect-[1/1]",
-    className: "rotate-[1deg] hover:rotate-0 hover:z-10 -mt-2",
+    alt: "Kristian exploring",
+    caption: "The Explorer",
+    subtitle: "Moments of curiosity & discovery",
   },
   {
     src: "/images/profile/p4.jpg",
-    alt: "Kristian Novan personal photo 4",
-    caption: "Curiosity in Motion",
-    aspect: "aspect-[4/5]",
-    className: "rotate-[-2deg] hover:rotate-0 hover:z-10 mt-3",
+    alt: "Kristian — personal style",
+    caption: "The Creative",
+    subtitle: "Aesthetics, fashion & identity",
   },
 ];
 
 export default function About() {
   const [isPressingCta, setIsPressingCta] = useState(false);
+  const [activePhoto, setActivePhoto] = useState(0);
+  const [mobilePhoto, setMobilePhoto] = useState(0);
 
   const handleCtaClick = () => {
     setIsPressingCta(true);
@@ -185,29 +185,119 @@ export default function About() {
               </p>
             </div>
 
-            {/* Asymmetrical 2x2 Collage with subtle interactive tilt & hover */}
-            <div className="grid grid-cols-2 gap-3.5 sm:gap-4 p-2 sm:p-3 rounded-3xl bg-white/40 dark:bg-canvas-card-dark/40 border border-surface-border shadow-2xs">
-              {COLLAGE_PHOTOS.map((photo, i) => (
-                <div
-                  key={photo.src}
-                  className={`group relative rounded-2xl overflow-hidden border-2 border-white dark:border-canvas-subtle-dark shadow-xs hover:shadow-md transition-all duration-300 ${photo.aspect} ${photo.className}`}
-                >
-                  <Image
-                    src={photo.src}
-                    alt={photo.alt}
-                    fill
-                    sizes="(max-width: 640px) 160px, 240px"
-                    className="object-cover object-top transition-transform duration-500 group-hover:scale-103"
-                    priority={i < 2}
-                  />
-                  {/* Subtle hover gradient and caption */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-2.5">
-                    <span className="text-[10px] font-mono font-medium text-white tracking-wider">
-                      {photo.caption}
-                    </span>
+            {/* ── DESKTOP: Expanding Accordion ──────────────────────── */}
+            <div className="hidden sm:flex gap-2 h-80 rounded-2xl overflow-hidden border border-surface-border shadow-xs">
+              {COLLAGE_PHOTOS.map((photo, i) => {
+                const isActive = activePhoto === i;
+                return (
+                  <div
+                    key={photo.src}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={photo.caption}
+                    onMouseEnter={() => setActivePhoto(i)}
+                    onFocus={() => setActivePhoto(i)}
+                    onClick={() => setActivePhoto(i)}
+                    onKeyDown={(e) => e.key === "Enter" && setActivePhoto(i)}
+                    className={`relative overflow-hidden cursor-pointer transition-all duration-500 ease-in-out ${
+                      isActive ? "flex-[3]" : "flex-[1]"
+                    }`}
+                  >
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 25vw"
+                      className={`object-cover object-center transition-all duration-500 ${
+                        isActive ? "scale-105" : "scale-100 brightness-75"
+                      }`}
+                      priority={i < 2}
+                    />
+                    {/* Always-visible slim label for collapsed slices */}
+                    {!isActive && (
+                      <div className="absolute inset-0 flex items-end justify-center pb-4">
+                        <span
+                          className="font-mono text-[9px] font-bold text-white/80 tracking-widest uppercase"
+                          style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+                        >
+                          {photo.caption}
+                        </span>
+                      </div>
+                    )}
+                    {/* Expanded caption overlay */}
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-300 flex flex-col justify-end p-4 ${
+                        isActive ? "opacity-100" : "opacity-0"
+                      }`}
+                    >
+                      <span className="text-[10px] font-mono text-white/60 uppercase tracking-widest mb-0.5">
+                        {String(i + 1).padStart(2, "0")} / {COLLAGE_PHOTOS.length}
+                      </span>
+                      <span className="text-base font-display font-bold text-white leading-tight">
+                        {photo.caption}
+                      </span>
+                      <span className="text-[11px] font-sans text-white/70 mt-0.5">
+                        {photo.subtitle}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
+            </div>
+
+            {/* ── MOBILE: Single card with prev / next ──────────────── */}
+            <div className="sm:hidden relative h-72 rounded-2xl overflow-hidden border border-surface-border shadow-xs">
+              <Image
+                src={COLLAGE_PHOTOS[mobilePhoto].src}
+                alt={COLLAGE_PHOTOS[mobilePhoto].alt}
+                fill
+                sizes="100vw"
+                className="object-cover object-center"
+                priority
+              />
+              {/* Caption overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent flex flex-col justify-end p-4">
+                <span className="text-[10px] font-mono text-white/60 uppercase tracking-widest mb-0.5">
+                  {String(mobilePhoto + 1).padStart(2, "0")} / {COLLAGE_PHOTOS.length}
+                </span>
+                <span className="text-base font-display font-bold text-white leading-tight">
+                  {COLLAGE_PHOTOS[mobilePhoto].caption}
+                </span>
+                <span className="text-[11px] font-sans text-white/70 mt-0.5">
+                  {COLLAGE_PHOTOS[mobilePhoto].subtitle}
+                </span>
+              </div>
+              {/* Prev / Next */}
+              <button
+                type="button"
+                onClick={() => setMobilePhoto((p) => (p - 1 + COLLAGE_PHOTOS.length) % COLLAGE_PHOTOS.length)}
+                className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/70 transition-colors cursor-pointer"
+                aria-label="Previous photo"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                type="button"
+                onClick={() => setMobilePhoto((p) => (p + 1) % COLLAGE_PHOTOS.length)}
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/70 transition-colors cursor-pointer"
+                aria-label="Next photo"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+              {/* Dot indicators */}
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                {COLLAGE_PHOTOS.map((_, di) => (
+                  <button
+                    key={di}
+                    type="button"
+                    onClick={() => setMobilePhoto(di)}
+                    className={`w-1.5 h-1.5 rounded-full transition-all cursor-pointer ${
+                      di === mobilePhoto ? "bg-white w-4" : "bg-white/40"
+                    }`}
+                    aria-label={`Go to photo ${di + 1}`}
+                  />
+                ))}
+              </div>
             </div>
 
             {/* Academic Summary Badge */}
@@ -228,6 +318,7 @@ export default function About() {
               </span>
             </div>
           </ScrollReveal>
+
         </div>
       </div>
     </section>

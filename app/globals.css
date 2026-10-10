@@ -3,48 +3,29 @@
 @tailwind utilities;
 
 :root {
-  /* ── Light Mode: Warm Ivory Editorial ─────────────────────────── */
-  --background:        #FAFAF8;
-  --surface:           #FFFFFF;
-  --surface-soft:      #F4F2EC;
-  --surface-muted:     #EAE7DF;
+  /* ── Obsidian Stage — Dark Only ─────────────────────────────── */
+  --background:        #0B0C10;
+  --surface:           #14161F;
+  --surface-soft:      #1C1E29;
+  --surface-muted:     #252836;
 
-  --foreground:        #16161A;   /* near-black, slightly warm */
-  --foreground-muted:  #52504A;   /* paragraph text */
-  --foreground-soft:   #78766F;   /* labels, captions */
+  --foreground:        #F3F4F6;   /* warm white */
+  --foreground-muted:  #94A3B8;   /* paragraph text */
+  --foreground-soft:   #64748B;   /* labels, captions */
 
-  --border:            #E6E2D9;
-  --border-hover:      #D4CFBF;
+  --border:            #1E2130;
+  --border-hover:      #2A2D3E;
 
-  --accent:            #2D5A43;   /* forest green */
-  --accent-hover:      #224535;
-  --accent-soft:       #EAF3EE;
-  --accent-border:     #C2D9CC;
+  --accent:            #10B981;   /* emerald */
+  --accent-hover:      #0EA571;
+  --accent-soft:       #0B2118;
+  --accent-border:     #134E35;
+
+  --amber:             #F59E0B;   /* warm amber badge accent */
 }
 
 html {
   scroll-behavior: smooth;
-  color-scheme: light;
-}
-
-html.dark {
-  /* ── Dark Mode: Deep Atmospheric Ink Night ─────────────────────── */
-  --background:        #111115;
-  --surface:           #1A1A1F;
-  --surface-soft:      #222229;
-  --surface-muted:     #2B2B34;
-
-  --foreground:        #F0EFE9;   /* warm white */
-  --foreground-muted:  #9A9891;
-  --foreground-soft:   #706E67;
-
-  --border:            #2A2A33;
-  --border-hover:      #3A3A47;
-
-  --accent:            #4A8F6A;   /* lighter green for dark bg */
-  --accent-hover:      #5AA47E;
-  --accent-soft:       #162A1E;
-  --accent-border:     #2A4D3A;
   color-scheme: dark;
 }
 

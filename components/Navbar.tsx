@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ArrowUpRight, GraduationCap, ChevronDown, FileDown } from "lucide-react";
 import { personalData } from "@/data/personal";
-import ThemeToggle from "./ThemeToggle";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/#home" },
@@ -187,9 +186,8 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Right Actions: Theme Toggle + CV Download + Contact CTA */}
+        {/* Right Actions: CV Download + Contact CTA */}
         <div className="hidden lg:flex items-center gap-2">
-          <ThemeToggle />
           <a
             href="/cv/Kristian-Novan-CV.pdf"
             target="_blank"
@@ -211,9 +209,8 @@ export default function Navbar() {
           </a>
         </div>
 
-        {/* Mobile Actions: ThemeToggle + Hamburger Button */}
+        {/* Mobile Actions: Hamburger Button */}
         <div className="flex lg:hidden items-center gap-2">
-          <ThemeToggle />
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
