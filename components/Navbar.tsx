@@ -37,6 +37,7 @@ export default function Navbar() {
         "activities",
         "projects",
         "upcoming",
+        "play-lab",
         "skills",
         "certificates",
         "about",

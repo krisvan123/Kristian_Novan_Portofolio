@@ -13,6 +13,7 @@ const SECTIONS: SectionItem[] = [
   { id: "activities", label: "Activities" },
   { id: "projects", label: "Projects" },
   { id: "upcoming", label: "Upcoming" },
+  { id: "play-lab", label: "Lab" },
   { id: "skills", label: "Skills" },
   { id: "certificates", label: "Certificates" },
   { id: "about", label: "About" },

@@ -99,6 +99,11 @@ export default function About() {
               <p>
                 Whether I&apos;m training a machine learning model, crafting an interface in Figma, or stepping onto a stage, I find joy in connecting technical thinking with creative expression. I enjoy building things from both sides of the process — making systems dependable under the hood while ensuring they feel natural, clear, and human on the surface.
               </p>
+
+              {/* Editorial Pull-Quote */}
+              <blockquote className="p-4 sm:p-5 rounded-2xl bg-canvas-subtle border-l-4 border-accent text-charcoal font-quote italic text-base sm:text-lg leading-relaxed shadow-2xs">
+                &ldquo;Technical discipline gives structure to algorithms, but it is stagecraft, choral harmony, and theater that teach the power of human connection, presence, and timing.&rdquo;
+              </blockquote>
             </div>
 
             {/* BEYOND COMPUTER SCIENCE — Subtle Editorial Interest Area */}

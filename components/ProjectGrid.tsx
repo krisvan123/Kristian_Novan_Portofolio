@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { projectsData } from "@/data/projects";
 import ProjectCard from "./ProjectCard";
+import SpotlightProjectCard from "./SpotlightProjectCard";
 import ScrollReveal from "./ScrollReveal";
 import { FolderGit2 } from "lucide-react";
 
@@ -58,6 +59,12 @@ export default function ProjectGrid() {
     return true;
   });
 
+  const spotlightProject = projectsData.find((p) => p.slug === "ecorouter-ai");
+  const displayProjects =
+    activeFilter === "all" && spotlightProject
+      ? filteredProjects.filter((p) => p.slug !== "ecorouter-ai")
+      : filteredProjects;
+
   return (
     <section id="projects" className="py-14 md:py-20 border-t border-surface-border">
       <div className="max-w-content mx-auto px-6 md:px-10 lg:px-12">
@@ -95,9 +102,16 @@ export default function ProjectGrid() {
           </div>
         </ScrollReveal>
 
-        {/* Project Grid */}
+        {/* 1. Editorial Spotlight Feature (Active when viewing All) */}
+        {activeFilter === "all" && spotlightProject && (
+          <ScrollReveal delay={100} className="mb-8">
+            <SpotlightProjectCard project={spotlightProject} />
+          </ScrollReveal>
+        )}
+
+        {/* 2. Responsive Case Studies Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-300">
-          {filteredProjects.map((project, index) => (
+          {displayProjects.map((project, index) => (
             <ProjectCard key={project.slug} project={project} index={index} />
           ))}
         </div>
