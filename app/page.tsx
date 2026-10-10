@@ -5,9 +5,10 @@ import ProjectGrid from "@/components/ProjectGrid";
 import UpcomingProjects from "@/components/UpcomingProjects";
 import Skills from "@/components/Skills";
 import Certificates from "@/components/Certificates";
+import PianoCorner from "@/components/PianoCorner";
 import QuoteBook from "@/components/QuoteBook";
-import DayNightMascot from "@/components/DayNightMascot";
 import Contact from "@/components/Contact";
+import DayNightMascot from "@/components/DayNightMascot";
 import SectionTransition from "@/components/SectionTransition";
 import SectionNavigator from "@/components/SectionNavigator";
 
@@ -17,7 +18,7 @@ export default function Home() {
       {/* Interactive floating presentation section navigator (desktop) */}
       <SectionNavigator />
 
-      {/* 1. Hero with academic hierarchy, profile photo, and scroll cue */}
+      {/* 1. Hero with academic hierarchy, profile photo, and downloadable CV */}
       <SectionTransition id="home">
         <Hero />
       </SectionTransition>
@@ -27,7 +28,7 @@ export default function Home() {
         <Activities />
       </SectionTransition>
 
-      {/* 3. Projects: Selected case studies */}
+      {/* 3. Projects: Selected case studies with dynamic filters */}
       <SectionTransition id="projects">
         <ProjectGrid />
       </SectionTransition>
@@ -42,29 +43,34 @@ export default function Home() {
         <Skills />
       </SectionTransition>
 
-      {/* 6. Certificates: 6 verified credentials with full-screen Lightbox */}
+      {/* 6. Certificates: 8 verified credentials with full-screen Lightbox */}
       <SectionTransition id="certificates">
         <Certificates />
       </SectionTransition>
 
-      {/* 7. About Me / Personal Side: Connecting technical curiosity with creative arts & 4 photos */}
+      {/* 7. About Me / Personal Side: Technical curiosity & creative arts with 4 photos */}
       <SectionTransition id="about">
         <About />
       </SectionTransition>
 
-      {/* 8. Interactive Physical Book: My Favorite Quotes (Real paper physics) */}
-      <SectionTransition id="quotes">
-        <QuoteBook />
+      {/* 8. A Little Piano Corner: Interactive 3D keyboard & Clair de Lune guided melody */}
+      <SectionTransition id="piano">
+        <PianoCorner />
       </SectionTransition>
 
-      {/* 9. Day/Night Mascot: Crayon Sunflower in Light Mode / Crayon Moon in Dark Mode */}
-      <SectionTransition>
-        <DayNightMascot />
+      {/* 9. Interactive Physical Book: My Favorite Quotes (Real finger drag physics) */}
+      <SectionTransition id="quotes">
+        <QuoteBook />
       </SectionTransition>
 
       {/* 10. Contact: Let's Connect (Final major content section) */}
       <SectionTransition id="contact">
         <Contact />
+      </SectionTransition>
+
+      {/* 11. Day/Night Mascot: Crayon Sunflower in Light Mode / Crayon Moon in Dark Mode directly above Footer */}
+      <SectionTransition>
+        <DayNightMascot />
       </SectionTransition>
     </div>
   );

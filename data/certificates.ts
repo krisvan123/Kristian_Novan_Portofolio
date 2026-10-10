@@ -37,6 +37,22 @@ export const certificatesData: CertificateItem[] = [
     highlight: true,
   },
   {
+    id: "mc-techno",
+    title: "MC Techno — Master of Ceremony",
+    category: "Public Speaking & Leadership",
+    issuer: "Techno Event Committee",
+    description: "Master of Ceremony for the Techno event, leading event progression, audience engagement, and program coordination.",
+    image: "/images/certificates/mc-techno.jpg",
+  },
+  {
+    id: "ptk-techno",
+    title: "PTK Techno — Committee Member",
+    category: "Organizational Committee",
+    issuer: "Techno Event Committee",
+    description: "Active member of PTK Techno committee, contributing to logistics, operations, and organizational coordination.",
+    image: "/images/certificates/ptk-techno.jpg",
+  },
+  {
     id: "walubi-2025",
     title: "WALUBI 2025 — Volunteer",
     category: "Community & Humanitarian Service",

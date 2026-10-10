@@ -41,6 +41,7 @@ export default function Navbar() {
         "skills",
         "certificates",
         "about",
+        "piano",
         "quotes",
         "contact",
       ];

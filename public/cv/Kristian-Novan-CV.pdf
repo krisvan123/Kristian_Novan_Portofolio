@@ -1,0 +1,83 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 6162 >>
+stream
+BT /F2 22 Tf 0.1 0.22 0.45 rg 50 745 Td (KRISTIAN NOVAN) Tj ET
+BT /F1 10 Tf 0.35 0.35 0.4 rg 50 729 Td (Computer Science Undergraduate | Intelligent Systems \(AI\) Specialization) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.18 rg 50 715 Td (Jakarta, Indonesia  |  Email: kristiannovan17@gmail.com  |  LinkedIn: linkedin.com/in/kristian-n-195031328  |  GitHub: github.com/krisvan123) Tj ET
+0.8 0.8 0.82 RG 1 w 50 705 m 562 705 l S
+BT /F2 11 Tf 0.1 0.22 0.45 rg 50 689 Td (PROFESSIONAL SUMMARY & AVAILABILITY) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.18 rg 50 676 Td (Computer Science student at BINUS University \(B2028\), specializing in Intelligent Systems \(AI\) during Semesters 4-5.) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.18 rg 50 665 Td (Passionate about connecting technical rigor in Machine Learning with human-centered UI/UX design. Open to internship and) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.18 rg 50 654 Td (work opportunities in AI systems, full-stack software development, and UI/UX product engineering.) Tj ET
+0.8 0.8 0.82 RG 1 w 50 642 m 562 642 l S
+BT /F2 11 Tf 0.1 0.22 0.45 rg 50 626 Td (EDUCATION) Tj ET
+BT /F2 9.5 Tf 0.15 0.15 0.18 rg 50 613 Td (BINUS University ) Tj /F1 9 Tf ( School of Computer Science \(SOCS\)) Tj ET
+BT /F1 9 Tf 0.35 0.35 0.4 rg 440 613 Td (Jakarta, Indonesia) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.18 rg 50 602 Td (Bachelor of Computer Science \(B2028\) | Specialization: Intelligent Systems \(AI\), Semesters 4-5) Tj ET
+BT /F1 9 Tf 0.35 0.35 0.4 rg 440 602 Td (Expected Grad: 2028) Tj ET
+0.8 0.8 0.82 RG 1 w 50 590 m 562 590 l S
+BT /F2 11 Tf 0.1 0.22 0.45 rg 50 574 Td (TECHNICAL & INTERPERSONAL SKILLS) Tj ET
+BT /F2 9 Tf 0.15 0.15 0.18 rg 50 561 Td (Languages & Frameworks: ) Tj /F1 9 Tf (Python, Next.js, React, TypeScript, JavaScript, Tailwind CSS, HTML5/CSS3) Tj ET
+BT /F2 9 Tf 0.15 0.15 0.18 rg 50 550 Td (AI & Machine Learning: ) Tj /F1 9 Tf (Scikit-Learn, PyTorch, Computer Vision, Natural Language Processing \(NLP\), Regression, Heuristics) Tj ET
+BT /F2 9 Tf 0.15 0.15 0.18 rg 50 539 Td (Design & Tools: ) Tj /F1 9 Tf (Figma \(UI/UX, Prototyping, Wireframing\), Git, GitHub, VS Code, Cloud AI \(Microsoft Azure\)) Tj ET
+BT /F2 9 Tf 0.15 0.15 0.18 rg 50 528 Td (Interpersonal & Creative: ) Tj /F1 9 Tf (Master of Ceremony \(Public Speaking\), Mentorship, Team Leadership, Choir, Theater Arts) Tj ET
+0.8 0.8 0.82 RG 1 w 50 516 m 562 516 l S
+BT /F2 11 Tf 0.1 0.22 0.45 rg 50 500 Td (FEATURED ACADEMIC & COMPETITION PROJECTS) Tj ET
+BT /F2 9.5 Tf 0.15 0.15 0.18 rg 50 486 Td (EcoRouter AI  Dynamic Load Routing Optimization) Tj ET
+BT /F1 8.5 Tf 0.35 0.35 0.4 rg 370 486 Td (Python, Heuristic Optimization, Green Logistics) Tj ET
+BT /F1 8.5 Tf 0.15 0.15 0.18 rg 60 475 Td ("  Modeled vehicle routing optimization for CompFest AI Competition under dynamic parcel weight reduction constraints.) Tj ET
+BT /F1 8.5 Tf 0.15 0.15 0.18 rg 60 465 Td ("  Calculated sequential transit mass savings to identify delivery sequences that minimize total fuel burn and carbon emissions.) Tj ET
+BT /F2 9.5 Tf 0.15 0.15 0.18 rg 50 452 Td (AirSense Dashboard  PM2.5 Environmental Predictor) Tj ET
+BT /F1 8.5 Tf 0.35 0.35 0.4 rg 370 452 Td (Python, Machine Learning, Regression, WHO Datasets) Tj ET
+BT /F1 8.5 Tf 0.15 0.15 0.18 rg 60 441 Td ("  Built regression prediction pipeline estimating PM2.5 particulate concentration from macro environmental indicators.) Tj ET
+BT /F1 8.5 Tf 0.15 0.15 0.18 rg 60 431 Td ("  Provided sensor-free air quality assessment interface enabling regional parameter analysis based on historical WHO data.) Tj ET
+BT /F2 9.5 Tf 0.15 0.15 0.18 rg 50 418 Td (Skinical  Hybrid Lesion Classifier & Web Interface) Tj ET
+BT /F1 8.5 Tf 0.35 0.35 0.4 rg 370 418 Td (Computer Vision, Deep Learning, Classical ML, Web UI) Tj ET
+BT /F1 8.5 Tf 0.15 0.15 0.18 rg 60 407 Td ("  Comparative study evaluating classical feature descriptors vs. hybrid deep representations for skin lesion screening.) Tj ET
+BT /F1 8.5 Tf 0.15 0.15 0.18 rg 60 397 Td ("  Designed lightweight web application interface for diagnostic result inspection and non-invasive screening support.) Tj ET
+BT /F2 9.5 Tf 0.15 0.15 0.18 rg 50 384 Td (FinPro  Personal Financial Management Platform) Tj ET
+BT /F1 8.5 Tf 0.35 0.35 0.4 rg 370 384 Td (Software Engineering, Full-Stack Architecture, System Design, UI/UX) Tj ET
+BT /F1 8.5 Tf 0.15 0.15 0.18 rg 60 373 Td ("  Engineered personal budget tracker emphasizing modular design patterns and intuitive day-to-day money management flows.) Tj ET
+BT /F2 9.5 Tf 0.15 0.15 0.18 rg 50 360 Td (Travel Application  HCI & Mobile Prototype) Tj ET
+BT /F1 8.5 Tf 0.35 0.35 0.4 rg 370 360 Td (Figma, Human-Computer Interaction, UI/UX Design System) Tj ET
+BT /F1 8.5 Tf 0.15 0.15 0.18 rg 60 349 Td ("  Applied cognitive load minimization and user flow principles to design a high-fidelity travel itinerary planner in Figma.) Tj ET
+0.8 0.8 0.82 RG 1 w 50 336 m 562 336 l S
+BT /F2 11 Tf 0.1 0.22 0.45 rg 50 320 Td (CREDENTIALS, LEADERSHIP & CAMPUS EXPERIENCE) Tj ET
+BT /F2 8.5 Tf 0.15 0.15 0.18 rg 50 307 Td (" ICORIS 2026 Paper Author: ) Tj /F1 8 Tf 0.35 0.35 0.4 rg (IEEE Indonesia Section & UTB  Peer-reviewed research publication presenter) Tj ET
+BT /F2 8.5 Tf 0.15 0.15 0.18 rg 50 297 Td (" CompFest AIC 2026 Top 41 Finalist: ) Tj /F1 8 Tf 0.35 0.35 0.4 rg (Universitas Indonesia  National AI Machine Learning Competition) Tj ET
+BT /F2 8.5 Tf 0.15 0.15 0.18 rg 50 287 Td (" Microsoft Azure AI Fundamentals: ) Tj /F1 8 Tf 0.35 0.35 0.4 rg (Microsoft & GreatNusa  Cloud AI, Computer Vision & NLP Credential) Tj ET
+BT /F2 8.5 Tf 0.15 0.15 0.18 rg 50 277 Td (" HIMTI Staff of Mentor Division: ) Tj /F1 8 Tf 0.35 0.35 0.4 rg (HIMTI BINUS  Guided junior students in committee leadership preparation) Tj ET
+BT /F2 8.5 Tf 0.15 0.15 0.18 rg 50 267 Td (" Techno Event Master of Ceremony \(MC\): ) Tj /F1 8 Tf 0.35 0.35 0.4 rg (PTK Techno Committee  Stage host, audience engagement, and logistics) Tj ET
+BT /F2 8.5 Tf 0.15 0.15 0.18 rg 50 257 Td (" WALUBI Volunteer Service \(Waisak 2025\): ) Tj /F1 8 Tf 0.35 0.35 0.4 rg (DPD WALUBI Jateng  Medical logistics and humanitarian service at Candi Borobudur) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000006465 00000 n 
+0000006535 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+6610
+%%EOF

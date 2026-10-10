@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Mail, FolderGit2, ArrowRight, Check } from "lucide-react";
+import { Mail, FolderGit2, ArrowRight, Check, FileDown, Briefcase } from "lucide-react";
 import { personalData } from "@/data/personal";
 import ProfilePhoto from "./ProfilePhoto";
 import ScrollIndicator from "./ScrollIndicator";
@@ -33,12 +33,20 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Left Column: Clear Typographic Hierarchy */}
           <div className="lg:col-span-7 flex flex-col items-start space-y-6">
-            {/* 1. Academic Affiliation Eyebrow */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-canvas-subtle border border-surface-border text-charcoal-soft font-mono text-[11px] tracking-wide">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              <span>
-                {personalData.academic.university} · {personalData.academic.cohort} • {personalData.academic.school}
-              </span>
+            {/* 1. Academic Affiliation Eyebrow & Professional Availability */}
+            <div className="flex flex-wrap items-center gap-2.5">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-canvas-subtle border border-surface-border text-charcoal-soft font-mono text-[11px] tracking-wide">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                <span>
+                  {personalData.academic.university} · {personalData.academic.cohort} • {personalData.academic.school}
+                </span>
+              </div>
+
+              {/* Status: Open to Internship & Work Opportunities */}
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/30 text-emerald-700 dark:text-emerald-400 font-mono text-[11px] font-medium shadow-2xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span>Open to Internship &amp; Work Opportunities</span>
+              </div>
             </div>
 
             {/* 2. Primary Academic Identity & Direction */}
@@ -61,7 +69,7 @@ export default function Hero() {
               {personalData.heroBio}
             </p>
 
-            {/* 4. Current Core Focus (Clean, uncluttered) */}
+            {/* 4. Current Core Focus */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-canvas-subtle border border-surface-border text-xs">
               <span className="font-mono text-charcoal-soft uppercase text-[10px] tracking-wider">
                 Current Focus:
@@ -71,21 +79,31 @@ export default function Hero() {
               </span>
             </div>
 
-            {/* 5. Primary CTAs with micro-interactions */}
-            <div className="flex flex-wrap items-center gap-3.5 pt-2 w-full sm:w-auto">
+            {/* 5. Primary CTAs: View Projects, Download CV, Contact Me */}
+            <div className="flex flex-wrap items-center gap-3 pt-2 w-full sm:w-auto">
               <Link
                 href="#projects"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-charcoal dark:bg-[#F3F2EE] text-white dark:text-[#111113] text-sm font-semibold hover:bg-accent dark:hover:bg-accent-hover hover:text-white transition-all duration-200 shadow-xs hover:shadow-md hover:-translate-y-0.5 group w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-charcoal dark:bg-[#F3F2EE] text-white dark:text-[#111113] text-xs sm:text-sm font-semibold hover:bg-accent dark:hover:bg-accent-hover hover:text-white transition-all duration-200 shadow-xs hover:shadow-md hover:-translate-y-0.5 group cursor-pointer"
               >
                 <FolderGit2 className="w-4 h-4 stroke-[1.9]" />
-                <span>View My Projects</span>
+                <span>View Projects</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
               </Link>
+
+              {/* Download CV (PDF) Button */}
+              <a
+                href="/cv/Kristian-Novan-CV.pdf"
+                download="Kristian-Novan-CV.pdf"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-accent hover:bg-accent-hover text-white text-xs sm:text-sm font-semibold shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer group active:scale-95"
+              >
+                <FileDown className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                <span>Download CV (PDF)</span>
+              </a>
 
               <a
                 href={`mailto:${personalData.contact.email}`}
                 onClick={handleContactClick}
-                className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white dark:bg-canvas-card-dark border border-surface-border text-charcoal dark:text-charcoal-dark text-sm font-semibold hover:border-accent hover:text-accent transition-all duration-200 shadow-2xs w-full sm:w-auto active:scale-95 ${
+                className={`inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white dark:bg-canvas-card-dark border border-surface-border text-charcoal dark:text-charcoal-dark text-xs sm:text-sm font-semibold hover:border-accent hover:text-accent transition-all duration-200 shadow-2xs cursor-pointer active:scale-95 ${
                   isContacting
                     ? "scale-95 border-accent text-accent bg-accent-light dark:bg-accent-soft"
                     : "hover:-translate-y-0.5"
@@ -96,7 +114,7 @@ export default function Hero() {
                 ) : (
                   <Mail className="w-4 h-4 stroke-[1.9]" />
                 )}
-                <span>{isContacting ? "Opening Email..." : "Contact Me"}</span>
+                <span>{isContacting ? "Opening..." : "Contact Me"}</span>
               </a>
             </div>
           </div>

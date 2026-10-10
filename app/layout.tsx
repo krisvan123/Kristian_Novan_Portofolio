@@ -60,12 +60,21 @@ export const metadata: Metadata = {
     siteName: "Kristian Novan Portfolio",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Kristian Novan — Computer Science Student | BINUS University",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Kristian Novan — Computer Science Student | BINUS University",
     description:
       "Personal portfolio of Kristian Novan, Computer Science student at BINUS University (B2028), specializing in Intelligent Systems (AI).",
+    images: ["/opengraph-image.png"],
   },
   icons: {
     icon: "/favicon.ico",
