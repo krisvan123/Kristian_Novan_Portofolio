@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kristian Novan — Curriculum Vitae</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    @page {
+      size: A4;
+      margin: 11mm 14mm 11mm 14mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #111827;
+      background: #ffffff;
+      line-height: 1.36;
+      font-size: 8.8pt;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      width: 100%;
+      height: 100%;
+      page-break-after: always;
+      position: relative;
+    }
+
+    .page:last-child {
+      page-break-after: avoid;
+    }
+
+    /* Header */
+    .header {
+      margin-bottom: 9pt;
+    }
+
+    .name {
+      font-size: 19pt;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 2pt;
+    }
+
+    .headline {
+      font-size: 9pt;
+      font-weight: 600;
+      color: #334155;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 4pt;
+    }
+
+    .contact-bar {
+      font-size: 8.2pt;
+      color: #475569;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3pt 5pt;
+      align-items: center;
+      line-height: 1.25;
+    }
+
+    .contact-bar a {
+      color: #0f172a;
+      text-decoration: none;
+    }
+
+    .sep {
+      color: #94a3b8;
+    }
+
+    /* Section */
+    .section {
+      margin-bottom: 9pt;
+    }
+
+    .section-title {
+      font-size: 9.5pt;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #0f172a;
+      padding-bottom: 2pt;
+      border-bottom: 1.2px solid #0f172a;
+      margin-bottom: 5pt;
+    }
+
+    /* About Me */
+    .about-text {
+      font-size: 8.6pt;
+      color: #1e293b;
+      line-height: 1.38;
+      text-align: justify;
+    }
+
+    /* Items */
+    .item {
+      margin-bottom: 5.5pt;
+    }
+
+    .item:last-child {
+      margin-bottom: 0;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1pt;
+    }
+
+    .item-title-org {
+      font-size: 9pt;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .item-meta {
+      font-size: 8.2pt;
+      color: #475569;
+      font-weight: 500;
+    }
+
+    .item-subtitle-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 8.5pt;
+      color: #334155;
+      font-weight: 500;
+      margin-bottom: 2pt;
+    }
+
+    .item-role {
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    .item-date {
+      font-size: 8.2pt;
+      color: #64748b;
+    }
+
+    /* Bullets */
+    ul.bullets {
+      list-style-type: disc;
+      padding-left: 13pt;
+      margin-top: 1pt;
+    }
+
+    ul.bullets li {
+      font-size: 8.4pt;
+      color: #1e293b;
+      line-height: 1.36;
+      margin-bottom: 2pt;
+      text-align: justify;
+    }
+
+    ul.bullets li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Project Items */
+    .project-item {
+      margin-bottom: 6pt;
+    }
+
+    .project-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-header {
+      font-size: 8.8pt;
+      margin-bottom: 1.5pt;
+    }
+
+    .project-title {
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .project-tag {
+      font-weight: 500;
+      color: #475569;
+    }
+
+    .project-points {
+      list-style-type: disc;
+      padding-left: 13pt;
+    }
+
+    .project-points li {
+      font-size: 8.3pt;
+      color: #1e293b;
+      line-height: 1.36;
+      margin-bottom: 2pt;
+      text-align: justify;
+    }
+
+    .project-points li:last-child {
+      margin-bottom: 0;
+    }
+
+    .label-bold {
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    /* Expertise */
+    .expertise-list {
+      list-style-type: disc;
+      padding-left: 13pt;
+    }
+
+    .expertise-list li {
+      font-size: 8.4pt;
+      color: #1e293b;
+      line-height: 1.38;
+      margin-bottom: 2.5pt;
+    }
+
+    .expertise-list li:last-child {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== PAGE 1 ==================== -->
+  <div class="page">
+    <!-- Header -->
+    <header class="header">
+      <h1 class="name">KRISTIAN NOVAN</h1>
+      <p class="headline">COMPUTER SCIENCE STUDENT | INTELLIGENT SYSTEMS (AI) &amp; UI/UX ENTHUSIAST</p>
+      <div class="contact-bar">
+        <span>kristiannovan17@gmail.com</span>
+        <span class="sep">|</span>
+        <span>+62 813-8105-0453</span>
+        <span class="sep">|</span>
+        <a href="https://www.linkedin.com/in/kristian-n-195031328" target="_blank">linkedin.com/in/kristian-n-195031328</a>
+        <span class="sep">|</span>
+        <a href="https://kristiannovan.vercel.app" target="_blank">kristiannovan.vercel.app</a>
+        <span class="sep">|</span>
+        <a href="https://github.com/krisvan123" target="_blank">github.com/krisvan123</a>
+      </div>
+    </header>
+
+    <!-- About Me -->
+    <section class="section">
+      <h2 class="section-title">ABOUT ME</h2>
+      <p class="about-text">
+        Computer Science student at BINUS University specializing in Intelligent Systems (AI), combining rigorous machine learning engineering with human-centered UI/UX design. Experienced in developing regression models, natural language processing pipelines, computer vision classifiers, and heuristic routing optimization. Active as HIMTI Mentor Staff and event Master of Ceremony, integrating technical analytical discipline with cross-functional leadership, public speaking, and community volunteering. Passionate about engineering dependable, user-centric AI solutions in dynamic software and product development environments.
+      </p>
+    </section>
+
+    <!-- Education -->
+    <section class="section">
+      <h2 class="section-title">EDUCATION</h2>
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title-org">BINUS University – Jakarta, Indonesia</span>
+          <span class="item-meta">2024 – Present</span>
+        </div>
+        <div class="item-subtitle-row">
+          <span class="item-role">Bachelor of Computer Science (Streaming: Intelligent Systems / AI)</span>
+          <span class="item-date">Cohort B2028 | Expected Grad: 2028</span>
+        </div>
+        <ul class="bullets">
+          <li><strong>Relevant Coursework:</strong> Machine Learning, Artificial Intelligence, Natural Language Processing, Computer Vision, Deep Learning, Algorithm Design &amp; Analysis, Human-Computer Interaction, UI/UX Design, Software Engineering, Database Systems.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="section">
+      <h2 class="section-title">EXPERIENCE</h2>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title-org">Himpunan Mahasiswa Teknik Informatika (HIMTI) BINUS University</span>
+          <span class="item-meta">Jakarta, Indonesia</span>
+        </div>
+        <div class="item-subtitle-row">
+          <span class="item-role">Staff of Mentor Division</span>
+          <span class="item-date">Feb 2025 – Present</span>
+        </div>
+        <ul class="bullets">
+          <li>Mentored junior Computer Science students in algorithmic problem solving, core data structures, and committee leadership pathways.</li>
+          <li>Facilitated study clinics and peer review sessions for School of Computer Science (SOCS) coursework, supporting academic progression.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title-org">PTK Techno Committee &amp; Academic Events</span>
+          <span class="item-meta">Jakarta, Indonesia</span>
+        </div>
+        <div class="item-subtitle-row">
+          <span class="item-role">Master of Ceremony (MC) &amp; Stage Host</span>
+          <span class="item-date">Jun 2024 – Present</span>
+        </div>
+        <ul class="bullets">
+          <li>Hosted live academic seminars, technology workshops, and formal stage programs, coordinating rundowns and speaker moderation.</li>
+          <li>Engaged diverse audiences with clear articulation and composure, maintaining structured event timing and dynamic presentation flow.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title-org">DPD WALUBI Jawa Tengah – Waisak National Committee</span>
+          <span class="item-meta">Magelang, Indonesia</span>
+        </div>
+        <div class="item-subtitle-row">
+          <span class="item-role">Medical &amp; Humanitarian Logistics Volunteer</span>
+          <span class="item-date">May 2025</span>
+        </div>
+        <ul class="bullets">
+          <li>Managed distribution logistics for medical aid stations and patient triage support during the national social health service at Candi Borobudur.</li>
+          <li>Collaborated closely with doctors, nurses, and operational personnel under high-volume field conditions catering to thousands of community beneficiaries.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Projects (Part 1: Exactly 2 projects on Page 1) -->
+    <section class="section" style="margin-bottom: 0;">
+      <h2 class="section-title">PROJECTS</h2>
+
+      <div class="project-item">
+        <div class="project-header">
+          <span class="project-title">EcoRouter AI — Dynamic Load Routing Optimization</span>
+          <span class="project-tag">| Top 41 Finalist at CompFest AIC (Universitas Indonesia)</span>
+        </div>
+        <ul class="project-points">
+          <li><span class="label-bold">Problem &amp; Build:</span> Addressed sustainable green delivery challenges by modeling a vehicle routing problem with dynamic cargo mass depletion constraints. Developed heuristic search and transit weight algorithms in Python to calculate fuel efficiency across diverse delivery sequences.</li>
+          <li><span class="label-bold">Validation &amp; Analysis:</span> Benchmarked optimization permutations against standard routes, achieving measurable transit mass savings and fuel burn reduction. Earned Top 41 National Finalist standing out of competitive multi-university engineering teams.</li>
+        </ul>
+      </div>
+
+      <div class="project-item">
+        <div class="project-header">
+          <span class="project-title">AirSense Dashboard</span>
+          <span class="project-tag">| AOL Machine Learning Project</span>
+        </div>
+        <ul class="project-points">
+          <li><span class="label-bold">Problem &amp; Build:</span> Addressed regional environmental data gaps by engineering a machine learning regression pipeline to estimate PM2.5 particulate concentrations using macro environmental indicators from World Health Organization (WHO) datasets.</li>
+          <li><span class="label-bold">Validation &amp; Deploy:</span> Built feature correlation workflows and developed an intuitive dashboard interface enabling instant sensor-free particulate estimation and parameter exploration for environmental researchers.</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <!-- ==================== PAGE 2 ==================== -->
+  <div class="page">
+    <!-- Projects (Part 2: 4 remaining projects) -->
+    <section class="section" style="margin-top: 0;">
+      <div class="project-item">
+        <div class="project-header">
+          <span class="project-title">NiVScan — Biomedical NLP Information Extraction</span>
+          <span class="project-tag">| Natural Language Processing Project</span>
+        </div>
+        <ul class="project-points">
+          <li><span class="label-bold">Problem &amp; Build:</span> Addressed research synthesis bottlenecks in infectious disease tracking by developing a Natural Language Processing system to extract structured intelligence from unstructured scientific reports on Nipah virus transmissions.</li>
+          <li><span class="label-bold">Validation &amp; Analysis:</span> Implemented text preprocessing pipelines, biomedical lexical filtering, and token extraction to automate clinical finding summaries, streamlining research reviews for epidemiology students and scholars.</li>
+        </ul>
+      </div>
+
+      <div class="project-item">
+        <div class="project-header">
+          <span class="project-title">Skinical — Hybrid Lesion Classifier &amp; Web Interface</span>
+          <span class="project-tag">| Computer Vision &amp; Deep Learning Project</span>
+        </div>
+        <ul class="project-points">
+          <li><span class="label-bold">Problem &amp; Build:</span> Addressed non-invasive dermatological screening needs by engineering a comparative computer vision pipeline evaluating classical image descriptors alongside deep convolutional representations for skin lesion triage.</li>
+          <li><span class="label-bold">Validation &amp; Deploy:</span> Deployed a lightweight, responsive web application interface providing instant diagnostic confidence scores, structured result visualization, and lesion feature analysis.</li>
+        </ul>
+      </div>
+
+      <div class="project-item">
+        <div class="project-header">
+          <span class="project-title">Travel Itinerary Planner</span>
+          <span class="project-tag">| Human-Computer Interaction &amp; UI/UX Prototype</span>
+        </div>
+        <ul class="project-points">
+          <li><span class="label-bold">Problem &amp; Build:</span> Addressed cognitive overload in multi-destination trip coordination by conceptualizing a high-fidelity mobile application in Figma, structured around progressive disclosure and intuitive visual hierarchy.</li>
+          <li><span class="label-bold">Implementation &amp; Optimization:</span> Developed an end-to-end design system with reusable typography, button states, and micro-interactions, validating user workflows through cognitive walkthroughs and usability heuristic evaluations.</li>
+        </ul>
+      </div>
+
+      <div class="project-item">
+        <div class="project-header">
+          <span class="project-title">FinPro — Personal Financial Management Platform</span>
+          <span class="project-tag">| Full-Stack Software Engineering Project</span>
+        </div>
+        <ul class="project-points">
+          <li><span class="label-bold">Problem &amp; Build:</span> Addressed budget transparency needs for students and young professionals by developing a modular personal financial tracking system emphasizing clean architectural patterns and responsive web views.</li>
+          <li><span class="label-bold">Validation &amp; Deploy:</span> Engineered database schemas and responsive transaction logging workflows with data validation to support accurate day-to-day income and expense analytics.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Area of Expertise -->
+    <section class="section">
+      <h2 class="section-title">AREA OF EXPERTISE</h2>
+      <ul class="expertise-list">
+        <li><strong>Technical &amp; AI Engineering:</strong> Python, PyTorch, Scikit-Learn, Machine Learning (Regression, Classification), Computer Vision (OpenCV), Natural Language Processing (NLP), Heuristic Optimization, Data Preprocessing.</li>
+        <li><strong>Web &amp; Software Development:</strong> Next.js, React, TypeScript, JavaScript, Tailwind CSS, HTML5/CSS3, Git &amp; GitHub, RESTful API Integration, Component Architecture.</li>
+        <li><strong>UI/UX Design &amp; Prototyping:</strong> Figma (Design Systems, Wireframing, High-Fidelity Prototyping, Interactive Components), Human-Computer Interaction (HCI) Principles, Usability Evaluation.</li>
+        <li><strong>Leadership &amp; Interpersonal Skills:</strong> Public Speaking (Master of Ceremony), Academic Mentorship, Theater Arts &amp; Choir Ensemble, Cross-Functional Team Coordination, English &amp; Indonesian.</li>
+      </ul>
+    </section>
+
+    <!-- Verified Credentials & Publications -->
+    <section class="section">
+      <h2 class="section-title">CREDENTIALS &amp; ACHIEVEMENTS</h2>
+      <ul class="expertise-list">
+        <li><strong>Peer-Reviewed Research Publication:</strong> ICORIS 2026 Paper Author (IEEE Indonesia Section &amp; UTB).</li>
+        <li><strong>National AI Competition Finalist:</strong> CompFest AIC 2026 Top 41 Finalist (Universitas Indonesia).</li>
+        <li><strong>Cloud AI Credential:</strong> Microsoft Certified: Azure AI Fundamentals (Microsoft &amp; GreatNusa).</li>
+        <li><strong>Social Service Recognition:</strong> Humanitarian Volunteer Service Certificate (DPD WALUBI Jawa Tengah, Waisak 2025).</li>
+      </ul>
+    </section>
+  </div>
+
+</body>
+</html>

@@ -3,6 +3,7 @@ import About from "@/components/About";
 import Activities from "@/components/Activities";
 import ProjectGrid from "@/components/ProjectGrid";
 import UpcomingProjects from "@/components/UpcomingProjects";
+import PlayTeaser from "@/components/PlayTeaser";
 import Skills from "@/components/Skills";
 import Certificates from "@/components/Certificates";
 import QuoteBook from "@/components/QuoteBook";
@@ -34,6 +35,11 @@ export default function Home() {
       {/* 4. Upcoming Projects */}
       <SectionTransition id="upcoming">
         <UpcomingProjects />
+      </SectionTransition>
+
+      {/* Interactive Engineering & 3D Game Lab Highlight */}
+      <SectionTransition id="play-lab">
+        <PlayTeaser />
       </SectionTransition>
 
       {/* 5. Skills */}

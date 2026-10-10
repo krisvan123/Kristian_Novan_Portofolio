@@ -33,33 +33,25 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Left Column: Clear Typographic Hierarchy */}
           <div className="lg:col-span-7 flex flex-col items-start space-y-6">
-            {/* 1. Academic Affiliation Eyebrow & Professional Availability */}
-            <div className="flex flex-wrap items-center gap-2.5">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-canvas-subtle border border-surface-border text-charcoal-soft font-mono text-[11px] tracking-wide">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                <span>
-                  {personalData.academic.university} · {personalData.academic.cohort} • {personalData.academic.school}
-                </span>
-              </div>
-
-              {/* Status: Open to Internship & Work Opportunities */}
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/30 text-emerald-700 dark:text-emerald-400 font-mono text-[11px] font-medium shadow-2xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                <span>Open to Internship &amp; Work Opportunities</span>
-              </div>
+            {/* 1. Cohesive Status & Affiliation Eyebrow */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-canvas-subtle border border-surface-border text-charcoal-soft font-mono text-[11px] shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="text-charcoal font-medium">BINUS University B2028</span>
+              <span className="opacity-40">•</span>
+              <span>Available for Internships &amp; Roles</span>
             </div>
 
             {/* 2. Primary Academic Identity & Direction */}
-            <div className="space-y-2.5">
+            <div className="space-y-2">
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-semibold tracking-tight text-charcoal leading-[1.06]">
                 Kristian Novan
               </h1>
-              <div className="space-y-1">
-                <p className="text-xl sm:text-2xl md:text-3xl font-display font-semibold text-charcoal-muted tracking-tight">
-                  Computer Science Student
+              <div className="space-y-1 pt-1">
+                <p className="text-lg sm:text-2xl font-display font-medium text-charcoal-muted tracking-tight">
+                  Computer Science Undergraduate · Intelligent Systems (AI)
                 </p>
-                <p className="text-sm sm:text-base font-mono text-accent dark:text-accent-dark font-medium">
-                  BINUS University · B2028 · Intelligent Systems (AI) Specialization · Semesters 4–5
+                <p className="text-xs sm:text-sm font-mono text-accent dark:text-accent-dark font-medium">
+                  Focus: Machine Learning · Computer Vision · UI/UX Design
                 </p>
               </div>
             </div>
@@ -68,16 +60,6 @@ export default function Hero() {
             <p className="text-base sm:text-lg text-charcoal-muted leading-relaxed max-w-xl font-sans">
               {personalData.heroBio}
             </p>
-
-            {/* 4. Current Core Focus */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-canvas-subtle border border-surface-border text-xs">
-              <span className="font-mono text-charcoal-soft uppercase text-[10px] tracking-wider">
-                Current Focus:
-              </span>
-              <span className="font-semibold text-charcoal font-display">
-                Machine Learning · UI/UX
-              </span>
-            </div>
 
             {/* 5. Primary CTAs: View Projects, Download CV, Contact Me */}
             <div className="flex flex-wrap items-center gap-3 pt-2 w-full sm:w-auto">
