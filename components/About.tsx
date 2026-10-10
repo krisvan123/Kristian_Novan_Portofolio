@@ -176,14 +176,6 @@ export default function About() {
 
           {/* Right Column: Curated Personal Photos Collage */}
           <ScrollReveal delay={200} className="lg:col-span-5 flex flex-col space-y-6">
-            <div className="space-y-2">
-              <span className="text-xs font-mono font-semibold tracking-wider text-charcoal-soft uppercase block">
-                Moments &amp; Creative Life
-              </span>
-              <p className="text-xs text-charcoal-soft font-sans">
-                A visual snapshot across university life, stage events, and personal creative pursuits.
-              </p>
-            </div>
 
             {/* ── DESKTOP: Expanding Accordion ──────────────────────── */}
             <div className="hidden sm:flex gap-2 h-80 rounded-2xl overflow-hidden border border-surface-border shadow-xs">

@@ -42,7 +42,7 @@ export default function ProfilePhoto() {
       className="relative w-full max-w-[340px] sm:max-w-[380px] select-none perspective-[1000px]"
     >
       {/* Ambient soft glow */}
-      <div className="absolute -inset-2 rounded-3xl bg-accent-light/50 dark:bg-accent-soft/30 blur-xl -z-10 pointer-events-none transition-opacity duration-500" />
+      <div className="absolute -inset-2 rounded-3xl bg-accent/20 blur-2xl -z-10 pointer-events-none" />
 
       {/* Tiltable Container */}
       <div
@@ -52,10 +52,10 @@ export default function ProfilePhoto() {
             : "rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",
           transition: isHovered ? "transform 0.1s ease-out" : "transform 0.5s ease-out",
         }}
-        className="relative bg-white dark:bg-canvas-card-dark p-3.5 rounded-2xl border border-surface-border shadow-sm will-change-transform"
+        className="relative bg-[#14161F] p-3.5 rounded-2xl border border-white/15 shadow-sm will-change-transform ring-1 ring-accent/20"
       >
-        {/* Inner Image Container with subtle parallax */}
-        <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-canvas-subtle border border-surface-border/50">
+        {/* Inner Image Container */}
+        <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-[#1C1E29] border border-white/10">
           <div
             style={{
               transform: isHovered
@@ -79,14 +79,14 @@ export default function ProfilePhoto() {
         {/* Minimal metadata strip */}
         <div className="mt-3 px-1.5 flex items-center justify-between">
           <div className="flex flex-col">
-            <span className="text-xs font-display font-semibold text-charcoal">
+            <span className="text-xs font-display font-semibold text-[#F3F4F6]">
               {personalData.name}
             </span>
-            <span className="text-[11px] text-charcoal-soft font-mono">
+            <span className="text-[11px] text-[#64748B] font-mono">
               {personalData.academic.university} • {personalData.academic.cohort}
             </span>
           </div>
-          <div className="px-2 py-0.5 rounded-md bg-canvas-subtle border border-surface-border text-[10px] font-mono font-medium text-accent dark:text-accent-dark">
+          <div className="px-2 py-0.5 rounded-md bg-accent/15 border border-accent/30 text-[10px] font-mono font-medium text-accent">
             SOCS • AI
           </div>
         </div>

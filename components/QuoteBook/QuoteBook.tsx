@@ -334,12 +334,6 @@ export default function QuoteBook() {
                 }`}
 
               >
-                {/* Paper grain texture */}
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 bg-[radial-gradient(#d6cdbe_1px,transparent_1px)] [background-size:16px_16px] opacity-15 pointer-events-none z-10"
-                />
-
                 {/* Central Spine Shadow & Stitching */}
                 <div
                   aria-hidden="true"
@@ -539,11 +533,6 @@ export default function QuoteBook() {
                   isDragging ? "cursor-grabbing" : "cursor-grab"
                 }`}
               >
-                {/* Paper grain */}
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 bg-[radial-gradient(#d6cdbe_1px,transparent_1px)] [background-size:14px_14px] opacity-15 pointer-events-none"
-                />
 
                 <div
                   style={{
@@ -677,7 +666,7 @@ export default function QuoteBook() {
 function PhotoLeftPage() {
   return (
     <div className="w-full h-full flex flex-col items-center justify-center p-2 sm:p-4">
-      <div className="relative w-full max-w-[210px] lg:max-w-[250px] aspect-[4/5] rounded-xl overflow-hidden border-2 border-white/10 shadow-md">
+      <div className="relative w-full max-w-[210px] lg:max-w-[250px] aspect-[4/5] rounded-xl overflow-hidden border border-[#3A3530] shadow-lg ring-1 ring-white/5">
         <Image
           src="/images/profile/ppp.jpg"
           alt="Kristian Novan portrait"
