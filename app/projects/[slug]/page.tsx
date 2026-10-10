@@ -6,7 +6,7 @@ import { projectsData } from "@/data/projects";
 import SafeImage from "@/components/SafeImage";
 import ProjectGallery from "@/components/ProjectGallery";
 import TravelShowcase from "@/components/TravelShowcase";
-import { ArrowLeft, ChevronRight, FolderGit2 } from "lucide-react";
+import { ArrowLeft, ChevronRight, FolderGit2, Github, ExternalLink } from "lucide-react";
 
 interface ProjectPageProps {
   params: {
@@ -95,6 +95,34 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
               </span>
             ))}
           </div>
+
+          {/* Optional Direct Project Links (Live Demo / Repository) */}
+          {project.links && (project.links.demo || project.links.repo) && (
+            <div className="pt-3 flex flex-wrap gap-3">
+              {project.links.demo && (
+                <a
+                  href={project.links.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-charcoal dark:bg-[#F3F2EE] text-white dark:text-[#111113] text-xs font-semibold hover:bg-accent dark:hover:bg-accent-hover hover:text-white transition-colors shadow-2xs"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span>Live Demo</span>
+                </a>
+              )}
+              {project.links.repo && (
+                <a
+                  href={project.links.repo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white dark:bg-canvas-card-dark border border-surface-border text-xs font-semibold text-charcoal hover:border-accent hover:text-accent transition-colors shadow-2xs"
+                >
+                  <Github className="w-3.5 h-3.5" />
+                  <span>GitHub Repository</span>
+                </a>
+              )}
+            </div>
+          )}
         </header>
 
         {/* Main Primary Hero Preview Image (Always suffix 01) */}

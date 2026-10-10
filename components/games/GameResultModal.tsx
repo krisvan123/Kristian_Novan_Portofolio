@@ -16,6 +16,7 @@ interface GameResultModalProps {
   breakdown?: Array<{ label: string; value: string | number }>;
   unlockedAchievements?: Array<{ id: string; title: string; icon: string }>;
   onReplay: () => void;
+  onOpenTutorial?: () => void;
 }
 
 export default function GameResultModal({
@@ -29,6 +30,7 @@ export default function GameResultModal({
   breakdown = [],
   unlockedAchievements = [],
   onReplay,
+  onOpenTutorial,
 }: GameResultModalProps) {
   useEffect(() => {
     if (isOpen) {
@@ -119,19 +121,30 @@ export default function GameResultModal({
         )}
 
         {/* Action Buttons */}
-        <div className="w-full flex items-center gap-3 pt-2">
+        <div className="w-full flex items-center gap-2 pt-2">
           <button
             type="button"
             onClick={onReplay}
-            className="flex-1 py-3 px-4 rounded-xl bg-accent hover:bg-accent-hover text-white font-mono font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg shadow-accent/20 active:scale-95"
+            className="flex-1 py-3 px-3 rounded-xl bg-accent hover:bg-accent-hover text-white font-mono font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg shadow-accent/20 active:scale-95"
           >
             <RotateCcw className="w-4 h-4" />
             <span>PLAY AGAIN</span>
           </button>
 
+          {onOpenTutorial && (
+            <button
+              type="button"
+              onClick={onOpenTutorial}
+              className="py-3 px-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-mono text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer border border-white/15"
+              title="Review tutorial rules"
+            >
+              <span>GUIDE</span>
+            </button>
+          )}
+
           <Link
             href="/play"
-            className="py-3 px-4 rounded-xl border border-white/20 hover:bg-white/10 text-white/80 hover:text-white font-mono text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+            className="py-3 px-3.5 rounded-xl border border-white/20 hover:bg-white/10 text-white/80 hover:text-white font-mono text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>HUB</span>

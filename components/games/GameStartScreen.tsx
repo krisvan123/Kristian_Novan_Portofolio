@@ -15,6 +15,7 @@ interface GameStartScreenProps {
   objectives: string[];
   bestScore?: number;
   onStart: () => void;
+  onOpenTutorial?: () => void;
   badge?: string;
 }
 
@@ -26,6 +27,7 @@ export default function GameStartScreen({
   objectives,
   bestScore = 0,
   onStart,
+  onOpenTutorial,
   badge = "Interactive Mini-Game",
 }: GameStartScreenProps) {
   return (
@@ -102,16 +104,29 @@ export default function GameStartScreen({
           )}
         </div>
 
-        {/* Start Button */}
-        <button
-          type="button"
-          onClick={onStart}
-          className="group relative inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-2xl bg-gradient-to-r from-accent to-emerald-600 hover:from-accent-hover hover:to-emerald-500 text-white font-display font-bold text-base sm:text-lg shadow-xl shadow-accent/20 hover:shadow-accent/40 active:scale-95 transition-all duration-200 cursor-pointer overflow-hidden"
-        >
-          <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-          <Play className="w-5 h-5 fill-white group-hover:scale-110 transition-transform" />
-          <span className="relative z-10">START GAME</span>
-        </button>
+        {/* Action Buttons: HOW TO PLAY & START GAME */}
+        <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
+          {onOpenTutorial && (
+            <button
+              type="button"
+              onClick={onOpenTutorial}
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-white font-mono text-xs sm:text-sm font-bold border border-white/20 transition-all cursor-pointer backdrop-blur-md"
+            >
+              <HelpCircle className="w-4 h-4 text-amber-400" />
+              <span>HOW TO PLAY</span>
+            </button>
+          )}
+
+          <button
+            type="button"
+            onClick={onStart}
+            className="group relative inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-2xl bg-gradient-to-r from-accent to-emerald-600 hover:from-accent-hover hover:to-emerald-500 text-white font-display font-bold text-base sm:text-lg shadow-xl shadow-accent/20 hover:shadow-accent/40 active:scale-95 transition-all duration-200 cursor-pointer overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+            <Play className="w-5 h-5 fill-white group-hover:scale-110 transition-transform" />
+            <span className="relative z-10">START GAME</span>
+          </button>
+        </div>
       </div>
     </div>
   );

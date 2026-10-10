@@ -738,6 +738,7 @@ export default function CatchDataGame() {
             "Defeat the Boss Anomaly in Wave 5 to win the challenge!",
           ]}
           onStart={startGame}
+          onOpenTutorial={() => setShowTutorial(true)}
         />
       )}
 
@@ -781,6 +782,7 @@ export default function CatchDataGame() {
         ]}
         unlockedAchievements={unlockedAchievements}
         onReplay={startGame}
+        onOpenTutorial={() => setShowTutorial(true)}
       />
     </GameShell>
   );

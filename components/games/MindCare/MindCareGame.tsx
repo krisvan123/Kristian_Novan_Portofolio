@@ -514,6 +514,7 @@ export default function MindCareGame() {
             "Reach one of 4 distinct reflective story endings.",
           ]}
           onStart={startGame}
+          onOpenTutorial={() => setShowTutorial(true)}
         />
       )}
 
@@ -561,6 +562,7 @@ export default function MindCareGame() {
         ]}
         unlockedAchievements={unlockedAchievements}
         onReplay={startGame}
+        onOpenTutorial={() => setShowTutorial(true)}
       />
     </GameShell>
   );

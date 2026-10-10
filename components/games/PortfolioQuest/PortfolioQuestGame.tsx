@@ -918,6 +918,7 @@ export default function PortfolioQuestGame() {
             "Seek out the hidden secret garden in the northern grove!",
           ]}
           onStart={startGame}
+          onOpenTutorial={() => setShowTutorial(true)}
         />
       )}
 
@@ -961,6 +962,7 @@ export default function PortfolioQuestGame() {
         ]}
         unlockedAchievements={unlockedAchievements}
         onReplay={startGame}
+        onOpenTutorial={() => setShowTutorial(true)}
       />
     </GameShell>
   );

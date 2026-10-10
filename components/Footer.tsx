@@ -26,6 +26,18 @@ export default function Footer() {
           </div>
 
           <div className="flex items-center gap-3 text-charcoal-soft">
+            {personalData.contact.githubUrl && (
+              <a
+                href={personalData.contact.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg hover:text-accent hover:bg-canvas-subtle transition-colors"
+                aria-label="GitHub Profile"
+                title="GitHub"
+              >
+                <Github className="w-4 h-4" />
+              </a>
+            )}
             <a
               href={personalData.contact.linkedInUrl}
               target="_blank"

@@ -512,6 +512,7 @@ export default function MemoryJourneyGame() {
             "Survive Memory Fog hazards across 3 progressive levels!",
           ]}
           onStart={startGame}
+          onOpenTutorial={() => setShowTutorial(true)}
         />
       )}
 
@@ -558,6 +559,7 @@ export default function MemoryJourneyGame() {
         ]}
         unlockedAchievements={unlockedAchievements}
         onReplay={startGame}
+        onOpenTutorial={() => setShowTutorial(true)}
       />
     </GameShell>
   );

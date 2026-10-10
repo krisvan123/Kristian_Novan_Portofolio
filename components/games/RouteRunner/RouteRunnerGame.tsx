@@ -605,6 +605,21 @@ export default function RouteRunnerGame() {
       ctx.restore();
     });
 
+    // Dynamic Navigation Guide Line (Points directly to active delivery destination)
+    const currentActiveStop = stopsRef.current[currentStopIndex];
+    if (currentActiveStop && !currentActiveStop.isDelivered) {
+      ctx.save();
+      ctx.strokeStyle = "rgba(96, 165, 250, 0.35)";
+      ctx.lineWidth = 2;
+      ctx.setLineDash([6, 6]);
+      ctx.lineDashOffset = -Date.now() / 50;
+      ctx.beginPath();
+      ctx.moveTo(playerRef.current.x, playerRef.current.y);
+      ctx.lineTo(currentActiveStop.x, currentActiveStop.y);
+      ctx.stroke();
+      ctx.restore();
+    }
+
     // Player Delivery Van
     const player = playerRef.current;
     ctx.save();
@@ -820,6 +835,7 @@ export default function RouteRunnerGame() {
             "Avoid bumping into civilian cars to save fuel and maintain speed.",
           ]}
           onStart={startGame}
+          onOpenTutorial={() => setShowTutorial(true)}
         />
       )}
 
@@ -919,6 +935,7 @@ export default function RouteRunnerGame() {
         ]}
         unlockedAchievements={unlockedAchievements}
         onReplay={startGame}
+        onOpenTutorial={() => setShowTutorial(true)}
       />
     </GameShell>
   );
