@@ -9,11 +9,11 @@ import ThemeToggle from "./ThemeToggle";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/#home" },
+  { label: "About", href: "/#about" },
   { label: "Activities", href: "/#activities" },
   { label: "Projects", href: "/#projects" },
   { label: "Skills", href: "/#skills" },
   { label: "Certificates", href: "/#certificates" },
-  { label: "About", href: "/#about" },
   { label: "Quotes", href: "/#quotes" },
   { label: "Contact", href: "/#contact" },
   { label: "Play", href: "/play" },
@@ -34,13 +34,13 @@ export default function Navbar() {
 
       const sections = [
         "home",
+        "about",
         "activities",
         "projects",
         "upcoming",
         "play-lab",
         "skills",
         "certificates",
-        "about",
         "quotes",
         "contact",
       ];

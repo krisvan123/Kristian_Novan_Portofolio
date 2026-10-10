@@ -28,23 +28,23 @@ export default function PlayTeaser() {
                 Experience algorithms in action — featuring a real-time <strong className="text-charcoal font-semibold">3D Route Runner</strong> built with Three.js WebGL, ML data stream classification, 2D RPG exploration, and cognitive card recall.
               </p>
 
-              {/* Game Badges */}
+              {/* Game Badges without emojis */}
               <div className="flex flex-wrap items-center gap-2 pt-1 font-mono text-[11px]">
-                <span className="px-2.5 py-1 rounded-lg bg-white/80 dark:bg-canvas-subtle-dark/80 border border-surface-border text-charcoal-soft flex items-center gap-1.5 shadow-2xs">
+                <span className="px-2.5 py-1 rounded-lg bg-white/80 dark:bg-canvas-subtle-dark/80 border border-surface-border text-charcoal flex items-center gap-1.5 shadow-2xs font-medium">
                   <Box className="w-3 h-3 text-accent" />
                   <span>3D Route Runner</span>
                 </span>
                 <span className="px-2.5 py-1 rounded-lg bg-white/80 dark:bg-canvas-subtle-dark/80 border border-surface-border text-charcoal-soft shadow-2xs">
-                  🎯 Catch the Data
+                  Catch the Data · ML Stream
                 </span>
                 <span className="px-2.5 py-1 rounded-lg bg-white/80 dark:bg-canvas-subtle-dark/80 border border-surface-border text-charcoal-soft shadow-2xs">
-                  🧭 Portfolio Quest
+                  Portfolio Quest · 2D RPG
                 </span>
                 <span className="px-2.5 py-1 rounded-lg bg-white/80 dark:bg-canvas-subtle-dark/80 border border-surface-border text-charcoal-soft shadow-2xs">
-                  🃏 Memory Match
+                  Memory Match · Recall
                 </span>
                 <span className="px-2.5 py-1 rounded-lg bg-white/80 dark:bg-canvas-subtle-dark/80 border border-surface-border text-charcoal-soft shadow-2xs">
-                  ☕ MindCare
+                  MindCare · Interactive
                 </span>
               </div>
             </div>

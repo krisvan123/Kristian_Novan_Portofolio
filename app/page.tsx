@@ -14,55 +14,55 @@ import SectionNavigator from "@/components/SectionNavigator";
 export default function Home() {
   return (
     <div className="flex flex-col relative">
-      {/* Section navigator (desktop only) */}
+      {/* Floating Section Navigator (Desktop) */}
       <SectionNavigator />
 
-      {/* 1. Hero */}
+      {/* 1. Hero: Core Identity & Duality */}
       <SectionTransition id="home">
         <Hero />
       </SectionTransition>
 
-      {/* 2. Activities: WALUBI & MC seamless marquees */}
-      <SectionTransition id="activities">
-        <Activities />
-      </SectionTransition>
-
-      {/* 3. Projects: Case studies with dynamic filters */}
-      <SectionTransition id="projects">
-        <ProjectGrid />
-      </SectionTransition>
-
-      {/* 4. Upcoming Projects */}
-      <SectionTransition id="upcoming">
-        <UpcomingProjects />
-      </SectionTransition>
-
-      {/* Interactive Engineering & 3D Game Lab Highlight */}
-      <SectionTransition id="play-lab">
-        <PlayTeaser />
-      </SectionTransition>
-
-      {/* 5. Skills */}
-      <SectionTransition id="skills">
-        <Skills />
-      </SectionTransition>
-
-      {/* 6. Certificates: 8 verified credentials */}
-      <SectionTransition id="certificates">
-        <Certificates />
-      </SectionTransition>
-
-      {/* 7. About Me */}
+      {/* 2. About Me: Story, Academic Mobility (Semarang -> Jakarta), & Dual Passions */}
       <SectionTransition id="about">
         <About />
       </SectionTransition>
 
-      {/* 8. Quote Book: Finger-draggable book */}
+      {/* 3. Activities: Leadership, Stage MC & WALUBI Humanitarian Service */}
+      <SectionTransition id="activities">
+        <Activities />
+      </SectionTransition>
+
+      {/* 4. Projects: Featured Spotlight & Technical Case Studies */}
+      <SectionTransition id="projects">
+        <ProjectGrid />
+      </SectionTransition>
+
+      {/* 5. Interactive Engineering Lab & 3D Experiments */}
+      <SectionTransition id="play-lab">
+        <PlayTeaser />
+      </SectionTransition>
+
+      {/* 6. Skills: Technical Stack & Capabilities */}
+      <SectionTransition id="skills">
+        <Skills />
+      </SectionTransition>
+
+      {/* 7. Certificates: Verified Research & Cloud AI Credentials */}
+      <SectionTransition id="certificates">
+        <Certificates />
+      </SectionTransition>
+
+      {/* 8. Upcoming Concepts & Prototypes */}
+      <SectionTransition id="upcoming">
+        <UpcomingProjects />
+      </SectionTransition>
+
+      {/* 9. Quote Book: Interactive Draggable Codex */}
       <SectionTransition id="quotes">
         <QuoteBook />
       </SectionTransition>
 
-      {/* 9. Contact */}
+      {/* 10. Contact: Collaboration & Inquiry */}
       <SectionTransition id="contact">
         <Contact />
       </SectionTransition>

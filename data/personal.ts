@@ -43,15 +43,15 @@ export const personalData: PersonalData = {
     university: "BINUS University",
     cohort: "B2028",
     specialization: "Intelligent Systems (AI)",
-    studyPeriod: "Semesters 4–5",
+    studyPeriod: "Sem 1–3 Semarang (Main) · Sem 4–5 Jakarta (AI Streaming)",
   },
-  role: "Computer Science Student",
+  role: "Creative Technologist",
   focus: "Machine Learning · UI/UX",
   heroBio:
-    "I'm Kristian Novan, a Computer Science student at BINUS University, currently exploring Machine Learning and UI/UX through projects, collaboration, and new experiences. I enjoy learning how things work, trying things I've never done before, and finding the balance between building something technically solid and making it meaningful for the people who use it.",
+    "I'm Kristian Novan, a Computer Science student at BINUS University (started in Semarang for Semesters 1–3, currently taking the Intelligent Systems streaming in Jakarta for Semesters 4–5). I explore the intersection of Machine Learning, Human-Computer Interaction, and creative stagecraft.",
   aboutBio: {
     lead:
-      "I'm a Computer Science student at BINUS University, currently exploring Machine Learning and UI/UX while building projects and learning through hands-on experiences.",
+      "I started my Computer Science journey at BINUS University Semarang (Semesters 1–3), and am currently undertaking the Intelligent Systems (AI) streaming in Jakarta (Semesters 4–5) to dive deeper into Machine Learning and UI/UX engineering.",
     body: [
       "Outside of technology, I also enjoy music, theater, choir, and modeling. I like trying things that are unfamiliar to me and learning something new along the way. For me, exploring different interests is part of how I stay curious and keep growing.",
       "Whether I'm training a machine learning model, crafting an interface in Figma, or stepping onto a stage, I find joy in connecting technical thinking with creative expression. I enjoy building things from both sides of the process — making systems dependable under the hood while ensuring they feel natural, clear, and human on the surface.",

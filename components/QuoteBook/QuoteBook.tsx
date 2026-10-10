@@ -287,9 +287,8 @@ export default function QuoteBook() {
           </p>
 
           <span className="text-[11px] font-mono text-charcoal-soft/80 pt-1 flex items-center gap-1.5">
-            <Hand className="w-3.5 h-3.5 text-accent animate-pulse" />
-            <span>Drag page with finger or mouse to turn</span>
-            <span className="text-accent dark:text-accent-dark font-bold">↷</span>
+            <Hand className="w-3.5 h-3.5 text-accent" />
+            <span>Interactive folio — drag page edge to flip</span>
           </span>
         </ScrollReveal>
 

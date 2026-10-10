@@ -18,12 +18,12 @@ import {
 } from "lucide-react";
 
 const CREATIVE_INTERESTS = [
-  { label: "Music", description: "Melody, harmonies, & instruments", icon: Music, emoji: "🎵" },
-  { label: "Theater", description: "Dramatic arts, expression & stagecraft", icon: Drama, emoji: "🎭" },
-  { label: "Choir", description: "Vocal ensemble & choral performance", icon: Users2, emoji: "🎶" },
-  { label: "Modeling", description: "Visual aesthetics, poise & fashion", icon: Sparkles, emoji: "✨" },
-  { label: "Exploring New Things", description: "Stepping beyond familiar comfort zones", icon: Compass, emoji: "🧭" },
-  { label: "Learning New Things", description: "Curiosity-driven self-discovery", icon: Lightbulb, emoji: "💡" },
+  { label: "Music", description: "Melody, harmonies, & instruments", icon: Music },
+  { label: "Theater", description: "Dramatic arts, expression & stagecraft", icon: Drama },
+  { label: "Choir", description: "Vocal ensemble & choral performance", icon: Users2 },
+  { label: "Modeling", description: "Visual aesthetics, poise & fashion", icon: Sparkles },
+  { label: "Exploring New Things", description: "Stepping beyond familiar comfort zones", icon: Compass },
+  { label: "Learning New Things", description: "Curiosity-driven self-discovery", icon: Lightbulb },
 ];
 
 const COLLAGE_PHOTOS = [
@@ -91,10 +91,10 @@ export default function About() {
             {/* Main Narrative Paragraphs */}
             <div className="space-y-5 text-charcoal-muted leading-relaxed text-base sm:text-lg font-sans">
               <p className="text-lg sm:text-xl text-charcoal font-medium leading-relaxed font-display">
-                I&apos;m a Computer Science student at BINUS University, currently exploring Machine Learning and UI/UX while building projects and learning through hands-on experiences.
+                I started my Computer Science journey at BINUS University Semarang (Semesters 1–3), and am currently undertaking the Intelligent Systems (AI) streaming in Jakarta (Semesters 4–5) to dive deeper into Machine Learning and UI/UX engineering.
               </p>
               <p>
-                Outside of technology, I also enjoy music, theater, choir, and modeling. I like trying things that are unfamiliar to me and learning something new along the way. For me, exploring different interests is part of how I stay curious and keep growing.
+                Outside of technology, I am passionate about music, theater, choir, and modeling. I like stepping into unfamiliar territory and discovering how things work from the ground up. Exploring diverse creative domains is fundamental to how I stay curious and continually evolve.
               </p>
               <p>
                 Whether I&apos;m training a machine learning model, crafting an interface in Figma, or stepping onto a stage, I find joy in connecting technical thinking with creative expression. I enjoy building things from both sides of the process — making systems dependable under the hood while ensuring they feel natural, clear, and human on the surface.
@@ -122,7 +122,7 @@ export default function About() {
                     className="p-3 rounded-xl bg-white/70 dark:bg-canvas-card-dark/70 border border-surface-border/80 hover:border-accent/40 shadow-2xs hover:shadow-xs transition-all duration-200 group"
                   >
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm">{item.emoji}</span>
+                      <item.icon className="w-3.5 h-3.5 text-accent dark:text-accent-dark shrink-0" />
                       <span className="text-xs font-display font-semibold text-charcoal group-hover:text-accent transition-colors">
                         {item.label}
                       </span>
@@ -219,7 +219,7 @@ export default function About() {
                     BINUS University · B2028
                   </span>
                   <span className="text-[10px] font-mono text-charcoal-soft">
-                    Intelligent Systems (AI) Specialization · Semesters 4–5
+                    Sem 1–3: Semarang (Main) · Sem 4–5: Jakarta (AI Streaming)
                   </span>
                 </div>
               </div>

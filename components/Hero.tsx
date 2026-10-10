@@ -58,12 +58,12 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Left Column: Clear Typographic Hierarchy */}
           <div className="lg:col-span-7 flex flex-col items-start space-y-6">
-            {/* Top Eyebrow with Availability */}
+            {/* Top Eyebrow with Availability & Campus Mobility */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-canvas-subtle border border-surface-border text-charcoal-soft font-mono text-[11px] shadow-2xs">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span className="text-charcoal font-medium">BINUS University B2028</span>
               <span className="opacity-40">•</span>
-              <span>Available for Internships &amp; Roles</span>
+              <span>Sem 1–3 Semarang · Sem 4–5 Jakarta (AI)</span>
             </div>
 
             {/* Primary Name & Direction */}
@@ -85,10 +85,10 @@ export default function Hero() {
             <div className="w-full max-w-xl p-3.5 sm:p-4 rounded-2xl bg-white/80 dark:bg-canvas-card-dark/80 backdrop-blur-xs border border-surface-border shadow-xs space-y-3 transition-all duration-300">
               <div className="flex items-center justify-between gap-2">
                 <span className="text-[10px] font-mono uppercase tracking-wider text-charcoal-soft font-semibold">
-                  Explore Kristian&apos;s Duality:
+                  Dual Focus Profile:
                 </span>
-                <span className="text-[10px] font-mono text-accent dark:text-accent-dark">
-                  Toggle perspective ↷
+                <span className="text-[10px] font-mono text-accent dark:text-accent-dark font-medium">
+                  Select focus
                 </span>
               </div>
 
