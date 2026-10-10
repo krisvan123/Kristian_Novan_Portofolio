@@ -77,7 +77,7 @@ export default function ProjectGrid() {
           </div>
 
           {/* Filter Pills with dynamic counts and clear keyboard access */}
-          <div className="flex flex-wrap gap-1 p-1 bg-white dark:bg-canvas-card-dark border border-surface-border rounded-xl shadow-2xs">
+          <div className="flex flex-wrap gap-1 p-1 bg-canvas-card dark:bg-canvas-card-dark border border-surface-border rounded-xl shadow-2xs">
             {filterTabs.map((tab) => (
               <button
                 key={tab.id}
@@ -85,7 +85,7 @@ export default function ProjectGrid() {
                 onClick={() => setActiveFilter(tab.id)}
                 className={`text-xs font-mono px-3.5 py-1.5 rounded-lg transition-all duration-150 cursor-pointer ${
                   activeFilter === tab.id
-                    ? "bg-charcoal dark:bg-[#F3F2EE] text-white dark:text-[#111113] shadow-2xs font-semibold"
+                    ? "bg-charcoal dark:bg-charcoal-dark text-white dark:text-canvas-dark shadow-2xs font-semibold"
                     : "text-charcoal-soft hover:text-charcoal hover:bg-canvas-subtle"
                 }`}
               >

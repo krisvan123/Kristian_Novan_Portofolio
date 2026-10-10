@@ -71,44 +71,44 @@ body {
 
 /* Minimal Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F4F1EA;
+  background: var(--surface-soft);
 }
 
 .dark ::-webkit-scrollbar-track {
-  background: #141417;
+  background: var(--surface);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #D8D4C7;
-  border-radius: 4px;
+  background: var(--border);
+  border-radius: 99px;
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: #2E2E38;
+  background: var(--surface-muted);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #BDB7A6;
+  background: var(--border-hover);
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: #464654;
+  background: var(--border-hover);
 }
 
 /* Selection Color */
 ::selection {
-  background-color: #C5DBD0;
-  color: #17171A;
+  background-color: var(--accent-soft);
+  color: var(--foreground);
 }
 
 .dark ::selection {
-  background-color: #1F3D2E;
-  color: #F3F2EE;
+  background-color: var(--accent-soft);
+  color: var(--foreground);
 }
 
 /* View Transitions API (Circular Theme Reveal Animation) */
@@ -278,6 +278,22 @@ html.theme-transitioning *::after {
 
 .animate-book-open {
   animation: bookOpenUnfold 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Fade In Up (used by dropdown menus & mobile drawer) */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 /* 3D Transform Utilities for Interactive Book */
