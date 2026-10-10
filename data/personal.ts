@@ -25,6 +25,7 @@ export interface PersonalData {
   }[];
   contact: {
     email: string;
+    phone?: string;
     instagramHandle: string;
     instagramUrl: string;
     linkedInName: string;
@@ -88,6 +89,7 @@ export const personalData: PersonalData = {
   ],
   contact: {
     email: "kristiannovan17@gmail.com",
+    phone: "+62 895-7024-95980",
     instagramHandle: "@krisxvan",
     instagramUrl: "https://www.instagram.com/krisxvan",
     linkedInName: "Kristian Novan",
