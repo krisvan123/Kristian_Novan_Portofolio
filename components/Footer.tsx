@@ -2,7 +2,7 @@
 
 import React from "react";
 import { personalData } from "@/data/personal";
-import { ArrowUp, Github, Instagram, Linkedin, Mail } from "lucide-react";
+import { ArrowUp, Github, Instagram, Linkedin, Mail, FileDown } from "lucide-react";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -70,7 +70,21 @@ export default function Footer() {
         </div>
 
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-charcoal-soft font-mono">
-          <p>© 2026 {personalData.name}. All rights reserved.</p>
+          <div className="flex flex-wrap items-center gap-3">
+            <p>© 2026 {personalData.name}. All rights reserved.</p>
+            <span className="opacity-40 hidden sm:inline">•</span>
+            <a
+              href="/cv/Kristian-Novan-CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              download="Kristian-Novan-CV.pdf"
+              className="inline-flex items-center gap-1.5 hover:text-accent transition-colors"
+              title="Download Kristian Novan's CV (PDF)"
+            >
+              <FileDown className="w-3.5 h-3.5 text-accent" />
+              <span>Download CV (PDF)</span>
+            </a>
+          </div>
           <button
             type="button"
             onClick={scrollToTop}

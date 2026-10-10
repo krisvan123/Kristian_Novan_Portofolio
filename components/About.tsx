@@ -14,6 +14,7 @@ import {
   ArrowRight,
   Mail,
   GraduationCap,
+  FileDown,
 } from "lucide-react";
 
 const CREATIVE_INTERESTS = [
@@ -140,7 +141,7 @@ export default function About() {
                 </p>
               </div>
 
-              <div className="pt-1">
+              <div className="pt-1 flex flex-wrap items-center gap-3">
                 <a
                   href={`mailto:${personalData.contact.email}`}
                   onClick={handleCtaClick}
@@ -151,6 +152,18 @@ export default function About() {
                   <Mail className="w-4 h-4" />
                   <span>Let&apos;s Work Together</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </a>
+
+                <a
+                  href="/cv/Kristian-Novan-CV.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download="Kristian-Novan-CV.pdf"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white dark:bg-canvas-card-dark border border-surface-border text-charcoal text-xs sm:text-sm font-semibold font-display shadow-2xs hover:border-accent hover:text-accent transition-all duration-200 hover:-translate-y-0.5 active:scale-95 cursor-pointer group"
+                  title="Download Kristian Novan's Curriculum Vitae (PDF)"
+                >
+                  <FileDown className="w-4 h-4 text-accent group-hover:scale-110 transition-transform" />
+                  <span>Download CV (PDF)</span>
                 </a>
               </div>
             </div>

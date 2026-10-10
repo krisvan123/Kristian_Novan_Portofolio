@@ -93,6 +93,8 @@ export default function Hero() {
               {/* Download CV (PDF) Button */}
               <a
                 href="/cv/Kristian-Novan-CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 download="Kristian-Novan-CV.pdf"
                 className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-accent hover:bg-accent-hover text-white text-xs sm:text-sm font-semibold shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer group active:scale-95"
               >

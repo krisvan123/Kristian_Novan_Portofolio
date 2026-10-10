@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowUpRight, GraduationCap, ChevronDown } from "lucide-react";
+import { Menu, X, ArrowUpRight, GraduationCap, ChevronDown, FileDown } from "lucide-react";
 import { personalData } from "@/data/personal";
 import ThemeToggle from "./ThemeToggle";
 
@@ -188,9 +188,21 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Right Actions: Theme Toggle + Contact CTA */}
-        <div className="hidden lg:flex items-center gap-2.5">
+        {/* Right Actions: Theme Toggle + CV Download + Contact CTA */}
+        <div className="hidden lg:flex items-center gap-2">
           <ThemeToggle />
+          <a
+            href="/cv/Kristian-Novan-CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            download="Kristian-Novan-CV.pdf"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-charcoal hover:text-accent bg-canvas-subtle hover:bg-accent-light/50 border border-surface-border px-3 py-1.5 rounded-full transition-all duration-200 shadow-2xs cursor-pointer group"
+            title="Download Kristian Novan's CV (PDF)"
+            aria-label="Download CV (PDF)"
+          >
+            <FileDown className="w-3.5 h-3.5 text-accent group-hover:scale-110 transition-transform" />
+            <span>CV (PDF)</span>
+          </a>
           <a
             href={`mailto:${personalData.contact.email}`}
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-accent hover:bg-accent-hover px-3.5 py-2 rounded-full transition-colors duration-200 shadow-2xs"
@@ -247,7 +259,17 @@ export default function Navbar() {
                 {item.label}
               </Link>
             ))}
-            <div className="pt-3 mt-2 border-t border-surface-border">
+            <div className="pt-3 mt-2 border-t border-surface-border flex flex-col gap-2">
+              <a
+                href="/cv/Kristian-Novan-CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                download="Kristian-Novan-CV.pdf"
+                className="w-full flex items-center justify-center gap-2 text-sm font-semibold text-charcoal bg-canvas-subtle border border-surface-border px-4 py-2.5 rounded-xl transition-colors hover:text-accent"
+              >
+                <FileDown className="w-4 h-4 text-accent" />
+                <span>Download CV (PDF)</span>
+              </a>
               <a
                 href={`mailto:${personalData.contact.email}`}
                 className="w-full flex items-center justify-center gap-2 text-sm font-semibold text-white bg-accent hover:bg-accent-hover px-4 py-2.5 rounded-xl transition-colors"

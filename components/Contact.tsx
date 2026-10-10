@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { personalData } from "@/data/personal";
 import ScrollReveal from "./ScrollReveal";
-import { Mail, Instagram, Linkedin, Github, Copy, Check, ArrowUpRight, MessageSquare, Send } from "lucide-react";
+import { Mail, Instagram, Linkedin, Github, Copy, Check, ArrowUpRight, MessageSquare, Send, FileDown } from "lucide-react";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
@@ -153,8 +153,35 @@ export default function Contact() {
               </a>
             </div>
 
-            {/* CTAs with responsive micro-interactions: "Let's Talk" & "Contact Me" */}
-            <div className="pt-4 flex flex-wrap items-center gap-3.5">
+            {/* Dedicated CV / Resume Quick Banner */}
+            <div className="mt-2 p-4 rounded-2xl bg-canvas-subtle border border-surface-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 group hover:border-accent-border transition-colors">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-accent text-white flex items-center justify-center shadow-2xs shrink-0">
+                  <FileDown className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-xs sm:text-sm font-display font-semibold text-charcoal">
+                    Curriculum Vitae (PDF)
+                  </h4>
+                  <p className="text-[11px] sm:text-xs text-charcoal-muted font-sans">
+                    Detailed summary of Intelligent Systems (AI) coursework, machine learning projects, and credentials.
+                  </p>
+                </div>
+              </div>
+              <a
+                href="/cv/Kristian-Novan-CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                download="Kristian-Novan-CV.pdf"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-accent hover:bg-accent-hover text-white text-xs font-semibold shrink-0 shadow-2xs transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
+              >
+                <FileDown className="w-3.5 h-3.5" />
+                <span>Download CV</span>
+              </a>
+            </div>
+
+            {/* CTAs with responsive micro-interactions: "Let's Talk", "Contact Me" & "Download CV" */}
+            <div className="pt-2 flex flex-wrap items-center gap-3.5">
               <a
                 href={`mailto:${personalData.contact.email}`}
                 onClick={() => handleButtonClick("talk")}
@@ -191,8 +218,20 @@ export default function Contact() {
                 {activeAction !== "contact" && <ArrowUpRight className="w-4 h-4" />}
               </a>
 
+              <a
+                href="/cv/Kristian-Novan-CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                download="Kristian-Novan-CV.pdf"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-accent hover:bg-accent-hover text-white text-sm font-semibold transition-all duration-200 shadow-2xs hover:-translate-y-0.5 active:scale-95 group cursor-pointer"
+                title="Download Kristian Novan's Curriculum Vitae (PDF)"
+              >
+                <FileDown className="w-4 h-4 group-hover:scale-110 transition-transform stroke-[2.2]" />
+                <span className="font-display">Download CV (PDF)</span>
+              </a>
+
               <span className="text-xs text-charcoal-soft font-mono ml-1">
-                Direct via email
+                Direct via email or download CV
               </span>
             </div>
           </div>
