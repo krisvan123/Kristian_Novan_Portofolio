@@ -145,7 +145,7 @@ export default function About() {
                 <a
                   href={`mailto:${personalData.contact.email}`}
                   onClick={handleCtaClick}
-                  className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-charcoal dark:bg-[#F3F2EE] text-white dark:text-[#111113] text-xs sm:text-sm font-semibold font-display shadow-xs hover:bg-accent dark:hover:bg-accent-hover hover:text-white transition-all duration-200 cursor-pointer group ${
+                  className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-charcoal dark:bg-charcoal-dark text-white dark:text-canvas-dark text-xs sm:text-sm font-semibold font-display shadow-xs hover:bg-accent dark:hover:bg-accent-hover hover:text-white transition-all duration-200 cursor-pointer group ${
                     isPressingCta ? "scale-95" : "hover:-translate-y-0.5"
                   }`}
                 >
@@ -185,7 +185,7 @@ export default function About() {
               {COLLAGE_PHOTOS.map((photo, i) => (
                 <div
                   key={photo.src}
-                  className={`group relative rounded-2xl overflow-hidden border-2 border-white dark:border-[#222126] shadow-xs hover:shadow-md transition-all duration-300 ${photo.aspect} ${photo.className}`}
+                  className={`group relative rounded-2xl overflow-hidden border-2 border-white dark:border-canvas-subtle-dark shadow-xs hover:shadow-md transition-all duration-300 ${photo.aspect} ${photo.className}`}
                 >
                   <Image
                     src={photo.src}

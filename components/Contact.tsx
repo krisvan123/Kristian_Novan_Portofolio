@@ -185,7 +185,7 @@ export default function Contact() {
               <a
                 href={`mailto:${personalData.contact.email}`}
                 onClick={() => handleButtonClick("talk")}
-                className={`inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-charcoal dark:bg-[#F3F2EE] text-white dark:text-[#111113] text-sm font-semibold hover:bg-accent dark:hover:bg-accent-hover hover:text-white transition-all duration-200 shadow-sm active:scale-95 ${
+                className={`inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-charcoal dark:bg-charcoal-dark text-white dark:text-canvas-dark text-sm font-semibold hover:bg-accent dark:hover:bg-accent-hover hover:text-white transition-all duration-200 shadow-sm active:scale-95 ${
                   activeAction === "talk"
                     ? "scale-95 bg-accent text-white"
                     : "hover:-translate-y-0.5"

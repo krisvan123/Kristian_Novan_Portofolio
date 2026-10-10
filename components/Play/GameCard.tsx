@@ -80,7 +80,7 @@ export default function GameCard({
           </div>
 
           <div className="pt-2">
-            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-charcoal dark:bg-[#F3F2EE] text-white dark:text-[#111113] text-sm font-semibold font-display shadow-xs group-hover:bg-accent dark:group-hover:bg-accent-hover group-hover:text-white transition-all duration-200">
+            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-charcoal dark:bg-charcoal-dark text-white dark:text-canvas-dark text-sm font-semibold font-display shadow-xs group-hover:bg-accent dark:group-hover:bg-accent-hover group-hover:text-white transition-all duration-200">
               <span>Launch {title}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
@@ -88,7 +88,7 @@ export default function GameCard({
         </div>
 
         {/* Right Animated Interactive Preview */}
-        <div className="w-full lg:w-1/2 min-h-[240px] sm:min-h-[300px] bg-[#FAF8F2] dark:bg-[#141416] border-t lg:border-t-0 lg:border-l border-surface-border p-4 sm:p-6 flex items-center justify-center overflow-hidden">
+        <div className="w-full lg:w-1/2 min-h-[240px] sm:min-h-[300px] bg-canvas-subtle dark:bg-canvas-subtle-dark border-t lg:border-t-0 lg:border-l border-surface-border p-4 sm:p-6 flex items-center justify-center overflow-hidden">
           {preview}
         </div>
       </Link>
@@ -102,7 +102,7 @@ export default function GameCard({
     >
       <div>
         {/* Animated Card Preview Container */}
-        <div className="relative aspect-[16/10] w-full rounded-xl bg-[#FAF8F2] dark:bg-[#141416] border border-surface-border/60 overflow-hidden mb-4 p-3 flex items-center justify-center">
+        <div className="relative aspect-[16/10] w-full rounded-xl bg-canvas-subtle dark:bg-canvas-subtle-dark border border-surface-border/60 overflow-hidden mb-4 p-3 flex items-center justify-center">
           {preview}
         </div>
 

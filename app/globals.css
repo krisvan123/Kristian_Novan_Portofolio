@@ -3,20 +3,23 @@
 @tailwind utilities;
 
 :root {
-  /* Warm Ivory Editorial Palette (Light Mode) */
-  --background: #FAF8F5;
-  --surface: #FFFFFF;
-  --surface-soft: #F4F1EA;
-  --surface-muted: #EBE7DD;
-  --foreground: #17171A;
-  --foreground-muted: #575550;
-  --foreground-soft: #7C7A73;
-  --border: #E8E4DA;
-  --border-hover: #D7D2C5;
-  --accent: #2D5A43;
-  --accent-hover: #224533;
-  --accent-soft: #EBF3EE;
-  --accent-border: #C5DBD0;
+  /* ── Light Mode: Warm Ivory Editorial ─────────────────────────── */
+  --background:        #FAFAF8;
+  --surface:           #FFFFFF;
+  --surface-soft:      #F4F2EC;
+  --surface-muted:     #EAE7DF;
+
+  --foreground:        #16161A;   /* near-black, slightly warm */
+  --foreground-muted:  #52504A;   /* paragraph text */
+  --foreground-soft:   #78766F;   /* labels, captions */
+
+  --border:            #E6E2D9;
+  --border-hover:      #D4CFBF;
+
+  --accent:            #2D5A43;   /* forest green */
+  --accent-hover:      #224535;
+  --accent-soft:       #EAF3EE;
+  --accent-border:     #C2D9CC;
 }
 
 html {
@@ -37,20 +40,23 @@ html {
 }
 
 html.dark {
-  /* Deep Atmospheric Charcoal Night (Dark Mode) */
-  --background: #111113;
-  --surface: #18181C;
-  --surface-soft: #202026;
-  --surface-muted: #2A2A33;
-  --foreground: #F3F2EE;
-  --foreground-muted: #9E9C96;
-  --foreground-soft: #73716C;
-  --border: #282830;
-  --border-hover: #3C3C48;
-  --accent: #488A68;
-  --accent-hover: #58A07A;
-  --accent-soft: #172B20;
-  --accent-border: #2B4D3A;
+  /* ── Dark Mode: Deep Atmospheric Ink Night ─────────────────────── */
+  --background:        #111115;
+  --surface:           #1A1A1F;
+  --surface-soft:      #222229;
+  --surface-muted:     #2B2B34;
+
+  --foreground:        #F0EFE9;   /* warm white */
+  --foreground-muted:  #9A9891;
+  --foreground-soft:   #706E67;
+
+  --border:            #2A2A33;
+  --border-hover:      #3A3A47;
+
+  --accent:            #4A8F6A;   /* lighter green for dark bg */
+  --accent-hover:      #5AA47E;
+  --accent-soft:       #162A1E;
+  --accent-border:     #2A4D3A;
   color-scheme: dark;
 }
 

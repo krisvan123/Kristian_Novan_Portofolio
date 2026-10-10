@@ -76,7 +76,7 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#FAF8F5]/90 dark:bg-[#111113]/90 backdrop-blur-md border-b border-surface-border shadow-xs py-3"
+          ? "bg-canvas/90 dark:bg-canvas-dark/90 backdrop-blur-md border-b border-surface-border shadow-xs py-3"
           : "bg-transparent py-4 sm:py-5"
       }`}
     >
@@ -119,7 +119,7 @@ export default function Navbar() {
 
             {/* Hover Popover */}
             {showAcademicDropdown && (
-              <div className="absolute left-0 top-full mt-2 w-72 p-4 rounded-xl bg-white dark:bg-[#18181C] border border-surface-border shadow-xl text-left z-50 animate-fade-in-up">
+              <div className="absolute left-0 top-full mt-2 w-72 p-4 rounded-xl bg-canvas-card dark:bg-canvas-card-dark border border-surface-border shadow-xl text-left z-50 animate-fade-in-up">
                 <div className="text-[10px] font-mono uppercase tracking-wider text-accent dark:text-accent-dark font-semibold mb-2">
                   Academic Overview
                 </div>
@@ -166,7 +166,7 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-1 bg-white/80 dark:bg-canvas-card-dark/80 backdrop-blur-xs border border-surface-border rounded-full px-3 py-1 shadow-2xs">
+        <nav className="hidden lg:flex items-center gap-0.5 bg-canvas-card/80 dark:bg-canvas-card-dark/80 backdrop-blur-xs border border-surface-border rounded-full px-2.5 py-1.5 shadow-2xs">
           {NAV_ITEMS.map((item) => {
             const sectionId = item.href.replace("/#", "");
             const isActive = pathname === "/" && activeSection === sectionId;
@@ -176,7 +176,7 @@ export default function Navbar() {
                 href={item.href}
                 className={`text-xs font-medium px-2.5 py-1.5 rounded-full transition-all duration-150 ${
                   isActive
-                    ? "bg-charcoal dark:bg-[#F3F2EE] text-white dark:text-[#111113] shadow-2xs font-semibold"
+                    ? "bg-charcoal dark:bg-charcoal-dark text-white dark:text-canvas-dark shadow-2xs font-semibold"
                     : "text-charcoal-muted hover:text-charcoal hover:bg-canvas-subtle"
                 }`}
               >
@@ -227,7 +227,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-[56px] bg-[#FAF8F5] dark:bg-[#111113] border-b border-surface-border shadow-xl px-6 py-6 transition-all duration-300 animate-fade-in-up max-h-[calc(100vh-56px)] overflow-y-auto">
+        <div className="lg:hidden fixed inset-x-0 top-[56px] bg-canvas dark:bg-canvas-dark border-b border-surface-border shadow-xl px-6 py-6 transition-all duration-300 animate-fade-in-up max-h-[calc(100vh-56px)] overflow-y-auto">
           {/* Mobile Academic Overview Card */}
           <div className="mb-4 p-4 rounded-xl bg-canvas-subtle border border-surface-border">
             <span className="text-[10px] font-mono uppercase tracking-wider text-accent dark:text-accent-dark font-semibold block mb-1">

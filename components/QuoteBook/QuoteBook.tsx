@@ -355,7 +355,7 @@ export default function QuoteBook() {
                 {/* SPREAD BASE LAYER */}
                 <div className="w-full h-full grid grid-cols-2 relative z-0">
                   {/* LEFT BASE PAGE */}
-                  <div className="h-full border-r border-amber-900/10 dark:border-white/5 bg-gradient-to-br from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-8 lg:p-10 flex flex-col justify-between overflow-hidden relative">
+                  <div className="h-full border-r border-amber-900/10 dark:border-white/5 bg-gradient-to-br from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-8 lg:p-10 flex flex-col justify-between overflow-hidden relative rounded-l-2xl">
                     {/* If dragging prev, show previous spread left underneath */}
                     {dragDirection === "prev" && dragProgress > 0 ? (
                       prevSpreadIndex === 0 ? (
@@ -372,7 +372,7 @@ export default function QuoteBook() {
                   </div>
 
                   {/* RIGHT BASE PAGE */}
-                  <div className="h-full bg-gradient-to-bl from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-8 lg:p-10 flex flex-col justify-between overflow-hidden relative">
+                  <div className="h-full bg-gradient-to-bl from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-8 lg:p-10 flex flex-col justify-between overflow-hidden relative rounded-r-2xl">
                     {/* If dragging next, reveal next spread right page underneath */}
                     {dragDirection === "next" && dragProgress > 0 && nextQuote ? (
                       <QuoteRightPage
@@ -409,9 +409,9 @@ export default function QuoteBook() {
                           : "none",
                     }}
                   >
-                    {/* FRONT FACE of turning leaf (Current spread right page) */}
+                     {/* FRONT FACE of turning leaf (Current spread right page) */}
                     <div
-                      className="absolute inset-0 bg-gradient-to-bl from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-8 lg:p-10 flex flex-col justify-between border-l border-amber-900/10 dark:border-white/5 shadow-md"
+                      className="absolute inset-0 bg-gradient-to-bl from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-8 lg:p-10 flex flex-col justify-between border-l border-amber-900/10 dark:border-white/5 shadow-md overflow-hidden"
                       style={{
                         opacity: dragProgress <= 0.5 ? 1 : 0,
                         visibility: dragProgress <= 0.5 ? "visible" : "hidden",
@@ -430,7 +430,7 @@ export default function QuoteBook() {
 
                     {/* BACK FACE of turning leaf (Next spread left illustration page) */}
                     <div
-                      className="absolute inset-0 bg-gradient-to-br from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-8 lg:p-10 flex flex-col justify-between border-r border-amber-900/10 dark:border-white/5 shadow-md"
+                      className="absolute inset-0 bg-gradient-to-br from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-8 lg:p-10 flex flex-col justify-between border-r border-amber-900/10 dark:border-white/5 shadow-md overflow-hidden"
                       style={{
                         transform: "rotateY(180deg)",
                         opacity: dragProgress > 0.5 ? 1 : 0,
@@ -464,7 +464,7 @@ export default function QuoteBook() {
                   >
                     {/* FRONT FACE of prev leaf (Current spread left page) */}
                     <div
-                      className="absolute inset-0 bg-gradient-to-br from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-8 lg:p-10 flex flex-col justify-between border-r border-amber-900/10 dark:border-white/5 shadow-md"
+                      className="absolute inset-0 bg-gradient-to-br from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-8 lg:p-10 flex flex-col justify-between border-r border-amber-900/10 dark:border-white/5 shadow-md overflow-hidden"
                       style={{
                         opacity: dragProgress <= 0.5 ? 1 : 0,
                         visibility: dragProgress <= 0.5 ? "visible" : "hidden",
@@ -479,7 +479,7 @@ export default function QuoteBook() {
 
                     {/* BACK FACE of prev leaf (Previous spread right page) */}
                     <div
-                      className="absolute inset-0 bg-gradient-to-bl from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-8 lg:p-10 flex flex-col justify-between border-l border-amber-900/10 dark:border-white/5 shadow-md"
+                      className="absolute inset-0 bg-gradient-to-bl from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFE0] dark:from-[#24221F] dark:via-[#201E1B] dark:to-[#1B1917] p-8 lg:p-10 flex flex-col justify-between border-l border-amber-900/10 dark:border-white/5 shadow-md overflow-hidden"
                       style={{
                         transform: "rotateY(180deg)",
                         opacity: dragProgress > 0.5 ? 1 : 0,

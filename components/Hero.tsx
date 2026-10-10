@@ -83,7 +83,7 @@ export default function Hero() {
             <div className="flex flex-wrap items-center gap-3 pt-2 w-full sm:w-auto">
               <Link
                 href="#projects"
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-charcoal dark:bg-[#F3F2EE] text-white dark:text-[#111113] text-xs sm:text-sm font-semibold hover:bg-accent dark:hover:bg-accent-hover hover:text-white transition-all duration-200 shadow-xs hover:shadow-md hover:-translate-y-0.5 group cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-charcoal dark:bg-charcoal-dark text-white dark:text-canvas-dark text-xs sm:text-sm font-semibold hover:bg-accent dark:hover:bg-accent-hover hover:text-white transition-all duration-200 shadow-xs hover:shadow-md hover:-translate-y-0.5 group cursor-pointer"
               >
                 <FolderGit2 className="w-4 h-4 stroke-[1.9]" />
                 <span>View Projects</span>
