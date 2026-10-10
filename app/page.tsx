@@ -5,72 +5,60 @@ import ProjectGrid from "@/components/ProjectGrid";
 import UpcomingProjects from "@/components/UpcomingProjects";
 import Skills from "@/components/Skills";
 import Certificates from "@/components/Certificates";
-import PianoCorner from "@/components/PianoCorner";
 import QuoteBook from "@/components/QuoteBook";
 import Contact from "@/components/Contact";
-import DayNightMascot from "@/components/DayNightMascot";
 import SectionTransition from "@/components/SectionTransition";
 import SectionNavigator from "@/components/SectionNavigator";
 
 export default function Home() {
   return (
     <div className="flex flex-col relative">
-      {/* Interactive floating presentation section navigator (desktop) */}
+      {/* Section navigator (desktop only) */}
       <SectionNavigator />
 
-      {/* 1. Hero with academic hierarchy, profile photo, and downloadable CV */}
+      {/* 1. Hero */}
       <SectionTransition id="home">
         <Hero />
       </SectionTransition>
 
-      {/* 2. Activities: WALUBI & MC seamless image marquees */}
+      {/* 2. Activities: WALUBI & MC seamless marquees */}
       <SectionTransition id="activities">
         <Activities />
       </SectionTransition>
 
-      {/* 3. Projects: Selected case studies with dynamic filters */}
+      {/* 3. Projects: Case studies with dynamic filters */}
       <SectionTransition id="projects">
         <ProjectGrid />
       </SectionTransition>
 
-      {/* 4. Upcoming Projects: Trobos (Next.js prototype) & MindCare */}
+      {/* 4. Upcoming Projects */}
       <SectionTransition id="upcoming">
         <UpcomingProjects />
       </SectionTransition>
 
-      {/* 5. Skills: Hard Skills (4 categories) & Soft Skills (12 interpersonal disciplines) */}
+      {/* 5. Skills */}
       <SectionTransition id="skills">
         <Skills />
       </SectionTransition>
 
-      {/* 6. Certificates: 8 verified credentials with full-screen Lightbox */}
+      {/* 6. Certificates: 8 verified credentials */}
       <SectionTransition id="certificates">
         <Certificates />
       </SectionTransition>
 
-      {/* 7. About Me / Personal Side: Technical curiosity & creative arts with 4 photos */}
+      {/* 7. About Me */}
       <SectionTransition id="about">
         <About />
       </SectionTransition>
 
-      {/* 8. A Little Piano Corner: Interactive 3D keyboard & Clair de Lune guided melody */}
-      <SectionTransition id="piano">
-        <PianoCorner />
-      </SectionTransition>
-
-      {/* 9. Interactive Physical Book: My Favorite Quotes (Real finger drag physics) */}
+      {/* 8. Quote Book: Finger-draggable book */}
       <SectionTransition id="quotes">
         <QuoteBook />
       </SectionTransition>
 
-      {/* 10. Contact: Let's Connect (Final major content section) */}
+      {/* 9. Contact */}
       <SectionTransition id="contact">
         <Contact />
-      </SectionTransition>
-
-      {/* 11. Day/Night Mascot: Crayon Sunflower in Light Mode / Crayon Moon in Dark Mode directly above Footer */}
-      <SectionTransition>
-        <DayNightMascot />
       </SectionTransition>
     </div>
   );

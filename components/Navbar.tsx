@@ -11,7 +11,6 @@ const NAV_ITEMS = [
   { label: "Home", href: "/#home" },
   { label: "Activities", href: "/#activities" },
   { label: "Projects", href: "/#projects" },
-  { label: "Upcoming", href: "/#upcoming" },
   { label: "Skills", href: "/#skills" },
   { label: "Certificates", href: "/#certificates" },
   { label: "About", href: "/#about" },
@@ -41,7 +40,6 @@ export default function Navbar() {
         "skills",
         "certificates",
         "about",
-        "piano",
         "quotes",
         "contact",
       ];

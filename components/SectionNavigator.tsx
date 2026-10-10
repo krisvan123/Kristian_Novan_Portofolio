@@ -16,7 +16,6 @@ const SECTIONS: SectionItem[] = [
   { id: "skills", label: "Skills" },
   { id: "certificates", label: "Certificates" },
   { id: "about", label: "About" },
-  { id: "piano", label: "Piano" },
   { id: "quotes", label: "Quotes" },
   { id: "contact", label: "Contact" },
 ];
