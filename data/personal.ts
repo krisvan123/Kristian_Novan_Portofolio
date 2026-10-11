@@ -134,9 +134,9 @@ export const personalData: PersonalData = {
   ],
   contact: {
     email: "kristiannovan17@gmail.com",
-    phone: "+62 895-7024-95980",
-    whatsapp: "+62 895-7024-95980",
-    whatsappUrl: "https://wa.me/62895702495980",
+    phone: "+62 895-7024-96980",
+    whatsapp: "+62 895-7024-96980",
+    whatsappUrl: "https://wa.me/62895702496980",
     instagramHandle: "@krisxvan",
     instagramUrl: "https://www.instagram.com/krisxvan",
     linkedInName: "Kristian Novan",
