@@ -65,7 +65,7 @@ export default function Hero() {
               <span className="opacity-40">•</span>
               <span>Sem 1–3 Semarang · Sem 4–5 Jakarta (AI)</span>
               <span className="opacity-40">•</span>
-              <span className="text-accent dark:text-accent-dark font-semibold">GPA 3.5875</span>
+              <span className="text-accent dark:text-accent-dark font-semibold">GPA 3.59</span>
             </div>
 
             {/* Primary Name & Direction */}

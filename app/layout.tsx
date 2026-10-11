@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://kristian-novan-portfolio.vercel.app"),
   title: "Kristian Novan — Computer Science Student (AI) | BINUS University",
   description:
-    "Portfolio of Kristian Novan, Computer Science student at BINUS University (B2028, Cumulative GPA 3.5875 / 4.00), specializing in Intelligent Systems (AI), Machine Learning, Next.js 14 full-stack engineering, Three.js 3D simulations, and UI/UX design.",
+    "Portfolio of Kristian Novan, Computer Science student at BINUS University (B2028, Cumulative GPA 3.59 / 4.00), specializing in Intelligent Systems (AI), Machine Learning, Next.js 14 full-stack engineering, and Three.js 3D simulations.",
   keywords: [
     "Kristian Novan",
     "Computer Science",
@@ -49,9 +49,8 @@ export const metadata: Metadata = {
     "TypeScript",
     "Full-Stack Developer",
     "Creative Technologist",
-    "UI/UX Design",
     "B2028",
-    "GPA 3.5875",
+    "GPA 3.59",
     "ICORIS 2026",
     "Azure AI",
   ],
@@ -60,7 +59,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Kristian Novan — Computer Science Student (AI) | BINUS University",
     description:
-      "Personal portfolio of Kristian Novan, Computer Science undergraduate at BINUS University (B2028, GPA 3.5875 / 4.00), specializing in Intelligent Systems (AI), Three.js WebGL, and Human-Centered UI/UX.",
+      "Personal portfolio of Kristian Novan, Computer Science undergraduate at BINUS University (B2028, GPA 3.59 / 4.00), specializing in Intelligent Systems (AI) and Three.js WebGL.",
     url: "https://kristian-novan-portfolio.vercel.app",
     siteName: "Kristian Novan Portfolio",
     locale: "en_US",
@@ -78,7 +77,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Kristian Novan — Computer Science Student (AI) | BINUS University",
     description:
-      "Personal portfolio of Kristian Novan, Computer Science undergraduate at BINUS University (B2028, GPA 3.5875 / 4.00), specializing in Intelligent Systems (AI), Three.js WebGL, and Human-Centered UI/UX.",
+      "Personal portfolio of Kristian Novan, Computer Science undergraduate at BINUS University (B2028, GPA 3.59 / 4.00), specializing in Intelligent Systems (AI) and Three.js WebGL.",
     images: ["/opengraph-image.png"],
   },
   icons: {

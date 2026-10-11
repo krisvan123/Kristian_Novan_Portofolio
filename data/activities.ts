@@ -51,27 +51,35 @@ export const activitiesData: ActivityCategory[] = [
 
 export const additionalExperiences: AdditionalExperience[] = [
   {
-    role: "HIMTI Mentor & Peer Guide",
-    organization: "HIMTI (Himpunan Mahasiswa Teknik Informatika) — BINUS Semarang",
-    period: "Semarang Academic Term",
+    role: "HIMTI Mentor & PTK Staff (SESVENT & TECHNO)",
+    organization: "HIMTI (Himpunan Mahasiswa Teknik Informatika) BINUS University",
+    period: "Oct 2024 – Feb 2026",
     description:
-      "Guided junior students at BINUS Semarang through fundamental programming coursework, lab assignments, and student life adjustment.",
-    tags: ["Mentorship", "Programming Fundamentals", "Academic Support", "BINUS Semarang"],
+      "Served as Staff of PTK (Pengembangan Tenaga Kerja) Division and Mentor Staff for SESVENT 2025 (Oct 2025). Guided new members and introduced organizational culture, habits, and collaborative workflows within HIMTI.",
+    tags: ["Staff PTK", "Mentor SESVENT", "HIMTI Onboarding", "Oct 2024 – Feb 2026"],
   },
   {
-    role: "Company Visit Liaison & Committee",
-    organization: "BINUS University Industry Relations",
-    period: "Campus Event Term",
+    role: "Master of Ceremony (FEAST, TECHNO, BIFEST CBDC)",
+    organization: "HIMTI & BINUS University (CBDC)",
+    period: "Mar 2025 – Nov 2025",
     description:
-      "Assisted coordination for tech corporate site visits, managing schedule agendas, participant arrivals, and host communications.",
-    tags: ["Industry Relations", "Event Management", "Liaison"],
+      "Hosted formal and dynamic stage events: MC FEAST (Mar 2025) for all School of Computer Science (SOCS) students, MC TECHNO 2025 (Sep 2025) welcoming new HIMTI members, and MC BIFEST CBDC (Nov 2025).",
+    tags: ["MC FEAST (SOCS)", "MC TECHNO 2025", "MC BIFEST CBDC", "Public Speaking"],
   },
   {
-    role: "Collaborative Project Contributor",
-    organization: "Academic Coursework & Hackathon Teams",
-    period: "B2028 Academic Cohort",
+    role: "Company Visit Committee — PT Pura Smart Technology",
+    organization: "HIMTI BINUS University",
+    period: "Jun 2025",
     description:
-      "Collaborated in multidisciplinary teams delivering end-to-end coursework projects, research papers, and competition pipelines.",
-    tags: ["Team Collaboration", "Agile Project Work", "Problem Solving"],
+      "Coordinated an industrial company visit to PT Pura Smart Technology, managing operational rundowns, participant transportation, and communication with enterprise engineering hosts.",
+    tags: ["Company Visit", "PT Pura Smart Technology", "Industry Relations", "HIMTI"],
+  },
+  {
+    role: "Medical & Humanitarian Logistics Volunteer",
+    organization: "DPD WALUBI Jawa Tengah (Waisak National Committee)",
+    period: "May 2025",
+    description:
+      "Assisted doctors and healthcare teams at medical aid posts during the national social health service at Candi Borobudur and Mendut, managing supply distribution under high-volume field conditions.",
+    tags: ["WALUBI Volunteer", "Waisak 2025", "Healthcare Logistics", "Candi Borobudur"],
   },
 ];

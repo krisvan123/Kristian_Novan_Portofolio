@@ -28,6 +28,53 @@ export interface UpcomingProject {
 
 export const projectsData: ProjectDetail[] = [
   {
+    slug: "promod-ai",
+    title: "ProMod AI",
+    subtitle: "Intelligent PTM Site Prediction with 1D-CNN",
+    category: "Computational Biology & Deep Learning",
+    shortDescription:
+      "ProMod AI is a deep learning system utilizing 1D-CNN architectures for predicting Post-Translational Modification (PTM) phosphorylation sites across protein sequences.",
+    overview: [
+      "ProMod AI explores Post-Translational Modification (PTM), a chemical modification occurring on proteins after ribosomal translation. A vital example is phosphorylation—adding a phosphate group to specific amino acid residues such as Serine, Threonine, or Tyrosine, acting as a biological switch in cellular signaling pathways associated with cancer and Alzheimer's disease.",
+      "Developed for a Computational Biology study, ProMod AI leverages an optimized 1D Convolutional Neural Network (1D-CNN with 64 filters, kernel size 3, and ReLU activation) over 31×20 amino acid sequence representations. This computational pre-screening dramatically reduces the time and prohibitive costs of experimental mass spectrometry.",
+      "The system delivers efficient, large-scale sequence classification with quantitative evaluation metrics, empowering bioinformatics researchers to analyze high-volume protein candidates rapidly.",
+    ],
+    technologies: ["Python", "1D-CNN Deep Learning", "Computational Biology", "Bioinformatics", "PTM Phosphorylation"],
+    previewImage: "/images/projects/promod-01.jpg",
+    images: [
+      "/images/projects/promod-01.jpg",
+      "/images/projects/promod-02.jpg",
+      "/images/projects/promod-03.jpg",
+    ],
+    links: {
+      repo: "https://github.com/krisvan123",
+    },
+  },
+  {
+    slug: "platgizi",
+    title: "PlatGizi",
+    subtitle: "Smart Nutritional Menu Planning System",
+    category: "Machine Learning & Dietary AI",
+    shortDescription:
+      "PlatGizi is an intelligent meal planning platform integrating K-Means clustering and Content-Based Filtering to automatically recommend balanced daily nutrition.",
+    overview: [
+      "PlatGizi is an intelligent machine learning system designed as a personal nutritional assistant to plan healthy, balanced daily meals automatically, eliminating the friction of manual calorie counting.",
+      "The platform integrates a dual-algorithm machine learning architecture: K-Means Clustering groups thousands of food ingredients based on nutrient density profiles (calories, protein, fats, and carbohydrates), while Content-Based Filtering generates optimal meal combinations tailored to individual caloric targets and dietary goals.",
+      "The project includes an interactive web interface featuring exploratory data analysis (EDA), data preprocessing pipelines, clustering visualizations, and personalized meal recommendations aligned with national health standards.",
+    ],
+    technologies: ["Python", "K-Means Clustering", "Content-Based Filtering", "Recommendation System", "Nutrition Data"],
+    previewImage: "/images/projects/platgizi-01.jpg",
+    images: [
+      "/images/projects/platgizi-01.jpg",
+      "/images/projects/platgizi-02.jpg",
+      "/images/projects/platgizi-03.jpg",
+      "/images/projects/platgizi-04.jpg",
+    ],
+    links: {
+      repo: "https://github.com/krisvan123",
+    },
+  },
+  {
     slug: "airsense-dashboard",
     title: "AirSense Dashboard",
     category: "AOL — Machine Learning",
@@ -73,29 +120,6 @@ export const projectsData: ProjectDetail[] = [
     },
   },
   {
-    slug: "promod-ai",
-    title: "ProMod AI",
-    subtitle: "Post-Translational Modification (PTM)",
-    category: "AOL — Computational Biology",
-    shortDescription:
-      "ProMod AI explores Post-Translational Modification (PTM), a chemical modification that occurs to proteins after translation. One important example is phosphorylation, which involves adding a phosphate group to specific amino acid residues such as Serine, Threonine, or Tyrosine.",
-    overview: [
-      "ProMod AI explores Post-Translational Modification (PTM), a chemical modification that occurs to proteins after translation. One important example is phosphorylation, which involves adding a phosphate group to specific amino acid residues such as Serine, Threonine, or Tyrosine. Phosphorylation plays an important role in cellular signaling and is associated with diseases including cancer and Alzheimer's disease.",
-      "Created for an AOL Computational Biology study, ProMod AI investigates computational methods for recognizing modification patterns along amino acid sequences. Because experimental wet-lab identification of phosphorylation sites can be resource-intensive, computational biology models offer an important complementary method for screening protein candidates.",
-      "The project combines bioinformatics concepts with machine learning sequence classification, presenting predictions with scientific clarity.",
-    ],
-    technologies: ["Python", "Computational Biology", "Machine Learning", "Bioinformatics"],
-    previewImage: "/images/projects/promod-01.jpg",
-    images: [
-      "/images/projects/promod-01.jpg",
-      "/images/projects/promod-02.jpg",
-      "/images/projects/promod-03.jpg",
-    ],
-    links: {
-      repo: "https://github.com/krisvan123",
-    },
-  },
-  {
     slug: "finpro",
     title: "FinPro",
     subtitle: "AOL — Software Engineering",
@@ -113,30 +137,6 @@ export const projectsData: ProjectDetail[] = [
       "/images/projects/finance-01.jpg",
       "/images/projects/finance-02.jpg",
       "/images/projects/finance-03.jpg",
-    ],
-    links: {
-      repo: "https://github.com/krisvan123",
-    },
-  },
-  {
-    slug: "platgizi",
-    title: "PlatGizi",
-    subtitle: "Smart Menu Planning System",
-    category: "Assignment — Machine Learning",
-    shortDescription:
-      "PlatGizi is a smart menu planning system designed to support a healthy lifestyle and balanced nutrition through a machine learning-based approach.",
-    overview: [
-      "PlatGizi is a smart menu planning system designed to support a healthy lifestyle and balanced nutrition through a machine learning-based approach.",
-      "Developed for an academic coursework assignment, PlatGizi addresses the challenge of planning nutritionally balanced daily meals. By analyzing nutritional values, caloric constraints, and user preferences, the system algorithmically recommends meal plans that align with balanced diet standards.",
-      "The system focuses on structured nutrient balancing and accessible user recommendations for everyday dietary health.",
-    ],
-    technologies: ["Python", "Machine Learning", "Recommendation Algorithms", "Nutrition Data"],
-    previewImage: "/images/projects/platgizi-01.jpg",
-    images: [
-      "/images/projects/platgizi-01.jpg",
-      "/images/projects/platgizi-02.jpg",
-      "/images/projects/platgizi-03.jpg",
-      "/images/projects/platgizi-04.jpg",
     ],
     links: {
       repo: "https://github.com/krisvan123",

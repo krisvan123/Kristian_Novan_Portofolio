@@ -57,7 +57,7 @@ export const personalData: PersonalData = {
     cohort: "B2028",
     specialization: "Intelligent Systems (AI)",
     studyPeriod: "Sem 1–3 Semarang (Main) · Sem 4–5 Jakarta (AI Streaming)",
-    cumulativeGpa: "3.5875",
+    cumulativeGpa: "3.59",
     gpaScale: "4.00",
     semesters: [
       {
@@ -91,29 +91,29 @@ export const personalData: PersonalData = {
     ],
   },
   role: "Creative Technologist",
-  focus: "Machine Learning · UI/UX",
+  focus: "Intelligent Systems (AI)",
   heroBio:
-    "I'm Kristian Novan, a Computer Science student at BINUS University (started in Semarang for Semesters 1–3, currently taking the Intelligent Systems streaming in Jakarta for Semesters 4–5). I explore the intersection of Machine Learning, Human-Computer Interaction, and creative stagecraft.",
+    "I'm Kristian Novan, a Computer Science student at BINUS University (started in Semarang for Semesters 1–3, currently taking the Intelligent Systems streaming in Jakarta for Semesters 4–5). Passionate about exploring machine learning algorithms and active in team leadership and stage moderation.",
   aboutBio: {
     lead:
-      "I started my Computer Science journey at BINUS University Semarang (Semesters 1–3), and am currently undertaking the Intelligent Systems (AI) streaming in Jakarta (Semesters 4–5) to dive deeper into Machine Learning and UI/UX engineering.",
+      "I am a Computer Science undergraduate at BINUS University specializing in Intelligent Systems (AI). Driven by genuine curiosity, I actively explore computational algorithms and machine learning while thriving in collaborative teamwork, community leadership, and public speaking.",
     body: [
-      "Outside of technology, I also enjoy music, theater, choir, and modeling. I like trying things that are unfamiliar to me and learning something new along the way. For me, exploring different interests is part of how I stay curious and keep growing.",
-      "Whether I'm training a machine learning model, crafting an interface in Figma, or stepping onto a stage, I find joy in connecting technical thinking with creative expression. I enjoy building things from both sides of the process — making systems dependable under the hood while ensuring they feel natural, clear, and human on the surface.",
+      "My technical journey centers on applying machine learning models to solve real-world problems. Whether building regression pipelines, biomedical NLP systems, or heuristic search algorithms, I enjoy exploring how intelligent systems work from the foundation up.",
+      "At the same time, I genuinely enjoy socializing, connecting with diverse teams, and facilitating meaningful events. Through roles in HIMTI, stage moderation as a Master of Ceremony, and community volunteering, I combine technical discipline with articulate, professional communication.",
     ],
     capabilities: [
-      "Machine Learning & Intelligent Systems (AI)",
-      "UI/UX Design & Human-Centered Craft",
-      "Creative Arts: Music, Theater & Choir",
-      "Full-Stack Web & Software Engineering",
+      "Intelligent Systems & Machine Learning",
+      "Algorithmic Problem Solving & Python",
       "Public Speaking & Master of Ceremony",
-      "Curious & Hands-on Exploration",
+      "Team Leadership & Community Mentoring",
+      "Full-Stack Web Engineering",
+      "Curiosity-Driven CS Exploration",
     ],
   },
   metrics: [
     {
       label: "Cumulative GPA",
-      value: "3.5875 / 4.00",
+      value: "3.59 / 4.00",
       description: "Consistent growth: Sem 1 (3.37) → Sem 4 (3.78)",
     },
     {
@@ -128,8 +128,8 @@ export const personalData: PersonalData = {
     },
     {
       label: "Current Focus",
-      value: "Machine Learning · UI/UX",
-      description: "Applied AI models & human-centered design",
+      value: "Intelligent Systems",
+      description: "Machine learning models & applied AI",
     },
   ],
   contact: {

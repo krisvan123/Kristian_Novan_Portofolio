@@ -70,7 +70,7 @@ export default function About() {
             About Me
           </h2>
           <p className="text-sm sm:text-base text-charcoal-muted font-sans leading-relaxed">
-            A Computer Science student combining technical discipline in Machine Learning and UI/UX with active creative pursuits in performing arts and hands-on discovery.
+            Computer Science undergraduate at BINUS University focused on Intelligent Systems (AI), combining deep technical curiosity with an active passion for team collaboration and professional communication.
           </p>
         </ScrollReveal>
 
@@ -81,19 +81,16 @@ export default function About() {
             {/* Main Narrative Paragraphs */}
             <div className="space-y-4 text-charcoal-muted leading-relaxed text-sm sm:text-base font-sans">
               <p className="text-base sm:text-lg text-charcoal font-medium leading-relaxed font-display">
-                I started my Computer Science journey at BINUS University Semarang (Semesters 1–3), and am currently undertaking the Intelligent Systems (AI) streaming in Jakarta (Semesters 4–5) to dive deeper into Machine Learning and UI/UX engineering.
+                Currently pursuing Computer Science at BINUS University (Sem 1–3 Semarang, Sem 4–5 Jakarta AI Streaming), I thrive on exploring computational algorithms, machine learning pipelines, and intelligent systems from the ground up.
               </p>
               <p>
-                Outside of technology, I am passionate about music, theater, choir, and modeling. I like stepping into unfamiliar territory and discovering how things work from the ground up. Exploring diverse creative domains is fundamental to how I stay curious and continually evolve.
-              </p>
-              <p>
-                Whether I&apos;m training a machine learning model, crafting an interface in Figma, or stepping onto a stage, I find joy in connecting technical thinking with creative expression — making systems dependable under the hood while ensuring they feel natural, clear, and human on the surface.
+                Equally core to who I am is a natural enthusiasm for socializing and collaborative teamwork. Through active leadership in HIMTI, stage moderation as a Master of Ceremony, and community initiatives, I enjoy connecting with diverse people, facilitating structured events, and communicating technical ideas with clarity and professional poise.
               </p>
             </div>
 
             {/* Editorial Pull-Quote */}
             <blockquote className="p-4 rounded-xl bg-canvas-subtle border-l-3 border-accent text-charcoal font-quote italic text-sm sm:text-base leading-relaxed shadow-2xs">
-              &ldquo;Technical discipline gives structure to algorithms, but it is stagecraft, choral harmony, and theater that teach the power of human connection, presence, and timing.&rdquo;
+              &ldquo;True innovation happens where deep computational curiosity meets articulate human connection and shared team purpose.&rdquo;
             </blockquote>
 
             {/* Beyond Computer Science Pills */}
