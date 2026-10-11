@@ -160,6 +160,19 @@ export default function Navbar() {
                       Study period: {personalData.academic.studyPeriod}
                     </span>
                   </div>
+                  <div className="pt-1.5 flex items-center justify-between">
+                    <div>
+                      <span className="text-charcoal-soft block text-[10px] font-mono">
+                        Cumulative GPA
+                      </span>
+                      <span className="font-bold text-accent dark:text-accent-dark font-mono text-xs">
+                        {personalData.academic.cumulativeGpa} / 4.00
+                      </span>
+                    </div>
+                    <span className="text-[10px] font-mono text-emerald-500 font-medium bg-emerald-500/10 px-1.5 py-0.5 rounded">
+                      Sem 1–4: 3.37 → 3.78
+                    </span>
+                  </div>
                 </div>
               </div>
             )}

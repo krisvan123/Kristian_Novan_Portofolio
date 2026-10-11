@@ -52,11 +52,11 @@ export const activitiesData: ActivityCategory[] = [
 export const additionalExperiences: AdditionalExperience[] = [
   {
     role: "HIMTI Mentor & Peer Guide",
-    organization: "HIMTI (Himpunan Mahasiswa Teknik Informatika)",
-    period: "Academic Journey",
+    organization: "HIMTI (Himpunan Mahasiswa Teknik Informatika) — BINUS Semarang",
+    period: "Semarang Academic Term",
     description:
-      "Guided junior students through fundamental programming coursework, lab assignments, and student life adjustment.",
-    tags: ["Mentorship", "Programming Fundamentals", "Academic Support"],
+      "Guided junior students at BINUS Semarang through fundamental programming coursework, lab assignments, and student life adjustment.",
+    tags: ["Mentorship", "Programming Fundamentals", "Academic Support", "BINUS Semarang"],
   },
   {
     role: "Company Visit Liaison & Committee",

@@ -1,3 +1,11 @@
+export interface SemesterGPA {
+  semester: number;
+  label: string;
+  gpa: string;
+  campus: string;
+  focus: string;
+}
+
 export interface AcademicOverview {
   school: string;
   program: string;
@@ -5,6 +13,9 @@ export interface AcademicOverview {
   cohort: string;
   specialization: string;
   studyPeriod: string;
+  cumulativeGpa: string;
+  gpaScale: string;
+  semesters: SemesterGPA[];
 }
 
 export interface PersonalData {
@@ -25,7 +36,9 @@ export interface PersonalData {
   }[];
   contact: {
     email: string;
-    phone?: string;
+    phone: string;
+    whatsapp: string;
+    whatsappUrl: string;
     instagramHandle: string;
     instagramUrl: string;
     linkedInName: string;
@@ -44,6 +57,38 @@ export const personalData: PersonalData = {
     cohort: "B2028",
     specialization: "Intelligent Systems (AI)",
     studyPeriod: "Sem 1–3 Semarang (Main) · Sem 4–5 Jakarta (AI Streaming)",
+    cumulativeGpa: "3.5875",
+    gpaScale: "4.00",
+    semesters: [
+      {
+        semester: 1,
+        label: "Semester 1",
+        gpa: "3.37",
+        campus: "BINUS Semarang",
+        focus: "Computer Science Fundamentals & Logic",
+      },
+      {
+        semester: 2,
+        label: "Semester 2",
+        gpa: "3.52",
+        campus: "BINUS Semarang",
+        focus: "Data Structures & Discrete Mathematics",
+      },
+      {
+        semester: 3,
+        label: "Semester 3",
+        gpa: "3.68",
+        campus: "BINUS Semarang",
+        focus: "Algorithm Analysis & Software Engineering",
+      },
+      {
+        semester: 4,
+        label: "Semester 4",
+        gpa: "3.78",
+        campus: "BINUS Jakarta (AI Streaming)",
+        focus: "Intelligent Systems, Machine Learning & NLP",
+      },
+    ],
   },
   role: "Creative Technologist",
   focus: "Machine Learning · UI/UX",
@@ -67,19 +112,19 @@ export const personalData: PersonalData = {
   },
   metrics: [
     {
-      label: "Program",
+      label: "Cumulative GPA",
+      value: "3.5875 / 4.00",
+      description: "Consistent growth: Sem 1 (3.37) → Sem 4 (3.78)",
+    },
+    {
+      label: "Program & Stream",
       value: "Computer Science",
-      description: "School of Computer Science (SOCS)",
+      description: "Intelligent Systems (AI) · B2028",
     },
     {
-      label: "Specialization",
-      value: "Intelligent Systems (AI)",
-      description: "Specialization taken during Semesters 4–5",
-    },
-    {
-      label: "Institution & Cohort",
-      value: "BINUS University · B2028",
-      description: "Class of B2028 undergraduate",
+      label: "Campus Mobility",
+      value: "Semarang → Jakarta",
+      description: "Sem 1–3 Semarang · Sem 4–5 Jakarta",
     },
     {
       label: "Current Focus",
@@ -90,6 +135,8 @@ export const personalData: PersonalData = {
   contact: {
     email: "kristiannovan17@gmail.com",
     phone: "+62 895-7024-95980",
+    whatsapp: "+62 895-7024-95980",
+    whatsappUrl: "https://wa.me/62895702495980",
     instagramHandle: "@krisxvan",
     instagramUrl: "https://www.instagram.com/krisxvan",
     linkedInName: "Kristian Novan",

@@ -17,6 +17,7 @@ import {
   FileDown,
   ChevronLeft,
   ChevronRight,
+  TrendingUp,
 } from "lucide-react";
 
 const CREATIVE_INTERESTS = [
@@ -104,6 +105,71 @@ export default function About() {
               <blockquote className="p-4 sm:p-5 rounded-2xl bg-canvas-subtle border-l-4 border-accent text-charcoal font-quote italic text-base sm:text-lg leading-relaxed shadow-2xs">
                 &ldquo;Technical discipline gives structure to algorithms, but it is stagecraft, choral harmony, and theater that teach the power of human connection, presence, and timing.&rdquo;
               </blockquote>
+            </div>
+
+            {/* ACADEMIC EXCELLENCE & GPA PROGRESSION */}
+            <div className="p-6 sm:p-7 rounded-2xl bg-white dark:bg-canvas-card-dark border border-surface-border shadow-2xs space-y-5">
+              <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-surface-border/70">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-lg bg-accent-light dark:bg-accent-soft text-accent dark:text-accent-dark flex items-center justify-center">
+                    <GraduationCap className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm sm:text-base font-display font-semibold text-charcoal">
+                      Academic Trajectory &amp; GPA
+                    </h3>
+                    <p className="text-[11px] font-mono text-charcoal-soft">
+                      BINUS University · School of Computer Science (SOCS)
+                    </p>
+                  </div>
+                </div>
+
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent-light dark:bg-accent-soft border border-accent-border/60 text-accent font-mono text-xs font-bold shadow-2xs">
+                  <TrendingUp className="w-3.5 h-3.5" />
+                  <span>Cumulative GPA: 3.5875 / 4.00</span>
+                </div>
+              </div>
+
+              {/* Semester Breakdown Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                {personalData.academic.semesters.map((sem) => (
+                  <div
+                    key={sem.semester}
+                    className="p-3.5 rounded-xl bg-canvas-subtle border border-surface-border space-y-2 hover:border-accent-border transition-colors"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-display font-semibold text-charcoal">
+                        {sem.label}
+                      </span>
+                      <span className="text-xs font-mono font-bold text-accent dark:text-accent-dark px-2 py-0.5 rounded bg-white dark:bg-canvas-card-dark border border-surface-border shadow-2xs">
+                        GPA {sem.gpa}
+                      </span>
+                    </div>
+
+                    <div className="w-full bg-surface-border/80 rounded-full h-1.5 overflow-hidden">
+                      <div
+                        className="bg-accent h-1.5 rounded-full transition-all duration-500"
+                        style={{
+                          width: `${(parseFloat(sem.gpa) / 4.0) * 100}%`,
+                        }}
+                      />
+                    </div>
+
+                    <div className="flex items-center justify-between text-[10px] font-mono text-charcoal-soft">
+                      <span>{sem.campus}</span>
+                      <span className="truncate max-w-[150px] text-right font-medium">{sem.focus}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex items-center justify-between pt-1 text-[11px] font-mono text-charcoal-soft border-t border-surface-border/60">
+                <span className="flex items-center gap-1.5 text-accent font-medium">
+                  <TrendingUp className="w-3.5 h-3.5" />
+                  <span>Continuous Academic Growth (+0.41 from Sem 1 to Sem 4)</span>
+                </span>
+                <span>Scale 4.00</span>
+              </div>
             </div>
 
             {/* BEYOND COMPUTER SCIENCE — Subtle Editorial Interest Area */}

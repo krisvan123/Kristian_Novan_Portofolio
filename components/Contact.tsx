@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { personalData } from "@/data/personal";
 import ScrollReveal from "./ScrollReveal";
-import { Mail, Instagram, Linkedin, Github, Copy, Check, ArrowUpRight, MessageSquare, Send, FileDown } from "lucide-react";
+import { Mail, Instagram, Linkedin, Github, Copy, Check, ArrowUpRight, MessageSquare, Send, FileDown, MessageCircle } from "lucide-react";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
@@ -47,7 +47,7 @@ export default function Contact() {
             </p>
 
             {/* Contact channels grid */}
-            <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+            <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3.5">
               {/* Email Card */}
               <div className="p-4 rounded-xl bg-canvas-subtle border border-surface-border flex flex-col justify-between space-y-3 group hover:border-accent-border transition-colors">
                 <div className="flex items-center justify-between">
@@ -80,6 +80,29 @@ export default function Contact() {
                   </a>
                 </div>
               </div>
+
+              {/* WhatsApp Card */}
+              <a
+                href={personalData.contact.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-4 rounded-xl bg-canvas-subtle border border-surface-border flex flex-col justify-between space-y-3 group hover:border-emerald-500/60 transition-colors"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-500 shadow-2xs">
+                    <MessageCircle className="w-4 h-4" />
+                  </div>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-charcoal-soft group-hover:text-emerald-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </div>
+                <div>
+                  <span className="text-[11px] uppercase tracking-wider text-charcoal-soft font-semibold block font-mono">
+                    WhatsApp
+                  </span>
+                  <span className="text-xs font-semibold text-charcoal group-hover:text-emerald-500 truncate block mt-0.5 font-mono">
+                    {personalData.contact.phone}
+                  </span>
+                </div>
+              </a>
 
               {/* GitHub Card */}
               {personalData.contact.githubUrl && (
@@ -216,6 +239,17 @@ export default function Contact() {
                   <span className="font-display">Contact Me</span>
                 )}
                 {activeAction !== "contact" && <ArrowUpRight className="w-4 h-4" />}
+              </a>
+
+              <a
+                href={personalData.contact.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition-all duration-200 shadow-2xs hover:-translate-y-0.5 active:scale-95 group cursor-pointer"
+                title="Chat with Kristian on WhatsApp"
+              >
+                <MessageCircle className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                <span className="font-display">WhatsApp Chat</span>
               </a>
 
               <a
