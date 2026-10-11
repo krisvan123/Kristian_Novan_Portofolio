@@ -10,12 +10,12 @@ interface SectionItem {
 
 const SECTIONS: SectionItem[] = [
   { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "activities", label: "Activities" },
   { id: "projects", label: "Projects" },
-  { id: "play-lab", label: "Lab" },
+  { id: "play-lab", label: "3D Lab" },
   { id: "skills", label: "Skills" },
   { id: "certificates", label: "Certificates" },
+  { id: "about", label: "About" },
+  { id: "activities", label: "Activities" },
   { id: "upcoming", label: "Upcoming" },
   { id: "quotes", label: "Quotes" },
   { id: "contact", label: "Contact" },

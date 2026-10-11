@@ -275,20 +275,20 @@ export default function QuoteBook() {
         <ScrollReveal className="flex flex-col items-center text-center space-y-2 mb-10 md:mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-accent-light dark:bg-accent-soft text-accent dark:text-accent-dark text-[11px] font-mono font-medium border border-accent-border/60">
             <BookOpen className="w-3.5 h-3.5" />
-            <span>Illustrated Codex</span>
+            <span>Creative Reflections &amp; Philosophy</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-semibold tracking-tight text-charcoal">
             My Favorite Quotes
           </h2>
 
-          <p className="text-sm sm:text-base text-charcoal-soft max-w-lg font-sans">
-            A few thoughts I keep coming back to.
+          <p className="text-sm sm:text-base text-charcoal-muted max-w-lg font-sans">
+            Guiding principles and personal reflections that anchor my technical discipline and creative stagecraft.
           </p>
 
-          <span className="text-[11px] font-mono text-charcoal-soft/80 pt-1 flex items-center gap-1.5">
+          <span className="text-[11px] font-mono text-charcoal-soft pt-1 flex items-center gap-1.5">
             <Hand className="w-3.5 h-3.5 text-accent" />
-            <span>Interactive folio — drag page edge to flip</span>
+            <span>Interactive leather codex — drag page edge to flip</span>
           </span>
         </ScrollReveal>
 

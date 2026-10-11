@@ -27,7 +27,7 @@ const jetbrainsMono = JetBrains_Mono({
 const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin"],
   variable: "--font-quote",
-  weight: ["400", "500", "600", "700"],
+  weight: ["500", "600"],
   style: ["normal", "italic"],
   display: "swap",
 });

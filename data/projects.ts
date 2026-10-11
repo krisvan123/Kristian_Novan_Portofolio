@@ -46,6 +46,9 @@ export const projectsData: ProjectDetail[] = [
       "/images/projects/airsense-03.jpg",
       "/images/projects/airsense-04.jpg",
     ],
+    links: {
+      repo: "https://github.com/krisvan123",
+    },
   },
   {
     slug: "nivscan",
@@ -65,6 +68,9 @@ export const projectsData: ProjectDetail[] = [
       "/images/projects/nivscan-02.jpg",
       "/images/projects/nivscan-03.jpg",
     ],
+    links: {
+      repo: "https://github.com/krisvan123",
+    },
   },
   {
     slug: "promod-ai",
@@ -85,6 +91,9 @@ export const projectsData: ProjectDetail[] = [
       "/images/projects/promod-02.jpg",
       "/images/projects/promod-03.jpg",
     ],
+    links: {
+      repo: "https://github.com/krisvan123",
+    },
   },
   {
     slug: "finpro",
@@ -105,6 +114,9 @@ export const projectsData: ProjectDetail[] = [
       "/images/projects/finance-02.jpg",
       "/images/projects/finance-03.jpg",
     ],
+    links: {
+      repo: "https://github.com/krisvan123",
+    },
   },
   {
     slug: "platgizi",
@@ -126,6 +138,9 @@ export const projectsData: ProjectDetail[] = [
       "/images/projects/platgizi-03.jpg",
       "/images/projects/platgizi-04.jpg",
     ],
+    links: {
+      repo: "https://github.com/krisvan123",
+    },
   },
   {
     slug: "ecorouter-ai",
@@ -147,6 +162,10 @@ export const projectsData: ProjectDetail[] = [
       "/images/projects/ecorouter-03.jpg",
       "/images/projects/ecorouter-04.jpg",
     ],
+    links: {
+      demo: "/play",
+      repo: "https://github.com/krisvan123",
+    },
   },
   {
     slug: "skinical",
@@ -166,6 +185,9 @@ export const projectsData: ProjectDetail[] = [
       "/images/projects/skinical-02.jpg",
       "/images/projects/skinical-03.jpg",
     ],
+    links: {
+      repo: "https://github.com/krisvan123",
+    },
   },
   {
     slug: "travel-app",
@@ -187,6 +209,9 @@ export const projectsData: ProjectDetail[] = [
       "/images/projects/travel-03.jpg",
       "/images/projects/travel-04.jpg",
     ],
+    links: {
+      repo: "https://github.com/krisvan123",
+    },
   },
 ];
 

@@ -22,34 +22,34 @@ export default function Home() {
         <Hero />
       </SectionTransition>
 
-      {/* 2. About Me: Story, Academic Mobility (Semarang -> Jakarta), & Dual Passions */}
-      <SectionTransition id="about">
-        <About />
-      </SectionTransition>
-
-      {/* 3. Activities: Leadership, Stage MC & WALUBI Humanitarian Service */}
-      <SectionTransition id="activities">
-        <Activities />
-      </SectionTransition>
-
-      {/* 4. Projects: Featured Spotlight & Technical Case Studies */}
+      {/* 2. Projects: Featured Spotlight & Technical Case Studies */}
       <SectionTransition id="projects">
         <ProjectGrid />
       </SectionTransition>
 
-      {/* 5. Interactive Engineering Lab & 3D Experiments */}
+      {/* 3. Interactive Engineering Lab & 3D Simulation */}
       <SectionTransition id="play-lab">
         <PlayTeaser />
       </SectionTransition>
 
-      {/* 6. Skills: Technical Stack & Capabilities */}
+      {/* 4. Skills: Technical Stack & Capabilities */}
       <SectionTransition id="skills">
         <Skills />
       </SectionTransition>
 
-      {/* 7. Certificates: Verified Research & Cloud AI Credentials */}
+      {/* 5. Certificates: Verified Research & Cloud AI Credentials */}
       <SectionTransition id="certificates">
         <Certificates />
+      </SectionTransition>
+
+      {/* 6. About Me: Story, Academic Mobility (Semarang -> Jakarta), & Dual Passions */}
+      <SectionTransition id="about">
+        <About />
+      </SectionTransition>
+
+      {/* 7. Activities: Leadership, Stage MC & Humanitarian Service */}
+      <SectionTransition id="activities">
+        <Activities />
       </SectionTransition>
 
       {/* 8. Upcoming Concepts & Prototypes */}

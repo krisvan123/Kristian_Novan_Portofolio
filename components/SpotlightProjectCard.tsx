@@ -78,13 +78,19 @@ export default function SpotlightProjectCard({ project }: SpotlightProjectCardPr
           </div>
 
           {/* Action Link */}
-          <div className="pt-2">
+          <div className="pt-2 flex flex-wrap items-center gap-3">
             <Link
               href={`/projects/${project.slug}`}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-charcoal dark:bg-charcoal-dark text-white dark:text-canvas-dark text-xs sm:text-sm font-semibold font-display shadow-xs group-hover:bg-accent dark:group-hover:bg-accent-hover group-hover:text-white transition-all duration-200"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-charcoal dark:bg-charcoal-dark text-white dark:text-canvas-dark text-xs sm:text-sm font-semibold font-display shadow-xs group-hover:bg-accent dark:group-hover:bg-accent-hover group-hover:text-white transition-all duration-200"
             >
-              <span>Explore Complete Case Study</span>
+              <span>Explore Case Study</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link
+              href="/play"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-canvas-subtle border border-surface-border hover:border-accent text-charcoal text-xs sm:text-sm font-medium font-mono shadow-2xs hover:-translate-y-0.5 transition-all duration-200"
+            >
+              <span>Launch 3D Lab</span>
             </Link>
           </div>
         </div>

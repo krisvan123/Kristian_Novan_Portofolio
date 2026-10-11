@@ -24,9 +24,9 @@ export default function SafeImage({
   if (hasError || !src) {
     return (
       <div
-        className={`w-full ${aspectRatioClass} bg-[#F4F3EE] border border-surface-border rounded-xl flex flex-col items-center justify-center p-6 text-center select-none ${className}`}
+        className={`w-full ${aspectRatioClass} bg-canvas-card dark:bg-canvas-card-dark border border-surface-border rounded-xl flex flex-col items-center justify-center p-6 text-center select-none ${className}`}
       >
-        <div className="w-12 h-12 rounded-full bg-accent-light text-accent flex items-center justify-center mb-3">
+        <div className="w-12 h-12 rounded-full bg-accent-light dark:bg-accent-soft text-accent dark:text-accent-dark flex items-center justify-center mb-3 border border-accent-border/40">
           <ImageIcon className="w-6 h-6 stroke-[1.5]" />
         </div>
         <p className="text-sm font-medium text-charcoal">{fallbackTitle || alt || "Image Preview"}</p>
