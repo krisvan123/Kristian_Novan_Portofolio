@@ -34,9 +34,9 @@ const cormorantGaramond = Cormorant_Garamond({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kristian-novan-portfolio.vercel.app"),
-  title: "Kristian Novan — Computer Science Student | BINUS University",
+  title: "Kristian Novan — Computer Science Student (AI) | BINUS University",
   description:
-    "Portfolio of Kristian Novan, Computer Science student at BINUS University (B2028), specializing in Intelligent Systems (AI) with a focus on Machine Learning and UI/UX design.",
+    "Portfolio of Kristian Novan, Computer Science student at BINUS University (B2028, Cumulative GPA 3.5875 / 4.00), specializing in Intelligent Systems (AI), Machine Learning, Next.js 14 full-stack engineering, Three.js 3D simulations, and UI/UX design.",
   keywords: [
     "Kristian Novan",
     "Computer Science",
@@ -44,18 +44,24 @@ export const metadata: Metadata = {
     "School of Computer Science",
     "Intelligent Systems",
     "Machine Learning",
+    "Next.js",
+    "Three.js",
+    "TypeScript",
+    "Full-Stack Developer",
+    "Creative Technologist",
     "UI/UX Design",
     "B2028",
+    "GPA 3.5875",
     "ICORIS 2026",
     "Azure AI",
   ],
   authors: [{ name: "Kristian Novan" }],
   creator: "Kristian Novan",
   openGraph: {
-    title: "Kristian Novan — Computer Science Student | BINUS University",
+    title: "Kristian Novan — Computer Science Student (AI) | BINUS University",
     description:
-      "Personal portfolio of Kristian Novan, Computer Science student at BINUS University (B2028), specializing in Intelligent Systems (AI).",
-    url: "https://kristiannovan.vercel.app",
+      "Personal portfolio of Kristian Novan, Computer Science undergraduate at BINUS University (B2028, GPA 3.5875 / 4.00), specializing in Intelligent Systems (AI), Three.js WebGL, and Human-Centered UI/UX.",
+    url: "https://kristian-novan-portfolio.vercel.app",
     siteName: "Kristian Novan Portfolio",
     locale: "en_US",
     type: "website",
@@ -70,9 +76,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kristian Novan — Computer Science Student | BINUS University",
+    title: "Kristian Novan — Computer Science Student (AI) | BINUS University",
     description:
-      "Personal portfolio of Kristian Novan, Computer Science student at BINUS University (B2028), specializing in Intelligent Systems (AI).",
+      "Personal portfolio of Kristian Novan, Computer Science undergraduate at BINUS University (B2028, GPA 3.5875 / 4.00), specializing in Intelligent Systems (AI), Three.js WebGL, and Human-Centered UI/UX.",
     images: ["/opengraph-image.png"],
   },
   icons: {

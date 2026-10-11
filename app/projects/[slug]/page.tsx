@@ -3,10 +3,11 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { projectsData } from "@/data/projects";
+import { personalData } from "@/data/personal";
 import SafeImage from "@/components/SafeImage";
 import ProjectGallery from "@/components/ProjectGallery";
 import TravelShowcase from "@/components/TravelShowcase";
-import { ArrowLeft, ChevronRight, FolderGit2, Github, ExternalLink } from "lucide-react";
+import { ArrowLeft, ChevronRight, FolderGit2, Github, ExternalLink, MessageCircle, Mail } from "lucide-react";
 
 interface ProjectPageProps {
   params: {
@@ -177,6 +178,36 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
             />
           )}
         </section>
+
+        {/* Project Discussion & Inquiry Callout */}
+        <div className="p-6 sm:p-8 rounded-2xl bg-canvas-subtle border border-surface-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="space-y-1">
+            <h3 className="text-base sm:text-lg font-display font-semibold text-charcoal">
+              Interested in discussing this project?
+            </h3>
+            <p className="text-xs sm:text-sm text-charcoal-muted font-sans">
+              Connect directly via WhatsApp or email to discuss technical architecture, collaborations, or internships.
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center gap-2.5 shrink-0">
+            <a
+              href={personalData.contact.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold shadow-2xs transition-all hover:-translate-y-0.5"
+            >
+              <MessageCircle className="w-3.5 h-3.5" />
+              <span>WhatsApp</span>
+            </a>
+            <a
+              href={`mailto:${personalData.contact.email}?subject=Inquiry regarding ${encodeURIComponent(project.title)}`}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white dark:bg-canvas-card-dark border border-surface-border text-charcoal text-xs font-semibold hover:border-accent hover:text-accent shadow-2xs transition-all hover:-translate-y-0.5"
+            >
+              <Mail className="w-3.5 h-3.5" />
+              <span>Email</span>
+            </a>
+          </div>
+        </div>
 
         {/* Bottom Navigation: Back to Projects (Single clean arrow) + Next/Prev */}
         <div className="pt-8 border-t border-surface-border flex flex-col sm:flex-row items-center justify-between gap-4">

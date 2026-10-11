@@ -2,7 +2,7 @@
 
 import React from "react";
 import { personalData } from "@/data/personal";
-import { ArrowUp, Github, Instagram, Linkedin, Mail, FileDown } from "lucide-react";
+import { ArrowUp, Github, Instagram, Linkedin, Mail, FileDown, MessageCircle } from "lucide-react";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -18,10 +18,10 @@ export default function Footer() {
               {personalData.name}
             </h3>
             <p className="text-xs sm:text-sm text-charcoal-muted font-sans font-medium">
-              Computer Science Student
+              Computer Science Student · School of Computer Science (SOCS)
             </p>
             <p className="text-xs text-charcoal-soft font-mono">
-              BINUS University · B2028
+              BINUS University · B2028 · Intelligent Systems (AI)
             </p>
           </div>
 
@@ -38,6 +38,16 @@ export default function Footer() {
                 <Github className="w-4 h-4" />
               </a>
             )}
+            <a
+              href={personalData.contact.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-lg hover:text-emerald-500 hover:bg-emerald-500/10 transition-colors"
+              aria-label="WhatsApp Contact"
+              title="Chat on WhatsApp (+62 895-7024-96980)"
+            >
+              <MessageCircle className="w-4 h-4" />
+            </a>
             <a
               href={personalData.contact.linkedInUrl}
               target="_blank"
@@ -73,6 +83,10 @@ export default function Footer() {
           <div className="flex flex-wrap items-center gap-3">
             <p>© 2026 {personalData.name}. All rights reserved.</p>
             <span className="opacity-40 hidden sm:inline">•</span>
+            <span className="hidden md:inline text-charcoal-soft/80">
+              Built with Next.js 14, TypeScript &amp; Three.js
+            </span>
+            <span className="opacity-40 hidden md:inline">•</span>
             <a
               href="/cv/Kristian-Novan-CV.pdf"
               target="_blank"

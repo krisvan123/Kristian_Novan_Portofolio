@@ -47,8 +47,11 @@ export const hardSkillsData: HardSkillCategory[] = [
   {
     title: "Web / Development",
     skills: [
-      { name: "Next.js", description: "App router, static generation & full-stack prototypes" },
+      { name: "Next.js", description: "App router, static site generation & modern full-stack web prototypes" },
+      { name: "React & Three.js", description: "WebGL 3D scene rendering, procedural meshes & canvas simulations" },
       { name: "TypeScript", description: "Type-safe component design & predictable data structures" },
+      { name: "Tailwind CSS", description: "Design token architecture, responsive layouts & fluid typography" },
+      { name: "Git & GitHub", description: "Branching strategies, version control & collaborative codebases" },
     ],
   },
 ];
