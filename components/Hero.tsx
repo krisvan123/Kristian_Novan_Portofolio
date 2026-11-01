@@ -75,10 +75,10 @@ export default function Hero() {
               </h1>
               <div className="space-y-1 pt-1">
                 <p className="text-xl sm:text-2xl lg:text-3xl font-display font-medium text-charcoal-muted tracking-tight">
-                  {personalData.role}
+                  Creative Technologist
                 </p>
                 <p className="text-xs sm:text-sm font-mono text-accent dark:text-accent-dark font-medium">
-                  Building thoughtful interfaces with React, Next.js & TypeScript
+                  Where Machine Learning Rigor Meets Human Stagecraft
                 </p>
               </div>
             </div>
@@ -164,7 +164,7 @@ export default function Hero() {
 
               {/* Download CV (PDF) Button */}
               <a
-                href="/api/cv"
+                href="/cv/Kristian-Novan-CV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 download="Kristian-Novan-CV.pdf"
