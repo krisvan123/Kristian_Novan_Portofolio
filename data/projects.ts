@@ -120,18 +120,43 @@ export const projectsData: ProjectDetail[] = [
     },
   },
   {
+    slug: "warungwise",
+    title: "WarungWise",
+    subtitle: "CS50x 2026 Final Project — Independent Build",
+    category: "Web Application & Software Engineering",
+    shortDescription:
+      "An inventory management web application for Indonesian warungs, covering product records, expiry tracking, sales, and restock recommendations.",
+    overview: [
+      "WarungWise is my individual final project for Harvard's CS50x: Introduction to Computer Science (2026). I designed and implemented the application across its frontend, backend, and local database.",
+      "Built with Python, Flask, SQLite, Jinja templates, HTML, CSS, and Bootstrap, the system helps a small shop keep product records, receive stock in batches, record sales, review stock movements, and monitor products approaching their expiry dates.",
+      "The inventory workflow incorporates First-Expired, First-Out (FEFO) principles and restock guidance. Its dashboard and reporting screens summarize recorded inventory and sales data, with CSV exports for further analysis.",
+      "This is a locally run, server-rendered application intended as a functional academic demonstration, not a live hosted retail service.",
+    ],
+    technologies: ["Python", "Flask", "SQLite", "Jinja2", "Bootstrap", "Inventory Management"],
+    previewImage: "/images/projects/warungwise-01.svg",
+    images: [
+      "/images/projects/warungwise-01.svg",
+      "/images/projects/warungwise-02.svg",
+      "/images/projects/warungwise-03.svg",
+    ],
+    links: {
+      repo: "https://github.com/krisvan123/CS50X_FinalProject",
+    },
+  },
+  {
     slug: "finpro",
     title: "FinPro",
-    subtitle: "AOL — Software Engineering",
-    category: "AOL — Software Engineering",
+    subtitle: "Frontend Developer — Software Engineering Final Project",
+    category: "Frontend Development & Software Engineering",
     shortDescription:
-      "FinPro is a financial application focused on personal savings management, budget allocation, and transaction tracking.",
+      "A personal finance web application where I focused on implementing the frontend, including transaction entry and data handling.",
     overview: [
-      "FinPro is a financial application focused on saving and personal financial management.",
-      "Built as a practical software engineering project, FinPro emphasizes modular software architecture, dependable data persistence, and a user-friendly interface for setting savings targets and tracking recurring cashflow.",
-      "The application explores clean software engineering design patterns, separation of concerns, and an intuitive user experience for day-to-day money management.",
+      "FinPro is a team project built for a Software Engineering course, helping users manage financial transactions, budgets, and savings.",
+      "My contribution was as a Frontend Developer. I worked on the transaction-entry interface and user input validation using React, Next.js, and TypeScript, with particular attention to making data easy to enter and understand.",
+      "On the frontend, the team used local React state, Zustand for shared application state, and TanStack Query for server-state management. I integrated frontend functionality with REST endpoints provided by the backend team.",
+      "I also tested the transaction data flow with dummy data on a separate Git branch to help verify how the frontend interacted with backend services. I did not build the full backend API.",
     ],
-    technologies: ["Software Engineering", "Full-Stack Development", "System Design", "UI/UX"],
+    technologies: ["React", "Next.js", "TypeScript", "Zustand", "TanStack Query", "Frontend Development"],
     previewImage: "/images/projects/finance-01.jpg",
     images: [
       "/images/projects/finance-01.jpg",
@@ -139,7 +164,7 @@ export const projectsData: ProjectDetail[] = [
       "/images/projects/finance-03.jpg",
     ],
     links: {
-      repo: "https://github.com/krisvan123",
+      repo: "https://github.com/KenHoH/Finance",
     },
   },
   {
