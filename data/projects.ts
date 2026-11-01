@@ -143,6 +143,26 @@ export const projectsData: ProjectDetail[] = [
     },
   },
   {
+    slug: "warungwise",
+    title: "WarungWise",
+    subtitle: "Harvard CS50x — Final Project",
+    category: "Full-Stack Web Development",
+    shortDescription:
+      "WarungWise helps Indonesian neighborhood shops track inventory batches, product expiry dates, sales, and practical restock recommendations through a local-first web application.",
+    overview: [
+      "WarungWise is my individual final project for Harvard University's CS50x: Introduction to Computer Science. Built for small Indonesian neighborhood shops (warungs), the application addresses the everyday challenges of monitoring stock levels, managing expiry dates, and making informed purchasing decisions.",
+      "I developed both the frontend and backend using Python and Flask, with Jinja templates, HTML, CSS, JavaScript, and Bootstrap for the interface, and SQLite for persistent local data. Users can manage products, record incoming stock by batch, track sales and inventory movements, and review low-stock and near-expiry alerts.",
+      "For perishable items, WarungWise applies First Expired, First Out (FEFO) when allocating batches to sales. Its explainable, rule-based restock recommendations consider recent sales, lead time, safety stock, and currently sellable inventory. The reports dashboard supports date-filtered analysis and CSV exports.",
+      "The project emphasizes transparent business logic, database integrity, input validation, and tested workflows. It is designed as a local-first academic application, not a production inventory service or an AI-based demand forecasting system.",
+    ],
+    technologies: ["Python", "Flask", "SQLite", "Jinja", "HTML", "CSS", "JavaScript", "Bootstrap"],
+    previewImage: "",
+    images: [],
+    links: {
+      repo: "https://github.com/krisvan123/CS50X_FinalProject",
+    },
+  },
+  {
     slug: "ecorouter-ai",
     title: "EcoRouter AI",
     subtitle: "CompFest AI Competition",
