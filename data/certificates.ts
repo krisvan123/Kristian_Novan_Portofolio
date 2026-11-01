@@ -6,9 +6,22 @@ export interface CertificateItem {
   description: string;
   image: string;
   highlight?: boolean;
+  verificationUrl?: string;
+  downloadUrl?: string;
 }
 
 export const certificatesData: CertificateItem[] = [
+  {
+    id: "cs50x-2026",
+    title: "CS50x: Introduction to Computer Science",
+    category: "Computer Science Course Certificate",
+    issuer: "Harvard University — CS50",
+    description: "Completed Harvard CS50x (2026), including ten problem sets and one individual final project, WarungWise. This is the free CS50 Certificate, not an edX verified certificate.",
+    image: "https://certificates.cs50.io/1367ce9b-a33d-4f07-9450-6e1b5108a59e.png?size=letter",
+    verificationUrl: "https://cs50.harvard.edu/certificates/1367ce9b-a33d-4f07-9450-6e1b5108a59e",
+    downloadUrl: "https://certificates.cs50.io/1367ce9b-a33d-4f07-9450-6e1b5108a59e.pdf?size=letter",
+    highlight: true,
+  },
   {
     id: "icoris-2026",
     title: "ICORIS 2026 — Research Paper Author",
