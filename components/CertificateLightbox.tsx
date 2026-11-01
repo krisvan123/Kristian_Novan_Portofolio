@@ -150,8 +150,20 @@ export default function CertificateLightbox({
               {certificate.description}
             </span>
           </div>
-          <div className="text-[11px] font-mono text-neutral-400 shrink-0">
-            {currentIndex + 1} of {certificates.length}
+          <div className="flex flex-wrap items-center gap-3 shrink-0">
+            {certificate.verificationUrl && (
+              <a href={certificate.verificationUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs font-semibold text-white hover:text-accent-dark underline underline-offset-4">
+                <ExternalLink className="w-3.5 h-3.5" />
+                Verify certificate
+              </a>
+            )}
+            {certificate.downloadUrl && (
+              <a href={certificate.downloadUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs font-semibold text-white hover:text-accent-dark underline underline-offset-4">
+                <ExternalLink className="w-3.5 h-3.5" />
+                Open PDF
+              </a>
+            )}
+            <span className="text-[11px] font-mono text-neutral-400">{currentIndex + 1} of {certificates.length}</span>
           </div>
         </div>
       </div>
