@@ -48,11 +48,12 @@ export default function ProjectGrid() {
       // Web platforms, Software Engineering, Dashboards
       return (
         p.slug === "finpro" ||
+        p.slug === "warungwise" ||
         p.slug === "skinical" ||
         p.slug === "airsense-dashboard" ||
         p.slug === "platgizi" ||
         p.category.toLowerCase().includes("software") ||
-        p.technologies.some((t) => ["Software Engineering", "Full-Stack Development", "Web Interface", "System Design"].includes(t))
+        p.technologies.some((t) => ["Software Engineering", "Frontend Development", "Web Interface", "System Design", "Flask"].includes(t))
       );
     }
 
