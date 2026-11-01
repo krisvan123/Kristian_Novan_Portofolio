@@ -90,8 +90,8 @@ export const personalData: PersonalData = {
       },
     ],
   },
-  role: "Frontend Developer",
-  focus: "Frontend Development & Intelligent Systems",
+  role: "Creative Technologist",
+  focus: "Intelligent Systems (AI)",
   heroBio:
     "I'm Kristian Novan, a Computer Science student at BINUS University (started in Semarang for Semesters 1–3, currently taking the Intelligent Systems streaming in Jakarta for Semesters 4–5). Passionate about exploring machine learning algorithms and active in team leadership and stage moderation.",
   aboutBio: {
@@ -102,12 +102,11 @@ export const personalData: PersonalData = {
       "At the same time, I genuinely enjoy socializing, connecting with diverse teams, and facilitating meaningful events. Through roles in HIMTI, stage moderation as a Master of Ceremony, and community volunteering, I combine technical discipline with articulate, professional communication.",
     ],
     capabilities: [
-      "Frontend Development with React & TypeScript",
       "Intelligent Systems & Machine Learning",
       "Algorithmic Problem Solving & Python",
       "Public Speaking & Master of Ceremony",
       "Team Leadership & Community Mentoring",
-      "Frontend Engineering & API Integration",
+      "Full-Stack Web Engineering",
       "Curiosity-Driven CS Exploration",
     ],
   },
