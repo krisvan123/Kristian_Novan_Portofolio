@@ -203,7 +203,7 @@ export default function Navbar() {
         {/* Right Actions: CV Download + Contact CTA */}
         <div className="hidden lg:flex items-center gap-2">
           <a
-            href="/cv/Kristian-Novan-CV.pdf"
+            href="/api/cv"
             target="_blank"
             rel="noopener noreferrer"
             download="Kristian-Novan-CV.pdf"
@@ -271,7 +271,7 @@ export default function Navbar() {
             ))}
             <div className="pt-3 mt-2 border-t border-surface-border flex flex-col gap-2">
               <a
-                href="/cv/Kristian-Novan-CV.pdf"
+                href="/api/cv"
                 target="_blank"
                 rel="noopener noreferrer"
                 download="Kristian-Novan-CV.pdf"
