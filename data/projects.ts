@@ -122,16 +122,17 @@ export const projectsData: ProjectDetail[] = [
   {
     slug: "finpro",
     title: "FinPro",
-    subtitle: "AOL — Software Engineering",
+    subtitle: "Frontend Developer — Software Engineering Team Project",
     category: "AOL — Software Engineering",
     shortDescription:
-      "FinPro is a financial application focused on personal savings management, budget allocation, and transaction tracking.",
+      "FinPro is a personal finance web app developed as a team. My role focused on frontend development, including the transaction interface, form handling, and integration testing with backend services.",
     overview: [
-      "FinPro is a financial application focused on saving and personal financial management.",
-      "Built as a practical software engineering project, FinPro emphasizes modular software architecture, dependable data persistence, and a user-friendly interface for setting savings targets and tracking recurring cashflow.",
-      "The application explores clean software engineering design patterns, separation of concerns, and an intuitive user experience for day-to-day money management.",
+      "FinPro is a collaborative Software Engineering final project for personal finance management, transaction tracking, budgeting, and savings.",
+      "My role was Frontend Developer. I developed user-facing interfaces using React, Next.js, and TypeScript, with a particular focus on transaction inputs and the frontend data flow.",
+      "I coordinated with backend teammates and checked the frontend-to-backend integration using dummy data in a separate Git branch. I did not build or own the backend API.",
+      "The project strengthened my understanding of frontend state management, form validation, REST API integration, responsive UI development, and Git-based team collaboration.",
     ],
-    technologies: ["Software Engineering", "Full-Stack Development", "System Design", "UI/UX"],
+    technologies: ["React", "Next.js", "TypeScript", "Frontend Development", "API Integration", "Git"],
     previewImage: "/images/projects/finance-01.jpg",
     images: [
       "/images/projects/finance-01.jpg",
