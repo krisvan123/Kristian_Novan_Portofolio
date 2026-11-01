@@ -23,7 +23,7 @@ export default function Certificates() {
             Certifications &amp; Achievements
           </h2>
           <p className="text-sm sm:text-base text-charcoal-soft max-w-2xl font-sans">
-            Verified course completion, technical credentials, academic achievements, and community contributions.
+            Peer-reviewed research publication, technical cloud AI credentials, national design competition, and campus mentorship service.
           </p>
         </ScrollReveal>
 
