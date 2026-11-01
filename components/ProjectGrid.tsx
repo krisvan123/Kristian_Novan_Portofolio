@@ -48,6 +48,7 @@ export default function ProjectGrid() {
       // Web platforms, Software Engineering, Dashboards
       return (
         p.slug === "finpro" ||
+        p.slug === "warungwise" ||
         p.slug === "skinical" ||
         p.slug === "airsense-dashboard" ||
         p.slug === "platgizi" ||

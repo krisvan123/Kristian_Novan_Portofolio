@@ -75,10 +75,10 @@ export default function Hero() {
               </h1>
               <div className="space-y-1 pt-1">
                 <p className="text-xl sm:text-2xl lg:text-3xl font-display font-medium text-charcoal-muted tracking-tight">
-                  Creative Technologist
+                  {personalData.role}
                 </p>
                 <p className="text-xs sm:text-sm font-mono text-accent dark:text-accent-dark font-medium">
-                  Where Machine Learning Rigor Meets Human Stagecraft
+                  Frontend Development · Intelligent Systems · Human-Centered Design
                 </p>
               </div>
             </div>

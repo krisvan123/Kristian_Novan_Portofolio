@@ -122,16 +122,17 @@ export const projectsData: ProjectDetail[] = [
   {
     slug: "finpro",
     title: "FinPro",
-    subtitle: "AOL — Software Engineering",
+    subtitle: "Frontend Developer — Software Engineering Team Project",
     category: "AOL — Software Engineering",
     shortDescription:
-      "FinPro is a financial application focused on personal savings management, budget allocation, and transaction tracking.",
+      "FinPro is a personal finance web app developed as a team. My role focused on frontend development, including the transaction interface, form handling, and integration testing with backend services.",
     overview: [
-      "FinPro is a financial application focused on saving and personal financial management.",
-      "Built as a practical software engineering project, FinPro emphasizes modular software architecture, dependable data persistence, and a user-friendly interface for setting savings targets and tracking recurring cashflow.",
-      "The application explores clean software engineering design patterns, separation of concerns, and an intuitive user experience for day-to-day money management.",
+      "FinPro is a collaborative Software Engineering final project for personal finance management, transaction tracking, budgeting, and savings.",
+      "My role was Frontend Developer. I developed user-facing interfaces using React, Next.js, and TypeScript, with a particular focus on transaction inputs and the frontend data flow.",
+      "I coordinated with backend teammates and checked the frontend-to-backend integration using dummy data in a separate Git branch. I did not build or own the backend API.",
+      "The project strengthened my understanding of frontend state management, form validation, REST API integration, responsive UI development, and Git-based team collaboration.",
     ],
-    technologies: ["Software Engineering", "Full-Stack Development", "System Design", "UI/UX"],
+    technologies: ["React", "Next.js", "TypeScript", "Frontend Development", "API Integration", "Git"],
     previewImage: "/images/projects/finance-01.jpg",
     images: [
       "/images/projects/finance-01.jpg",
@@ -140,6 +141,26 @@ export const projectsData: ProjectDetail[] = [
     ],
     links: {
       repo: "https://github.com/krisvan123",
+    },
+  },
+  {
+    slug: "warungwise",
+    title: "WarungWise",
+    subtitle: "Harvard CS50x — Final Project",
+    category: "Full-Stack Web Development",
+    shortDescription:
+      "WarungWise helps Indonesian neighborhood shops track inventory batches, product expiry dates, sales, and practical restock recommendations through a local-first web application.",
+    overview: [
+      "WarungWise is my individual final project for Harvard University's CS50x: Introduction to Computer Science. Built for small Indonesian neighborhood shops (warungs), the application addresses the everyday challenges of monitoring stock levels, managing expiry dates, and making informed purchasing decisions.",
+      "I developed both the frontend and backend using Python and Flask, with Jinja templates, HTML, CSS, JavaScript, and Bootstrap for the interface, and SQLite for persistent local data. Users can manage products, record incoming stock by batch, track sales and inventory movements, and review low-stock and near-expiry alerts.",
+      "For perishable items, WarungWise applies First Expired, First Out (FEFO) when allocating batches to sales. Its explainable, rule-based restock recommendations consider recent sales, lead time, safety stock, and currently sellable inventory. The reports dashboard supports date-filtered analysis and CSV exports.",
+      "The project emphasizes transparent business logic, database integrity, input validation, and tested workflows. It is designed as a local-first academic application, not a production inventory service or an AI-based demand forecasting system.",
+    ],
+    technologies: ["Python", "Flask", "SQLite", "Jinja", "HTML", "CSS", "JavaScript", "Bootstrap"],
+    previewImage: "",
+    images: [],
+    links: {
+      repo: "https://github.com/krisvan123/CS50X_FinalProject",
     },
   },
   {
