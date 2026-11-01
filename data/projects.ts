@@ -133,11 +133,11 @@ export const projectsData: ProjectDetail[] = [
       "This is a locally run, server-rendered application intended as a functional academic demonstration, not a live hosted retail service.",
     ],
     technologies: ["Python", "Flask", "SQLite", "Jinja2", "Bootstrap", "Inventory Management"],
-    previewImage: "/images/projects/warungwise-01.svg",
+    previewImage: "/images/projects/warungwise-01.webp",
     images: [
-      "/images/projects/warungwise-01.svg",
-      "/images/projects/warungwise-02.svg",
-      "/images/projects/warungwise-03.svg",
+      "/images/projects/warungwise-01.webp",
+      "/images/projects/warungwise-02.webp",
+      "/images/projects/warungwise-03.webp",
     ],
     links: {
       repo: "https://github.com/krisvan123/CS50X_FinalProject",
