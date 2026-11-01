@@ -20,6 +20,7 @@ export default function SafeImage({
   ...rest
 }: SafeImageProps) {
   const [hasError, setHasError] = useState(false);
+  const [fallbackSrc, setFallbackSrc] = useState<string | null>(null);
 
   if (hasError || !src) {
     return (
@@ -40,9 +41,16 @@ export default function SafeImage({
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src={src as string}
+      src={fallbackSrc || (src as string)}
       alt={alt || "Portfolio image"}
-      onError={() => setHasError(true)}
+      onError={() => {
+        const path = src as string;
+        if (!fallbackSrc && path.startsWith("/images/projects/warungwise-") && path.endsWith(".webp")) {
+          setFallbackSrc(path.replace(/\.webp$/, ".svg"));
+          return;
+        }
+        setHasError(true);
+      }}
       className={className}
       loading="lazy"
     />
