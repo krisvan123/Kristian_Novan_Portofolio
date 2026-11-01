@@ -164,7 +164,7 @@ export default function Hero() {
 
               {/* Download CV (PDF) Button */}
               <a
-                href="/cv/Kristian-Novan-CV.pdf"
+                href="/api/cv"
                 target="_blank"
                 rel="noopener noreferrer"
                 download="Kristian-Novan-CV.pdf"
