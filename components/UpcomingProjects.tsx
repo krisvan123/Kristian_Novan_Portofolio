@@ -3,7 +3,7 @@ import { upcomingProjectsData } from "@/data/projects";
 import SafeImage from "./SafeImage";
 import InfiniteMarquee from "./InfiniteMarquee";
 import ScrollReveal from "./ScrollReveal";
-import { AlertCircle, Clock } from "lucide-react";
+import { AlertCircle, Clock, ExternalLink } from "lucide-react";
 
 export default function UpcomingProjects() {
   return (
@@ -95,6 +95,18 @@ export default function UpcomingProjects() {
                   </span>
                 ))}
               </div>
+              {project.demoUrl && (
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-charcoal dark:bg-[#F3F2EE] px-5 py-2.5 text-xs sm:text-sm font-semibold text-white dark:text-[#111113] hover:bg-accent dark:hover:bg-accent-hover hover:text-white transition-colors"
+                  aria-label={`Open ${project.title} live prototype in a new tab`}
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  <span>Open Live Prototype</span>
+                </a>
+              )}
             </div>
           ))}
         </ScrollReveal>

@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import { ProjectDetail } from "@/data/projects";
 import SafeImage from "./SafeImage";
 
@@ -91,6 +91,18 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
           </div>
         </Link>
+        {project.links?.demo && (
+          <a
+            href={project.links.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-flex items-center justify-center gap-2 w-full rounded-xl bg-charcoal dark:bg-[#F3F2EE] px-4 py-2.5 text-xs font-semibold text-white dark:text-[#111113] hover:bg-accent dark:hover:bg-accent-hover hover:text-white transition-colors"
+            aria-label={`Open ${project.title} live application in a new tab`}
+          >
+            <ExternalLink className="w-3.5 h-3.5" />
+            <span>Open Live App</span>
+          </a>
+        )}
       </div>
     </div>
   );

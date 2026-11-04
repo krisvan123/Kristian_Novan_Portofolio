@@ -24,6 +24,7 @@ export interface UpcomingProject {
   previewImage: string;
   images: string[];
   disclaimer?: string;
+  demoUrl?: string;
 }
 
 export const projectsData: ProjectDetail[] = [
@@ -47,6 +48,7 @@ export const projectsData: ProjectDetail[] = [
       "/images/projects/promod-03.jpg",
     ],
     links: {
+      demo: "https://promod-ai.streamlit.app/",
       repo: "https://github.com/krisvan123",
     },
   },
@@ -71,6 +73,7 @@ export const projectsData: ProjectDetail[] = [
       "/images/projects/platgizi-04.jpg",
     ],
     links: {
+      demo: "https://share.google/x1c9ueNrcANmecBcc",
       repo: "https://github.com/krisvan123",
     },
   },
@@ -94,6 +97,7 @@ export const projectsData: ProjectDetail[] = [
       "/images/projects/airsense-04.jpg",
     ],
     links: {
+      demo: "https://mlcopy-hpgdpxj7jcutuvdtrvwzln.streamlit.app/",
       repo: "https://github.com/krisvan123",
     },
   },
@@ -116,6 +120,7 @@ export const projectsData: ProjectDetail[] = [
       "/images/projects/nivscan-03.jpg",
     ],
     links: {
+      demo: "https://niv-scan.streamlit.app/",
       repo: "https://github.com/krisvan123",
     },
   },
@@ -164,6 +169,7 @@ export const projectsData: ProjectDetail[] = [
       "/images/projects/finance-03.jpg",
     ],
     links: {
+      demo: "https://footsore-uptake-autopilot.ngrok-free.dev/",
       repo: "https://github.com/KenHoH/Finance",
     },
   },
@@ -188,7 +194,7 @@ export const projectsData: ProjectDetail[] = [
       "/images/projects/ecorouter-04.jpg",
     ],
     links: {
-      demo: "/play",
+      demo: "https://ecorouter-project.streamlit.app/",
       repo: "https://github.com/krisvan123",
     },
   },
@@ -211,6 +217,7 @@ export const projectsData: ProjectDetail[] = [
       "/images/projects/skinical-03.jpg",
     ],
     links: {
+      demo: "https://skinical.streamlit.app/",
       repo: "https://github.com/krisvan123",
     },
   },
@@ -246,6 +253,7 @@ export const upcomingProjectsData: UpcomingProject[] = [
     title: "Trobos",
     category: "Next.js Prototype",
     status: "Upcoming / Prototype",
+    demoUrl: "https://trobosapp.vercel.app/",
     description:
       "Trobos is a Next.js prototype exploring a mobility solution for urban traffic congestion. The idea is to let a motorbike rider pick up the passenger while the passenger's car is handled separately and delivered to the intended destination.",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Product Prototype"],
@@ -262,6 +270,7 @@ export const upcomingProjectsData: UpcomingProject[] = [
     title: "MindCare",
     category: "AI Guidance Concept",
     status: "Upcoming Project / Prototype",
+    demoUrl: "https://mindcare-mu-jade.vercel.app/",
     description:
       "MindCare is an AI-based concept designed to provide initial guidance and practical next steps when someone is not feeling emotionally well. The goal is to make supportive guidance easier to access through a conversational experience.",
     disclaimer:

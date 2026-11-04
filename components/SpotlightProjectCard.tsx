@@ -86,6 +86,18 @@ export default function SpotlightProjectCard({ project }: SpotlightProjectCardPr
               <span>Explore Case Study</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
+            {project.links?.demo && (
+              <a
+                href={project.links.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-accent text-white text-xs sm:text-sm font-semibold font-display shadow-xs hover:bg-accent-hover transition-colors"
+                aria-label={`Open ${project.title} live application in a new tab`}
+              >
+                <ExternalLink className="w-4 h-4" />
+                <span>Open Live App</span>
+              </a>
+            )}
             <Link
               href="/play"
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-canvas-subtle border border-surface-border hover:border-accent text-charcoal text-xs sm:text-sm font-medium font-mono shadow-2xs hover:-translate-y-0.5 transition-all duration-200"
